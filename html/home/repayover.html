@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>提前结清</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css"/>
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		.weui_cell_bd{
+			margin-left: 10px;
+		}
+		
+		.weui_cell{
+			background: #fff;
+			line-height: 30px;
+		}
+		
+		.select_up{
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			display: none;
+			background: #fff;
+			z-index: 99999;
+		}
+		#mode_up{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top:0;
+			background: rgba(0,0,0,0.5);
+			display: none;
+		}
+		.jieqing{
+			display: none;
+		}
+		.zuidi{
+			display: none;
+		}
+	</style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>提前结清</p>
+		</header>
+      <div class="weui_cells_access" style="margin-bottom: 50px;overflow: hidden;">			
+			<a class="weui_cell bg">
+				<div class="weui_cell_hd" style="width: 50px;height: 50px;border-radius: 50px;background: #fff;text-align: center;">
+					<img src="" onerror="this.src='../../images/icon_jiansheyinhang@2x.png'"  class="bank_img" style="width: 50px;"/>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary" style="color:#fff ;" >
+					<p class="bank" style="font-size: 14px;">中国建设银行</p>
+					<p style="font-size: 12px;margin-top: 5px;">尾号<span class="cardnum">1111</span></p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+				<a class="weui_cell" style="font-size: 14px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;">结清金额</p>					
+				</div>
+				<div class="">800.00</div>
+			</a>
+			<a class="weui_cell" style="font-size: 14px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;">含本金</p>					
+				</div>
+				<div class="color1 benjin">800.00</div>
+			</a>
+			<a class="weui_cell" style="font-size: 14px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;">含综合服务费</p>					
+				</div>
+				<div class="color1 fuwu">0.00</div>
+			</a>
+			<a class="weui_cell" style="font-size: 14px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;">含逾期费用</p>					
+				</div>
+				<div class="color1 yuqi">0.00</div>
+			</a>								
+	
+			<div class="sure_button" >
+				<input type="submit" class="huankuan" value="确认还款" />
+			</div>
+        </div>
+        <div class="select_up">
+			<div style="border-bottom: 1px solid #D9D9D9;height: 40px;text-align: center;line-height: 40px;">
+				<div class="close_up" style="width: 20%;float: left;">
+					<img src="../../images/ico_close@2x.png" style="width: 15px;"/>
+				</div>
+				<div style="width: 60%;float: left;">
+					<p>选择银行卡</p>
+				</div>				
+			</div>
+			<div class="bankup">
+				<div class="weui_cells weui_cells_radio" style="overflow: hidden;">
+				  <script id="homebank" type="text/html">				  
+				  	{{each body as lt i}}
+			            <label class="weui_cell weui_check_label">
+			                <div class="weui_cell_bd weui_cell_primary">
+			                   <p style="float: left;width: 20%;text-align: center;">
+									<img src="{{lt.bankLogo}}" onerror="this.src='images/icon_jiansheyinhang@2x.png'"  class="bank_img" style="width: 20px;"/>
+							   </p>
+							    <p  style="width:60%;font-size: 14px;float: left;"><span class="bank" >{{lt.bankName}}</span>(*<span class="cardnum">{{lt.accountNo.substr(lt.accountNo.length-4,4)}}</span>)</p>						  
+			                </div>
+			                <div class="weui_cell_ft">
+			                    <input type="radio" class="weui_check1" name="radio1" value="" >
+			                    <span class="weui_icon_checked"></span>
+			                </div>
+			            </label>
+		            {{/each}}		            
+		          </script>
+		        </div>
+				
+			</div>
+			</div>
+			<div id="mode_up"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/home/advance.js?${project.javascript.version}"></script>
+</html>

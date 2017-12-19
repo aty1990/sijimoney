@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>身份信息</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		body {
+			background: #FAFAFA;
+		}
+		
+		.photograph {
+			height: 100px;
+			width: 90%;
+			margin-left: 5%;
+			margin-top: 30px;
+		}
+		
+		.photo {
+			width: 48%;
+			height: 120px;
+			float: left;
+			background: #AEE6FF;
+			border-radius: 5px;
+			font-size: 12px;
+			text-align: center;
+		}
+		
+		.photo p {
+			background: #2EABE3;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			line-height: 30px;
+		}
+		
+		.photograph_right {
+			float: right;
+		}
+		
+		.input {
+			font-size: 15px;
+			padding: 5px 15px;
+			min-height: 1.9em;
+			display: flex;
+			border-bottom: 1px solid #f1f1f1;
+			line-height: 40px;
+		}
+		
+		.input p {
+			width: 30%;
+		}
+		
+		.input input {
+			float: left;
+			width: 70%;
+			color: #000;
+			background: rgba(0, 0, 0, 0);
+		}
+		
+		.prompt {
+			font-size: 12px;
+			width: 90%;
+			margin-left: 5%;
+			margin-top: 10px;
+			color: rgb(173, 173, 173);
+		}
+		
+		.user_border {
+			margin-top: 10px;
+			width: 90px;
+			height: 60px;
+			position: relative;
+			display: inline-block;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		
+		#front {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			/*padding: 25px 0;*/
+			position: absolute;
+			right: 0;
+			top: 0;
+			opacity: 0;
+		}
+		
+		.file {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			background: rgba(0, 0, 0, 0.5);
+			border-radius: 3px;
+		}
+		
+		.file img {
+			position: absolute;
+			height: 20px;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		
+		.pic_front,
+		.pic_back {
+			width: 100%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		
+		input[type="file"] {
+			height: 60px;
+		}
+		.input input[disabled]{
+			-webkit-text-fill-color:#000;
+			opacity:1;
+		}
+	</style>
+
+	<body>
+		<header>
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>身份信息</p>
+		</header>
+		<div class="photograph">
+			<form name="form1" id="form1" enctype="multipart/form-data">
+				<div class="photograph_left photo">
+					<p>点击开始识别身份证正面</p>
+					<div class="user_border">
+						<img src="" id="obj1" onerror="this.src='../../images/pic_card front@2x.png' " class="pic_front" />
+						<div class="file_front file">
+							<input id="front" type="file" accept="image/*" capture="camera" name="files" onchange="imagePreview(this)">
+							<img src="../../images/icon_camera@2x.png" />
+						</div>
+						<input type="hidden" name="frontSide" id="frontSide">
+						<div id="tip-queue1" style="display: none;"></div>
+					</div>
+
+				</div>
+			</form>
+			<form name="form2" id="form2" enctype="multipart/form-data">
+				<div class="photograph_right photo">
+					<p>点击开始识别身份证背面</p>
+					<div class="user_border">
+						<img src="" id="obj2" onerror="this.src='../../images/pic_card back@2x.png' " class="pic_back" />
+						<div class="file_back file">
+							<input id="back" type="file" accept="image/*" capture="camera" name="files" onchange="imagePreview1(this)" style="width: 100%;height: 100%;overflow: hidden;position: absolute;right: 0;top: 0;opacity: 0;">
+							<img src="../../images/icon_camera@2x.png" />
+						</div>
+						<input type="hidden" name="frontSide" id="frontSide">
+						<div id="tip-queue1" style="display: none;"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div style="background: #fff;">
+			<div class="input" style="margin: 30px 0px 0px !important;">
+				<p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</p>
+				<input type="text" class="input_p user_name" disabled="disabled" style="width: 50%;">
+				<div class="edit">
+					<img src="../../images/icon_edit@2x.png" style="width: 12px;margin-left: 30px;" />
+				</div>
+			</div>
+			<div class="input">
+				<p>身份证号</p>
+				<p type="text" disabled="disabled" class="input_p user_number"></p>
+			</div>
+			<div class="input">
+				<p>户籍地址</p>
+				<p disabled="disabled" class="input_p user_address" style="width: 70%;"></p>
+			</div>
+		</div>
+		<div class="prompt">
+			<p>友情提示：</p>
+			<p>1.请完善真实身份信息，确保资金能提现到本人名下的银行卡；</p>
+			<p>2.请认真核对自动识别结果，如相关信息有误，请点击重拍。</p>
+		</div>
+		<div class="sumbit user_keep">
+			<input type="button" class="keep" disabled="disabled" value="保&nbsp;&nbsp;存" />
+		</div>
+		<div id="mode"></div>
+
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/userinformation.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js" ></script>
+	<script>
+		var package_session_id = '';
+		var userBirth = '';
+		var id_name = '';
+		var id_number = '';
+		var id_address = '';
+		var userSex = '';
+		var nation = '';
+		var issuing_authority = '';
+		var validity_period = '';
+		
+		var userStat = sessionStorage.getItem("userStat");
+		
+		var userId = sessionStorage.getItem("userId");
+		var accessToken = constans.accessToken;
+//		if(userStat == "undefined" || userStat == null) {
+//			$("#front").hide();
+//			$("#obj1").attr("src", "images/pic_portrait@2x.png")
+//			$("#back").hide();
+//			$("#obj2").attr("src", "images/pic_portrait@2x.png")
+//		} else {
+			function imagePreview(input) {
+//				var msg = document.getElementById("obj1");
+//				var file = document.getElementById("front").files[0];
+//				if(file) {
+//					var render = new FileReader();
+//					render.readAsDataURL(file);
+//					render.onload = function() {
+//						var img = document.createElement("img");
+//						img.src = this.result;
+//						msg.src = img.src;
+						var formData;
+						if($('input[type="file"]').val()) {
+							formData = new FormData($('#form1')[0]);
+						} else {
+							formData = new FormData();
+						}
+						formData.append("userId", userId);
+						$.ajax({
+							url: constans.serviceUrl + '/credit/veridfront',
+							type: "post",
+							async: true,
+							data: formData,
+							processData: false,
+							contentType: false,
+							headers: {    
+								loginTerm: "wx" ,
+								rand: Math.round(Math.random()*89999) + 10000,
+								accessToken: accessToken,
+								jhVer: "2.0"
+							},
+							beforeSend: function() {
+								$("body").Loading("show");
+							},
+							complete: function() {
+								$("body").Loading("hide");
+							},
+							success: function(data) {
+								
+								if(data.code == 111) {
+									$("#mode").show();
+									$("#mode").html('会话失效，请重新登录');
+									setTimeout(function() {
+										window.location.href = constans.htmlUrl + "/html/login/loginnext.html";
+										$("#mode").hide();
+									}, 2000);
+								}
+								if(data.code == "500") {
+									$("#mode").show();
+									$("#mode").html(data.msg);
+									setTimeout(function() {
+										$("#mode").hide();
+									}, 2000)
+								} else {
+									
+									userBirth = data.body.birthday
+									id_name = data.body.id_name;
+									id_number = data.body.id_number;
+									id_address = data.body.address;
+									userSex = data.body.gender;
+
+									nation = data.body.nation;
+									package_session_id = data.body.package_session_id;
+									$(".user_name").val(id_name);
+									$(".user_number").html(id_number);
+									$(".user_address").html(id_address);
+									$('.pic_front').attr('src', data.url);
+
+								}
+
+							}
+						})
+
+					}
+//				}
+//			}
+
+			function imagePreview1(input) {
+				var sessionId = package_session_id
+//				var msg = document.getElementById("obj2");
+//				var file = document.getElementById("back").files[0];
+//				if(file) {
+//					var render = new FileReader();
+//					render.readAsDataURL(file);
+//					render.onload = function() {
+//						var img = document.createElement("img");
+//						img.src = this.result;
+//						msg.src = img.src;
+
+						var formData;
+						if($('input[type="file"]').val()) {
+							formData = new FormData($('#form2')[0]);
+						} else {
+							formData = new FormData();
+						}
+						formData.append("userId", userId);
+						formData.append("sessionId", sessionId);
+						$.ajax({
+							url: constans.serviceUrl + '/credit/veridback',
+							type: "post",
+							async: true,
+							data: formData,
+							processData: false,
+							contentType: false,
+							headers: {    
+								loginTerm: "wx" ,
+								rand: Math.round(Math.random()*89999) + 10000,
+								accessToken: accessToken,
+								jhVer: "2.0"
+							},
+							beforeSend: function() {
+								$("body").Loading("show");
+							},
+							complete: function() {
+								$("body").Loading("hide");
+							},
+							success: function(data) {
+								
+								if(data.code == 111) {
+									$("#mode").show();
+									$("#mode").html('会话失效，请重新登录');
+									setTimeout(function() {
+										window.location.href = constans.htmlUrl + "/html/login/loginnext.html";
+										$("#mode").hide();
+									}, 2000);
+								}
+								if(data.code == 500) {
+									$("#mode").show();
+									$("#mode").html(data.msg);
+									setTimeout(function() {
+										$("#mode").hide();
+									}, 2000);
+									//	if($(".user_address").html(id_address) != "") {
+									//	} else {
+									$(".keep").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+									$(".keep").css("background-size", "100% 100%");
+									$(".keep").attr("disabled", "dsiabled");
+									$(".keep").css("color","#fff")
+									//									}
+
+								} else {
+									$(".keep").css("background", "url(../../images/btn_normal@2x.png) no-repeat")
+									$(".keep").css("background-size", "100% 100%");
+									$(".keep").removeAttr("disabled");
+									$(".keep").css("color","#fff")
+									validity_period = data.body.validity_period;
+									issuing_authority = data.body.issuing_authority;
+									
+                                    $('.pic_back').attr('src', data.url);
+								}
+
+							}
+						})
+
+					}
+//				}
+//			}
+			//保存信息
+			$(".keep").on("click", function() {
+				id_name = $(".user_name").val();
+				var data = {
+					cardAddr: id_address,
+					cardAuth: issuing_authority,
+					cardPeriod: validity_period,
+					sessionId: package_session_id,
+					userBirth: userBirth,
+					userCard: id_number,
+					userId: userId,
+					userName: id_name,
+					userNation: nation,
+					userSex: userSex
+				}
+				
+				$.ajax({
+					url: constans.serviceUrl + '/credit/submitidcard',
+					type: "post",
+					async: true,
+					data: data,
+					headers: {    
+						loginTerm: "wx" ,
+						rand: Math.round(Math.random()*89999) + 10000,
+						accessToken: accessToken,
+						jhVer: "2.0" 
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {
+						if(data.code == 111) {
+							$("#mode").show();
+							$("#mode").html('会话失效，请重新登录');
+							setTimeout(function() {
+								window.location.href = constans.htmlUrl + "/html/login/loginnext.html";
+								$("#mode").hide();
+							}, 2000);
+						}
+						if(data.code == 500) {
+							$("#mode").show();
+							$("#mode").html(data.msg);
+							setTimeout(function() {
+								$("#mode").hide();
+							}, 2000)
+						} else {
+							$(".file_back").hide();
+							$(".file_front").hide();
+							$(".user_name").attr("disabled", "disabled");
+
+							$("#mode").show();
+							$("#mode").html("保存成功");
+							$(".keep").attr("disabled", "disabled");
+							$(".keep").css("color","#fff")
+							setTimeout(function() {
+								window.location = constans.htmlUrl + "/html/user/usermessage.html";
+								$("#mode").hide();
+							}, 2000)
+						}
+					}
+				})
+			})
+
+//		}
+	</script>
+
+</html>

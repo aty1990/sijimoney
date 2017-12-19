@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>添加银行卡</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?0f11fd0ad4c78230522206fed5b51fbd";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			html,body {
+				background: #fafafa;
+				height: 100%;
+			}
+			
+			#picker1 {
+				height: 40px;
+			}
+			
+			.small_header {
+				color: #888;
+				margin-left: 10px;
+				margin: 10px;
+				font-size: 12px;
+			}
+			
+			.mymessage {
+				position: relative;
+				float: left;
+				width: 72%;
+				line-height: 40px;
+				margin-left: 10px;
+			}
+			
+			.main-content {
+				position: absolute;
+				left: 0;
+				width: 100%;
+			}
+			
+			.sumbit {
+				margin-top: 20px;
+			}
+			
+			#picker5 {
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				font-size: 15px;
+			}
+			
+			.name input[disabled] {
+				-webkit-text-fill-color: #000;
+				opacity: 1;
+			}
+			
+			.hide {
+				display: none;
+				position: absolute;
+				width: 100%;
+				background: #fff;
+				top:0;
+				left: 0;
+				height: 100%;
+			}
+			li {
+				list-style: none;
+				width: 50%;
+				float: left;
+				white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    padding: 4px 0;
+			    padding-left: 5px;
+			}
+			.bank{background: #fff;display: inline-block;width: 100%;color: #999;line-height: 30px;}
+			.content{
+				color: #999;background: #f1f1f1;font-size: 14px;
+			}
+			.tips{
+				padding: 10px;
+				display: block;
+				line-height: 22px;
+				letter-spacing: 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="show">
+			<header style="background: #fff;">
+				<div style="float: left;">
+					<a href="javascript:history.go(-1)">
+						<img src="../../images/ico_back@2x.png" />
+					</a>
+				</div>
+				<p>添加银行卡</p>
+			</header>
+			<div class="user_message">
+				<div class="user_input" style="margin-top: 10px;">
+					<p>持卡人</p>
+					<div class="mymessage name">
+						<input type="text" value="" class="input_p" id="bank_name" disabled="disabled" />
+					</div>
+				</div>
+				<div class="user_input">
+					<p>卡号</p>
+					<div class="mymessage">
+						<input type="text" value="" class="input_p bank_input" id="bank_card" maxlength="32" placeholder="请输入银行卡号" style="width:85%;" />
+						<img src="../../images/icon_explain@2x.png" style="width: 20px;height: 20px;margin-top: 16px;" class="explain" />
+					</div>
+				</div>
+				<div style="font-size: 12px;color: #888;margin-top: 10px;margin-left: 15px;">
+					<p>友情提示：</p>
+					<p>1.请绑定账户本人常用银行卡（目前只支持储蓄卡），借款将转入该卡；</p>
+					<p>2.以上信息经加密处理，仅用于银行卡验证。</p>
+				</div>
+				<div style="font-size: 12px;margin-top: 20px;margin-left: 15px;">
+					<img src="../../images/btn_normal11@2x.png" style="width: 15px;" />
+					<span>
+        		已阅读并同意<span class="xieyi" style="color:rgb(70,142,225)">《借款咨询服务协议》</span>
+					</span>
+				</div>
+			</div>
+			<div class="sumbit">
+				<input type="button" class="bank_money" disabled="disabled" value="绑卡" />
+			</div>
+			<div id="mode"></div>
+		</div>
+		<div class="hide">
+			<header style="background: #fff;">
+				<div style="float: left;">
+					<a href="#" class="close">
+						<p style="color: rgb(70,142,225);margin-left: 10px;font-size: 14px;">关闭</p>
+					</a>
+				</div>
+				<p>支持银行</p>
+			</header>
+			<p class="content">
+				<span class="tips">友情提示：当前仅支持以下银行请勿绑定其他银行卡，以免导致借款、还款不成功</span>
+			</p>
+			<div class="bank">
+				<script id="home_swiper" type="text/html">
+					<ul style="width: 94%;margin-left: 3%;">
+						{{each body as lt i}}
+						<li>
+							<p style="width: 10px;height: 10px;background:rgb(70,142,225);border-radius: 10px;float: left;margin-top: 10px;"></p>
+							<span style="padding-left: 5px;white-space:nowrap;display: block;overflow: hidden;font-size: 16px;">{{lt.name}}</span>
+						</li>
+						{{/each}}
+					</ul>
+				</script>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/picker.min.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/bank.js?${project.javascript.version}"></script>
+	
+
+</html>

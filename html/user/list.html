@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<title>上拉加载更多</title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		html {
+			font-size: 14px
+		}
+		
+		@media screen and (max-width: 320px) {
+			html {
+				font-size: 14px
+			}
+		}
+		
+		@media screen and (min-width:321px) and (max-width:375px) {
+			html {
+				font-size: 14px
+			}
+		}
+		
+		@media screen and (min-width:376px) and (max-width:414px) {
+			html {
+				font-size: 16px
+			}
+		}
+		
+		@media screen and (min-width:415px) and (max-width:639px) {
+			html {
+				font-size: 16px
+			}
+		}
+		
+		@media screen and (min-width:640px) and (max-width:719px) {
+			html {
+				font-size: 16px
+			}
+		}
+		
+		@media screen and (min-width:720px) and (max-width:749px) {
+			html {
+				font-size: 16px
+			}
+		}
+		
+		@media screen and (min-width:750px) and (max-width:799px) {
+			html {
+				font-size: 16px
+			}
+		}
+		
+		@media screen and (min-width:800px) {
+			html {
+				font-size: 16px
+			}
+		}
+		
+		@media screen and (max-width: 1000px) {
+			img {
+				max-width: 100%;
+			}
+		}
+		
+		#wrapper {
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 90px;
+			bottom: 0rem;
+			overflow: hidden;
+			z-index: 1;
+			
+		}
+		
+		#wrapper li {
+			height: 10rem;
+			line-height: 10rem;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .1);
+		}
+		
+		.more {
+			height: 4rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #333;
+		}
+		
+		.pull_icon {
+			width: 25px;
+			height: 25px;
+			background-image: url('../../images/pull11.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 25px;
+			transition: all .5s;
+		}
+		
+		.more span {
+			padding-left: .5rem;
+		}
+		
+		.scroller {
+			background-color: #fff;
+		}
+		
+		.more .flip {
+			transform: rotate(180deg);
+		}
+		
+		.loading {
+			background-image: url('../../images/loading11.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 25px;
+		}
+		
+		.more .loading {
+			-webkit-transform: rotate(0deg) translateZ(0);
+			-webkit-transition-duration: 0;
+			-webkit-animation-name: loading;
+			-webkit-animation-duration: 2s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: linear;
+		}
+		
+		@-webkit-keyframes loading {
+			from {
+				-webkit-transform: rotate(0deg) translateZ(0);
+			}
+			to {
+				-webkit-transform: rotate(360deg) translateZ(0);
+			}
+		}
+		
+		body {
+			background: #f1f1f1;
+		}
+		
+		#wrapper li {
+			list-style: none;
+			width: 33.333%;
+			float: left;
+			text-align: center;
+			color: #333;
+			display: block;
+			height: 50px;
+			line-height: 50px;
+		}
+		
+		.title {
+			background: #fff;
+			height: 50px;
+		}
+		
+		.title li {
+			list-style: none;
+			width: 33.333%;
+			float: left;
+			text-align: center;
+			color: #333;
+			line-height: 50px;
+		}
+	</style>
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>排行榜</p>
+		</header>
+		<ul class="title">
+			<li>名次</li>
+			<li>手机号</li>
+			<li>收入</li>
+		</ul>
+		<div id="wrapper">
+			<div class="scroller">
+				<ul class="list" style="display: inline-block;">
+				</ul>
+				<div class="more"><i class="pull_icon"></i><span>上拉加载更多...</span></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+		<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+		<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+		<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+		<script type="text/javascript" src="../../libs/js/iscroll.js?${project.javascript.version}"></script>
+		<script>
+			var pageNo = 1,
+				total = 1,
+				totalPage = 1;
+
+			var myscroll = new iScroll("wrapper", {
+				onScrollMove: function() {
+					if(this.y < (this.maxScrollY)) {
+						$('.pull_icon').addClass('flip');
+						$('.pull_icon').removeClass('loading');
+						$('.more span').text('释放加载...');
+					} else {
+						$('.pull_icon').removeClass('flip loading');
+						$('.more span').text('上拉加载更多...')
+					}
+				},
+				onScrollEnd: function() {
+					if($('.pull_icon').hasClass('flip')) {
+						data.page = data.page + 1;
+						$('.pull_icon').addClass('loading');
+						$('.more span').text('加载中...');
+						console.log($(".list li").length / 3);
+						console.log(total)
+						if($(".list li").length / 3 >= total) {
+							$('.more span').text('没有更多了');
+							return;
+						} else {
+							pullUpAction(data);
+						}
+
+					}
+
+				},
+				onRefresh: function() {
+					$('.more').removeClass('flip');
+					$('.more span').text('上拉加载更多...');
+				}
+
+			});
+			var accessToken = constans.accessToken;
+			var data = { pageSize: 10, page: 1 };
+			$.ajax({
+				url: constans.serviceUrl + '/v2/invitations/incomes',
+				type: "post",
+				async: false,
+				data: data,
+				headers: {    
+					loginTerm: "wx" ,
+					rand: Math.round(Math.random() * 89999) + 10000,
+					accessToken: accessToken,
+					jhVer: "2.0"
+				},
+				success: function(data) {
+					console.log(data);
+					total = data.body.total;
+					for(var i = 0; i < 10; i++) {
+						if($(".list li").eq(0).html() == 1) {
+							$(".list li").eq(0).html("");
+							$(".list li").eq(0).append("<img/>");
+							$(".list li").eq(0).find("img").attr("src", "../../images/one@2x.png");
+							$(".list li").eq(0).find("img").css("width", "30px")
+						}
+						if($(".list li").eq(3).html() == 2) {
+							$(".list li").eq(3).html("");
+							$(".list li").eq(3).append("<img/>");
+							$(".list li").eq(3).find("img").attr("src", "../../images/two@2x.png");
+							$(".list li").eq(3).find("img").css("width", "30px")
+						}
+						if($(".list li").eq(6).html() == 3) {
+							$(".list li").eq(6).html("");
+							$(".list li").eq(6).append("<img/>");
+							$(".list li").eq(6).find("img").attr("src", "../../images/three@2x.png");
+							$(".list li").eq(6).find("img").css("width", "30px")
+						}
+						$('.scroller ul').append("<li>" + data.body.data[i].id + "</li>");
+						$('.scroller ul').append("<li>" + data.body.data[i].rollTel + "</li>");
+						$('.scroller ul').append("<li>" + data.body.data[i].rollIncome + "</li>");
+						var num = 3 * (data.body.data[i].id) - 2;
+						if(num % 2 != 0) {
+							$(".list li").eq(num - 1).css("background", "#f1f1f1");
+							$(".list li").eq(num).css("background", "#f1f1f1")
+							$(".list li").eq(num + 1).css("background", "#f1f1f1")
+						}
+					}
+					myscroll.refresh();
+				}
+			})
+
+			function pullUpAction() {
+				setTimeout(function() {
+					$.ajax({
+						url: constans.serviceUrl + '/v2/invitations/incomes',
+						type: "post",
+						async: false,
+						data: data,
+						headers: {    
+							loginTerm: "wx" ,
+							rand: Math.round(Math.random() * 89999) + 10000,
+							accessToken: accessToken,
+							jhVer: "2.0"
+						},
+						success: function(data) {
+							console.log(data);
+							pageNo = data.body.page;
+							totalPage = data.body.totalPages;
+							if(pageNo >= totalPage) {
+								pageNo = totalPage;
+							}
+							for(var i = 0; i < data.body.data.length; i++) {
+
+								$('.scroller ul').append("<li>" + data.body.data[i].id + "</li>");
+								$('.scroller ul').append("<li>" + data.body.data[i].rollTel + "</li>");
+								$('.scroller ul').append("<li>" + data.body.data[i].rollIncome + "</li>");
+								var num = 3 * (data.body.data[i].id) - 2;
+								if(num % 2 != 0) {
+									$(".list li").eq(num - 1).css("background", "#f1f1f1");
+									$(".list li").eq(num).css("background", "#f1f1f1")
+									$(".list li").eq(num + 1).css("background", "#f1f1f1")
+								}
+							}
+							myscroll.refresh();
+						}
+					})
+				}, 1000)
+			}
+		</script>
+	</body>
+
+</html>

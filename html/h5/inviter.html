@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>邀请好友送现金</title>
+    <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -ms-touch-action: none;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font-size: 12px;
+            overflow: hidden;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        .ui-friend {
+            height: 100%;
+            background: #F5F5F9;
+        }
+        
+        .content {
+            position: absolute;
+            top: 0;
+            bottom: 70px;
+            width: 100%;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+        
+        .flex {
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #FFFFFF;
+        }
+        
+        .left-div {
+            width: 50%;
+            position: relative;
+        }
+        
+        .left-div .fix-h {
+            height: 43px;
+        }
+        
+        .has-line {
+            position: relative;
+        }
+        
+        .has-line:after {
+            content: "";
+            position: absolute;
+            height: 80%;
+            width: 1px;
+            background: #E7E7E7;
+            transform: scaleX(0.6);
+            right: 50%;
+            top: 10%;
+            z-index: 2;
+        }
+        
+        .right-div {
+            width: 50%;
+            padding-left: 16px;
+        }
+        
+        .pink-font {
+            color: #E8476B;
+        }
+        
+        .gray-color {
+            color: #ADADAD;
+        }
+        
+        .vertical {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .row {
+            flex-direction: row;
+        }
+        
+        .grow {
+            flex-grow: 1;
+            position: relative;
+        }
+        
+        .grow .fnd-icon {
+            margin-right: 0;
+        }
+        
+        .po-box {
+            width: 100%;
+            font-size: 12px;
+            line-height: 24px;
+        }
+        
+        .un-line {
+            text-decoration: underline;
+        }
+        
+        .blue-font {
+            color: $text-blue-color;
+        }
+        
+        .moneny-num {
+            position: relative;
+        }
+        
+        .footer {
+            position: fixed;
+            width: 100%;
+            padding: 10px;
+            bottom: 0;
+            left: 0;
+            background: $text-white-color;
+        }
+        
+        .item {
+            align-self: flex-end;
+        }
+        
+        .mg-all-8 {
+            margin: 8px;
+        }
+        
+        .mgb-6 {
+            margin-bottom: 6px;
+        }
+        
+        .mgr-10 {
+            margin-right: 10px;
+        }
+        
+        .mgt-8 {
+            margin-top: 8px;
+        }
+        
+        .mgt-10 {
+            margin-top: 10px;
+        }
+        
+        .pd-all-10 {
+            padding: 10px;
+        }
+        
+        .pdb-10 {
+            padding-bottom: 10px;
+        }
+        
+        .pdt-10 {
+            padding-top: 10px;
+        }
+        
+        .font-size-10 {
+            font-size: 10px;
+        }
+        
+        .font-size-12 {
+            font-size: 12px;
+        }
+        
+        .font-size-16 {
+            font-size: 16px;
+        }
+        
+        .font-size-18 {
+            font-size: 18px;
+        }
+        
+        .font-size-20 {
+            font-size: 20px;
+        }
+        
+        .font-size-32 {
+            font-size: 32px;
+        }
+        
+        .pdl-10 {
+            padding-left: 10px;
+        }
+        
+        .pdl-4 {
+            padding-left: 4px;
+        }
+        
+        .pdr-4 {
+            padding-right: 4px;
+        }
+        
+        .pdr-10 {
+            padding-right: 10px;
+        }
+        
+        .font-size-24 {
+            font-size: 24px;
+        }
+        
+        .font-size-15 {
+            font-size: 15px;
+        }
+        
+        .line-22 {
+            line-height: 22px;
+        }
+        
+        table {
+            width: 100%;
+        }
+        
+        .grow {
+            flex-grow: 1;
+        }
+        
+        table {
+            width: 98%;
+            text-align: center;
+        }
+        
+        .text-align {
+            text-align: center;
+        }
+        
+        .letter-1 {
+            letter-spacing: 1px;
+        }
+        
+        .range {
+            width: 90%;
+            height: 40px;
+            position: relative;
+            margin: auto;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        .range:before,
+        .range-bar,
+        .range-text,
+        .range-progress {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+        }
+        
+        .range:before {
+            content: '';
+            display: block;
+            background-color: #ccc;
+            width: 100%;
+        }
+        
+        .range:before,
+        .range-progress {
+            height: 2px;
+            left: 0;
+        }
+        
+        .range-bar {
+            position: absolute;
+            width: 20px;
+            left: 12px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #E8476B;
+        }
+        
+        .range-progress {
+            background-color: #E8476B;
+            width: 12px;
+        }
+        
+        .range-text {
+            top: 100%;
+            left: 90%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .pop-box {
+            position: absolute;
+            height: 290px;
+            width: 100%;
+            background: #fff;
+            bottom: -290px;
+            left: 0;
+            z-index: 9;
+        }
+        
+        .right-text {
+            float: right;
+        }
+        
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #000;
+            opacity: 0.7;
+            z-index: 7;
+        }
+        
+        .pd-all-10 {
+            padding: 10px;
+        }
+        
+        .blue-font {
+            color: #2EABE3;
+        }
+        
+        .box,
+        .pop-box {
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+        }
+        
+        .fl_r {
+            float: right;
+        }
+        
+        .item {
+            align-self: flex-end;
+        }
+        
+        .loading {
+            position: absolute;
+            background: #E9E9E8;
+            font: normal 12px/22px "Microsoft Yahei", "微软雅黑", "宋体";
+            display: none;
+            z-index: 1600;
+            background: rgba(233, 233, 232, 0);
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .loading-mask {
+            background: rgba(0, 0, 0, 0.2);
+            filter: progid: DXImageTransform.Microsoft.Alpha(opacity=75);
+        }
+        
+        .loading-full {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .loading-container>.loading {
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .loading-body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .loading-bar {
+            width: 240px;
+            min-height: 22px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27);
+            border-radius: 7px;
+            padding: 20px 15px;
+            font-size: 14px;
+            color: #999;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -140px;
+            margin-top: -30px;
+            word-break: break-all;
+        }
+        
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        .loading-icon {
+            width: 26px;
+            height: 26px;
+            vertical-align: middle;
+            -webkit-transform: rotate(360deg);
+            animation: rotation 3s linear infinite;
+            -moz-animation: rotation 3s linear infinite;
+            -webkit-animation: rotation 3s linear infinite;
+            -o-animation: rotation 3s linear infinite;
+        }
+        
+        .loading-text {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ui-friend" id="friend">
+        <div class="content">
+            <div>
+                <a :href="banner_href"><img :src="banner_png" width="100%" /></a>
+            </div>
+            <div class="flex">
+                <span class="font-size-18 gray-color mg-all-8">我的邀请奖励</span>
+                <img src="../../images/chuxuguan.png" width="40">
+                <div class="pink-font pd-all-10 flex row">
+                    <span class="font-size-20 item mgb-6">￥</span>
+                    <strong class="font-size-32 moneny-num" v-text="amount"></strong>
+                    <span class="pdl-10 blue-font item mgb-6" @click="tx">提现&nbsp;&nbsp;></span>
+                </div>
+            </div>
+            <div class="mgt-10  has-line">
+                <div class="flex row pdb-10 pdt-10">
+                    <div class="left-div flex">
+                        <div class="flex"><img src="../../images/woshou.png" width="40"></div>
+                    </div>
+                    <div class="right-div">
+                        <div class="flex"><img src="../../images/laba.png" width="30"></div>
+                    </div>
+                </div>
+                <div class="flex row  font-size-12">
+                    <div class="left-div flex">
+                        <div class="fix-h">我邀请的好友数<span class="font-size-20 pink-font un-line  pdl-4 pdr-4" @click="sctFriends" v-text="inviteeCount"></span>人</div>
+                    </div>
+                    <div class="right-div">
+                        <div class="po-box"><span class="fl_l">活动累计参与</span><span class="fl_r mgr-10 font-size-16">{{alreadyNum}}人</span></div>
+                        <div class="po-box"><span class="fl_l">活动累计提现</span><span class="fl_r mgr-10"><span class="font-size-16">{{(totalIncome/10000).toFixed(1)}}</span>万元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex pdb-20 mgt-10">
+                <span class="pdt-10">参与方式</span>
+                <table class="pdt-10">
+                    <tr>
+                        <td>
+                            <img src="../../images/first-step.png" width="50"><br>
+                            <span>第一步</span><br>
+                            <span class="gray-color font-size-10 grow mgt-8">邀请好友注册<br>飞鸟贷</span>
+                        </td>
+                        <td>
+                            <img src="../../images/second-step.png" width="50"><br>
+                            <span>第二步</span><br>
+                            <span class="gray-color font-size-10 grow mgt-8">好友在飞鸟贷<br>成功借款</span>
+                        </td>
+                        <td>
+                            <img src="../../images/third-step.png" width="50"><br>
+                            <span>第三步</span><br>
+                            <span class="gray-color font-size-10 grow mgt-8">您获得邀请奖<br>励</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <footer class="footer">
+                <table style="width:100%">
+                    <tr>
+                        <td @click="yqgn"><img src="../../images/yqgn.png" width="100%"></td>
+                        <td @click="ljyq"><img src="../../images/ljyq.png" width="90%" style="margin-left: 5%;"></td>
+                        <td @click="sys"><img src="../../images/syb.png" width="100%"></td>
+                    </tr>
+                </table>
+            </footer>
+        </div>
+        <div class="mask" v-show="showModal" @click="close"></div>
+        <div class="pop-box">
+            <div class="box pd-all-10">
+                <div class="pd-all-10 text-align font-size-18 letter-1 blue-font">不知道能赚多少钱，来算一笔</div>
+                <div class="font-size-14 text-align pdb-10 pdt-10 letter-1 gray-color">预计可邀请<span class="font-size-24 pink-font">{{totalPersion}}</span>位好友</div>
+                <div>
+                    <div class="range">
+                        <div class="range-progress"></div>
+                        <span class="range-bar"></span>
+                    </div>
+                    <p class="pdl-10 pdr-10"><span>1</span><span class="right-text">100</span></p>
+                </div>
+                <div class="flex row pdt-20">
+                    <div class="flex vertical grow line-22"><span class="font-size-15">每级邀请好友</span><span><b class="font-size-24 pink-font">{{rangeValue}}</b>人</span></div>
+                    <div class="flex vertical grow line-22"><span class="font-size-15"> 可获得奖励</span><span><b class="font-size-24 pink-font">{{total}}</b>元</span></div>
+                </div>
+                <div class="btn-ljyq flex pdt-10 pdb-10">
+                    <img src="../../images/ljyq.png" width="70%" @click="ljyq" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../libs/js/vue.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+    <script src="../../js/common/loading.js?${project.javascript.version}"></script>
+    <script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/layer.js?${project.javascript.version}"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#friend',
+            data: {
+                showModal: false,
+                totalIncome: 0,
+                banner_png: "",
+                banner_href: "javascript:;",
+                invitationCode: "",
+                alreadyNum: 0,
+                totalPersion: 155,
+                amount: 0,
+                inviteeCount: 0,
+                total: 0,
+                rangeValue: 5
+            },
+            mounted() {
+                var _this = this;
+
+                this.postData("/v2/invitations", {}, function(res) {
+                    if (res.code == "200") {
+                        _this.banner_png = res.body.bannerPicUrl;
+                        _this.banner_href = res.body.bannerLinkUrl;
+                        _this.invitationCode = res.body.invitationCode;
+                        _this.inviteeCount = res.body.inviteeCount;
+                        _this.alreadyNum = res.body.alreadyNum;
+                        _this.totalIncome = res.body.totalIncome;
+                        _this.amount = res.body.amount;
+
+                    } else {
+                        console.log("error invitations");
+                    }
+                })
+
+                this.postData("/v2/invitations/sumCash", {
+                    number: _this.rangeValue
+                }, function(res) {
+                    if (res.code == "200") {
+                        _this.total = res.body.inviteeAmount;
+                    } else {
+                        console.log("error invitations");
+                    }
+                });
+
+                this.initScrollBar();
+
+                setTimeout(function() {
+                    _this.IosOrAndroid("Add RightItem", {
+                        title: "活动规则",
+                        url: constans.htmlUrl + "/html/h5/hdgz.html",
+                        image: ''
+                    }, false);
+                }, 1500)
+
+            },
+            methods: {
+                getUrlParams() {
+                    var name, value;
+                    var str = location.href; //取得整个地址栏
+                    var num = str.indexOf("?")
+                    str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ] 
+                    var result = {};
+                    var arr = str.split("&"); //各个参数放到数组里
+                    arr.forEach(function(element, index) {
+                        var el = element.split('=');
+                        result[el[0]] = el[1];
+                    });
+                    return result;
+                },
+                tx() {
+                    this.IosOrAndroid("Open Page", {
+                        url: "fnd://wallet/withdraw"
+                    }, false);
+                },
+                yqgn() {
+                    var params = this.getUrlParams();
+                    location.href = constans.htmlUrl + "/html/h5/yqgn.html?accessToken=" + params.accessToken + "&term=" + params.term;
+                },
+                sys() {
+                    this.showModal = true;
+                    $(".pop-box").animate({
+                        bottom: "0"
+                    }, "fast");
+                },
+                ljyq() {
+                    $("body").Loading("show");
+                    var _this = this;
+                    this.postData("/v2/invitations/shares", {}, function(res) {
+                        if (res.code == "200") {
+                            setTimeout(function() {
+                                $("body").Loading("hide");
+                                _this.IosOrAndroid("Share Page", res.body, false);
+                            }, 1000);
+                        } else {
+                            console.log("error invitations");
+                        }
+                    });
+                },
+                sctFriends() {
+                    this.IosOrAndroid("Open Page", {
+                        url: "fnd://inviter/list"
+                    }, false);
+                },
+                postData(url, params, callback) {
+                    var urlParams = this.getUrlParams();
+                    $.ajax({
+                        url: constans.serviceUrl + url,
+                        type: "post",
+                        async: true,
+                        data: params,
+                        headers: {    
+                            loginTerm: urlParams.term,
+                            accessToken: urlParams.accessToken,
+                            jhVer: "2.0",
+                            rand: Math.round(Math.random() * 89999) + 10000,
+                        },
+                        beforeSend: function() {
+                            $("body").Loading("show");
+                        },
+                        complete: function() {
+                            $("body").Loading("hide");
+                        },
+                        success: function(res) {
+                            if (res.code == "200") {
+                                callback && callback(res)
+                            } else {
+                                console.log("error");
+                            }
+                        }
+                    })
+                },
+                getData() {
+                    var _this = this;
+                    var n = _this.rangeValue;
+                    // 算一算
+                    this.totalPersion = n + (n * n) + (n * n * n);
+                    this.postData("/v2/invitations/sumCash", {
+                        number: n
+                    }, function(res) {
+                        if (res.code == "200") {
+                            _this.total = res.body.inviteeAmount;
+                        } else {
+                            console.log("error invitations");
+                        }
+                    });
+                },
+                IosOrAndroid(method, options, isShow) {
+                    var flag = false;
+
+                    function setupWebViewJavascriptBridge(callback) {
+                        if (window.WebViewJavascriptBridge) {
+                            return callback(WebViewJavascriptBridge);
+                        }
+                        if (window.WVJBCallbacks) {
+                            return window.WVJBCallbacks.push(callback);
+                        }
+                        window.WVJBCallbacks = [callback];
+                        var WVJBIframe = document.createElement('iframe');
+                        WVJBIframe.style.display = 'none';
+                        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+                        document.documentElement.appendChild(WVJBIframe);
+                        setTimeout(function() {
+                            document.documentElement.removeChild(WVJBIframe)
+                        }, 0)
+                    }
+                    setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler(method, options, function(res) {
+                            flag = true;
+                        });
+                    });
+                    setTimeout(function() {
+                        if (!flag && isShow) {
+                            layer.open({
+                                title: [
+                                    '提示',
+                                    'background-color:#E8476B; color:#fff;'
+                                ],
+                                anim: 'up',
+                                content: '请升级App至最新版本提现，或使用「飞鸟贷APP」微信公众号提现',
+                                btn: ['知道了']
+                            });
+                        }
+                    }, 1000);
+                },
+                initScrollBar() {
+                    var _this = this;
+                    var range = document.querySelector('.range');
+                    var bar = document.querySelector('.range-bar');
+                    var progress = document.querySelector('.range-progress');
+                    var maxw = range.offsetWidth - bar.offsetWidth; //计算可滑动的最大距离
+                    var rangex = range.offsetLeft;
+                    var half = bar.offsetWidth / 2;
+
+                    bar.addEventListener('touchstart', function(event) {
+                        var left = event.touches[0].pageX - rangex - half;
+                        render(left);
+                        event.preventDefault();
+                    })
+
+                    bar.addEventListener('touchend', function(event) {
+                        _this.getData();
+                        event.preventDefault();
+                    })
+
+                    range.addEventListener('touchmove', function(event) {
+                        /*计算滑块的left距离*/
+                        var left = event.touches[0].pageX - rangex - half;
+                        render(left);
+                        event.preventDefault();
+                    });
+
+                    //显示位置
+                    function render(value) {
+                        var left = value;
+                        /*判断left距离不能小于0并且不能大于最大宽度*/
+                        if (left <= 0) {
+                            left = 0;
+                        }
+                        if (left >= maxw) {
+                            left = maxw;
+                        }
+                        /*显示滑块的位置、进度条的长度、进度值*/
+                        bar.style.left = left + 'px';
+                        progress.style.width = left + 'px';
+                        _this.rangeValue = Math.ceil(left / maxw * 100);
+                    }
+
+                },
+                close() {
+                    $(".pop-box").animate({
+                        bottom: "-290px"
+                    });
+                    this.showModal = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

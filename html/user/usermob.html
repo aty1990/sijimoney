@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">			
+		<title>手机认证</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/user/login.css"/>
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		body{
+			background: #f1f1f1;
+		}
+		.usermob{
+			width: 100%;
+			border-bottom: 1px solid #f1f1f1;
+			height: 50px;
+			background: #fff;
+			
+		}
+		.usermob input{
+		
+			background:rgba(0,0,0,0);
+			height: 20px;
+            margin-top: 15px;
+			margin-left: 20px;
+			font-size: 14px;
+		}
+		.close {
+			line-height: 50px;
+		}
+　            .pwd_show {   
+	      line-height: 50px;
+	    }
+　
+	</style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="info">
+				<a href="userInfoList.html">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>手机认证</p>
+	    </header>
+	    <div class="usermob" style="margin-top: 10px;">
+	    	<input type="tel" id="usermob" class="user_mob" disabled="disabled" style="float:left;"/>
+			<p class="show" style="float:right;line-height:50px;font-size: 14px;margin-right: 10px;color: #888;display:none;">(手机已认证)</p>
+	    </div>
+		
+		<div class="hide">
+	    <div class="usermob serve_usermob" >
+	    	<input type="password" id="serve_pwd" class="input_p"  placeholder="请输入手机运营商服务密码" style="width: 75%;float: left;"/>
+			
+	    	<div class="close" style="float:left;width: 20px;">
+				<img src="../../images/ico_delete@2x.png" style="width: 20px;line-height: 50px;"/>
+			</div>
+			<div class="pwd_show dd" style="float:right;width: 20px;margin-right:15px ;line-height: 50px;">
+				<img src="../../images/ico_hide@2x.png" style="width: 20px;" />
+			</div>
+	    </div>
+	    <div class="usermob code_usermob" style="display: none;" >
+	    	<input type="text" id="serve_code" class="input_p" placeholder="请输入短信验证码" style="width: 70%;float: left;"/>
+	    </div>
+	    <div class="usermob check_usermob" style="display: none;" >
+	    	<input type="text" id="check_code" class="input_p" placeholder="请输入查询密码" style="width: 70%;float: left;"/>
+	    </div>
+	    <div style="margin: 15px;font-size: 12px;color: rgb(196,196,196);">
+	    	<p>友情提示：</p>
+	    	<p style="margin-top: 5px;">1.请确保您的手机号已在官网注册并为本人实名认证；</p>
+	    	<p>2.登录成功后，您将有可能收到多条运营商通知短信，无需回复。</p>
+	    </div>
+	    <div class="sumbit">
+			<input type="button" class="confirm1" value="确&nbsp;&nbsp;定" />
+			
+		</div>
+		<div>
+		<div style="text-align:center;" class="sumbit1">
+			  <a href="../login/newpwd.html" class="userfindpwd" style="line-height: 40px;font-size:14px;color: rgb(74, 144, 226);">忘记密码？</a>
+			</div>
+		<div class="sure_button confirm" style="display: none;">
+			<input type="button" class="confirm2" value="确&nbsp;&nbsp;定" />
+		</div>
+		<div class="sure_button con" style="display: none;">
+			<input type="button" class="confirm3" value="确&nbsp;&nbsp;定" />
+		</div>
+		
+		<div id="mode"></div>	
+		<div id="mode11" style="position: fixed;top: 0;background: rgba(0,0,0,0);width: 100%;height: 100%;z-index: 9999;display: none;">
+			<div id="mode1" style="display:block;">
+				<img src="../../images/loading circle@2x.png" id="change" style="width: 30px;margin-top: 20px;"/>
+				<p style="color: #fff;font-size: 12px;">正在认证，请耐心等候...</p>
+			</div>
+		</div>
+		<div class="wx">
+		<p style="color: #fff;margin-top: 34px;">咋了？</p>
+		<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">							  				  			
+			<ul class="weui">
+			   <li ><span style="float:left;margin-left:10px;">我不想借款了</span><p  style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
+			   <li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span><p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
+			</ul>		
+			<div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
+				<textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!"  style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>  	             
+			</div>
+			<p class="qi"  style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
+	            <span id="text-count" >128</span>/128
+	        </p>	        
+		</div>
+		<div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
+	        <p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
+	        <p style="color: rgb(74,144,226);" class="try">再试试</p>
+	    </div>
+    </div>
+		<div id="mode2"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>	
+	<script type="text/javascript" src="../../js/user/usermob.js?${project.javascript.version}"></script>
+	<script>
+    $(".weui li").on("click",function(){
+	   $(this).addClass("bg");
+	   $(this).siblings().removeClass("bg");
+	})
+	$("#packagingDesc").on("propertychange input", function() {  
+            var $this = $(this),  
+                _val = $this.val(),  
+                count = "";  
+            if (_val.length > 128) {  
+                $this.val(_val.substring(0, 128));  
+            }  
+            count = 128 - $this.val().length;  
+            $("#text-count").text(count);  
+        });
+   </script>
+</html>

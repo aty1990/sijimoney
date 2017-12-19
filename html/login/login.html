@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		 <meta http-equiv ="proma" content = "no-cache"/>
+ <meta http-equiv="cache-control" content="no cache" />
+ <meta http-equiv="expires" content="0" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>登录</title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/user/login.css"/>
+	<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	<style>										
+		.code{
+			width:20%;			
+		}
+		.login_input input{
+			width:60%;
+		}
+		.back_password{
+			margin: 30px;
+			text-align:center;
+			color:#4990E2;
+			cursor: pointer;
+			font-size: 14px;
+		}	
+		/*.input_code{
+			display: none;
+		}	*/
+	</style>
+	<body>
+		<header>
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+			    </a>
+			</div>	
+			<p>登录</p> 
+		</header>
+		<div id="content">
+			<div class="logojiehu">
+				<img src="../../images/logo_desc.png" />
+			</div>
+			<div class="container">
+				<div class="input login_input" style="margin: 30px 0px 0px !important;">
+					<p>手机号</p>
+				    <input type="tel" id="tell"class="input_p" readonly="readonly" placeholder="请输入手机号码" style="background:#fff;color:#000;"/>				   
+				</div>
+				<div class="input login_input">
+					<p>密&nbsp;&nbsp;&nbsp;码</p>
+					<input type="password" id="password" class="input_p" placeholder="请输入密码"/>	
+					<div class="close">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					</div>
+					<div class="pwd_show">
+						<img src="../../images/ico_hide@2x.png" />
+					</div>
+				</div>
+				<div class="input login_input input_code" style="position: relative;height: 51px;display:none;">
+					<p>验证码</p>
+					<input  type="number" class="input_p" id="checkCode" placeholder="请输入验证码"/>
+					<div class="code" style="position: absolute;right:5px;">		
+						<img id="codePic" src=""  style="width:100%;height:40px;"/>
+					</div>
+				</div>
+			</div>						
+	        <div class="button" >
+				<input type="button" disabled class="login login_style" value="登&nbsp;&nbsp;&nbsp;录"/>
+			</div>					
+            <div  class="back_password">忘记密码？</div>			
+		</div>
+		<div id="mode"></div>	
+		
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>	
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/md5.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/login/login.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src=" https://res.wx.qq.com/open/js/jweixin-1.0.0.js?${project.javascript.version}"></script>
+	<script>
+
+        
+	</script>
+</html>

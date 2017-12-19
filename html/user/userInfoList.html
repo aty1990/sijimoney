@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的资料</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
+		<link rel="stylesheet" href="../../css/user/login.css" />
+		<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+		<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+
+			(function() {
+				var tokenId = "feiniaodai" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
+				localStorage.setItem("token", tokenId)
+				_fmOpt = {
+					partner: 'feiniaodai',
+					appName: 'feiniaodai_h5',
+					token: tokenId,
+				};
+				var cimg = new Image(1, 1);
+				cimg.onload = function() {
+					_fmOpt.imgLoaded = true;
+				};
+				cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=feiniaodai&appName=feiniaodai_h5&tokenId=" + _fmOpt.token;
+				var fm = document.createElement('script');
+				fm.type = 'text/javascript';
+				fm.async = true;
+				fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fm, s);
+			})();
+		</script>
+	</head>
+	<style>
+		body {
+			background: #FAFAFA;
+		}
+		
+		.weui_cell_ft {
+			font-size: 12px;
+			color: rgb(74, 144, 226);
+		}
+		
+		.weui_cell_bd {
+			margin-left: 10px;
+		}
+		
+		.weui_dialog {
+			border-radius: 5px;
+		}
+		
+		.weui_dialog_bd {
+			text-align: center;
+		}
+		
+		.weui_cell {
+			padding: 14.5px 15px;
+		}
+	</style>
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a class="userinfo_back">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>我的资料</p>
+		</header>
+		<div class="noloan" style="display: none;">
+			<div style="text-align: center;margin-top: 60px;">
+				<img src="../../images/pic_information@2x.png" style="width: 40%;" />
+				<p style="font-size: 14px;color: #333;margin-top: 40px;">您还没有申请借款哦~</p>
+			</div>
+			<div class="sure_button user">
+				<input type="button" value="马上申请" />
+			</div>
+		</div>
+		<div class="showloan">
+			<div style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);">请按顺序完成资料填写，即可获取授信额度</div>
+			<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
+				<a class="weui_cell weui_person" href="usermessage.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_gerenxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p style="font-size: 14px;">个人信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
+						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善个人信息</p>
+					</div>
+					<div class="weui_cell_ft  person">
+						未完善
+					</div>
+				</a>
+				<a class="weui_cell weui_work" href="workinfomation.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_gongzuoxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p style="font-size: 14px;">工作信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
+						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善个人工作信息</p>
+					</div>
+					<div class="weui_cell_ft work">
+						未完善
+					</div>
+				</a>
+				<a class="weui_cell weui_contact" href="contacts.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_lianxirenxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p style="font-size: 14px;">联系人信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
+						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">特殊情况，可以帮助我们联系您</p>
+					</div>
+					<div class="weui_cell_ft contact">
+						未完善
+					</div>
+				</a>
+
+			</div>
+			<div class="hide1">
+				<div class="top1" style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);display:none;">认证信息</div>
+				<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
+					<a class="weui_cell userphoto" href="userphoto.html" style="display:none;">
+						<div class="weui_cell_hd">
+							<img src="../../images/icon_renlianshibie@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<p style="font-size: 14px;">人脸识别<span class="pink" style="font-size: 12px;">(必填)</span></p>
+							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善人脸信息</p>
+						</div>
+
+						<div class="weui_cell_ft face">
+							未完善
+						</div>
+					</a>
+					<a class="weui_cell weui_mobile" href="usermob.html" style="display:none;">
+						<div class="weui_cell_hd">
+							<img src="../../images/icon_shoujirenzheng@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<p style="font-size: 14px;">手机认证<span class="pink" style="font-size: 12px;">(必填)</span></p>
+							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">手机认证有助于加快审批</p>
+						</div>
+						<div class="weui_cell_ft mobile">
+							未完善
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="sumbit userInfo">
+			<input type="button" class="userInfo_sumbit" value="立即提交" />
+		</div>
+		<div class="sumbit userInfo1" style="display: none;">
+			<input type="button" class="userInfo_sumbit1" value="立即提交" />
+		</div>
+		<div class="weui_dialog_confirm dd" style="display: none;">
+			<div class="weui_mask"></div>
+			<div class="weui_dialog" style="width: 65%;">
+				<div class="weui_dialog_hd"><strong class="weui_dialog_title"></strong></div>
+				<div class="weui_dialog_bd" style="text-align: center;color: #000;">离到达人生巅峰仅有一步之遥，确认要放弃完善资料</div>
+				<div class="weui_dialog_ft">
+					<a class="weui_btn_dialog default" style="color: rgb(74, 144, 226);">放弃</a>
+					<a class="weui_btn_dialog primary" style="color: rgb(74, 144, 226);">继续</a>
+				</div>
+			</div>
+		</div>
+		<div class="weui_dialog_confirm dd1" style="display: none;">
+			<div class="weui_mask"></div>
+			<div class="weui_dialog" style="width: 65%;">
+				<div class="weui_dialog_hd"><strong class="weui_dialog_title"></strong></div>
+				<div class="weui_dialog_bd" style="text-align: center;color: #000;">通过系统初步审核，请继续完善其它信息</div>
+				<div class="weui_dialog_ft">
+					<a class="weui_btn_dialog default1" style="color: rgb(74, 144, 226);">确定</a>
+				</div>
+			</div>
+		</div>
+		<div id="mode"></div>
+	</body>
+
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/userInfoList.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+    <script>
+		$(".user").on("click", function() {
+			window.location.href = constans.htmlUrl + "/index.html";
+		})
+	</script>
+
+</html>

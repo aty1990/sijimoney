@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>借款详情</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css?version=1800293638f0" />		
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<style>
+		#id {
+			position: fixed;
+			bottom: 50px;
+			right: 10px;
+			width: 70px;
+			height: 70px;
+			border-radius: 70px;
+		}
+		
+		.statuser {
+			float: left;
+			width: 25%;
+			height: 60px;
+			padding-top: 5px;
+		}
+		#modehome{width: 100%;height: 100%;z-index:999;position: fixed;top: 0;background: rgba(0, 0, 0, 0.5);display: none;	}
+		.repay_ul {
+			width: 96%;
+			margin-left: 2%;
+		}
+		
+		.repaymo {
+			padding-top: 25px;
+			height: 150px;
+			width: 150px;
+			border-radius: 150px;
+			border: 2px solid #fff;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+		
+		#id {
+			position: fixed;
+			bottom: 5px;
+			left: 20px;
+			width: 70px;
+			height: 70px;
+			border-radius: 70px;
+			z-index: 9919;
+		}
+		
+		#id1 {
+			position: fixed;
+			bottom: 7px;
+			left: 100px;
+			width: 60px;
+			height: 60px;
+			border-radius: 60px;
+			z-index: 9919;
+			display: none;
+		}
+		
+		.xieyi {
+			color: rgb(74, 144, 226);
+			width: 40%;
+			line-height: 40px;
+			font-size: 12px;
+			margin-left: 30%;
+			text-align: center;
+		}
+		
+		.xieyi_bg {
+			width: 100%;
+			height: 40px;
+			background: rgba(255, 255, 255, 0.5);
+			position: fixed;
+			bottom: 0px;
+		}
+	</style>
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>借款详情</p>
+		</header>
+		<div style="background: #fff;">
+			<div style="position:relative;width:100%;height:220px;background:url(../../images/huankuanbg1.png)no-repeat ;background-size: 100% 100%;">
+				<div style="color: #fff;padding: 10px;">信用贷</div>
+				<div class="repay">
+					<script id="homebank1" type="text/html">
+						{{each body as tem i}}
+						<div class="repaymo">
+							<ul class="ulin" style="text-align: center;color: #fff;">
+								<li><span class="cashTime">{{tem.cashTime}}</span></li>
+								<li style="padding-top: 5px;"><span style="font-size: 32px;">{{tem.sumAmount}}</span>元</li>
+								{{if tem.taskStat=='5'}}
+								<li class="taskStat" style="color: #f94b6c;margin-top: 10px;">还款中</li>
+								{{/if}} {{if tem.taskStat=='6'}}
+								<li class="color taskStat" style="color: #f94b6c;margin-top: 10px;">已逾期</li>
+								{{/if}} {{if tem.taskStat=='7A'}}
+								<li class="color taskStat" style="color: #999;margin-top: 10px;">已结清</li>
+								{{/if}} {{if tem.taskStat=='8'}}
+								<li class="color taskStat" style="color: #f94b6c;margin-top: 10px;">已违约</li>
+								{{/if}}
+							</ul>
+							
+						</div>
+                            <p class="periodNum" style="position: absolute;top: 10px;right: 10px;color: #fff;display: block;">期限:<span>{{tem.periodNum}}</span>期</p>
+						{{/each}}
+					</script>
+				</div>
+			</div>
+			<div style="line-height:30px;background:#fff;width:100%;text-align:left;font-size:14px;">
+				<img src="../../images/homelaba.png" style="height:20px;margin-left:10px;" />
+				<span style="font-size: 14px;color:#999;margin-left:5px;">按时还款或提前结清可以提额500-2000元哦</span>
+			</div>
+		</div>
+
+		<div style="margin-top: 10px;margin-bottom: 30px;">
+			<div class="list">
+				<script id="home" type="text/html">
+					{{each body.list as tem i}}
+					<div style="height: 100px;margin-top: 10px;background: #fff;">
+						<ul class="repay_ul">
+							<li style="width：100%;height: 40px;line-height: 40px;border-bottom: 1px solid #dcdcdc;">
+
+								<p style="float: left;color: #00a8ff;">第{{tem.periodNum}}期</p>
+								<p style="float: right;color: #b3b3b3;">{{tem.accountEnd}}</p>
+							</li>
+							<li style="width: 25%;float: left;height: 60px;padding-top: 5px;">
+								<p style="color: #949494;">期供金额</p>
+								<p style="padding-top: 5px;">{{tem.periodAmount}}</p>
+							</li>
+							<li style="float: left;width: 25%;height: 60px;padding-top: 5px;">
+								<p style="color:#949494;">剩余金额</p>
+								<p style="padding-top: 5px;">{{tem.remainAmount}}</p>
+							</li>
+
+							{{if tem.status=='2A'}}
+							<li class="statuser">
+								<p style="color:#949494;">状态</p>
+								<p style="padding-top: 5px;">已还款</p>
+							</li>
+							<li class="statuser1 white " style="width: 25%;height: 60px;text-align:center;line-height:60px;float: right;;background: url(../../images/huanwanbottom1.png) no-repeat center center;background-size: 30px ;" onclick="return false;" name="{{tem.periodNum}}"></li>
+
+							{{else if tem.operate==1}} {{if tem.status=='2C'}}
+							<li class="statuser">
+								<p style="color:#949494;">状态</p>
+								<p style="padding-top: 5px;color: #f94b6c;">已逾期</p>
+							</li>
+							<li class="statuser1 white home11" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(../../images/btn_normal1@2x.png) no-repeat center center;background-size: 60px 35px;" name="{{tem.periodNum}}">还款</li>
+							{{else}}
+							<li class="statuser">
+								<p style="color:#949494;">状态</p>
+								<p style="padding-top: 5px;color: #f94b6c;">待还款</p>
+							</li>
+							<li class="statuser1 white home11" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(../../images/btn_normal1@2x.png) no-repeat center center;background-size: 60px 35px;" name="{{tem.periodNum}}">还款</li>
+							{{/if}} {{else}} {{if tem.status=='2C'}}
+							<li class="statuser">
+								<p style="color:#949494;">状态</p>
+								<p style="padding-top: 5px;">已逾期</p>
+							</li>
+							<li class="statuser1 white" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(../../images/btn_disabled1@2x.png) no-repeat center center;background-size: 60px 35px;" onclick="return false;" name="{{tem.periodNum}}">还款</li>
+							{{else}}
+							<li class="statuser">
+								<p style="color:#949494;">状态</p>
+								<p style="padding-top: 5px;">待还款</p>
+							</li>
+							<li class="statuser1 white" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(../../images/btn_disabled1@2x.png) no-repeat center center;background-size: 60px 35px;" onclick="return false;" name="{{tem.periodNum}}">还款</li>
+							{{/if}} {{/if}}
+						</ul>
+					</div>
+
+					{{/each}}
+				</script>
+			</div>
+
+		</div>
+		<div class="xieyi_bg" style="">
+			<p class="xieyi">-借款咨询服务协议-</p>
+
+		</div>
+		<div id="id">
+			<img src="../../images/nextbottom2.png" style="width: 100%;" />
+		</div>
+        <div id="modehome">			
+		</div>
+		<div id="id1">
+			<img src="../../images/tiqianhuankuan.png" style="width: 100%;" />
+		</div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/home/record.js?${project.javascript.version}"></script>
+	<script>
+		 $("#id").click(function(){
+			if($("#modehome").css("display")=="none"){
+			  $("#modehome").show();
+			  $("#id1").show();
+			}else{
+			  $("#id1").hide();			  
+	          $("#modehome").hide();
+			}
+		});				
+		
+		$("#id1").on("click", function(ev) {			
+			window.location = constans.htmlUrl + "/html/home/advance.html";
+		})
+		var _x_start, _y_start, _x_move, _y_move, _x_end, _y_end, left_start, top_start;
+		$(window).scroll(function() {
+			var st = $(this).scrollTop();
+			document.getElementById("id").addEventListener("touchstart", function(e) {
+
+				_x_start = e.touches[0].pageX;
+				_y_start = e.touches[0].pageY;
+				// console.log("start",_x_start)
+				left_start = $("#id").css("left");
+				top_start = $("#id").css("top");
+
+			})
+			document.getElementById("id").addEventListener("touchmove", function(e) {
+				_x_move = e.touches[0].pageX;
+				_y_move = e.touches[0].pageY;
+				// console.log("move",_x_move)
+				$("#id").css("left", parseFloat(_x_move) - parseFloat(_x_start) + parseFloat(left_start) + "px");
+				$("#id").css("top", parseFloat(_y_move) - parseFloat(_y_start) + parseFloat(top_start) + "px");
+				//    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
+				$('body').on('touchmove', function(event) { event.preventDefault(); });
+			})
+			document.getElementById("id").addEventListener("touchend", function(e) {
+				var _x_end = e.changedTouches[0].pageX;
+				var _y_end = e.changedTouches[0].pageY;
+				// console.log("end",_x_end)
+				if(_x_end > $(window).width()) {
+					$("#id").css("left", $(window).width() - 90 + 'px')
+				}
+				if(_x_end < 0) {
+					$("#id").css("left", '10px')
+				}
+				//           if(_y_end>$(window).height()){
+				//           	 $("#id").css("top",'80%')
+				//           }
+				//           if(_y_end<0){
+				//           	 $("#id").css("top",'10px')
+				//           }
+				$("body").unbind("touchmove");
+			})
+		})
+		document.getElementById("id").addEventListener("touchstart", function(e) {
+
+			_x_start = e.touches[0].pageX;
+			_y_start = e.touches[0].pageY;
+			// console.log("start",_x_start)
+			left_start = $("#id").css("left");
+			top_start = $("#id").css("top");
+
+		})
+		document.getElementById("id").addEventListener("touchmove", function(e) {
+			_x_move = e.touches[0].pageX;
+			_y_move = e.touches[0].pageY;
+			// console.log("move",_x_move)
+			$("#id").css("left", parseFloat(_x_move) - parseFloat(_x_start) + parseFloat(left_start) + "px");
+			$("#id").css("top", parseFloat(_y_move) - parseFloat(_y_start) + parseFloat(top_start) + "px");
+			//    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
+			$('body').on('touchmove', function(event) { event.preventDefault(); });
+		})
+		document.getElementById("id").addEventListener("touchend", function(e) {
+			var _x_end = e.changedTouches[0].pageX;
+			var _y_end = e.changedTouches[0].pageY;
+			// console.log("end",_x_end)
+			if(_x_end > $(window).width()) {
+				$("#id").css("left", $(window).width() - 90 + 'px')
+			}
+			if(_x_end < 0) {
+				$("#id").css("left", '10px')
+			}
+			//           if(_y_end>$(window).height()){
+			//           	 $("#id").css("top",'80%')
+			//           }
+			//           if(_y_end<0){
+			//           	 $("#id").css("top",'10px')
+			//           }
+			$("body").unbind("touchmove");
+		})
+	</script>
+
+</html>

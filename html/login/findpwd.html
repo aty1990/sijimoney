@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>密码找回</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/user/login.css" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/swiper.min.css" />
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		body {
+			background: #f1f1f1;			
+		}
+		
+		.swiper-container {
+			width: 100%;
+		}
+		
+		.nav_banner {
+		
+			height: 40px;
+			line-height: 40px;
+			background: #fff;
+		}
+		
+		.nav_banner .swiper-slide p {
+			width: 16px;
+			height: 16px;
+			border-radius: 16px;
+			line-height: 16px;
+			text-align: center;
+			display: inline-block;
+			background: #aeaeae;
+			color: #fff;
+			font-size: 12px;
+		}
+		
+		.nav_banner .active-nav {
+			border-bottom: 2px solid #F38185;
+		}
+		
+		.nav_banner .active-nav p {
+			background: #F38185;
+		}
+		
+		.nav_banner .swiper-slide {
+			width: 33%;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		.nav_banner .swiper-slide img {
+			width: 12px;
+		}
+		
+		.input {
+			background: #fff;
+		}
+		
+		#readcode {
+			width: 45%;
+		}
+		
+		#getcode {
+			text-align: center;
+			color: #4990E2;
+			width: 30%;
+		}
+		
+		.verify_right {
+			width: 42%;
+			height: 30px;
+			height: 30px;
+			line-height: 30px;			
+			border-left: 1px solid #888;
+			text-align: right;
+		}		
+		.set_time {
+			color: #888;
+			font-size: 14px;
+			white-space:nowrap;
+		}		
+		.get_tId {
+			display: none;
+		}
+		.two1,.three1{
+			display: none;
+		}
+		
+	</style>	
+	
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" style="margin-top:7px;height:26px;" />
+				</a>
+			</div>
+			<p>密码找回</p>
+		</header>
+		<div class="swiper-wrapper nav_banner">
+			<div class="swiper-slide one active-nav ">
+				<p>1</p>&nbsp;输入手机号码</div>
+			<div class="swiper-slide two">
+				<p>2</p>&nbsp;输入验证码</div>
+			<div class="swiper-slide three">
+				<p>3</p>&nbsp;设置密码</div>
+		</div>
+		<div id="getnode">
+			<div class="one1">
+				<div class="input" style="margin: 30px 0px 0px !important;">
+					<p style="text-align: center;">手机号</p>
+					<input type="tel" id="tell" class="input_p" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请输入手机号码" style="width:70%;"/>
+				    <div class="close">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;margin-right:15px;"/>
+					</div>
+				</div>
+				<div class="button" >
+					<input type="button" disabled class="login_style getnode" value="获取验证码"/>
+				</div>
+								
+			</div>
+			<div class="two1">
+				<div class="input" style="margin: 30px 0px 0px !important;">
+					<p style="text-align:center;">验证码</p>
+					<input type="number" id="readcode" class="input_p" placeholder="请输入验证码" style="width:40%;"/>
+					<p id="getcode" class="get_tId verify_right" style="width:40%;height:20px;line-height:20px;margin-top:10px;">重新获取</p>
+					<p class="set_time verify_right" style="width:40%;text-align: center;height:20px;line-height:20px;margin-top:10px;"><span>60</span>秒后重新获取</p>
+				</div>
+				<div class="button" >
+					<input type="button" disabled class="login_style makepwd" value="设置密码"/>
+				</div>
+			
+			</div>
+			<div class="three1">
+				<div class="input" style="margin: 30px 0px 0px !important;">
+					<p style="width: 20%;text-align:center;">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</p>
+					<input type="password" class="newpwd input_p" style="width: 60%;" placeholder="6-20位数字、字母或特殊字符" />
+				    <div class="close" style="text-align:left;">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					</div>
+					<div class="pwd_show dd" style="text-align:left;">
+						<img src="../../images/ico_hide@2x.png" style="width: 20px;" />
+					</div>
+				</div>
+				<div class="input login_input" style="margin:0px 0px 0px !important;">
+					<p style="width: 20%;text-align:center;">确认密码</p>
+					<input type="password" id="password" class="sure_newpwd input_p" style="width: 60%;" placeholder="请输入确认密码" />
+					<div class="close" style="text-align:left;">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					</div>
+					<div class="pwd_show dd1" style="text-align:left;">
+						<img src="../../images/ico_hide@2x.png" style="width: 20px;" />
+					</div>
+				</div>
+				<div class="button" >
+					<input type="button" disabled class="login_style sure_pwd" value="确定"/>
+				</div>				
+			</div>
+		</div>
+		<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/login/findpwd.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/md5.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../libs/js/base64.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jsbn.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/prng4.js?${project.javascript.version}"></script> 
+	<script type="text/javascript" src="../../libs/js/rng.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/rsa.js?${project.javascript.version}"></script> 
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>消息中心</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../libs/css/swiper.min.css"/>
+		<script type="text/javascript">
+	    var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+		.nav_banner {width:100%;height: 40px;line-height: 40px;background: #fff;}		
+		.nav_banner .swiper-slide p {width: 17px;height: 17px;border-radius: 17px;background: #FF5000;position: absolute;top: 5px;right: 0px;line-height: 17px;text-align: center;display: inline-block;color: #fff;font-size: 12px;}		
+	   .swiper-slide span{width: 80px;display: inline-block;}
+		#swiper-container2  .swiper-slide.active-nav span{border-bottom: 2px solid #F1A81C;line-height: 36px;display: inline-block;}				
+		.nav_banner .swiper-slide {width: 33%;font-size: 15px;text-align: center;float: left;}		
+		.mess1,.mess{background: #fff;margin-top: 20px;}
+		.mess_content{font-size: 14px;margin-left: 20px;margin-top:5px;color:#909090;padding-bottom: 20px;white-space: nowrap;  text-overflow:ellipsis;overflow:hidden;}
+	    .mess_title{font-size: 17px;line-height:30px;margin-left:20px;white-space: nowrap;  text-overflow:ellipsis;overflow:hidden;}
+	    .bottom{width:90%;height:40px;margin-left: 5%;}
+	    .line_left{width:30%;height:20px;border-bottom:1px solid #d9d9d9;float:left;}
+	    .line_center{color:#888;width:40%;line-height:40px;font-size:12px;float:left;text-align:center;}
+	    .line_right{border-bottom:1px solid #d9d9d9;height:20px;width:30%;float:left;}
+	    .mess_have{width: 90%;overflow:hidden;margin-left: 5%;padding-top: 10px;}
+	    .mess_img{width: 15%;float: left;margin-top: 5px;position: relative;}
+	    .mess_time{width: 44%;line-height: 20px;margin-left:28%;text-align:center;margin-top:20px;margin-bottom:20px;font-size:10px;background: rgb(216,216,216);border-radius: 10px;}
+	    .msgTitle{font-size: 17px;line-height:50px;margin-left:20px;}
+	    .nomess{text-align: center;margin-top: 60px;display: none;}
+	    .mess_action{width: 100%;background: #fff;}
+	    .mess_no{font-size: 14px;margin-top:40px;}
+	    .circle{width: 10px;height:10px;border-radius: 10px;background: #FF5000;position: absolute;top: -5px;right: -5px;}
+	</style>
+	</head>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="#" >
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>消息中心</p>
+		</header>
+		<div class="swiper-container swiper-container-horizontal" id="swiper-container2" >
+			<div class="swiper-wrapper nav_banner">
+				<div class="swiper-slide one active-nav">					
+					<div style="position: relative;display: inline-block;">
+					<p class="normal" style="display: none;"></p>&nbsp;<span>小秘书</span>
+					</div>					
+				</div>
+				<div class="swiper-slide two">
+					<div style="position: relative;display: inline-block;">
+					<p class="notice" style="display: none;"></p>&nbsp;<span>公告</span>
+					</div>
+				</div>
+				<div class="swiper-slide three">
+					<div style="position: relative;display: inline-block;">
+					<p class="act" style="display: none;"></p>&nbsp;<span>活动</span>
+					</div>
+				</div>
+			</div>
+        </div>
+		<div class="swiper-container swiper-container-horizontal" id="swiper-container3" >
+			<div class="swiper-wrapper">
+				<div class="swiper-slide swiper-no-swiping" >
+					<div class="mess">
+					<script id="home" type="text/html">	
+					 {{each body.data as tem i}}
+						<div style="width: 100%;"  class="ul" name="{{tem.msgId}}" msgStat="{{tem.msgStat}}" msgType="{{tem.msgType}}" link="{{tem.msgLink}}">		  							
+							<div class="mess_have">
+								<div class="mess_img">
+									<img src="{{tem.msgPic}}" style="width: 100%;"/>
+									<p class="circle"></p>
+								</div>
+								<div style="width: 85%;margin-left: 15%;">
+									<p class="mess_title">{{tem.msgTitle}}</p>
+									<p class="mess_content">{{tem.msgContent}}</p>
+								</div>				
+							</div>			
+						</div>
+					 {{/each}}
+					</script>
+					<div class="bottom">
+						<p class="line_left"></p>
+						<p class="line_center">已查看全部消息</p>
+						<p class="line_right"></p>
+					</div>				
+					</div>	
+					<div class="nomess">
+						<img src="../../images/pic_kong@2x.png" style="width: 40%;"/>
+						<p class="mess_no">您还没有消息哦~</p>
+					</div>
+					
+				</div>
+				<div class="swiper-slide swiper-no-swiping" >
+					<div class="mess1">
+					<script id="home1" type="text/html">	
+					 {{each body.data as tem i}}
+						<div style="width: 100%;" class="ul" name="{{tem.msgId}}" msgStat="{{tem.msgStat}}" msgType="{{tem.msgType}}" link="{{tem.msgLink}}">		  							
+							<div class="mess_have">
+								<div class="mess_img">
+									<img src="{{tem.msgPic}}" style="width: 100%;"/>
+									<p class="circle"></p>
+								</div>
+								<div style="width: 85%;margin-left: 15%;">
+									<p class="mess_title">{{tem.msgTitle}}</p>
+									<p class="mess_content">{{tem.msgContent}}</p>
+								</div>				
+							</div>			
+						</div>
+					 {{/each}}
+					</script>
+					<div class="bottom">
+						<p class="line_left"></p>
+						<p class="line_center">已查看全部消息</p>
+						<p class="line_right"></p>
+					</div>				
+					</div>
+					<div class="nomess">
+						<img src="../../images/pic_kong@2x.png" style="width: 40%;"/>
+						<p class="mess_no">您还没有消息哦~</p>
+					</div>	
+					
+				</div>
+				<div class="swiper-slide swiper-no-swiping" >
+					<div class="mess2">
+					<script id="home2" type="text/html">	
+					 {{each body.data as tem i}}
+						<div style="width: 100%;"  class="ul" name="{{tem.msgId}}" msgStat="{{tem.msgStat}}" msgType="{{tem.msgType}}" link="{{tem.msgLink}}">		  
+							<div class="mess_time">
+								{{tem.createTime.substr(0,4)+'-'+tem.createTime.substr(4,2)+'-'+tem.createTime.substr(6,2)+'&nbsp;'+tem.createTime.substr(8,2)+':'+tem.createTime.substr(10,2)+':'+tem.createTime.substr(12,2)}}
+							</div>
+							<div class="mess_action">								
+								<div style="width: 90%;margin-left: 5%;">
+									<img src="{{tem.msgPic}}" style="width: 100%;padding-top: 20px;"/>
+									<p class="msgTitle">{{tem.msgTitle}}</p>									
+								</div>				
+							</div>			
+						</div>
+					 {{/each}}
+					</script>			
+					</div>	
+					<div class="nomess">
+						<img src="../../images/pic_kong@2x.png" style="width: 40%;"/>
+						<p class="mess_no">暂无活动~</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+		
+		<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/home/nomessage.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/swiper.min.js?${project.javascript.version}"></script>
+	<script>
+		
+		var mySwiper2 = new Swiper('#swiper-container2',{
+	watchSlidesProgress : true,
+	watchSlidesVisibility : true,
+	slidesPerView : 3,
+	autoplay:false,
+	onTap: function(){
+				mySwiper3.slideTo( mySwiper2.clickedIndex)
+			}
+	})
+	var mySwiper3 = new Swiper('#swiper-container3',{
+	
+	onSlideChangeStart: function(){
+				updateNavPosition()
+			}
+	
+	})
+	
+	function updateNavPosition(){
+			$('#swiper-container2 .active-nav').removeClass('active-nav')
+			var activeNav = $('#swiper-container2 .swiper-slide').eq(mySwiper3.activeIndex).addClass('active-nav');
+	
+	
+			if (!activeNav.hasClass('swiper-slide-visible')) {
+
+				if (activeNav.index()>mySwiper2.activeIndex) {
+
+					var thumbsPerNav = Math.floor(mySwiper2.width/activeNav.width())-1
+					mySwiper2.slideTo(activeNav.index()-thumbsPerNav)
+				}
+				else {
+	
+					mySwiper2.slideTo(activeNav.index())
+				}	
+			}
+	}
+	$(".mess2").on("click",function(){
+		window.location.href = constans.htmlUrl + "/html/home/messdetails.html";
+	})
+	</script>
+</html>
+

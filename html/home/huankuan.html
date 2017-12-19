@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+	</head>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{width: 100%;background: #FAFAFA;}
+		.ul_list{width: 100%;background: #fff;margin-top: 34px;}
+		.ULlogo{width: 90%;margin-left: 5%;}
+		.ULlogo li{list-style: none;height: 44px;line-height: 44px;border-bottom: 1px solid #C8C7CC;}
+		.iconlogo{width: 100%;text-align: center;margin-top: 48px;}
+		.iconlogo img{width: 101px;}.iconlogo p{margin-top: 20px;font-size: 16px;}
+		.ulleft{float: left;font-size: 15px;color: #999;}.ulright{float: right;font-size: 15px;}
+	   .ULlogo li:last-child{border: 0;}
+	   .ulbutton{width:80%;text-align:center;line-height:44px;color:#fff;margin-left:10%;height:44px;margin-top:30px;background: url(../../images/button_normal@2x1.png) no-repeat;background-size:100% 100% ;}
+	</style>
+	<body>
+		<div class="iconlogo">
+			<img src="../../images/icon_clock@2x1.png" />
+			<p>提现申请已提交</p>
+		</div>
+		<div class="ul_list">
+			<ul class="ULlogo">
+				<li>
+					<p class="ulleft">预计到账时间</p>
+					<p class="ulright time">2017-12-21 18:80:90</p>
+				</li>
+				<li>
+					<p class="ulleft">储蓄卡</p>
+					<p class="ulright bankName">工商银行</p>
+				</li>
+				<li>
+					<p class="ulleft">提现金额</p>
+					<p class="ulright money">32</p>
+				</li>
+				<li>
+					<p class="ulleft">手续费</p>
+					<p class="ulright charge">32</p>
+				</li>
+			</ul>
+		</div>
+		<div class="ulbutton">
+			完成
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" >
+	var thisUrl = location.href.split('#')[0];
+		var getUrlParam = function() {
+				var r = thisUrl.match(/expandTime=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var time= getUrlParam();			
+			var getUrlParam2 = function() {
+				var r = thisUrl.match(/money=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var money= getUrlParam2();
+			var getUrlParam3 = function() {
+				var r = thisUrl.match(/charge=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var charge= getUrlParam3();
+			$(".charge").html(charge);
+			$(".time").html(time);
+			$(".money").html(money);
+			var bankName=localStorage.getItem("bankName");			
+			$(".bankName").html(bankName);
+			if(localStorage.getItem("tixian")==1){
+				localStorage.removeItem("tixian");
+				$(".ulbutton").on("click",function(){
+					window.location.href = constans.htmlUrl + "/dist/index.html#/lqb";
+				})
+				
+			}else{
+				$(".ulbutton").on("click",function(){
+					window.location.href = constans.htmlUrl + "/dist/index.html#/lqb/friends";
+				})
+				
+			}
+	</script>
+</html>

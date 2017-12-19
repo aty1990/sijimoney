@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>添加银行卡</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			body {
+				background: #fafafa;
+			}
+			
+			#picker1 {
+				height: 40px;
+			}
+			
+			.small_header {
+				color: #888;
+				margin-left: 10px;
+				margin: 10px;
+				font-size: 12px;
+			}
+			
+			.mymessage {
+				position: relative;
+				float: left;
+				width: 72%;
+				line-height: 40px;
+				margin-left: 10px;
+			}
+			
+			.main-content {
+				position: absolute;
+				left: 0;
+				width: 100%;
+			}
+			
+			.sumbit {
+				margin-top: 0px;
+			}
+			
+			#picker5 {
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+				font-size: 15px;
+			}
+			
+			.name input[disabled] {
+				-webkit-text-fill-color: #000;
+				opacity: 1;
+			}
+			
+			.modes1 {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				background: rgba(0, 0, 0, 0.5);
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				text-align: center;
+				overflow: hidden;
+				z-index: 999999;
+				display: none;
+			}
+			
+			.fas1 {
+				width: 280px;
+				height: 400px;
+				background: url(../../images/fas_bg.png) no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top: 80px;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+			
+			.sumbit1 {
+				width: 70%;
+				margin-left: 15%;
+				height: 40px;
+				background: url(../../images/btn_disabled@2x.png);
+				background-size: 100% 100%;
+				text-align: center;
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: auto;
+				top: 330px;
+			}
+			
+			.sumbit1 input {
+				width: 100%;
+				line-height: 40px;
+				font-size: 20px;
+				background: rgba(0, 0, 0, 0);
+				border: 0;
+				color: #fff;
+			}
+			
+			.weui1 li {
+				font-size: 14px;
+				margin-top: 15px;
+				height: 20px;
+				width: 100%;
+				margin-left: 10px;
+				color: rgb(175, 175, 175);
+			}
+			
+			.weui1 li p {
+				background: #fff;
+				border: 1px solid #d9d9d9;
+			}
+			
+			.weui1 li.bg p {
+				border: 1px solid #d9d9d9;
+				background: url(../../images/duigou.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			li {
+				list-style: none;
+				width: 33%;
+				float: left;
+				line-height: 32px;
+				white-space: nowrap;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			}
+			.bank{background: #fff;display: inline-block;width: 100%;}
+		</style>
+	</head>
+
+	<body>
+		<div class="show">
+			<header style="background: #fff;">
+				<div style="float: left;" class="usera">
+					<a href="javascript:history.go(-1)">
+						<img src="../../images/ico_back@2x.png" />
+					</a>
+				</div>
+				<p>添加银行卡</p>
+			</header>
+
+			<div class="user_message">
+				<div class="user_input" style="margin-top: 10px;">
+					<p>持卡人</p>
+					<div class="mymessage name">
+						<input type="text" value="" class="input_p" id="bank_name" disabled="disabled" />
+					</div>
+				</div>
+
+				<div class="user_input">
+					<p>卡号</p>
+					<div class="mymessage">
+						<input type="text" value="" class="input_p bank_input" id="bank_card" maxlength="32" placeholder="请输入银行卡号" style="width:80%;" />
+						<img src="../../images/icon_explain@2x.png" style="width: 20px;height: 20px;margin-top: 16px;" class="explain" />
+					</div>
+				</div>
+				<div style="font-size: 12px;color: #888;margin-top: 10px;margin-left: 15px;">
+					<p>友情提示：</p>
+					<p>1.请绑定账户本人常用银行卡（目前只支持储蓄卡），借款将转入该卡；</p>
+					<p>2.以上信息经加密处理，仅用于银行卡验证。</p>
+				</div>
+				<div style="font-size: 12px;margin-top: 20px;margin-left: 15px;">
+					<img src="../../images/btn_normal11@2x.png" style="width: 15px;" />
+					<span>
+        		已阅读并同意<span class="xieyi" style="color:rgb(91,178,91);">《借款咨询服务协议》</span>
+					</span>
+				</div>
+			</div>
+			<div class="sumbit">
+				<input type="button" class="bank_money" disabled="disabled" value="绑卡提现" />
+			</div>
+
+			<div id="mode11" style="position: fixed;top: 0;background: rgba(0,0,0,0);width: 100%;height: 100%;z-index: 9999;display: none;">
+				<div id="mode1" style="display:block;">
+					<img src="../../images/loading circle@2x.png" id="change" style="width: 30px;margin-top: 20px;" />
+					<p style="color: #fff;font-size: 12px;">提现中，请耐心等候...</p>
+				</div>
+			</div>
+			<div class="modes1">
+				<div class="fas1">
+					<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:160px;">
+						<ul class="weui1">
+							<li>
+								<p style="margin-right:10px;display:block;width:20px;float:left;height:20px;"></p><span style="float:left;">A.我发誓，不还钱我胖30斤</span></li>
+							<li>
+								<p style="margin-right:10px;display:block;width:20px;float:left;height:20px;"></p><span style="float:left;">B.我发誓，不还钱我永远是单身狗</span></li>
+							<li>
+								<p style="margin-right:10px;display:block;width:20px;float:left;height:20px;"></p><span style="float:left;">C.我发誓，不还钱我永远发不了财</span></li>
+							<li>
+								<p style="margin-right:10px;display:block;width:20px;float:left;height:20px;"></p><span style="float:left;">D.我发誓，我知道按时还款就能提额</span></li>
+						</ul>
+					</div>
+					<div class="sumbit1" id="swear1">
+						<input type="submit" class="input_p" disabled="disabled" value="我已发誓，去提现" />
+					</div>
+				</div>
+			</div>
+			<div id="mode"></div>
+		</div>
+		<div class="hide">
+			<header style="background: #fff;">
+				<div style="float: left;">
+					<a href="#" class="close">
+						<p style="color: rgb(70,142,225);margin-left: 10px;font-size: 14px;">关闭</p>
+					</a>
+				</div>
+				<p>支持银行</p>
+			</header>
+			<p style="height: 50px;color: #999;background: #f1f1f1;font-size: 14px;">
+				<span style="margin-left: 20px;padding-top: 10px;display: block;">友情提示：当前仅支持以下银行请勿绑定其他银行卡，以免导致借款、还款不成功</span>
+			</p>
+			<div class="bank">
+				<script id="home_swiper" type="text/html">
+					
+					<ul style="width: 94%;margin-left: 3%;">
+						{{each body as lt i}}
+						<li>
+							<p style="width: 10px;height: 10px;background:rgb(70,142,225);border-radius: 10px;float: left;margin-top: 12px;"></p>
+							<span style="padding-left: 5px;white-space:nowrap;display: block;overflow: hidden;font-size: 16px;">{{lt.name}}</span>
+						</li>
+						{{/each}}
+					</ul>
+					
+				</script>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/picker.min.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/userbank.js?${project.javascript.version}"></script>
+
+</html>

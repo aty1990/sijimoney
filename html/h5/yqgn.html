@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>邀请攻略</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+        
+        html,
+        body {
+            -ms-touch-action: none;
+            font-size: 12px;
+            font-family: ubuntu, helvetica, arial;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .ui-yqgn {
+            height: 100%;
+            padding: 10px;
+        }
+        
+        .flex {
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .content {
+            bottom: 0;
+        }
+        
+        .pink-font {
+            color: $text-pink-color;
+        }
+        
+        p {
+            line-height: 1.6em;
+        }
+        
+        .grow {
+            flex-grow: 1;
+            position: relative;
+        }
+        
+        .row {
+            flex-direction: row;
+        }
+        
+        .vertical {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .fix-w {
+            width: 60px;
+        }
+        
+        .tr {
+            border: 1px solid #ADADAD;
+        }
+        
+        .td {
+            border: 1px solid #ADADAD;
+            border-top: none;
+            margin-bottom: 10px;
+        }
+        
+        .code {
+            width: 100px;
+            color: #E8476B;
+            border: none;
+            text-align: center;
+        }
+        
+        .pop-cls {
+            height: 50px;
+        }
+        
+        .mg-all-8 {
+            margin: 8px;
+        }
+        
+        .mgb-6 {
+            margin-bottom: 6px;
+        }
+        
+        .mgr-10 {
+            margin-right: 10px;
+        }
+        
+        .mgt-8 {
+            margin-top: 8px;
+        }
+        
+        .mgt-10 {
+            margin-top: 10px;
+        }
+        
+        .pd-all-10 {
+            padding: 10px;
+        }
+        
+        .pdb-10 {
+            padding-bottom: 10px;
+        }
+        
+        .pdt-10 {
+            padding-top: 10px;
+        }
+        
+        .font-size-10 {
+            font-size: 10px;
+        }
+        
+        .font-size-12 {
+            font-size: 12px;
+        }
+        
+        .font-size-16 {
+            font-size: 16px;
+        }
+        
+        .font-size-18 {
+            font-size: 18px;
+        }
+        
+        .font-size-20 {
+            font-size: 20px;
+        }
+        
+        .font-size-32 {
+            font-size: 32px;
+        }
+        
+        .pdl-10 {
+            padding-left: 10px;
+        }
+        
+        .pdl-4 {
+            padding-left: 4px;
+        }
+        
+        .pdr-4 {
+            padding-right: 4px;
+        }
+        
+        .pdr-10 {
+            padding-right: 10px;
+        }
+        
+        .font-size-24 {
+            font-size: 24px;
+        }
+        
+        .font-size-15 {
+            font-size: 15px;
+        }
+        
+        .line-22 {
+            line-height: 22px;
+        }
+        
+        .text-align {
+            text-align: center;
+        }
+        
+        .pink-font {
+            color: #E8476B;
+        }
+        
+        .gray-color {
+            color: #ADADAD;
+        }
+        
+        .loading {
+            position: absolute;
+            background: #E9E9E8;
+            font: normal 12px/22px "Microsoft Yahei", "微软雅黑", "宋体";
+            display: none;
+            z-index: 1600;
+            background: rgba(233, 233, 232, 0);
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .loading-mask {
+            background: rgba(0, 0, 0, 0.2);
+            filter: progid: DXImageTransform.Microsoft.Alpha(opacity=75);
+        }
+        
+        .loading-full {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .loading-container>.loading {
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .loading-body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .loading-bar {
+            width: 240px;
+            min-height: 22px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27);
+            border-radius: 7px;
+            padding: 20px 15px;
+            font-size: 14px;
+            color: #999;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -140px;
+            margin-top: -30px;
+            word-break: break-all;
+        }
+        
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        .loading-icon {
+            width: 26px;
+            height: 26px;
+            vertical-align: middle;
+            -webkit-transform: rotate(360deg);
+            animation: rotation 3s linear infinite;
+            -moz-animation: rotation 3s linear infinite;
+            -webkit-animation: rotation 3s linear infinite;
+            -o-animation: rotation 3s linear infinite;
+        }
+        
+        .loading-text {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ui-yqgn" id="ui-yqgn">
+        <div class="pd-all-12 content">
+            <p class="text-left">我的邀请码：
+                <input type="text" id="iUrl" readonly class="code" v-model="code">
+                <span class="pink-font" id="copyText" data-clipboard-target="#iUrl">（点击复制）</span>
+            </p>
+            <p class="pdt-10 pdb-10">你可同时获得三级好友的现金奖励，每级邀请人数不限；</p>
+            <div class="flex row pdt-10 pdb-10 tr">
+                <span class="grow fix-w text-align">/</span>
+                <span class="grow">一级好友</span>
+                <span class="grow">二级好友</span>
+                <span class="grow">三级好友</span>
+            </div>
+            <div class="flex row pdt-10 pdb-10 td">
+                <span class="grow fix-w text-align">奖励金额</span>
+                <span class="grow pink-font">{{inviter1Amount}}元/位</span>
+                <span class="grow pink-font">{{inviter2Amount}}元/位</span>
+                <span class="grow pink-font">{{inviter3Amount}}元/位</span>
+            </div>
+            <p class=" pdb-10 pink-font text-left">举个例子:</p>
+            <img src="../../images/pic.png" width="100%" />
+            <p>小明算你的<span class="pink-font">一级好友</span>，小红算<span class="pink-font">二级好友</span> 小白算<span class="pink-font">三级好友</span>若 小明、小红、小白都成功借款；你总共可以获得 <span class="pink-font">{{inviter1Amount}}元 + {{inviter2Amount}}元 + {{inviter3Amount}}元 = {{inviterSum}}元</span>                的现金奖励；假如你们都各邀请了 <span class="pink-font">{{invitedNumber}}</span>个 好友成功借款并提现，则你可以获得 <span class="pink-font">{{inviteeAmount}}</span>元 现金奖励。</p>
+            <div class="btn-ljyq flex pdt-10 pdb-10">
+                <img src="../../images/ljyq.png" width="70%" @click="ljyq" />
+            </div>
+        </div>
+    </div>
+    <script src="../../libs/js/vue.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+    <script src="../../js/common/loading.js?${project.javascript.version}"></script>
+    <script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/clipboard.min.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/layer.js?${project.javascript.version}"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#ui-yqgn',
+            data: {
+                popShow: false,
+                isFalse: true,
+                code: 0,
+                invitedNumber: "",
+                inviteeAmount: "",
+                inviter1Amount: "",
+                inviter2Amount: "",
+                inviter3Amount: "",
+                inviterSum: 0
+            },
+            mounted() {
+                var _this = this;
+                this.postData("/v2/invitations/strategy", {}, function(res) {
+                    if (res.code == "200") {
+                        _this.code = res.body.code;
+                        _this.invitedNumber = res.body.invitedNumber;
+                        _this.inviteeAmount = res.body.inviteeAmount;
+                        _this.inviter1Amount = res.body.inviter1Amount;
+                        _this.inviter2Amount = res.body.inviter2Amount;
+                        _this.inviter3Amount = res.body.inviter3Amount;
+                        var temp = _this.accAdd(res.body.inviter1Amount, res.body.inviter2Amount);
+                        _this.inviterSum = _this.accAdd(temp, res.body.inviter3Amount);
+                    } else {
+                        console.log("error");
+                    }
+                });
+                var clipboard = new Clipboard(document.getElementById("copyText"));
+                clipboard.on('success', function(e) {
+                    layer.open({
+                        content: '邀请码复制成功',
+                        time: 2,
+                        skin: 'msg'
+                    });
+                    e.clearSelection();
+                });
+                clipboard.on('error', function(e) {
+                    layer.open({
+                        content: '邀请码复制失败',
+                        time: 2,
+                        skin: 'msg'
+                    });
+                    console.log(e)
+                });
+            },
+            methods: {
+                ljyq() {
+                    var _this = this;
+                    $("body").Loading("show");
+                    this.postData("/v2/invitations/shares", {}, function(res) {
+                        if (res.code == "200") {
+                            setTimeout(function() {
+                                $("body").Loading("hide");
+                                _this.IosOrAndroid("Share Page", res.body, false);
+                            }, 1000);
+                        } else {
+                            console.log("error invitations");
+                        }
+                    });
+                },
+                getUrlParams() {
+                    var name, value;
+                    var str = location.href; //取得整个地址栏
+                    var num = str.indexOf("?")
+                    str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ] 
+                    var result = {};
+                    var arr = str.split("&"); //各个参数放到数组里
+                    arr.forEach(function(element, index) {
+                        var el = element.split('=');
+                        result[el[0]] = el[1];
+                    });
+                    return result;
+                },
+                accAdd(arg1, arg2) {
+                    var r1, r2, m;
+                    try {
+                        r1 = arg1.toString().split(".")[1].length
+                    } catch (e) {
+                        r1 = 0
+                    }
+                    try {
+                        r2 = arg2.toString().split(".")[1].length
+                    } catch (e) {
+                        r2 = 0
+                    }
+                    m = Math.pow(10, Math.max(r1, r2))
+                    return (arg1 * m + arg2 * m) / m
+                },
+                postData(url, params, callback) {
+                    var urlParams = this.getUrlParams();
+                    $.ajax({
+                        url: constans.serviceUrl + url,
+                        type: "post",
+                        async: true,
+                        data: params,
+                        headers: {    
+                            loginTerm: urlParams.term,
+                            accessToken: urlParams.accessToken,
+                            jhVer: "2.0",
+                            rand: Math.round(Math.random() * 89999) + 10000,
+                        },
+                        beforeSend: function() {
+                            $("body").Loading("show");
+                        },
+                        complete: function() {
+                            $("body").Loading("hide");
+                        },
+                        success: function(res) {
+                            if (res.code == "200") {
+                                callback && callback(res)
+                            } else {
+                                console.log("error");
+                            }
+                        }
+                    })
+                },
+                IosOrAndroid(method, options, isShow) {
+                    var flag = false;
+
+                    function setupWebViewJavascriptBridge(callback) {
+                        if (window.WebViewJavascriptBridge) {
+                            return callback(WebViewJavascriptBridge);
+                        }
+                        if (window.WVJBCallbacks) {
+                            return window.WVJBCallbacks.push(callback);
+                        }
+                        window.WVJBCallbacks = [callback];
+                        var WVJBIframe = document.createElement('iframe');
+                        WVJBIframe.style.display = 'none';
+                        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+                        document.documentElement.appendChild(WVJBIframe);
+                        setTimeout(function() {
+                            document.documentElement.removeChild(WVJBIframe)
+                        }, 0)
+                    }
+                    setupWebViewJavascriptBridge(function(bridge) {
+                        bridge.callHandler(method, options, function(res) {
+                            flag = true;
+                        });
+                    });
+                    setTimeout(function() {
+                        if (!flag && isShow) {
+                            layer.open({
+                                title: [
+                                    '提示',
+                                    'background-color:#E8476B; color:#fff;'
+                                ],
+                                anim: 'up',
+                                content: '请升级App至最新版本提现，或使用「飞鸟贷APP」微信公众号提现',
+                                btn: ['知道了']
+                            });
+                        }
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

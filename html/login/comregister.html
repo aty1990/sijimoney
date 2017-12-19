@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>飞鸟贷，借钱领红包</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>	 
+		<link rel="stylesheet" type="text/css" href="../../css/user/login.css"/>
+	    <script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		
+		#readcode{
+			width: 45%;
+		}
+		#getcode{	
+			width: 40%;	
+			font-size: 14px;			
+			text-align: center;
+				
+		}
+		.input{
+			border-bottom: 1px solid #f1f1f1;
+			margin: 5px 15px;
+			background: #fff;
+		}
+		.login_input input {
+		    width: 80%;
+		}
+		.verify_right{
+			width:42%;
+			height:30px;
+			height: 30px;
+			font-size: 14px;
+			line-height: 30px;			
+			
+			text-align: right;
+		}
+		.set_time{
+			font-size: 14px;
+			display: none;
+			color: #888;
+			text-align: center;
+			white-space:nowrap;
+		}
+		.xieyi{
+			font-size: 12px;
+			text-align: center;
+			padding-top: 30px;
+		}
+		.xieyi span{
+			color:#4990E2;
+		}
+	
+		.code{
+			width:20%;
+			
+		}
+		.banner{
+			width: 100%;
+		}
+		.banner img{
+			width: 100%;
+		}
+		.user_back{
+			float: left;
+			width: 50%;
+		}
+		.user_backa{
+			float: left;
+			width: 49.8%;			
+		}
+		.user_back p{
+			color: rgb(241,168,28);
+		}
+		.user_a{
+			height:40px;
+			width: 100%;
+			
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		
+		.input input {
+			margin-left: 15px;
+		    font-size: 14px;
+			border-radius: 10px;
+		}
+	</style>
+	<body>		
+		<div id="content">
+			<img src="../../images/pic_feiniao@2x.png" style="width: 150px;"/>
+			<div class="banner">
+				
+				<img src="../../images/BANNER@2x.png" />
+			</div>
+			<img src="../../images/pic@2x.png"  style="width: 60%;margin-left: 20%;margin-top: 15px;"/>
+				<div class="container1" >
+					<div class="input" style="height: 50px;">
+						<div style="width: 10%;text-align: center;">
+							<img src="../../images/phone@2x.png" style="height: 25px;margin-top: 8px;"/>
+						</div>
+						
+						<input type="tel" class="input_p" id="tell" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width: 80%;" placeholder="输入手机号码" />	
+						<div class="close">
+						    <img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					    </div>
+						
+					</div>
+					
+					<div class="input" >
+						<div style="width: 10%;text-align: center;">
+						   <img src="../../images/message@2x.png" style="height: 25px;margin-top: 8px;"/>
+						</div>
+						<input type="tel" class="input_p" id="readcode" placeholder="输入验证码" />
+						<p  id="getcode" class="get_tId verify_right pink">获取验证码</p>
+						<p class="set_time verify_right pink" style="font-size: 14px;"><span>60</span>秒后重新获取</p>
+					</div>
+					<div class="input">	
+						<div style="width: 10%;text-align: center;">
+						    <img src="../../images/Password-Icon@2x.png" style="height: 25px;margin-top: 8px;"/>
+						</div>
+						<input type="password" class="input_p" id="password" style="width: 80%;" placeholder="输入密码（6-12位英文数字组合）" />	
+						<div class="close">
+						    <img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					    </div>
+						<div class="pwd_show" >
+							<img src="../../images/ico_hide@2x.png" />
+						</div>
+					</div>					
+					<div style="margin: 0 15px;">
+						<p class="pink" style="text-align: center;">邀请码：<span class="qrcodeContent"></span></p>
+						
+					</div>
+				</div>
+				<div class="button" style="width: 100%;">
+					<input type="button" disabled class="register login_style" value="3分钟下款"/>
+				</div>				
+				<div class="xieyi" style="margin-bottom: 100px;">
+					<img src="../../images/selected@2x.png" style="width: 14px;"/>
+					<span class="yinsi">阅读并同意《飞鸟贷服务与隐私协议》</span>
+				</div>			
+		</div>
+		
+		<div id="mode"></div>	
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/login/comregister.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/md5.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/base64.js?${project.javascript.version}"></script>
+	 <script type="text/javascript" src="../../libs/js/jsbn.js?${project.javascript.version}"></script>
+	 <script type="text/javascript" src="../../libs/js/prng4.js?${project.javascript.version}"></script> 
+	 <script type="text/javascript" src="../../libs/js/rng.js?${project.javascript.version}"></script>
+	 <script type="text/javascript" src="../../libs/js/rsa.js?${project.javascript.version}"></script> 
+</html>

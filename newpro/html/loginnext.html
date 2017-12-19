@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>登录/注册</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css?${project.javascript.version}" />
+		<link rel="stylesheet" type="text/css" href="../../css/user/login.css?${project.javascript.version}" />
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?${project.javascript.version}";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+
+	<body>
+		<header>
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>登录/注册</p>
+		</header>
+		<div class="logojiehu">
+			<img src="../../images/pic_feiniao@2x.png" />
+		</div>
+		<div id="page1">
+			<div class="input" style="margin: 30px 15px 0px !important;">
+				<p>手机号</p>
+				<input type="tel" class="input_p" id="tell" placeholder="请输入手机号码" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" style="width: 60%;"/>
+				<div class="close" style="width: 20%;">
+					<img src="../../images/ico_delete@2x.png" style="width: 20px;" />
+				</div>
+			</div>
+			<div class="button">
+				<input type="button" style="color: #fff;" disabled class="register_next login_style" value="下一步" />
+			</div>
+		</div>
+		<div id="mode"></div>
+	</body>
+    <script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/md5.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script>
+		$(function() {
+			//清空input框
+			$(".close").on("click", function() {
+				$(this).prev("input").val("");
+				$(this).hide();
+				$(".login_style").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+				$(".login_style").css("background-size", "100% 100%");	
+				
+			})
+			
+			if($.cookie('userName')){
+				var userName = $("#tell").val($.cookie('userName'));
+				$(".register_next").removeAttr("disabled");
+				$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+				$(".register_next").css("background-size", "100% 100%");
+				
+			}
+			if(localStorage.getItem("register") == 1){
+				var userName = $("#tell").val($.cookie('userName'));
+				$(".register_next").removeAttr("disabled");
+				$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+				$(".register_next").css("background-size", "100% 100%");
+					
+			}
+			
+		     var userName = $("#tell").val();		
+				if(userName != "") {
+					$("#tell").next(".close").show();
+				}		
+				if(userName != "" && (/^1[34578]\d{9}$/.test(userName))) {
+					$(".register_next").removeAttr("disabled");
+					$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".register_next").css("background-size", "100% 100%");
+					
+				} 
+				
+		    $('.input_p').bind('input propertychange', function() {
+				var userName = $("#tell").val();		
+				if(userName != "") {
+					$("#tell").next(".close").show();
+				}		
+				if(userName != "" && (/^1[34578]\d{9}$/.test(userName))) {
+					$(".register_next").removeAttr("disabled");
+					$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".register_next").css("background-size", "100% 100%");
+					
+				} else {
+					$(".register_next").attr("disabled", "disabled");
+					$(".register_next").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+					$(".register_next").css("background-size", "100% 100%");
+					
+				}		
+			})
+			//  检查手机格式
+			function tellcheck() {
+				var userName = $("#tell").val();
+				if(userName == "") {
+					return false;
+				} else if(!(/^1[34578]\d{9}$/.test(userName))) {
+					return false;
+				} else {
+					$(".register_next").removeAttr("disabled");
+					$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".register_next").css("background-size", "100% 100%");
+					
+					return true;
+				}
+			}
+			
+			$(".register_next").on("click", function() {
+				var userName = $("#tell").val();
+				$.cookie('userName',userName, { expires: 30, path: '/' });				
+				if(tellcheck()){
+					var userMob = $('#tell').val();
+					var data = { userMob: userMob };
+					$.ajax({
+						url: constans.serviceUrl + '/market/user/mobver',
+						type: "post",
+						
+						data: data,
+						headers: { 						  						
+							loginTerm: "wx",
+							rand: Math.round(Math.random()*89999) + 10000,
+							channelCode : browser.versions.mobile?"mobile":"pc"
+						},
+						beforeSend: function() {
+							$("body").Loading("show");
+						},
+						complete: function() {
+							$("body").Loading("hide");
+						},
+						success: function(data) {						
+							if(data.code == '500') {                        						
+								window.location="login.html";						
+							}else{
+								window.location="register.html";					
+							}
+						}
+					})
+		         }
+			   })
+										   
+		})
+	</script>
+</html>

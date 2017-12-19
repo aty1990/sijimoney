@@ -1,0 +1,598 @@
+<!DOCTYPE>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>贷款超市</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css?${project.javascript.version}" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css?${project.javascript.version}" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/swiper.min.css?${project.javascript.version}" />
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?${project.javascript.version}";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<style>
+		#swiper-container2 .swiper-slide {
+			width: 20%;
+		}
+		
+		.fail_title {
+			margin: 10px;
+			color: #585657;
+			font-weight: 700;
+			padding-left: 3px;
+		}
+		
+		.tail_dl {
+			width: 100%;
+			background: #eee;
+			border-radius: 5px;
+			text-align: center;
+			height: 90px;
+			padding: 10px;
+		}
+		.tail_dt{
+			height: 2.5em;
+			line-height: 2.5em;
+			text-align: center;
+			vertical-align: middle;
+    		display: table-cell;
+		}
+		
+		.tail_dt img {
+			width: 65%;
+		}
+		
+		#swiper-container2 .swiper-slide {
+			margin-left: 6px;
+		}
+		
+		.tail_dd {
+			margin-top: 5px;
+			font-size: 12px;
+			overflow: hidden;
+		}
+		
+		.fail_swiper {
+			background: #fff;
+			height: 100px;
+		}
+		
+		#swiper-container2 .swiper-wrapper {
+			margin: 10px 0;
+		}
+		
+		.fail_top {
+			border-bottom: 1px solid #f1f1f1;
+			padding: 10px;
+			height: 40px;
+		}
+		
+		.fail_top img {
+			height: 20px;
+			width: 20px;
+		}
+		
+		.fail_product {
+			margin-left: 10px;
+			display: block;
+			margin-top: 10px;
+			background: #fff;
+			height: 110px;
+			overflow: hidden;
+		}
+		
+		.fail_num {
+			float: right;
+			font-size: 12px;
+			color: #a3a3a3;
+			margin-top: 5px;
+			display: flex;
+		}
+		
+		.place {
+			margin: 5px;
+			font-size:14px ;
+		}
+		
+		.fail_mon {
+			font-size: 20px;
+			margin-top: 10px;
+			color: #e04c72;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		
+		.fail_pa {
+			font-size: 14px;
+			color: #585657;
+		}
+		
+		.fail_bottomleft {
+			margin-top: 10px;
+			text-align: center;
+			width: 42%;
+			float: left;
+			border-right: 1px solid #f1f1f1;
+		}
+		
+		.fail_bottomright {
+			width: 50%;
+			float: left;
+			color: #a3a3a3;
+			margin-top: 15px;
+			text-align: center;
+			font-size: 12px;
+			padding: 0 5px;
+		}
+		
+		.fail_qishu {
+			margin-top: 10px;
+		}
+		
+		.fail_jiantou {
+			float: right;
+			margin-top: 25px;
+			margin-right: 12px;
+		}
+		
+		.fail_jiantou img {
+			height: 16px;
+		}
+		
+		#swiper-container1 .swiper-slide img {
+			width: 100%;
+		}
+		
+		.smallHorn {
+			font-size: 12px;
+			color: #585657;
+		}
+		.fail_name{
+			overflow:hidden;
+			text-align:center;
+			font-size:10px;
+			border-radius:8px;
+			border: 1px solid #e04c72;
+			float: left;
+			color:#e04c72;
+			padding: 1px 5px;
+		}
+		.tail_dd2{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 10px;}
+		.tail_dd1{
+			font-size: 12px;
+			white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		}
+		.news{
+			line-height:30px;background:#fff;width:100%;text-align:left;font-size:14px;
+			-webkit-display: flex;
+			-moz-display: flex;
+			-ms-display: flex;
+			-o-display: flex;
+			display: flex;
+		}
+		.news img{
+			margin-top: 9px;
+			margin-left: 10px;
+		}
+		
+		.spinner{
+		  	margin: 50% auto;
+		  	width: 50px;
+		  	height: 60px;
+		  	text-align: center;
+		  	font-size: 10px;
+		}
+		.header{
+			background: #fff;
+			line-height: 41px;
+			text-align: center;
+		}
+		.extension-pop{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 50px;
+			font-size: 10px;
+		}
+		.footer-box{
+			height: 100%;
+			width: 100%;
+			position: relative;
+		}
+		.mask,.ios-mask{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top:0;
+			left:0;
+			background: #000;
+			opacity: 0.7;
+			z-index:1;
+		}
+		.fixed-pos{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top:0;
+			left:0;
+			z-index: 2;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			color:#fff;
+			-webkit-align-items : center;
+			-moz-align-items : center;
+			-ms-align-items : center;
+			-o-align-items : center;
+			align-items : center;
+			padding: 0 10px;
+		}
+		.radios-btn{
+			background: #45BCF2;
+			color: #ffffff;
+			text-align: center;
+			border-radius: 30px;
+			padding: 8px 13px;
+			letter-spacing: 1px;
+			font-size: 10px;
+			margin-right:1.2em;
+		}
+		.flex{
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			-webkit-align-items : center;
+			-moz-align-items : center;
+			-ms-align-items : center;
+			-o-align-items : center;
+			align-items : center;
+		}
+		.row{
+			-webkit-flex-direction:row;
+			-moz-flex-direction:row;
+			-ms-flex-direction:row;
+			-o-flex-direction:row;
+			flex-direction:row;
+		}
+		.column{
+			-webkit-flex-direction:column;
+			-moz-flex-direction:column;
+			-ms-flex-direction:column;
+			-o-flex-direction:column;
+			flex-direction:column;
+		}
+		.div{
+			width: 100%;
+			padding: 1px 10px;
+		}
+		.fill{
+			-webkit-flex-grow:1;
+			-moz-flex-grow:1;
+			-ms-flex-grow:1;
+			-o-flex-grow:1;
+			flex-grow:1;
+		}
+		.close-btn-pop{
+			position: absolute;
+			bottom:-43px;
+			height: 30px;
+			width: 30px;
+			background: url("../../images/delete.png") center center no-repeat;
+			background-size:30px;
+			left:50%;
+			margin-left: -15px;
+		}
+		.blue-font{
+			color:#52B8E8;
+		}
+		.layui-m-layermain .layui-m-layercont {
+		    padding: 20px 15px;
+		}
+		.layui-m-layercont p{
+			line-height: 24px;
+			font-size: 14px;
+		}
+		.goto-weixin{
+			padding: 10px 20px;
+			border-radius:20px;
+			background:#52B8E8;
+			color:#fff;
+		}
+	</style>
+
+	<body>
+		<header class="header">贷款超市</header> 
+		<div class="fail_tuijian" style="width: 100%;display: none;position: absolute;top:41px;bottom: 0;left: 0;right: 0;overflow: hidden;overflow-y: auto;padding-bottom: 60px;">
+			<div class="swiper-container" id="swiper-container1" style="width: 100%;height: 146px;">
+				<div class="swiper-wrapper banner" style="width: 100%;">
+					<script id="homefail" type="text/html">
+						{{each body.bannerList as lt i}}
+						<a class="swiper-slide" href="{{lt.bannerLinkUrl}}">
+							<img src="{{lt.bannerPicUrl}}" style="height: 100%;"/>
+						</a>
+						{{/each}}
+					</script>
+				</div>
+
+			</div>
+			<div class="news">
+				<img src="../../images/homelaba.png" height="10px" /> 
+				<div>
+					<marquee behavior="scroll" class="smallHorn" scrollamount="4" scrolldelay="100">据统计，申请三个以上口子的用户，90%都能成功下款</marquee>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+			<p class="fail_title">新品上线</p>
+			<div class="fail_swiper">
+				<div class="swiper-container" id="swiper-container2">
+					<div class="swiper-wrapper banner1">
+						<script id="homefail2" type="text/html">
+							{{each body.actityList as lt i}}
+							<div class="swiper-slide hot" channelId="{{lt.channelId}}"  href="{{lt.channelApplyUrl}}">
+								<dl class="tail_dl">
+									<dt class="tail_dt">
+										<img src="{{lt.channelPicUrl}}" />
+									</dt>
+									<dd class="tail_dd">
+										<p class="tail_dd1">{{lt.channelName.slice(0,4)}}</p>	
+										<p class="tail_dd2">{{lt.channelRemark.slice(0,6)}}</p>
+									</dd>
+								</dl>
+							</div>
+							{{/each}}
+						</script>
+					</div>
+
+				</div>
+			</div>
+			<p class="fail_title">热门推荐</p>
+			<div class="access">
+				<script id="homefail1" type="text/html">
+					{{each body.pages.data as lt i}}
+					<div href="{{lt.channelApplyUrl}}" class="fail_product" channelId="{{lt.channelId}}">
+						<div class="fail_top">
+							<p style="float: left;">
+								<img src="{{lt.channelPicUrl}}" />
+							    <span class="place">{{lt.channelName.slice(0,4)}}</span>
+							</p>
+							{{if lt.channelTarget.indexOf("|") >= 0}}
+							   <p class="fail_name">{{lt.channelTarget.split("|")[0]}}</p>
+							   <p class="fail_name" style="margin-left: 3px;">{{lt.channelTarget.split("|")[1]}}</p>
+							   {{else}}
+							   <p class="fail_name">{{lt.channelTarget}}</p>
+							{{/if}}
+							<span class="fail_num">已有 <span class="pink">{{lt.loanPeople}}</span>人放款</span>
+						</div>
+						<div class="fail_bottomleft">
+							<p class="fail_pa">最高额度（元）</p>
+							<p class="pink fail_mon">{{lt.channelLoan}}</p>
+						</div>
+						<div class="fail_bottomright">
+							<p class="fail_word">{{lt.channelRemark}}</p>
+							<p class="fail_qishu">借款周期：<span>{{lt.channelLoanCycle}}</span></p>
+
+						</div>
+						<div class="fail_jiantou">
+							<img src="../../images/failjiantou.png" />
+						</div>
+					</div>
+					{{/each}}
+				</script>
+			</div>
+		</div>
+		<div id="mode"></div>
+		<div class="extension-pop">
+			<div class="footer-box">
+				<div class="mask"></div>
+				<div class="fixed-pos">
+					<img src="../../images/dkcs.png" height="26px">
+					<div class="fill">
+						<div class="div" style="font-size: 16px">贷款超市</div>
+						<div class="div">贷款超市,等你来借</div>
+					</div>
+					<div><span class="radios-btn downLoad">去下载</span></div>
+					<img src="../../images/icon_close.png" height="26px" class="close-btn">
+				</div> 
+			</div>
+		</div>
+	</body>
+	<script  src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script  src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script  src="../../libs/js/swiper.min.js?${project.javascript.version}"></script>
+	<script  src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script  src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script  src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script  src="../../libs/js/layer.js?${project.javascript.version}"></script>
+	<script  src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script  src="../../libs/js/clipboard.min.js?${project.javascript.version}"></script>
+	<script>
+		
+		$(function() {
+			var accessToken = constans.accessToken;
+			var mobile = browser.versions.mobile?"mobile":"pc";
+			if(!browser.versions.weixin){
+				$(".header").show();
+			}
+			var page = 1;
+			var size = 100;
+			var data = {
+				page: page,
+				size: size
+			};
+			$.ajax({
+				url: constans.serviceUrl + '/market/reCommand/records',
+				type: "post",
+				data: data,
+				timeout : 5000,
+				headers: {
+					loginTerm: "wx",
+					accessToken: accessToken,
+					jhVer: 2.0,
+					rand: Math.round(Math.random() * 89999) + 10000,
+					channelCode : mobile
+				},
+				beforeSend: function() {
+					$("body").Loading("show");
+				},
+				complete: function(XMLHttpRequest,status) {
+					$("body").Loading("hide");
+					if(status=="timeout"){
+						$("body").empty().css({
+							"background":"url('../../images/no-net.jpg')",
+							"background-size":"cover"
+						});
+					}
+				},
+				success: function(data) {
+					if(data.code == 111) {
+						window.location.href =  "loginnext.html";
+					}else{
+						var dd = data.body.data;
+						$(".smallHorn").html(data.body.smallHorn)
+						var html = template('homefail', data);
+						$('.banner').html(html);
+						var html = template('homefail1', data);
+						$('.access').html(html);
+						var html = template('homefail2', data);
+						$('.banner1').html(html);
+						$(".fail_tuijian").show();
+						new Swiper('#swiper-container1', {
+							loop: true,
+							click: true,
+							pagination: '.swiper-pagination',
+							paginationClickable: true,
+							spaceBetween: 0,
+							autoplay:3000,	
+							centeredSlides: true,
+							autoplayDisableOnInteraction: false
+						})
+						new Swiper('#swiper-container2', {
+							slidesPerView: 'auto',
+							loopedSlides: 6,
+						});
+                        if( $("#swiper-container1 .swiper-slide").length>10){       
+					        for(var i=0;i<10;i++){
+					        	$("#swiper-container1 .swiper-slide").slice(10,$("#swiper-container1 .swiper-slide").length ).remove();
+					        	console.log($("#swiper-container1 .swiper-slide").length)
+					
+					        }
+                  		}
+					}
+				}
+			});
+
+			$(".fail_swiper").on("click",".banner1 .hot",function(){
+				isLogin(this)
+
+			});
+
+			$(".access").on("click","div.fail_product",function(){
+				isLogin(this)
+			});
+			function isLogin(obj){
+				$.ajax({
+					url: constans.serviceUrl + '/market/reCommand/isNeedLogin',
+					type: "post",
+					data: {
+						channelId : $(obj).attr("channelId")
+					},
+					headers: {
+						loginTerm: "wx",
+						accessToken: accessToken,
+						jhVer: 2.0,
+						rand: Math.round(Math.random() * 89999) + 10000,
+						channelCode : mobile
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {
+						if(data.body=="0" || !data.body){
+							location.href = "loginnext.html";
+						}else if(data.code == 111) {
+							window.location.href =  "loginnext.html";
+						}else{
+							location.href = $(obj).attr("href");
+						}
+					}
+				});
+			}
+			/**
+			 * 下载贷款超市apk
+			 */
+			var layerIndex = null;
+			$(document).on("click",".downLoad",function(){
+				if(browser.versions.ios){
+					var html = '<p><span class="text">飞鸟贷微信ID已经复制</span>,<br>打开微信-点击搜索框-粘贴-搜一搜<br><span class="blue-font" id="blue-font" data-clipboard-text="feiniaodaiApp">feiniaodaiApp</span><br>就可以在微信直接借款了</p><p><img src="../../images/feiniaodai.png" width="100%" style="margin-top:10px"/></p><div style="height:30px;padding-top:20px;"><span class="goto-weixin">马上去微信</span></div><span class="close-btn-pop"></span>';
+				  	layerIndex = layer.open({
+					  	content: html
+					  	,style: 'background-color:#fff;border:none;width:70%;' 
+					  	,anim : "up"
+					  	,shadeClose: false,
+					  	success:function(){
+					  		// 判断低版本游览器
+					  		if(JSON.stringify(ua = navigator.userAgent.toLowerCase()).indexOf("mra58k")!=-1){
+					  			$(".text").html("复制文字feiniaodaiApp");
+					  		}else{
+					  			var btn = document.getElementById('blue-font');
+							    var clipboard = new Clipboard(btn);//实例化
+							    //复制成功执行的回调，可选
+							    clipboard.on('success', function(e) {
+							        e.clearSelection();
+							    });
+							    //复制失败执行的回调，可选
+							    clipboard.on('error', function(e) {
+							        
+							    });
+							    setTimeout(function(){
+							    	$(btn).trigger("click");
+							    },300);
+					  		}
+					  	}
+					});
+				}else{
+					location.href = "https://fnd-static.oss-cn-shanghai.aliyuncs.com/android_apk/feiniaodai_v1.0_appweb_20171130.apk";
+				}
+			});
+
+
+			$("body").on("click",".close-btn-pop",function(){
+				layer.close(layerIndex);
+			})
+
+			$("body").on("click",".goto-weixin",function(){
+				location.href = "weixin://";
+			})
+
+			$(".close-btn").click(function(){
+				$(".extension-pop").animate({bottom: "-50px"}, 300,function(){
+			  		$(".fail_tuijian").css({"padding-bottom":"0"});
+			  		$(this).remove();
+			  	});
+			});
+			if(browser.versions.ios && !browser.versions.weixin){
+				$(".radios-btn").html("关注微信公众号").css("font-size","10px");
+			}
+
+		})
+	</script>
+
+</html>

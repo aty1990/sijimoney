@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+	</head>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0);
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.modes {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background: rgba(0, 0, 0, 0.5);
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index: 22;
+			text-align: center;
+			overflow: hidden;
+		}
+		
+		.fas {
+			width: 280px;
+			height: 400px;
+			background: url(../../images/bg_all.png) no-repeat;
+			background-size: 100% 100%;
+		}
+		
+		textarea {
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			bottom: 60px;
+			width: 220px;
+			height: 40px;
+			resize: none;
+			font-size: 10px;
+			background: #f1f1f1;
+			border: 1px solid #d9d9d9;
+		}
+		
+		.sumbit {
+			width: 100%;
+			height: 40px;
+			text-align: center;
+			margin-top: 10px;
+			cursor: pointer;
+		}
+		
+		.sumbit{
+			width: 100%;
+			line-height: 40px;
+			font-size: 24px;
+			background: rgba(0, 0, 0, 0);
+			border: 0;
+			color: #fff;
+			background: url(../../images/btn_normal@2x.png);
+			background-size: 100% 100%;
+		}
+		
+		.close {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			margin: auto;
+			z-index: 99999;
+		}
+		
+		#mode {
+			width: 50%;
+			margin: 10px;
+			line-height: 30px;
+			font-size: 12px;
+			text-align: center;
+			background: rgba(0, 0, 0, 0.6);
+			position: fixed;
+			top: 250px;
+			left: 50%;
+			right: 50%;
+			transform: translateX(-50%);
+			border-radius: 5px;
+			color: #fff;
+			z-index: 99999;
+			display: none;
+		}
+		
+		.center {
+			width: 280px;
+			height: 450px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+	</style>
+
+	<body>
+		<div class="modes">
+			<div class="center">
+				<div class="close" id="close" onclick="onOpen1();">
+					<img src="../../images/fas_close.png" style="width: 25px;height: 25px;" />
+				</div>
+				<div class="fas">
+					<textarea class="text input_p" id="text1" placeholder="您可以这样发誓：我发誓，借款成功后一定按时还款，否则我会越来越丑！"></textarea>
+				</div>
+				<div class="sumbit" id="swear" onclick="onOpen2();">
+					<p>确定</p>
+				</div>
+				
+			</div>
+
+		</div>
+		<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?version=1800293638f0?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?version=1800293638f0?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?version=1800293638f0?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?version=1800293638f0?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/brower.js?version=1800293638f0?${project.javascript.version}"></script>
+	<script>
+		function setupWebViewJavascriptBridge(callback) {
+			if(window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+			if(window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+			window.WVJBCallbacks = [callback];
+			var WVJBIframe = document.createElement('iframe');
+			WVJBIframe.style.display = 'none';
+			WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+			document.documentElement.appendChild(WVJBIframe);
+			setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+		}
+
+		function onOpen1() {
+			setupWebViewJavascriptBridge(function(bridge) {
+				var str1 = document.getElementById("text1").value;
+				var str2 = document.getElementById("text1").value;
+				var data = "name=" + str1 + ",pass=" + str2;
+				//call native method          
+				bridge.callHandler(
+					'Page Close', { 'param': data },
+					function(responseData) {
+						document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+					}
+				);
+			})
+
+		}
+
+		function onOpen2() {
+			setupWebViewJavascriptBridge(function(bridge) {
+				var str1 = document.getElementById("text1").value;
+				var str2 = document.getElementById("text1").value;
+				var data = "name=" + str1 + ",pass=" + str2;
+				//call native method
+				bridge.callHandler(
+					'Page Close', { 'param': data },
+					function(responseData) {
+						document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+					}
+				);
+			})
+		}
+		var thisUrl = location.href.split('#')[0];
+
+		var getUrlParam = function() {
+			var r = thisUrl.match(/accessToken=([^?&]*)/); //匹配目标参数
+			if(r != null) return unescape(r[1]);
+			return null; //返回参数值       
+		}
+		var accessToken = getUrlParam();
+		var getUrlParam1 = function() {
+			var r = thisUrl.match(/term=([^?&]*)/); //匹配目标参数
+			if(r != null) return unescape(r[1]);
+			return null; //返回参数值       
+		}
+		var term = getUrlParam1();
+		if(!term) {
+			term = "wx";
+		}
+		$("#swear").on("touchstart", function() {
+
+			var text = $(".text").val();
+			var smContent1 = /^[\u4E00-\u9FA5\w,\s\.·——。，？！@#￥%……&*（）——\+?,!@#$%^&*()_+;:：；‘’''""”“｜]+$/.test(text);
+			if(smContent1 == false && text != "") {
+				$("#mode").show();
+				$("#mode").html('格式错误，不能输入非法字符，请重新输入');
+				setTimeout(function() {
+					$("#mode").hide();
+				}, 2000);
+			} else {
+
+				var data = { activityId: "1", oathWords: text };
+				$.ajax({
+					url: constans.serviceUrl + '/oaths',
+					type: "post",
+					async: true,
+					data: data,
+					headers: {    
+						loginTerm: term,
+						rand: Math.round(Math.random() * 89999) + 10000,
+						accessToken: accessToken,
+						jhVer: 2.0 
+					},
+					success: function(data) {
+						if(data.code == 200) {
+							
+						} else {
+							$("#mode").show();
+							$("#mode").html(data.msg);
+							setTimeout(function() {
+								$("#mode").hide();
+							}, 2000);
+						}
+
+					}
+				})
+			}
+
+		})
+	</script>
+
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>密码找回</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css?${project.javascript.version}" />
+		<link rel="stylesheet" type="text/css" href="../../css/user/login.css?${project.javascript.version}" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/swiper.min.css?${project.javascript.version}" />
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?${project.javascript.version}";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		body {
+			background: #f1f1f1;			
+		}
+		
+		.swiper-container {
+			width: 100%;
+		}
+		
+		.nav_banner {
+		
+			height: 40px;
+			line-height: 40px;
+			background: #fff;
+		}
+		
+		.nav_banner .swiper-slide p {
+			width: 16px;
+			height: 16px;
+			border-radius: 16px;
+			line-height: 16px;
+			text-align: center;
+			display: inline-block;
+			background: #aeaeae;
+			color: #fff;
+			font-size: 12px;
+		}
+		
+		.nav_banner .active-nav {
+			border-bottom: 2px solid #F38185;
+		}
+		
+		.nav_banner .active-nav p {
+			background: #F38185;
+		}
+		
+		.nav_banner .swiper-slide {
+			width: 33%;
+			font-size: 14px;
+			text-align: center;
+		}
+		
+		.nav_banner .swiper-slide img {
+			width: 12px;
+		}
+		
+		.input {
+			background: #fff;
+		}
+		
+		#readcode {
+			width: 45%;
+		}
+		
+		#getcode {
+			text-align: center;
+			color: #4990E2;
+			width: 30%;
+		}
+		
+		.verify_right {
+			width: 42%;
+			height: 30px;
+			height: 30px;
+			line-height: 30px;			
+			border-left: 1px solid #888;
+			text-align: right;
+		}		
+		.set_time {
+			color: #888;
+			font-size: 14px;
+			white-space:nowrap;
+		}		
+		.get_tId {
+			display: none;
+		}
+		.two1,.three1{
+			display: none;
+		}
+		
+	</style>	
+	
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" style="margin-top:7px;height:26px;" />
+				</a>
+			</div>
+			<p>密码找回</p>
+		</header>
+		<div class="swiper-wrapper nav_banner">
+			<div class="swiper-slide one active-nav ">
+				<p>1</p>&nbsp;输入手机号码</div>
+			<div class="swiper-slide two">
+				<p>2</p>&nbsp;输入验证码</div>
+			<div class="swiper-slide three">
+				<p>3</p>&nbsp;设置密码</div>
+		</div>
+		<div id="getnode">
+			<div class="one1">
+				<div class="input" style="margin: 30px 0px 0px !important;">
+					<p style="text-align: center;">手机号</p>
+					<input type="tel" id="tell" class="input_p" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请输入手机号码" style="width:70%;"/>
+				    <div class="close">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;margin-right:15px;"/>
+					</div>
+				</div>
+				<div class="button" >
+					<input type="button" disabled class="login_style getnode" value="获取验证码"/>
+				</div>
+								
+			</div>
+			<div class="two1">
+				<div class="input" style="margin: 30px 0px 0px !important;">
+					<p style="text-align:center;">验证码</p>
+					<input type="number" id="readcode" class="input_p" placeholder="请输入验证码" style="width:40%;"/>
+					<p id="getcode" class="get_tId verify_right" style="width:40%;height:20px;line-height:20px;margin-top:10px;">重新获取</p>
+					<p class="set_time verify_right" style="width:40%;text-align: center;height:20px;line-height:20px;margin-top:10px;"><span>60</span>秒后重新获取</p>
+				</div>
+				<div class="button" >
+					<input type="button" disabled class="login_style makepwd" value="设置密码"/>
+				</div>
+			
+			</div>
+			<div class="three1">
+				<div class="input" style="margin: 30px 0px 0px !important;">
+					<p style="width: 20%;text-align:center;">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</p>
+					<input type="password" class="newpwd input_p" style="width: 60%;" placeholder="6-20位数字、字母或特殊字符" />
+				    <div class="close" style="text-align:left;">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					</div>
+					<div class="pwd_show dd" style="text-align:left;">
+						<img src="../../images/ico_hide@2x.png" style="width: 20px;" />
+					</div>
+				</div>
+				<div class="input login_input" style="margin:0px 0px 0px !important;">
+					<p style="width: 20%;text-align:center;">确认密码</p>
+					<input type="password" id="password" class="sure_newpwd input_p" style="width: 60%;" placeholder="请输入确认密码" />
+					<div class="close" style="text-align:left;">
+						<img src="../../images/ico_delete@2x.png" style="width: 20px;"/>
+					</div>
+					<div class="pwd_show dd1" style="text-align:left;">
+						<img src="../../images/ico_hide@2x.png" style="width: 20px;" />
+					</div>
+				</div>
+				<div class="button" >
+					<input type="button" disabled class="login_style sure_pwd" value="确定"/>
+				</div>				
+			</div>
+		</div>
+		<div id="mode"></div>
+	</body>
+	<script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/md5.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/base64.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/jsbn.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/prng4.js?${project.javascript.version}"></script> 
+	<script src="../../libs/js/rng.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/rsa.js?${project.javascript.version}"></script> 
+	<script src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#getcode").click(function() {
+				getNote();
+			})
+			var accessToken = constans.accessToken;
+			//验证码倒计时 
+			
+			function getNote() {
+				
+				var userMob = $('#tell').val();
+				var before = new Date();
+				var rsa = new RSAKey();
+				rsa.setPublic(constans.regSecKey, '10001');
+				var res = rsa.encrypt(userMob);
+				var tel = linebrk(hex2b64(res), 64);		
+				var data = { userMob: tel, tempId: "10001" };
+				$.ajax({
+					url: constans.serviceUrl + '/support/sendcode',
+					type: "post",
+					data: data,
+					headers: {    
+						loginTerm: "wx" ,
+						rand: Math.round(Math.random()*89999) + 10000,
+						accessToken: accessToken,
+						jhVer: 2.0 
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+						setTimeout(function() {
+							$("body").Loading("hide");
+						}, 3000)
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {				
+						if(data.code == '500') {
+							$("#mode").show();
+							$("#mode").html(data.msg);						
+							setTimeout(function() {																			
+								$("#mode").hide();
+							}, 2000)
+						} 
+						if(data.code == '200') {
+							$("#mode").show();
+							$('.get_tId').hide();
+							$('.set_time').show();
+							var num = 60;
+							$('.set_time span').text(num);
+							timer = setInterval(function() {
+								num--;
+								$('.set_time span').text(num);
+							}, 1000)
+							setTimeout(function() {
+								$('.get_tId').show();
+								$('.set_time').hide();
+								clearInterval(timer);
+							}, 60000);
+							$(".one1").hide();
+							$(".two1").show();
+							$(".two").addClass("active-nav")
+							$(".one").removeClass("active-nav");
+							$("#mode").html(data.msg);						
+							setTimeout(function() {																			
+								$("#mode").hide();
+							}, 2000)
+						}
+					}
+				})
+			}
+
+			//手机号input焦点
+			$('.input_p').bind('input propertychange', function() {
+				var userName = $("#tell").val();
+				var newpwd = $(".newpwd").val();
+				var sure_newpwd = $(".sure_newpwd").val();
+				var smsNum = $("#readcode").val();
+				if(userName != "") {
+					$("#tell").next(".close").show();
+				}
+				if(newpwd != "") {
+					$(".newpwd").next(".close").show();
+				}
+				if(sure_newpwd != "") {
+					$(".sure_newpwd").next(".close").show();
+				}
+
+				if(userName != "" && (/^1[34578]\d{9}$/.test(userName))) {
+					$(".getnode").removeAttr("disabled");
+					$(".getnode").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".getnode").css("background-size", "100% 100%");
+
+				} else {
+					$(".getnode").attr("disabled", "disabled");
+					$(".getnode").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+					$(".getnode").css("background-size", "100% 100%");
+
+				}
+				if(smsNum != "" && (/^\d{6}$/.test(smsNum))) {
+					$(".makepwd").removeAttr("disabled");
+					$(".makepwd").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".makepwd").css("background-size", "100% 100%");
+
+				} else {
+					$(".makepwd").attr("disabled", "disabled");
+					$(".makepwd").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+					$(".makepwd").css("background-size", "100% 100%");
+
+				}
+				if(newpwd != "" && sure_newpwd != "" && newpwd == sure_newpwd && (/(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,20}$/.test(newpwd))) {
+					$(".sure_pwd").removeAttr("disabled");
+					$(".sure_pwd").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".sure_pwd").css("background-size", "100% 100%");
+
+				} else {
+					$(".sure_pwd").attr("disabled", "disabled");
+					$(".sure_pwd").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+					$(".sure_pwd").css("background-size", "100% 100%");
+
+				}
+			})
+
+			//  检查手机格式
+			function tellcheck() {
+				var userName = $("#tell").val();
+				if(userName == "") {
+					return false;
+
+				} else if(!(/^1[34578]\d{9}$/.test(userName))) {
+					return false;
+				} else {
+					
+				}
+			}
+			//手机短信验证码格式
+			function smscheck() {
+				var smsNum = $("#readcode").val();
+				if(smsNum == "") {
+					return false;
+				} else {
+					if(!(/^\d{6}$/.test(smsNum))) {
+						return false;
+					} else {
+						$(".two1").hide();
+						$(".three1").show();
+						$(".three").addClass("active-nav");
+						$(".two").removeClass("active-nav");
+					}
+				}
+			}
+			// 检查密码格式
+			function pwdcheck() {
+				var pwd = $(".bind").val();
+				if(pwd == "") {
+					return false;
+				} else {
+					if(!(/(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,20}$/.test(pwd))) {
+						return false;
+					} else {
+
+					}
+				}
+			}
+
+			//密码显示与隐藏
+			$(".dd1").on("click", function() {
+				if($("#password").attr("type") == "password") {
+					$("#password").attr("type", "text");
+					$('.dd1 img').attr("src", "../../images/ico_show@2x.png");
+				} else {
+					$("#password").attr("type", "password");
+					$('.dd1 img').attr("src", "../../images/ico_hide@2x.png");
+				}
+			})
+			$(".dd").on("click", function() {
+				if($(".newpwd").attr("type") == "password") {
+					$(".newpwd").attr("type", "text");
+					$('.dd img').attr("src", "../../images/ico_show@2x.png");
+				} else {
+					$(".newpwd").attr("type", "password");
+					$('.dd img').attr("src", "../../images/ico_hide@2x.png");
+				}
+			})
+			//清空input框
+			$(".close").on("click", function() {
+				$(this).prev("input").val("");
+				$(this).hide();
+				$(".login_style").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+				$(".login_style").css("background-size", "100% 100%");
+
+			})
+
+			//获取验证码
+			$(".getnode").click(function() {
+				tellcheck();
+				getNote();
+
+			})
+			//设置密码
+			$(".makepwd").on("click", function() {
+				var userMob = $('#tell').val();
+				var verCode = $("#readcode").val();					
+				var data = {
+					userMob: userMob,						
+					verCode: verCode			
+				};
+				$.ajax({
+					url: constans.serviceUrl + '/market/user/modpwdpre',
+					type: "post",
+					data: data,
+					headers: {
+						accessToken: accessToken,
+						jhVer: 2.0 ,				 
+						loginTerm: "wx" ,				   
+						rand: Math.round(Math.random()*89999) + 10000,
+						channelCode : browser.versions.mobile?"mobile":"pc"
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {
+						if(data.code == 500) {
+							console.log(data.msg);
+							$("#mode").show();
+							$("#mode").html(data.msg);
+							setTimeout(function() {
+								$("#mode").hide();
+							}, 3000)
+						}else{
+							smscheck();
+						}
+					}
+				})
+			})
+
+			//确定修改密码
+			$(".sure_pwd").on("click", function() {
+				var userMob = $('#tell').val();
+				var pwd = $("#password").val();
+				var verCode = $("#readcode").val();
+				var userPwd = hex_md5(pwd);
+				var Num = "";
+				for(var i = 0; i < 5; i++) {
+					Num += Math.floor(Math.random() * 10);
+				}
+				console.log(Num)
+				var data = {
+					userMob: userMob,
+					userPwd: userPwd,
+					rand: Num,
+					verCode: verCode,
+					jhVer: 2.0,
+				};
+				$.ajax({
+					url: constans.serviceUrl + '/market/user/resetpwd', 
+					type: "post",
+
+					data: data,
+					headers: {
+						accessToken: accessToken,
+						jhVer: 2.0 ,				 
+						loginTerm: "wx" ,				   
+						rand: Math.round(Math.random()*89999) + 10000,
+						channelCode : browser.versions.mobile?"mobile":"pc"
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {
+						if(data.code == 500) {
+							console.log(data.msg);
+							$("#mode").show();
+							$("#mode").html(data.msg);
+							setTimeout(function() {
+								$("#mode").hide();
+							}, 3000)
+						} else {
+							$("#mode").show();
+							$("#mode").html("重置密码成功");
+							$(".sure_pwd").attr("disabled","disabled");
+							setTimeout(function() {
+								window.location = "market.html";
+								$("#mode").hide();
+							}, 1500)
+						}
+					}
+				})
+			})
+		})
+	</script>
+</html>

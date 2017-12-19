@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>详情</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css?version=16599c311210" />
+	</head>
+	<script type="text/javascript">
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+		.createTime{line-height: 20px;padding-bottom:10px;color:#666;font-family: .PingFangSC-Regular;font-size:12px;border-bottom: 1px solid #f1f1f1;}
+    	.msgContent{font-size: 14px;padding: 10px 0;color: #333333;line-height: 22px;}
+    	.msgTitle{font-family: .PingFangSC-Regular;font-size: 16px;color: #333333;letter-spacing: -0.39px;line-height: 40px;}
+    	.mess1{background: #fff;margin-top: 10px;}
+    	.mess1 img{width: 100%;}
+	</style>
+
+	<body>
+		<div class="mess">
+			<div style="width: 100%;background: #fff;margin-top: 10px;">
+				<div style="width: 90%;overflow:hidden;margin-left: 5%;">
+					<p class="msgTitle"></p>
+					<div class="createTime">
+					</div>
+					<p class="msgContent"></p>
+				</div>
+			</div>
+		</div>
+		<div class="mess1"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?version=16599c311210?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?version=16599c311210?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?version=16599c311210?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?version=16599c311210?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?version=16599c311210?${project.javascript.version}"></script>
+	<script>
+		$(function() {
+
+			var thisUrl = location.href.split('#')[0];
+			var getUrlParam = function() {
+				var r = thisUrl.match(/msgId=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var msgId = getUrlParam();
+			var getUrlParam1 = function() {
+				var r = thisUrl.match(/msgType=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var msgType = getUrlParam1();
+			var getUrlParam2 = function() {
+				var r = thisUrl.match(/accessToken=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var accessToken = getUrlParam2();
+			var getUrlParam3 = function() {
+				var r = thisUrl.match(/type=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var type = getUrlParam3();
+			var getUrlParam4 = function() {
+				var r = thisUrl.match(/term=([^?&]*)/); //匹配目标参数
+				if(r != null) return unescape(r[1]);
+				return null; //返回参数值       
+			}
+			var term = getUrlParam4();
+			
+				if(type == "normal") {
+					var data = { msgId: msgId, type: "normal",term:term }
+					$.ajax({
+						url: constans.serviceUrl + '/H5toRtf',
+						type: "post",
+						async: true,
+						data: data,
+						headers: {    
+							loginTerm: "wx",
+							rand: Math.round(Math.random() * 89999) + 10000,
+							accessToken: accessToken,
+							jhVer: "2.0"
+						},
+						beforeSend: function() {
+							$("body").Loading("show");
+						},
+						complete: function() {
+							$("body").Loading("hide");
+						},
+						success: function(data) {
+							console.log(data);
+							$(".mess1").hide();
+							var tem = data.body
+							var time = tem.createTime.substr(0, 4) + '-' + tem.createTime.substr(4, 2) + '-' + tem.createTime.substr(6, 2) + '&nbsp;' + tem.createTime.substr(8, 2) + ':' + tem.createTime.substr(10, 2) + ':' + tem.createTime.substr(12, 2)
+							$(".msgTitle").html(data.body.msgTitle);
+							$(".createTime").html(time);
+							$(".msgContent").html(data.body.msgContent);
+						}
+					})
+				}
+				if(type == "act") {
+					var data = { msgId: msgId, type: "act",term:term }
+					$.ajax({
+						url: constans.serviceUrl + '/H5toRtf',
+						type: "post",
+						async: true,
+						data: data,
+						headers: {    
+							loginTerm: "wx",
+							rand: Math.round(Math.random() * 89999) + 10000,
+							accessToken: accessToken,
+							jhVer: "2.0"
+						},
+						beforeSend: function() {
+							$("body").Loading("show");
+						},
+						complete: function() {
+							$("body").Loading("hide");
+						},
+						success: function(data) {
+							console.log(data);
+							$(".mess1").hide();
+							var tem = data.body
+							var time = tem.createTime.substr(0, 4) + '-' + tem.createTime.substr(4, 2) + '-' + tem.createTime.substr(6, 2) + '&nbsp;' + tem.createTime.substr(8, 2) + ':' + tem.createTime.substr(10, 2) + ':' + tem.createTime.substr(12, 2)
+							$(".msgTitle").html(data.body.msgTitle);
+							$(".createTime").html(time);
+							$(".msgContent").html(data.body.msgContent);
+						}
+					})
+				}
+				if(type == "notice") {
+					var data = { msgId: msgId, type: "notice",term:term }
+					$.ajax({
+						url: constans.serviceUrl + '/H5toRtf',
+						type: "post",
+						async: true,
+						data: data,
+						headers: {    
+							loginTerm: "wx",
+							rand: Math.round(Math.random() * 89999) + 10000,
+							accessToken: accessToken,
+							jhVer: "2.0"
+						},
+						beforeSend: function() {
+							$("body").Loading("show");
+						},
+						complete: function() {
+							$("body").Loading("hide");
+						},
+						success: function(data) {
+							console.log(data);
+							$(".mess1").hide();
+							var tem = data.body
+							var time = tem.createTime.substr(0, 4) + '-' + tem.createTime.substr(4, 2) + '-' + tem.createTime.substr(6, 2) + '&nbsp;' + tem.createTime.substr(8, 2) + ':' + tem.createTime.substr(10, 2) + ':' + tem.createTime.substr(12, 2)
+							$(".msgTitle").html(data.body.msgTitle);
+							$(".createTime").html(time);
+							$(".msgContent").html(data.body.msgContent);
+						}
+					})
+				}
+			
+		})
+	</script>
+
+</html>

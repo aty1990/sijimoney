@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>推荐邀请</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<style>
+		.button {
+			width: 100%;
+			height: 40px;
+			
+		}
+		
+		.button input {
+			width: 100%;
+			line-height: 40px;
+			background: rgba(0, 0, 0, 0);
+		}
+		.shares{
+			width: 100%;
+			height: 220px;		
+			position: fixed;
+			top: 0;
+            left:0;			
+			z-index: 22;		
+			text-align: center;
+			display: none;
+		}
+		.shares img{
+		    margin-top:10px;
+		    width:100%;
+		}
+		#mode2,#mode3 {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.4);
+			display: none;
+		}
+		
+		.draw1,.draw2 {
+			width: 220px;
+			background: #fff;
+			height: 140px;			
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index: 22;
+			text-align: center;
+			border-radius: 5px;
+			display: none;
+		}
+		.draw3{
+			width: 280px;
+			height: 320px;	
+			position: fixed;
+			top: 0px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index: 22;
+			
+			border-radius: 5px;
+			display: none;
+		}
+		.draw4{
+			width: 280px;
+			
+			height: 300px;			
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index: 22;
+			text-align: center;
+			border-radius: 5px;
+			display: none;
+		}							
+		.logo {
+			position: absolute;
+			top: 35px;
+			left: 35px;
+		}
+		
+		.ul li {
+			margin-left: 20px;
+			margin-top: 8px;
+			margin-bottom: 5px;
+			font-size: 14px;
+		}
+		
+		.apply {
+			line-height: 44px;
+			min-height: 1.9em;
+			background: rgb(226, 51, 82);
+			background-size: 100% 100%;
+			text-align: center;
+			width: 80%;
+			margin-left: 10%;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		
+		.apply a {
+			outline: none;
+			line-height: 40px;
+			border: 0;
+			font-size: 1em;
+			color: #000000;
+			height: 100%;
+		}
+		.weui_cells_access {
+			overflow-x: hidden;
+		}
+		.sumbit11 {
+			width: 100%;
+			
+			height: 40px;
+			text-align: center;
+			margin-top: 10px;
+						
+			cursor: pointer;
+			
+		}
+		
+		.sumbit11 input {
+			width: 100%;
+			line-height: 40px;
+			font-size: 24px;
+			border-radius: 10px;
+			background: rgba(0, 0, 0, 0);
+			border: 0;
+			color: #fff;
+			background: url(../../images/btn_normal@2x.png);
+			background-size: 100% 100%;
+		}
+	</style>
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="info">
+				<a href="#">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>推荐邀请</p>
+		</header>
+		<div>
+			<div style="width: 100%;position: relative;">
+				<img src="../../images/BANNER@2x_03.png" class="banner" style="width: 100%;" />
+				<img src="../../images/huodong@2x.png" style="width: 80px;position: absolute;top: 5px;right: 0;" class="huodong"/>
+				<div style="overflow-x:hidden;width: 90%;left: 5%;position:absolute;bottom:5px;border-top: 1px solid #fff;border-bottom: 1px solid #fff;text-align: center;display: inline-block;">
+					<div style="float: left;line-height: 30px;">
+						<img src="../../images/laba@2x.png" style="width: 20px;" />
+					</div>
+					<div style="float: left;width: 90%;height:30px;line-height:30px;">
+						<ul class="line" style="height: 30px;overflow:hidden;">
+							<script id="home_swiper11" type="text/html">						
+								{{each body.loans as lt i}}
+							    <li style="line-height: 30px;color: #dbdbdb;">{{lt.content}}</li>
+							    {{/each}}						
+							</script>
+						</ul> 
+					</div>
+				</div>
+			</div>
+			<div style="overflow: hidden;background: #fff;margin-top: 10px;">
+				<div class="weui_cells_access">
+
+					<a class="weui_cell friendnum" href="javascript:void(0)">
+						<div class="weui_cell_hd">
+							<img src="../../images/sanren@2x.png" alt="icon" style="height:30px;margin-right:5px;display:block">
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<p style="color: #909090;">我邀请的好友人数</p>
+						</div>
+						<div class="inviteeCount1" style="color: #909090;">查看更多</div>
+					</a>
+				</div>
+				<p class="inviteeCount" style="font-size: 40px;color: #909090;text-align: center;">5092</p>
+				<div class="apply" style="">
+					<a href="#" style="color: #fff;">立即提现</a>
+				</div>
+			</div>
+			<div style="margin-top: 10px;padding-bottom:10px;width: 100%;background: #fff;display:inline-block;color: #909090;">
+				<div style="background: #fff;text-align: center;padding-top: 10px;">
+					<dl style="float: left;width: 50%;">
+						<dt style="">已经在赚钱的人数</dt>
+						<dd style="margin-top: 10px;"><span class="alreadyNum"  style="color: #e23352;font-size: 24px;word-wrap:break-word;">20121</span>人</dd>
+					</dl>
+					<dl style="float: left;width: 50%;border-left: 1px solid #909090;">
+						<dt style="">累计赚取</dt>
+						<dd style="margin-top: 10px;"><span class="totalIncome" style="color: #e23352;font-size: 24px;word-wrap:break-word;">201211</span>元</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="weui_cells_access" style="background: #fff;margin-top: 10px;">
+			<a class="weui_cell" href="javascript:void(0)">
+				<div class="weui_cell_hd">
+					<img src="../../images/shouji@2x.png" alt="icon" style="height:60px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="color: #909090;">iPhone8/64G</p>
+					<p style="color: #e23352;">￥5888元</p>
+				</div>
+				<div class="jiangli" style="color: #909090;"><img src="../../images/jiangli@2x.png" style="width: 80px;"/></div>
+			</a>
+			<a class="weui_cell" href="javascript:void(0)">
+				<div class="weui_cell_hd">
+					<img src="../../images/ip@2x.png" alt="icon" style="height:60px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="color: #909090;">iPad/32G</p>
+					<p style="color: #e23352;">￥2688元</p>
+				</div>
+				<div class="ip" style="color: #909090;"><img src="../../images/jiangli@2x.png" style="width: 80px;"/></div>
+			</a>
+		</div>
+		<div class="list" style="background: #fff;margin-top: 10px;line-height: 60px;text-align: center;">
+			<img src="../../images/Graphics@2x.png" alt="icon" style="width:20px;">
+			<span style="color: #909090;">点击查看赚钱排行榜</span>
+		</div>
+		<div style="line-height: 60px;text-align: center;">
+			<p>-本次活动由飞鸟贷主办，与Apple Inc.无关-</p>
+		</div>
+		<div class="button bluebg" style="background: rgb(226,51,82);height: 50px;">
+			<input type="button" style="color: #fff;line-height: 50px;" value="立即邀请赚钱" />
+		</div>	
+		<div class="draw1">
+			<div style="background: rgb(26,119,213);height: 40px;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 40px;color: #fff;position: relative;">
+				提醒！
+			    <p class="close" style="width:20px;position: absolute;right: 5px;top: 0px;font-size: 30px;">×</p>
+			</div>
+			<div style="line-height: 100px;">邀请好友借款最多的用户领取</div>
+		</div>
+		<div class="draw2">
+			<div style="background: rgb(26,119,213);height: 40px;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 40px;color: #fff;position: relative;">
+				提醒！
+			    <p class="close" style="width:20px;position: absolute;right: 5px;top: 0px;font-size: 30px;">×</p>
+			</div>
+			<div style="line-height: 100px;">邀请好友满170人借款可领取</div>
+		</div>
+		<div class="draw3">
+			<div style="background: rgb(26,119,213);text-align: center;height: 40px;border-top-left-radius: 5px;border-top-right-radius: 5px;line-height: 40px;color: #fff;position: relative;">
+				活动规则
+				<p class="close" style="width:20px;position: absolute;right: 5px;top: 0px;font-size: 30px;">×</p>
+			</div>
+			<div style="width: 100%;height:280px;overflow:scroll;background: #fff;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+				<div class="active" style="width:96%;margin-left:2%;padding: 10px;color: #909090;font-size: 12px;word-wrap:break-word;">
+				
+				</div>
+			</div>
+			
+		</div>
+		<div class="draw4">
+			<div style="width:100%;height:280px;background: url(../../images/head.png) no-repeat;background-size: 100% 100%;">	
+				<p style="position: absolute;bottom: 140px;left: 0px;right: 0;margin: auto;font-weight: 800;">请添加客服微信领取奖励</p>
+				<img src="../../images/kefuwx.jpg" style="width: 100px;position: absolute;bottom:30px;left: 0px;right: 0;margin: auto;"/>
+				<p class="close" style="width:20px;position: absolute;right: -20px;top: 0px;font-size: 30px;">
+					<img src="../../images/fas_close.png" style="width: 100%;"/>
+				</p>
+			</div>
+			<div class="sumbit11" id="swear">
+				<input type="submit" class="input_p" value="立即邀请赚钱" />
+			</div>
+		</div>
+		<div class="shares"><img src="../../images/wxshares.png"/></div>
+		<div id="mode2"></div>
+		<div id="mode3"></div>
+		<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/myslideup.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.qrcode.min.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src=" https://res.wx.qq.com/open/js/jweixin-1.0.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/recommend.js?${project.javascript.version}"></script>
+
+</html>

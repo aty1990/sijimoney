@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>交易记录</title>
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+	<link rel="stylesheet" type="text/css" href="../../libs/css/swiper.min.css"/>
+	<style>
+		.nav_banner {width:100%;height: 40px;line-height: 40px;background: #fff;}		
+		.nav_banner .swiper-slide p {width: 17px;height: 17px;border-radius: 17px;background: #FF5000;position: absolute;top: 5px;right: 0px;line-height: 17px;text-align: center;display: inline-block;color: #fff;font-size: 12px;}		
+	   .swiper-slide span{width: 80px;display: inline-block;}
+		#swiper-container2  .swiper-slide.active-nav span{border-bottom: 2px solid #F38185;line-height: 36px;display: inline-block;}				
+		.nav_banner .swiper-slide {width: 33%;font-size: 15px;text-align: center;float: left;}		
+		.show_invite{
+			text-align: center;
+			margin: 60px 0;				
+		}
+		.invitelist,.invitelist1,.invitelist2{
+			background: #fff;
+			width: 100%;
+			margin-top: 10px;
+		}
+		.invitelist ul{
+			display: inline-block;
+			border-bottom: 1px solid #D9D9D9;			
+			width: 98%;
+			margin-left: 2%;
+		}
+		.invitelist li{			
+			height:50px;
+			margin-top: 5px;			
+			
+			float: left;
+			text-align: left;
+			font-size:14px;
+		}
+		.invitelist1 li{			
+			height:50px;
+			margin-top: 5px;			
+			
+			float: left;
+			text-align: left;
+			font-size:14px;
+		}
+		.invitelist1 ul{
+			display: inline-block;
+			border-bottom: 1px solid #D9D9D9;			
+			width: 98%;
+			margin-left: 2%;
+		}
+		
+		.invitelist2 ul{
+			display: inline-block;
+			border-bottom: 1px solid #D9D9D9;			
+			width: 98%;
+			margin-left: 2%;
+		}
+		.invitelist2 li{			
+			height:50px;
+			margin-top: 5px;			
+			
+			float: left;
+			text-align: left;
+			font-size:14px;
+		}
+		.color1{
+		   font-size:12px;
+		}
+		.wx{
+			width: 220px;
+			height: 300px;		
+			background: #fff;
+			background-size:100% 100% ;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index: 22;
+			text-align: center;
+			display: none;
+		}
+		.shares{
+			width: 100%;
+			height: 220px;		
+			position: fixed;
+			top: 0;
+            left:0;			
+			z-index: 22;		
+			text-align: center;
+			display: none;
+		}
+		.shares img{
+		    margin-top:10px;
+		    width:100%;
+		}
+		#id{
+			position: fixed;
+			top: 80%;
+			left: 75%;
+			width: 60px;
+			height: 60px;
+			border-radius: 60px;
+			z-index:999;
+		}
+		.logo1{
+			position: absolute;		
+			left: 20px;
+			top: 7px;
+		}
+		.logo2{
+			position: absolute;
+			z-index: 99;
+			left: 40px;
+			top: 80px;
+		}
+		.show_repay{
+			text-align: center;
+			margin: 50px 0;				
+		}
+		.no_repay{
+			display: none;
+		}
+		.invitelist ul,
+		.invitelist1 ul,
+		.invitelist2 ul
+		{
+			background: url("../../images/failjiantou.png") scroll 96% 42% no-repeat;
+			background-size:10px;
+		}
+	</style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>交易记录</p>
+		</header>
+		<div class="swiper-container swiper-container-horizontal" id="swiper-container2" >
+			<div class="swiper-wrapper nav_banner">
+				<div class="swiper-slide one active-nav">					
+					<div style="position: relative;display: inline-block;">
+					<p class="normal" style="display: none;"></p>&nbsp;<span>全部</span>
+					</div>					
+				</div>
+				<div class="swiper-slide two">
+					<div style="position: relative;display: inline-block;">
+					<p class="notice" style="display: none;"></p>&nbsp;<span>收入</span>
+					</div>
+				</div>
+				<div class="swiper-slide three">
+					<div style="position: relative;display: inline-block;">
+					<p class="act" style="display: none;"></p>&nbsp;<span>支出</span>
+					</div>
+				</div>
+			</div>
+        </div>
+        	<div class="swiper-container swiper-container-horizontal" id="swiper-container3" >
+			<div class="swiper-wrapper">
+				<div class="swiper-slide swiper-no-swiping" >
+					<div class="no_repay" >
+			<div class="show_repay">
+				<img src="../../images/pic_jiekuanjilu@2x.png"  style="width: 40%;"/>
+				<p style="margin-top: 10px;">您还没有交易记录哦~</p>				
+			</div>
+			<div class="sure_button onrepay">
+				<input type="button" value="马上申请"/>
+			</div>
+		</div>
+		<div class="invitelist" style="background: #fff;">
+				<script id="home" type="text/html">	
+				{{each body.data as tem i}}
+				<ul name="{{tem.transId}}" type="{{tem.type}}">
+					<li style="width: 20%;">
+						<div style="width: 40px;height: 40px; margin-left: 15px;border-radius: 60px;overflow: hidden;">
+						   <img src="{{tem.iconUrl}}" style="width:40px;"/>
+						</div>
+					</li>
+					<li style="width: 47%;">												
+						<p >{{tem.name}}</p>	
+						<p style="color: #909090;margin-top: 5px;">{{tem.time}}</p>
+					</li>				
+					<li style="width: 23%;text-align: right;padding-right: 10px">
+						<p>{{tem.amount}}</p>
+						<p style="color: #909090;margin-top: 5px;">{{tem.status}}</p>
+					</li>					
+				</ul>
+				{{/each}}
+			</script>
+		</div>		
+				</div>
+				<div class="swiper-slide swiper-no-swiping" >
+					<div class="no_repay" >
+			<div class="show_repay">
+				<img src="../../images/pic_jiekuanjilu@2x.png"  style="width: 40%;"/>
+				<p style="margin-top: 10px;">您还没有交易记录哦~</p>				
+			</div>
+			<div class="sure_button onrepay">
+				<input type="button" value="马上申请"/>
+			</div>
+		</div>
+		<div class="invitelist1" style="background: #fff;">
+			
+				<script id="home1" type="text/html">	
+				{{each body.data as tem i}}
+				<ul name="{{tem.transId}}" type="{{tem.type}}">
+					<li style="width: 20%;">
+						<div style="width: 40px;height: 40px; margin-left: 15px;border-radius: 60px;overflow: hidden;">
+						   <img src="{{tem.iconUrl}}" style="width:40px;"/>
+						</div>
+					</li>
+					<li style="width: 47%;">												
+						<p >{{tem.name}}</p>	
+						<p style="color: #909090;margin-top: 5px;">{{tem.time}}</p>
+					</li>				
+					<li style="width: 23%;text-align: right;padding-right: 10px">
+						<p>{{tem.amount}}</p>
+						<p style="color: #909090;margin-top: 5px;">{{tem.status}}</p>
+					</li>					
+				</ul>
+				{{/each}}
+			</script>
+		</div>		
+				</div>
+				<div class="swiper-slide swiper-no-swiping" >
+				<div class="no_repay" >
+			<div class="show_repay">
+				<img src="../../images/pic_jiekuanjilu@2x.png"  style="width: 40%;"/>
+				<p style="margin-top: 10px;">您还没有交易记录哦~</p>				
+			</div>
+			<div class="sure_button onrepay">
+				<input type="button" value="马上申请"/>
+			</div>
+		</div>
+		<div class="invitelist2" style="background: #fff;">
+				<script id="home2" type="text/html">	
+				{{each body.data as tem i}}
+				<ul name="{{tem.transId}}" type="{{tem.type}}">
+					<li style="width: 20%;">
+						<div style="width: 40px;height: 40px; margin-left: 15px;border-radius: 60px;overflow: hidden;">
+						   <img src="{{tem.iconUrl}}" style="width:40px;"/>
+						</div>
+					</li>
+					<li style="width: 47%;">												
+						<p >{{tem.name}}</p>	
+						<p style="color: #909090;margin-top: 5px;">{{tem.time}}</p>
+					</li>				
+					<li style="width: 23%;text-align: right;padding-right: 10px">
+						<p>{{tem.amount}}</p>
+						<p style="color: #909090;margin-top: 5px;">{{tem.status}}</p>
+					</li>
+				</ul>
+				{{/each}}
+			</script>
+		</div>		
+				</div>
+			</div>					
+			</div>
+		
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>	
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/transaction.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/swiper.min.js?${project.javascript.version}"></script>
+	<script>
+		var mySwiper2 = new Swiper('#swiper-container2',{
+			watchSlidesProgress : true,
+			watchSlidesVisibility : true,
+			slidesPerView : 3,
+			autoplay:false,
+			onTap: function(){
+				mySwiper3.slideTo( mySwiper2.clickedIndex)
+			}
+		})
+		var mySwiper3 = new Swiper('#swiper-container3',{
+		onSlideChangeStart: function(){
+					updateNavPosition()
+				}
+		})
+		function updateNavPosition(){
+			$('#swiper-container2 .active-nav').removeClass('active-nav')
+			var activeNav = $('#swiper-container2 .swiper-slide').eq(mySwiper3.activeIndex).addClass('active-nav');
+			if (!activeNav.hasClass('swiper-slide-visible')) {
+				if (activeNav.index()>mySwiper2.activeIndex) {
+					var thumbsPerNav = Math.floor(mySwiper2.width/activeNav.width())-1
+					mySwiper2.slideTo(activeNav.index()-thumbsPerNav)
+				}
+				else {
+					mySwiper2.slideTo(activeNav.index())
+				}	
+			}
+		}
+	</script>
+</html>

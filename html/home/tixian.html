@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css"/>
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+	
+		body{background: #FFFFFF;overflow-x: hidden;}
+		.weui_cell{
+			background: #fff;
+			line-height: 30px;
+		}
+		
+		.select_up{
+			position: fixed;
+			bottom: 0; 
+			width: 100%;
+			display: none;
+			background: #fff;
+			z-index: 99999;
+		}
+		#mode_up{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top:0;
+			background: rgba(0,0,0,0.5);
+			display: none;
+		}
+		.jieqing{
+			display: none;
+		}
+		.zuidi{
+			display: none;
+		}
+		.weui_check1 {
+			position: absolute;
+			left: -9999em;
+		}		
+		.weui_cells_radio .weui_check1:checked+.weui_icon_checked:before {
+			display: block;
+			position: absolute;
+			right: 5px;
+			top: 10px;
+			content: '\EA08';
+			color: rgb(74,144,226);
+			font-size: 20px;
+		}
+		.weui_cells {
+              margin-top:0;
+        }
+        input[disabled]{
+        
+        }
+        .bg .weui_cell_ft:after {
+        	border-color: #fff;
+        }
+         .word{font-size: 10px;margin-left: 10px;}
+         .apply{line-height: 44px;min-height: 1.9em;margin-top:40px;text-align: center;width: 90%;margin-left: 5%;} 
+		.apply input {width:100%;line-height: 40px;background: url(../../images/tixianbutton_disabed@2x.png) no-repeat;background-size: 100% 100%;border: 0;font-size: 1em;color: #fff;height: 100%;}		  
+	</style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>提现</p>
+		</header>
+      <div class="weui_cells_access" style="margin-bottom:20px;overflow: hidden;">	
+      	<div class="foc">
+			<a class="weui_cell bg" style="line-height:20px;padding: 5px 15px;">
+				<div class="weui_cell_hd" style="width: 44px;height: 44px;border-radius: 44px;background: #fff;text-align: center;">
+					<img src=""  class="bank_img bankimg" style="width: 44px;"/>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary" style="color:#fff ;margin-left: 10px;" >
+					<p class="bank bank1" style="font-size: 14px;"></p>
+					<p style="font-size: 12px;margin-top: 5px;">尾号<span class="cardnum num"></span></p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+            
+			</div>						
+        </div>
+        <div style="width:94%;margin-left:3%;height: 40px;">
+        	<div style="width: 30%;text-align:center;font-size: 20px;line-height: 40px;float: left;">提现金额</div>
+        	<div style="float:right;font-size: 12px;width: 70%;color: #999;">最低<span class="lowestWd"></span>元可提现，每笔提现手续费为2元，手续费由第三方支付公司收取，从提现金额中自动扣除。</div>
+        </div>
+        <div style="width: 100%;border-bottom: 1px solid #C8C7CC;">
+	        <div style="width:94%;margin-left:3%;height: 60px;margin-top: 20px;line-height: 40px;">
+	        	<div style="width: 20%;text-align:center;font-size: 40px;line-height: 45px;float: left;">￥</div>
+	        	<div style="float:right;width: 80%;height: 35px;font-size: 30px;"><input type="number" value="" style="height: 100%;" class="money input_p"/></div>
+	        </div>
+        </div>
+        <div style="width:94%;margin-left:3%;margin-top: 10px;line-height: 30px;">
+	        <p>可提现金额<span class="useMoney"></span>元，<span class="all" style="color: rgb(84,199,250);font-size: 18px;">全部提现</span></p>
+	    </div>
+	    <div class="apply" >
+			<input type="button" class="apply1" disabled="disabled" value="提现" />
+		</div>
+		<p style="text-align: center;margin-top: 10px;font-size: 12px;">准实时到账</p>
+        <div class="select_up">
+			<div style="border-bottom: 1px solid #D9D9D9;height: 44px;text-align: center;line-height: 44px;">
+				<div class="close_up" style="width: 20%;float: left;">
+					<img src="../../images/ico_close@2x.png" style="width: 15px;"/>
+				</div>
+				<div style="width: 60%;float: left;">
+					<p>选择还款银行卡</p>
+				</div>
+				<div class="addbank" style="width: 20%;float: left;">
+						<img src="../../images/icon_add@2x.png" style="width: 15px;" />
+					</div>					
+			</div>
+			<div class="bankup">
+				<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-bottom:60px;">
+				  <script id="homebank" type="text/html">				  
+				  	{{each body.bankList as lt i}}
+			            <label class="weui_cell weui_check_label" style="padding: 7px 0px;">
+			                <div class="weui_cell_bd weui_cell_primary">
+			                   <p style="float: left;width: 20%;text-align: center;">
+									<img src="{{lt.bankLogo}}" onerror="this.src='images/icon_jiansheyinhang@2x.png'"  class="bank_img" style="width: 20px;"/>
+							   </p>
+							    <p  style="width:60%;font-size: 14px;float: left;"><span class="bank" >{{lt.bankName}}</span>(*<span class="cardnum">{{lt.accountNo.substr(lt.accountNo.length-4,4)}}</span>)</p>						  
+			                </div>
+			                <div class="weui_cell_ft">
+			                    <input type="radio" class="weui_check1" name="radio1" value="" >
+			                    <span class="weui_icon_checked"></span>
+			                </div>
+			            </label>
+		            {{/each}}		            
+		          </script>
+		        </div>
+				
+			</div>
+			</div>
+			<div id="mode_up"></div>
+			<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" >
+		$(function() {
+	var accessToken = constans.accessToken;
+	var list = new Array();
+	var flagnum = 0;
+	var clicked = 0;
+	var flagnum1 = 0;
+	var balAmount,isBal;
+	
+	
+	
+	var data = { accessToken: accessToken };
+	$.ajax({
+		url: constans.serviceUrl + '/support/verUser',
+		type: "post",
+
+		data: data,
+		headers: {    
+			loginTerm: "wx" ,
+			accessToken: accessToken,
+			jhVer: "2.0",
+			rand: Math.round(Math.random()*89999) + 10000,
+		},
+		beforeSend: function() {
+			$("body").Loading("show");
+		},
+		complete: function() {
+			$("body").Loading("hide");
+		},
+		success: function(data) {
+			var userId = data.body.userId;
+			
+			$.ajax({
+				url: constans.serviceUrl + '/wallet/withdrawpre',
+				type: "post",				
+				headers: {    
+					loginTerm: "wx",
+					accessToken: accessToken,
+					jhVer: 2.0,
+					rand: Math.round(Math.random()*89999) + 10000,
+					   
+				},
+				beforeSend: function() {
+					$("body").Loading("show");
+				},
+				complete: function() {
+					$("body").Loading("hide");
+				},
+				success: function(data) {
+					
+					if(data.code == 111) {						
+						window.location.href = constans.htmlUrl + "/index";							
+					}
+					if(data.code == 500) {
+						console.log(data.msg);
+					} else {
+						var bankList=data.body.bankList[0];
+						console.log(data);
+						if(data.body.bankList == ""){
+							$(".bg").css("background", "#2EABE3");
+							$(".weui_cell_hd").css("background","rgba(0,0,0,0)")
+							$(".bankimg").attr("src", "../../images/icon_tianjiayinhangka@2x.png");
+							$(".bankimg").css("margin-top","5px");
+							$(".weui_cell_primary").html("点击添加银行卡");
+							$(".bg").on("click", function() {
+								if(data.body.isBindCard != 0){
+									if(data.body.isAuth == 1){
+										localStorage.setItem("isAuth",1);
+										window.location.href = constans.htmlUrl + "/html/user/bank.html";
+									} else {
+										localStorage.setItem("isAuth",0)
+										window.location.href = constans.htmlUrl + "/html/user/norealbank.html";
+									}
+								}else{
+									$("#mode").show();
+										$("#mode").html("不可绑卡");
+										setTimeout(function() {
+											$("#mode").hide();
+									}, 2000);
+								}
+								
+							})
+						}else{
+							$(".bg").css("background", bankList.backgroundColour.substr(0, 7));
+							$(".bank").html(bankList.bankName);
+							var len = bankList.accountNo.length;
+							$(".cardnum").html(bankList.accountNo.substr(len - 4, 4));
+							$(".bankimg").attr("src", bankList.bankLogo);
+							$(".lowestWd").html(data.body.lowestWd);
+							$(".useMoney").html(data.body.useMoney);
+							$(".all").on("click",function(){
+								$(".money").val(data.body.useMoney);
+								$(".apply1").removeAttr("disabled");
+									$(".apply1").css("background", "url(../../images/homebottom1@2x.png)  no-repeat");
+									$(".apply1").css("background-size", "100% 100%");
+							})
+							localStorage.setItem('accNo', bankList.accountNo);
+							localStorage.setItem('bankCode', bankList.bankCode);
+							var lowestWd=data.body.lowestWd;
+							$('.input_p').bind('input propertychange', function() {
+								var repayMoney = $(".money").val();		
+								if(repayMoney != "" && repayMoney<=data.body.useMoney && repayMoney>=30) {
+									$(".apply1").removeAttr("disabled");
+									$(".apply1").css("background", "url(../../images/homebottom1@2x.png)  no-repeat");
+									$(".apply1").css("background-size", "100% 100%");
+						
+								} else {
+									$(".apply1").css("background", "url(../../images/tixianbutton_disabed@2x.png)  no-repeat");
+									$(".apply1").css("background-size", "100% 100%");
+									$(".apply1").attr("disabled", "disabled");
+								}
+						
+							})
+							$(".bg").on("click", function() {
+								$("#mode_up").show();
+								$(".select_up").show();
+								data.balAmount = balAmount;
+								data.isBal =isBal;   
+								var html = template('homebank', data);
+								$('.weui_cells').html(html);
+	                            $(".addbank").on("click", function() {
+										if(data.body.isBindCard != 0){
+										window.location = constans.htmlUrl + "/html/user/bank.html";
+										}else{
+											$("#mode").show();
+												$("#mode").html("不可绑卡");
+												setTimeout(function() {
+													$("#mode").hide();
+											}, 2000);
+										}
+									})
+								if(clicked == 0) {
+									$(".weui_cell_ft input").eq(flagnum).attr("checked", "checked");
+								} else {
+									$(".weui_cell_ft input").eq(flagnum1).attr("checked", "checked");
+								}
+	
+								$(".weui_cells label").unbind("click");
+								var $isChecked = $(".weui_cell_ft input").is(":checked");
+								
+								$(".weui_cells label").one("click", function() {
+									
+									$(".bg").css("background", data.body.bankList[$(this).index()].backgroundColour.substr(0, 7));
+									$(".bank1").html(data.body.bankList[$(this).index()].bankName);
+									$(".num").html(data.body.bankList[$(this).index()].accountNo.substr(data.body.bankList[$(this).index()].accountNo.length - 4, 4));
+									$(".bankimg").attr("src", data.body.bankList[$(this).index()].bankLogo);
+									$("#mode_up").hide();
+									$(".select_up").hide();
+									localStorage.setItem('accNo', data.body.bankList[$(this).index()].accountNo);
+									localStorage.setItem('bankCode', data.body.bankList[$(this).index()].bankCode);
+									clicked = 1;
+									flagnum1 = $(this).index();
+								})
+	                            
+							})
+						}					
+						
+					}
+					list = data.body;
+				}
+			})		
+
+		}
+		
+	})
+	$(".apply1").on("click",function(){
+		var accNo = localStorage.getItem('accNo');
+		var bankCode=localStorage.getItem('bankCode');
+		var money = $(".money").val();		
+		var data = {
+				accNo: accNo,
+				bankCode: bankCode,
+				money:money
+			};
+		$.ajax({
+			url: constans.serviceUrl + '/wallet/withdraw',
+			type: "post",	
+			data: data,
+			headers: {    
+				loginTerm: "wx" ,
+				accessToken: accessToken,
+				jhVer: "2.0",
+				rand: Math.round(Math.random()*89999) + 10000,
+			},
+			beforeSend: function() {
+				$("body").Loading("show");
+			},
+			complete: function() {
+				$("body").Loading("hide");
+			},
+			success: function(data) {
+				if(data.code == 111){
+					window.location.href = constans.htmlUrl + "/index"
+				}
+				if(data.code == 200){
+					var expandTime=data.body.expandTime;
+					var time = expandTime.substr(0, 4) + '-' + expandTime.substr(4, 2) + '-' + expandTime.substr(6, 2) + expandTime.substr(8, 2) + ':' + expandTime.substr(10, 2) + ':' + expandTime.substr(12, 2)
+					var bankName=data.body.bankName;
+					var accNo=data.body.accNo;
+					var money=data.body.money;
+					var charge=data.body.charge;
+					localStorage.setItem("bankName",bankName+"("+accNo+")");					
+					window.location.href = constans.htmlUrl + "/html/home/huankuan.html?expandTime="+time+"&money="+money+"&charge="+charge;
+				}else{
+					$("#mode").show();
+											$("#mode").html(data.msg);
+											setTimeout(function() {
+												$("#mode").hide();
+											}, 2000);
+				}
+				console.log(data);
+			}
+		})
+	})
+	
+	$(".close_up").on("click", function() {
+		$("#mode_up").hide();
+		$(".select_up").hide();
+	})
+})
+	</script>
+</html>
+

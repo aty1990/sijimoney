@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+	</head>
+    <script type="text/javascript">
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+	<style>   	
+    	.mess1{background: #fff;margin-top: 10px;}
+    	.mess1 img{width: 100%;}
+    </style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="info">
+				<a href="#">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>活动详情</p>
+		</header>
+		
+		<div class="mess1"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript">
+		var url=localStorage.getItem("url");
+		location.href = url + "&v=3";
+		/*$(".mess1").append('<iframe src="' + url + '" style="width:100%;height:1000px;border:none;"></iframe>');
+		$(".info").on("click", function() {
+			window.location = constans.htmlUrl + "/index.html";
+		})*/
+	</script>
+
+</html>

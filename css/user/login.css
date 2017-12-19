@@ -1,0 +1,97 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+body{
+	width:100%;
+	min-width: 300px;
+    max-width: 750px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+
+/*----------------------登录注册logo图片--------------------*/
+.logojiehu{
+	width:100%;
+	margin-top: 17%;
+	text-align: center;
+}
+.logojiehu img{
+	width: 200px;
+}
+.container{ 
+	margin: 10px;
+	background: #fff;
+}
+.input{			
+	font-size: 15px;	
+	padding: 5px 0px;
+	min-height: 1.9em;
+	display: flex;
+	border-bottom: 1px solid #f1f1f1;
+	
+}
+.button{
+	font-size: 15px;	
+	padding: 5px 15px;
+	min-height: 1.9em;
+	display: flex;
+	height: 50px;
+}
+.input p{
+	width: 20%;
+	float: left;
+	height:40px;
+	line-height: 40px;
+	font-size: 16px;
+	white-space:nowrap;
+}
+.input input{		
+	border: 0;
+	height: 30px;
+    margin-top: 5px;	
+	margin-left: 1%;
+	outline: none;
+	float: left;
+	font-size: 16px;
+	color: #333;
+}
+.button input{
+	border: 0;
+	height:100%;
+	padding: 0.4em;
+	outline: none;
+	float: left;
+	font-size: 16px;
+	color: #fff;
+}
+.login_style{
+	width:100%;	
+	margin-top: 20px;
+	min-height: 1.9em;	
+	background: url(../../images/btn_disabled@2x.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #fff;
+}
+
+.pwd_show{
+	width: 10%;
+	line-height: 40px;
+	text-align: right;
+}
+.pwd_show img{
+	width: 20px;
+}
+.container{
+	padding-top: 20px;
+}
+.close{
+	width: 10%;
+    display: none;
+	text-align: right;
+	line-height: 40px;
+  
+}

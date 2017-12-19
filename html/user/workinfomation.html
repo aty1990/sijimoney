@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>工作信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../../css/common/index.css?version=1513c03216b0" />
+	<link rel="stylesheet" type="text/css" href="../../libs/css/mobiscroll.css?version=1513c03216b0"/>
+	<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css?version=1513c03216b0"/>
+	<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	<style type="text/css">
+		body {
+			background: #fafafa;
+		}
+		
+		#picker1 {
+			height: 40px;
+		}
+		
+		.small_header {
+			color: #888;
+			margin-left: 10px;
+			margin: 10px;
+			font-size: 12px;
+		}
+		
+		.mymessage {
+			position: relative;
+			float: left;
+			width: 72%;
+			line-height:50px;
+			margin-left: 10px;
+		}
+		
+		.main-content {
+			position: absolute;
+			left: 0;
+			width: 100%;
+		}
+		
+		.sumbit {
+			margin-top: 30px;
+		}
+		.weui_cells:before  {
+			border: 0;
+		}
+		.weui_cells:after{
+		   border: 0;
+		}
+		.content_address {
+			display: none;
+		}
+		
+		#container {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+		#tipinput {
+			width: 100%;
+			height: 40px;		
+		}
+		
+		.panel {
+			width:100%;		
+			color: #333;
+			background:#fff;					
+			position: absolute;	
+            top:0;			
+			overflow: hidden;
+			line-height: 20px;
+		}
+		.user_input input {
+		    width:90%;
+		    height:30px;
+			margin-top:10px;
+		}
+		#input {
+			width: 250px;
+			height: 40px;
+		}
+		
+		#sure {
+			width:30%;
+			height: 44px;
+			border-radius: 0;
+			float:right;
+			background: #2EABE3;
+			color: #fff;
+			float: left;
+		}
+		#test{
+		   width:100%;
+		   height:100%;
+		   position:fixed;
+		   top:0;
+		   left: 0;
+		   z-index: 999;
+		   background:#fff;
+		   display: none;
+		   border: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<header style="background: #fff;">
+		<div style="float: left;" class="info">
+			<a href="userInfoList.html">
+				<img src="../../images/ico_back@2x.png" />
+			</a>
+		</div>
+		<p>工作信息</p>
+	</header>
+	<div class="user_message">
+		<p class="small_header">为保证借款申请顺利通过，请务必填写真实信息。</p>
+		<div class="user_input">
+			<p>公司全称</p>
+			<div class="mymessage">
+				<input type="text" class="work_name1 input_p" value="" placeholder="请填写公司名称" />
+			</div>
+		</div>
+		<div class="user_input">
+			<p>职位名称</p>
+			<div class="mymessage">				
+				<input type="text" class="work_name2 input_p" maxlength="16"  value="" placeholder="请选择职位名称" />					
+			</div>
+		</div>
+		<div class="user_input">
+			<p>公司地址</p>
+			<div class="mymessage address">
+				<input type="text" value="" class="work_address input_p" onfocus="this.blur();" placeholder="请定位您所在的城市" />
+				<!--<iframe id="test" src=""></iframe>-->
+				<img src="../../images/Disclosure Indicator@2x.png" />
+			</div>
+		</div>
+		<div class="user_input">
+			<p style="width: 20%;height: 40px;"></p>
+			<div class="mymessage">
+				<input type="text" value="" class="work_num input_p" placeholder="请填写具体街道门牌号" />
+			</div>
+		</div>
+		<div class="user_input">
+			<p>公司电话</p>
+			<div class="mymessage">
+				<p class="citycode" style="width: 15%;color: #000;" ></p>
+				<!--<p style="float: left;width: 10px;">-</p>-->
+				<input type="tel" value="" class="work_tel input_p" maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请填写公司电话" style="width: 70%;" />
+			</div>
+		</div>
+		
+		
+		<div class="user_input userInfomation">
+			<p>月收入(元)</p>
+			<div class="mymessage">
+				<input type="text"  value="" id="input11" maxlength="8" class="work_money input_p" oninput="this.value=this.value.replace(/[^0-9.]+/,'').slice(0,8);" placeholder="请填写月收入" />
+			</div>
+		</div>
+		<div class="user_input userInfomation dd">
+			<p>入职时间</p>
+			<div class="mymessage demos">			   
+				   <!--<input type="sumbit"   unselectable="on" onfocus="this.blur()"  value="" name="appDate" id="appDate" class="work_time input_p" placeholder="请填写入职时间" />	-->
+				   <input type="sumbit"   unselectable="on" onfocus="this.blur()"  value="" name="appDate" id="demo1" class="work_time input_p" placeholder="请填写入职时间" />	
+			</div>
+			
+		</div>
+	</div>
+
+   <div class="content_address">
+			<div id="container" tabindex="0"></div>
+			<div class='panel' style="border:1px solid #d9d9d9;">
+				<table style="width:70%;float:left;">
+					<tr>
+						<td>
+							<input id="tipinput" placeholder="请输入关键字" />
+						</td>
+					</tr>
+				</table>
+				<input type="button" id="sure" value="确定">
+				<div id='message'></div>
+			</div>
+			<div id="myPageTop" style="position:fixed;z-index:99999;"></div>
+		</div>
+	
+	<div class="sumbit">
+		<input type="button" disabled="disabled"  class="work_keep" id="work_keep1"  value="保存" />
+	</div>
+	<div class="sumbit" style="margin-top: 10px;">
+		<input type="button" disabled="disabled"  class="work_keep" id="work_keep2" value="保存并继续" />
+	</div>
+	<div class="picker" style="display: none;">
+		<div class="picker-mask mask-hook"></div>
+		<div class="picker-panel panel-hook">
+			<div class="picker-choose choose-hook">
+				<span class="cancel cancel-hook">取消</span>
+				<span class="confirm confirm-hook">确定</span>
+				<h1 class="picker-title"></h1>
+			</div>
+			<div class="picker-content">
+				<div class="mask-top border-1px"></div>
+				<div class="mask-bottom border-1px"></div>
+				<div class="wheel-wrapper wheel-wrapper-hook">
+					<div class="wheel wheel-hook">
+						<ul class="wheel-scroll wheel-scroll-hook" style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, -324px) translateZ(0px);">
+							<li class="wheel-item">剧毒</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wx">
+		<p style="color: #fff;margin-top: 34px;">咋了？</p>
+		<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">							  				  			
+			<ul class="weui">
+			   <li ><span style="float:left;margin-left:10px;">我不想借款了</span><p  style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
+			   <li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span><p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
+			</ul>		
+			<div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
+				<textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!"  style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>  	             
+			</div>
+			<p class="qi"  style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
+	            <span id="text-count" >128</span>/128
+	        </p>	        
+		</div>
+		<div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
+	        <p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
+	        <p style="color: rgb(74,144,226);" class="try">再试试</p>
+	    </div>
+    </div>
+	<div id="mode2"></div>
+	<div id="mode"></div>
+
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/picker.min.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/datePicker.js" ></script>
+<!--	<script type="text/javascript" src="../../libs/js/mobiscroll.js?version=1513c03216b0" ></script>-->
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0e76d85c5751c246d2fb105e41d5705c&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
+	<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/workinfomation.js?${project.javascript.version}"></script>
+	<script>
+	$(".weui li").on("click",function(){
+	   $(this).addClass("bg");
+	   $(this).siblings().removeClass("bg");
+	})
+	$(function () {
+	   $("#packagingDesc").on("propertychange input", function() {  
+            var $this = $(this),  
+                _val = $this.val(),  
+                count = "";  
+            if (_val.length > 128) {  
+                $this.val(_val.substring(0, 128));  
+            }  
+            count = 128 - $this.val().length;  
+            $("#text-count").text(count);  
+        });
+        
+        $('#input11').keyup(function () {
+        	this.value=this.value.replace(/[^\d^\.]+/g,'');  
+        	this.value = this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数 
+			if($('#input1').val()>99999){
+			  var d=$('#input1').val().substr(0,$('#input1').val().length-1);
+			  $('#input1').attr("maxlength","5");
+			  $('#input1').val(d);			  
+			}else{
+				$('#input1').attr("maxlength","8");
+			}
+        })
+//	    var currYear = (new Date()).getFullYear();   
+//      var opt={};
+//      opt.date = {preset : 'date'};
+//      opt.datetime = {preset : 'datetime'};
+//      opt.time = {preset : 'time'};
+//      opt.default = {
+//          theme: 'android-ics light', //皮肤样式 
+//          display: 'modal', //显示方式 
+//          mode: 'scroller', //日期选择模式
+//          dateFormat: 'yyyy-mm-dd',
+//          lang: 'zh',
+//          showNow: true,
+//          
+//          startYear: currYear - 100, //开始年份
+//          endYear: currYear,  //结束年份
+//        
+//      };
+//      
+//      $("#appDate").mobiscroll($.extend(opt['date'], opt['default']));				
+//      var optDateTime = $.extend(opt['datetime'], opt['default']);
+//      var optTime = $.extend(opt['time'], opt['default']);
+//      $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
+//      $("#appTime").mobiscroll(optTime).time(optTime);
+		
+        var lat=localStorage.getItem("latitude");
+        var lon=localStorage.getItem("longitude");
+		var calendar = new datePicker();
+	var now = function(){
+		var d = new Date();
+		return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+	};
+calendar.init({
+	'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
+	'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+	'minDate':'1900-1-1',/*最小日期*/
+	'maxDate':now(),/*最大日期*/
+	'onSubmit':function(){/*确认时触发事件*/
+		var theSelectData=calendar.value;
+	},
+	'onClose':function(){/*取消时触发事件*/
+	}
+});
+		
+	});
+	</script>
+</body>
+</html>

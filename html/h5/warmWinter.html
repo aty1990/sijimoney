@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>暖冬福利</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 62.5%;
+            padding: 0;
+            margin:0;
+        }
+        html,body {
+            -ms-touch-action: none;
+            overflow: hidden;
+            height: 100%;
+            background: url("../../images/one-px.png");
+        }
+        .scroll-y{
+            overflow-y: auto;
+        }
+        .scroller{
+            background: url("../../images/nd-bg.png") no-repeat;
+            background-size: 100%;
+            padding-top: 70px;
+            display: none;
+            height: 100%;
+        }
+        .main-box{
+            -webkit-transition: all 1.6s ease;
+            transform: scale(0);
+        }
+        .content{
+            min-height: 250px;
+            width: 100%;
+            background: url("../../images/nd-introduce.png") center no-repeat;
+            background-size: 90%;
+            padding: 0 12%;
+            padding-top: 77px;
+            color:#fff;
+            font-size: 12px;
+            line-height: 19px;
+            text-align:justify;
+            text-indent: 2em;
+        }
+        .content img{
+            width: 90%;
+            margin-left: 5%;
+        }
+        .flex{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -o-flex;
+            display: flex;
+            flex-wrap:wrap;
+        }
+        .pd-1{
+            padding:1rem 0;
+        }
+        .nd-button{
+            width: 80%;
+            padding: 3rem 0;
+            background: url("../../images/nd-submit.png") center center no-repeat;
+            background-size: 100%;
+            text-align: center;
+            margin-left: 10%;
+            color:#fff;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .column{
+            flex-direction:column;
+            text-align: center;
+        }
+        .detail-bg,
+        .prove-bg,
+        .nd-prove-bg{
+            width: 100%;
+            min-height: 300px;
+            margin-left: 2%;
+            margin-top: -59px;
+            position: relative;
+        }
+        .detail-bg{
+            background: url("../../images/nd-detail-bg.png") center center no-repeat;
+            background-size: 90%;
+        }
+        .prove-bg{
+            margin-top: 0.5rem;
+            margin-left: 0;
+            background: url("../../images/nd-prove-big-bg.png") scroll 27% 51% no-repeat;
+            background-size: 90%;
+            margin-bottom: 20px;
+        }
+        .nd-prove-bg{
+            background: url("../../images/nd-prove-bg.png")  scroll 27% 51% no-repeat;
+            background-size: 90%;
+        }
+        .title{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            top:57px;
+            color:#FBD349;
+            left: 0;
+        }
+        .loading {
+            position: absolute;
+            background: #E9E9E8;
+            font: normal 12px/22px "Microsoft Yahei", "微软雅黑", "宋体";
+            display: none;
+            z-index: 1600;
+            background: rgba(233, 233, 232, 0);
+        }
+        .loading.active {
+            display: block;
+        }
+        .loading-mask {
+            background: rgba(0, 0, 0, 0.2);
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+        }
+        .loading-full {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .loading-container>.loading {
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loading-body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .loading-bar {
+            width: 240px;
+            min-height: 22px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27);
+            border-radius: 7px;
+            padding: 20px 15px;
+            font-size: 14px;
+            color: #999;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -140px;
+            margin-top: -30px;
+            word-break: break-all;
+        }
+
+        @-webkit-keyframes rotation{
+            from {-webkit-transform: rotate(0deg);}
+            to {-webkit-transform: rotate(360deg);}
+        }
+        .loading-icon {
+            width: 22px;
+            height: 22px;
+            vertical-align: middle;
+            -webkit-transform: rotate(360deg);
+            animation: rotation 3s linear infinite;
+            -moz-animation: rotation 3s linear infinite;
+            -webkit-animation: rotation 3s linear infinite;
+            -o-animation: rotation 3s linear infinite;
+        }
+        .loading-text {
+           font-size: 14px;
+           margin-left: 10px;
+        }
+        .prove-bg .title{
+            top:15px;
+        }
+        .table{
+            width: 70%;
+            margin-left: 25%;
+            position: absolute;
+            top:96px;
+        }
+        td{
+             font-size: 14px;
+             height:26px;
+             color:#E24556;
+        }
+        td:nth-child(1){
+            width: 82px;
+        }
+        .small-font{
+            font-size: 1rem;
+        }
+        .icon-box{
+            width: 80%;
+            margin-left: 10%;
+            position: absolute;
+            top:70px;
+            font-size: 1.9rem;
+            color:#E24556;
+            text-align: center;
+            font-weight: bold;
+        }
+        .text-left{
+            margin-top: 1.8rem;
+            text-align: left;
+            padding-left: 1.2rem;
+        }
+        .nd-btn{
+            padding: 12px 0;
+            width: 80%;
+            margin-left: 10%;
+            font-size: 1.6rem;
+            text-align: center;
+            color:#fff;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: -15px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .nd-normal-btn{
+            background: url("../../images/nd-normal-btn.png") center center no-repeat;
+            background-size: 100%;
+
+        }
+        .nd-disabled-btn{
+            background: url("../../images/nd-disabled-btn.png") center center no-repeat;
+            background-size: 100%;
+            opacity: 0.7;
+        }
+        .footer{
+            color:#Fff;
+            background: url("../../images/nd-footer.png") left bottom no-repeat;
+            background-size: 100%;
+            padding-left: 50px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+        }
+        .footer li{
+            font-size: 1.2rem;
+            padding: 4px 0;
+            line-height: 18px;
+        }
+        .agreement{
+            padding-bottom: 2rem;
+            color:#fff;
+            text-align: center;
+        }
+        .agreement .span{
+            display: block;
+            width: 60%;
+            background: red;
+            margin-left: 22%;
+            font-size: 1.4rem;
+            background: url("../../images/nd-hook.png") scroll 8% 74% no-repeat;
+            background-size: 1rem;
+        }
+        .bold-font{
+            font-weight: bold;
+            margin-left: -12px;
+            font-size: 14px;
+        }
+        .week-cls{
+            width: 55px;
+            text-align: center;
+            overflow: hidden;
+            font-size: 1.4rem;
+            background: #517128;
+            color:#fff;
+            height: 27px;
+            line-height: 27px;
+        }
+        .font-10{
+            font-size: 1.4rem;
+        }
+        .relative{
+            position: relative;
+            margin-bottom: 14px;
+            border-radius: 5px;
+            width: 28%;
+            margin-right: 5%;
+            -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, .5), 0 2px 3px rgba(0, 0, 0, .5);
+            -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, .5), 0 2px 3px rgba(0, 0, 0, .5);
+            -o-box-shadow: 0 2px 10px rgba(0, 0, 0, .5), 0 2px 3px rgba(0, 0, 0, .5);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .5), 0 2px 3px rgba(0, 0, 0, .5);
+            transform: scale(0);
+            transition: all 0.3s ease;
+            transform-origin:left top;    
+        }
+
+       
+        .file-btn{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            opacity: 0;
+        }
+        .delete-icon{
+            position: absolute;
+            right: -14px;
+            top:-14px;
+            width: 30px;
+            height: 30px;
+            background: url("../../images/ico_delete1@2x.png?v=3") no-repeat;
+            background-size: 30px;
+        }
+        .mgb-20{
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: 414px) {
+            .content{
+                font-size: 14px;
+                line-height: 24px;
+            }
+            .agreement .span{
+                background: url("../../images/nd-hook.png") scroll 6% 56% no-repeat;
+                background-size: 1rem;
+            }
+            .title{
+                top:65px;
+            }
+            .prove-bg .title{
+                top:23px;
+            }
+             .nd-prove-bg .title{
+                top:56px;
+            }
+            .detail-bg, .prove-bg {
+                min-height: 340px;
+            }
+
+            .nd-prove-bg .icon-box{
+                top:117px;
+            }
+            .scroller{
+               padding-top: 100px;
+            } 
+        }
+
+        @media screen and (max-width: 375px) {
+            .content{
+                font-size: 14px;
+                line-height: 22px;
+            }
+            .agreement .span{
+                background: url("../../images/nd-hook.png") scroll 6% 56% no-repeat;
+                background-size: 1rem;
+            }
+            .title{
+                top:56px;
+            }
+            .nd-prove-bg .title{
+                top:68px;
+            }
+            .prove-bg .title{
+                top:15px;
+            }
+            .detail-bg, .prove-bg {
+                min-height: 300px;
+            }
+
+            .nd-prove-bg .icon-box {
+                top: 120px;
+            }
+
+            .nd-prove-bg .text-left{
+                margin-top: 19px;
+            }
+            .scroller {
+              padding-top: 80px;
+            }
+        }
+        @media screen and (max-width: 360px) {
+            .content{
+                font-size: 14px;
+                line-height: 20px;
+            }
+            .title{
+                top:62px;
+            }
+            .prove-bg .title{
+                top:23px;
+            }
+            td{
+                 font-size: 14px;
+                 height:26px;
+            }
+            .agreement .span{
+                background: url("../../images/nd-hook.png") scroll 6% 35% no-repeat;
+                background-size: 10px;
+            }
+        }
+        @media screen and (max-width: 320px) {
+            .title{
+                top:68px;
+            }
+            .prove-bg .title{
+                top:33px;
+            }
+            .nd-prove-bg .title{
+                top:75px;
+            }
+            .content{
+                font-size: 12px;
+            }
+            td{
+                font-size: 12px;
+                height:22px;
+            }
+            td:nth-child(1){
+                width: 73px;
+            }
+            .agreement .span{
+                background: url("../../images/nd-hook.png") scroll 1% 64% no-repeat;
+                background-size: 1rem;
+            }
+            .icon-box {
+                top: 80px;
+                font-size: 12px;
+            }
+          
+            .nd-prove-bg .text-left{
+                margin-top: 12px;
+            }
+            .scroller {
+              padding-top:56px;
+            }
+        }
+        .nd-page .layui-m-layercont{
+            padding: 0;
+            font-size: 14px;
+        }
+        .hide{
+            display: none;
+        }
+        #clipArea {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left:0;
+            top: 0;
+            background: #000;
+            display: none;
+        }
+        .tool-footer{
+            position: absolute;
+            width: 100%;
+            height:40px;
+            bottom: 0;
+            left: 0;
+            background: #595959;
+            z-index: 999;
+        }
+        .tool-footer .btn{
+            width: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+
+        }
+        .ok-bg{
+            color:red;
+            position: relative;
+        }
+        .ok-bg:after{
+            content: "";
+            position: absolute;
+            left: 1px;
+            height: 20px;
+            width: 1px;
+            top:10px;
+            background: #fff;
+        }
+        .gray-bg{
+            color:#fff;
+        }
+        td b{
+            font-size: 16px;
+            margin-right: 2px;
+        }
+        .imgData{
+            width: 100%;
+            height: 100%;
+        }
+        canvas {
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+        .scale-1{
+            transform: scale(1);
+            -webkit-transform:scale(1);
+        }
+        .agreement span{
+            text-decoration: underline;
+        }
+        .upload-btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, .15)), to(rgba(0, 0, 0, .25))), -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, .1)), color-stop(0.501, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0)));
+            background: -moz-linear-gradient(top, rgba(255, 255, 255, .15), rgba(0, 0, 0, .25)), -moz-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+            background: linear-gradient(top, rgba(255, 255, 255, .15), rgba(0, 0, 0, .25)), linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+            z-index: -1;
+        } 
+        .upload-btn:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #666 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(4, 4);
+            opacity: 0;
+            transition: transform .3s, opacity .5s;  
+        }
+        .upload-btn:active:after {
+            transform: scale(0, 0);
+            opacity: .3;
+            transition: 0s;
+        }  
+    </style> 
+</head>
+
+<body class="nd-page scroll-y">
+    <div class="main-box">
+        <div id="scroller" class="scroller">
+            <div class="content">
+                为您送上「余额展期」和「免除逾期费用」暖冬福利。申请通过后，您的账单将自动结清，转成日费率最低至万分之五（0.05%）的新借款。不但帮您避免违约影响信用，而且大幅减轻还款压力。详情如下：
+            </div>
+
+            <div class="detail-bg">
+                <p class="title">活动详情</p>
+                <table class="table">
+                    <tr>
+                        <td>免除罚息:</td>
+                        <td><b id="deductAmount">0</b>元</td>
+                    </tr>
+                    <tr>
+                        <td>原应还金额:</td>
+                        <td><b id="allRepayment">0</b>元<span class="small-font">(审核通过后自动结清)</span></td>
+                    </tr>
+                    <tr>
+                        <td>新借款金额:</td>
+                        <td><b id="newLoanRepayment">0</b>元</td>
+                    </tr>
+                    <tr>
+                        <td>借款周期:</td>
+                        <td>
+                            <div class="flex">
+                                <span onclick="ndfl.reduce()"><img src="../../images/nd-reduce.png" width="28"/></span>
+                                <span class="week-cls"><span id="weeks" class="font-10 week-num ">4</span>周</span>
+                                <span onclick="ndfl.plus()"><img src="../../images/nd-plus.png" width="28" /></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>每周还款:</td>
+                        <td><b id="repayPerWeeks">0</b>元</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="nd-prove-bg">
+                <p class="title">工资流水证明</p>
+                <div class="icon-box">
+                    <p>申请「暖冬」活动需要您提供工资流水证明,请上传</p>
+                    <div class="text-left flex" id="preview">
+                        <div class="relative upload-btn">
+                           <img src="../../images/nd-upload-btn.png?v=3" width="100%" class="upload-btn" height="100%"/> 
+                           <input  id="file" class="file-btn" type="file" accept='image/*' />    
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="nd-btn  nd-normal-btn submit-btn">申请暖冬计划</div>
+            <div class="agreement"><span class="span">提交即同意借款服务协议</span></div>
+            <div class="footer">
+                <p class="bold-font">注意事项：</p>
+                <ol>
+                    <li>需要您提供三个月内清晰银行流水或工资证明，提供越多，越容易通过</li>
+                    <li>此活动需要审核，审核时间为xx天，请您耐心等待</li>
+                    <li>审核通过后，请按照上方的借款金额和周期按时还款</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div id="clipArea">
+        <div class="tool-footer flex">
+            <span class="btn gray-bg" id="cancel-btn">取消</span>
+            <span class="btn ok-bg" id="clipBtn">确定</span>
+        </div>
+    </div>
+    <div id="img-box" style="display: none"></div>
+    <script src="../../libs/js/jquery-2.1.3.min.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+    <script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+    <script src="../../js/common/loading.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/layer.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/iscroll-zoom.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/hammer.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/lrz.all.bundle.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery.photoClip.js?${project.javascript.version}"></script>
+
+    <script type="text/javascript">
+        // 定义暖冬福利对象
+        var Ndfl = function() {
+            this.num = $(".week-num");
+            this.layerObj = "";
+            this.repayPerWeeks = [];
+            this.weeks = [];
+            this.pos = 0;
+        }
+        // 页面js入口
+        Ndfl.prototype.init = function() {
+            var _self = this;
+            this.initLoading();
+            this.initData();    
+            // 删除图片
+            $("body").on("click",".delete-icon",function(){
+                $(this).parent().remove();
+                if(preview.find("img").length==3){
+                    $(".prove-bg").addClass('nd-prove-bg').removeClass("prove-bg");
+                }
+                if(maxLen==preview.find("img").length){
+                     $(".upload-btn").show().next().show();
+                }
+            });
+            // 点击大图关闭遮罩层
+            $("body").on("click",".layui-m-layercont",function(){
+                layer.close(_self.layerObj)
+            });
+            // 提交申请
+            $("body").on("touchstart",".submit-btn",function(){
+                _self.submit();
+            });
+            // 取消裁剪
+            $("body").on("click","#cancel-btn",function(){
+                $("#clipArea").hide();
+            });
+
+            // 点击图片查看大图
+            $("body").on("click",".imgData",function(){
+                _self.zoom(this);
+            });
+
+            // 查看协议
+            $("body").on("click",".agreement span",function(){
+                location.href = constans.htmlUrl + "/html/home/hetong.html";
+            });
+
+        }
+        // 初始化页面加载效果
+        Ndfl.prototype.initLoading = function() {
+            var M = Math,
+            PI = M.PI,
+            TWOPI = PI * 2,
+            HALFPI = PI / 2,
+            canvas = document.createElement( 'canvas'),
+            ctx = canvas.getContext( '2d' ),
+            width = canvas.width = 350,
+            height = canvas.height = 350,
+            cx = width / 2,
+            cy = height / 2,
+            count = 20,
+            sizeBase = 0.1,
+            sizeDiv = 5,
+            tick = 0;
+
+            ctx.translate( cx, cy );
+
+            (function loop() {
+              requestAnimationFrame( loop );  
+              ctx.clearRect( -width / 2, -height / 2, width, height );
+              ctx.fillStyle = '#fff';  
+              var angle = tick / 7,
+                  radius = -20 + M.sin( tick / 50 ) * 1,
+                  size;
+              
+              for( var i = 0; i < count; i++ ) {
+                angle += PI / 64;
+                radius += i / 30;
+                size = sizeBase + i / sizeDiv;
+                
+                ctx.beginPath();
+                ctx.arc( M.cos( angle ) * radius, M.sin( angle ) * radius, size, 0, TWOPI, false );
+                ctx.fillStyle = 'hsl(200, 70%, 50%)';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc( M.cos( angle ) * -radius, M.sin( angle ) * -radius, size, 0, TWOPI, false );
+                ctx.fillStyle = 'hsl(320, 70%, 50%)';
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc( M.cos( angle + HALFPI ) * radius, M.sin( angle + HALFPI ) * radius, size, 0, TWOPI, false );
+                ctx.fillStyle = 'hsl(160, 70%, 50%)';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc( M.cos( angle + HALFPI ) * -radius, M.sin( angle + HALFPI ) * -radius, size, 0, TWOPI );
+                ctx.fillStyle = 'hsl(0, 0%, 100%)';
+                ctx.fill();
+              }
+              tick++;
+            })();
+
+            document.body.appendChild( canvas );
+        }
+        // 初始化数据
+        Ndfl.prototype.initData = function() {
+            var _this = this;
+            $.ajax({
+                url: constans.serviceUrl + '/extend/pageDetail',
+                type: "post",
+                async: true,
+                data: {},
+                headers: {    
+                    loginTerm: "wx" ,
+                    rand: Math.round(Math.random() * 89999) + 10000,
+                    accessToken: constans.accessToken,
+                    jhVer: "2.0"
+                },
+                success: function(data) {
+                    if(data.code=="200"){
+                        $("#deductAmount").html(data.body.deductAmount);
+                        $("#allRepayment").html(data.body.allRepayment);
+                        $("#newLoanRepayment").html(data.body.newLoanRepayment);
+                        $("#newLoanRepayment").html(data.body.newLoanRepayment);
+                        _this.repayPerWeeks = data.body.repayPerWeeks;
+                        _this.weeks = data.body.weeks;
+
+                        // 是否已申请
+                        if(data.body.isApply=="0"){
+                            $("#weeks").html(data.body.weeks[0]);
+                            $("#repayPerWeeks").html(data.body.repayPerWeeks[0]);
+                            $(".nd-btn").removeClass("nd-normal-btn submit-btn").addClass('nd-disabled-btn').html("审核中");
+                        }
+
+                        if(data.body.isApply=="1"){
+                            $("#weeks").html(data.body.applyPeriod!="4"?data.body.applyPeriod:data.body.weeks[0]);
+                            $("#repayPerWeeks").html(data.body.applyAmount!="4"?data.body.applyAmount:data.body.repayPerWeeks[0]);
+                        }
+
+                        setTimeout(function(){
+                            $("canvas").remove();
+                            $(".relative").addClass('scale-1');
+                            $("#scroller").show(function(){
+                                $(this).parent().addClass('scale-1');
+                            });
+                        },1000)
+                        
+                    }else{
+                        layer.open({
+                            content: data.msg
+                            ,skin: 'msg'
+                            ,time: 4 //4秒后自动关闭
+                        });
+                    }
+                }
+            })
+        }
+        // 提交
+        Ndfl.prototype.submit = function() {
+            var images = preview.find("img.imgData");
+            var formData = new FormData();
+            var base64Arr = [];
+
+            images.each(function(index, el) {
+                var base64str = $(el).attr("data-src");
+                base64Arr.push(base64str.slice(base64str.indexOf(",")+1));
+            });
+
+            formData.append('base64', base64Arr); 
+            if(images.length == 0){
+                layer.open({
+                    content: "请上传工资流水证明"
+                    ,skin: 'msg'
+                    ,time: 4 //4秒后自动关闭
+                });
+                return;
+            }
+            formData.append("applyAmount", $("#allRepayment").html());
+            formData.append("applyPeriod", $("#weeks").html());
+            formData.append("remark", "");
+            $.ajax({
+                url: constans.serviceUrl + '/extend/audit',
+                type: "post",
+                async: true,
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {    
+                    loginTerm: "wx" ,
+                    rand: Math.round(Math.random() * 89999) + 10000,
+                    accessToken: constans.accessToken,
+                    jhVer: "2.0"
+                },
+                beforeSend: function() {
+                    $("body").Loading({
+                        text:"提交资料中"
+                    });
+                },
+                complete: function() {
+                    $("body").Loading("hide");
+                },
+                success: function(data) {
+                    if(data.code=="200"){
+                        $(".nd-btn").removeClass("submit-btn nd-normal-btn").addClass('nd-disabled-btn').html("审核中");
+                        $(".delete-icon").remove();
+                        layer.open({
+                            content: data.msg
+                            ,skin: 'msg'
+                            ,time: 4 //4秒后自动关闭
+                        });
+                    }else{
+                        layer.open({
+                            content: data.msg
+                            ,skin: 'msg'
+                            ,time: 4 //4秒后自动关闭
+                        });
+                    }
+                }
+            })
+        }
+        // 查看大图
+        Ndfl.prototype.zoom = function(obj) {
+            var _self = this;
+            $("body").Loading({text:"图片加载中..."});
+            var newImg = $("<img src='"+$(obj).attr('src')+"' width='100%'>");
+            $("#img-box").html(newImg);
+            _self.layerObj = layer.open({
+              content: $("#img-box").html()
+              ,style: 'background:none;width:100%'
+              ,success:function(){
+                 $("body").Loading('hide');
+              }
+            });
+        }
+        // 周期加
+        Ndfl.prototype.plus = function() {
+            var _self = this;
+            if(this.num.html()==_self.weeks[_self.weeks.length-1])return;
+            _self.pos ++;
+            this.num.html(Math.floor(_self.weeks[_self.pos]));
+            $("#repayPerWeeks").html(_self.repayPerWeeks[_self.pos]);
+        }
+        // 周期减
+        Ndfl.prototype.reduce = function() {
+            var _self = this;
+            if(this.num.html()==_self.weeks[0])return;
+            _self.pos --;
+            this.num.html(Math.floor(_self.weeks[_self.pos]));
+            $("#repayPerWeeks").html(_self.repayPerWeeks[_self.pos]);
+        }
+        var ndfl = "";
+        // 上传图片最大张数
+        var maxLen = 6;
+        // 获取图片容器dom
+        var preview = $("#preview");
+
+        window.onload = function(){
+            ndfl = new Ndfl();
+            ndfl.init();
+        }
+        // 每张图片的文件流
+        var fileStream = "";
+        // 初始化图片裁剪功能
+        new bjj.PhotoClip("#clipArea", {
+            size: [300, 300],
+            file: "#file",
+            ok: "#clipBtn",
+            loadStart: function(files) {
+                $("body").Loading({
+                    text:"照片读取中，请稍等..."
+                });
+                var fileReader = new FileReader();
+                // 读取原文件对象
+                fileReader.onload = function(e) {
+                    var image = new Image();
+                    image.onload=function(){
+                        var width = image.width;
+                        var height = image.height;
+                        // 压缩图片
+                        lrz(files,{width:width>800?800:width})
+                        .then(function (rst) {
+                            fileStream = rst.base64;
+                        })
+                        .catch(function (err) {
+                            // 处理失败会执行
+                            layer.open({
+                                content: "图片处理失败"
+                                ,skin: 'msg'
+                                ,time: 4 //4秒后自动关闭
+                            });
+                        });
+                    };
+                    image.src= e.target.result;
+                };
+                fileReader.readAsDataURL(files); // 读取文件内容
+            },
+            loadComplete: function() {
+                $("body").Loading("hide");
+                $("#clipArea").show();
+            },
+            clipFinish: function(dataURL) {
+                $("#clipArea").hide();
+                if(preview.find("img").length==maxLen){
+                    $(".upload-btn").hide().next().hide();
+                }
+                var imgDom = $("<div class='relative'><span class='delete-icon'></span><img class='imgData' src='"+dataURL+"' data-src='"+fileStream+"'></div>");
+                $("body").Loading("hide");
+
+                if(preview.find("img").length==3){
+                    $(".nd-prove-bg").addClass("prove-bg").removeClass('nd-prove-bg');
+                }
+                setTimeout(function(){imgDom.addClass('scale-1') },300)
+                preview.prepend(imgDom);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

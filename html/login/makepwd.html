@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>修改登录密码</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/user/login.css" />
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+    <style>
+    	body{
+    		background: #fafafa;
+    	}
+    	.input{
+    		background: #fff;
+    		padding: 10px 10px;
+    		
+    	}
+    </style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>修改登录密码</p>
+		</header>
+		<div class="input" style="margin-top: 10px;">
+			<p style="width: 25%;">原密码</p>
+			<input type="password" id="password1" class="newpwd input_p" style="width: 70%;" placeholder="请输入原密码" />
+			<div class="close">
+				<img src="../../images/ico_delete@2x.png" style="width: 20px;" />
+			</div>
+			<div class="pwd_show pwd1" >
+				<img src="../../images/ico_hide@2x.png" />
+			</div>
+		</div>
+		<div class="input login_input" >
+			<p style="width: 25%;">新密码</p>
+			<input type="password" id="password2" class="sure_newpwd input_p" style="width: 70%;" placeholder="请输入新密码" />
+			<div class="close">
+				<img src="../../images/ico_delete@2x.png" style="width: 20px;" />
+			</div>
+			<div class="pwd_show pwd2" >
+				<img src="../../images/ico_hide@2x.png" />
+			</div>
+		</div>
+		<div class="input login_input" >
+			<p style="width: 25%;">确认密码</p>
+			<input type="password" id="password3" class="sure_newpwd input_p" style="width: 70%;" placeholder="请输入新密码" />
+			<div class="close">
+				<img src="../../images/ico_delete@2x.png" style="width: 20px;" />
+			</div>
+			<div class="pwd_show pwd3" >
+				<img src="../../images/ico_hide@2x.png" />
+			</div>
+		</div>
+		<p style="color: #888;margin-left: 10px;font-size: 12px;margin-top: 10px;">登录密码需为6-20位数字、字母或特殊字符</p>
+		<div class="button" >
+			<input type="button" disabled class="login_style sure_pwd" value="确定"/>
+		</div>	
+		<div id="mode"></div>
+	</body>
+	
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+    
+	<script type="text/javascript" src="../../libs/js/md5.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../js/login/makepwd.js?${project.javascript.version}"></script>
+</html>

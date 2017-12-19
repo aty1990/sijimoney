@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>邀请列表</title>
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+	<style>
+		.show_invite{
+			text-align: center;
+			margin: 60px 0;				
+		}
+		.invitelist{
+			background: #fff;
+			width: 100%;
+			margin-top: 10px;
+		}
+		.invitelist ul{
+			display: inline-block;
+			border-bottom: 1px solid #D9D9D9;			
+			width: 100%;
+		}
+		.invitelist li{			
+			height:50px;
+			margin-top: 5px;			
+			
+			float: left;
+			text-align: left;
+			font-size:14px;
+		}
+		.color1{
+		   font-size:12px;
+		}
+		.wx{
+			width: 220px;
+			height: 300px;		
+			background: #fff;
+			background-size:100% 100% ;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			z-index: 22;
+			text-align: center;
+			display: none;
+		}
+		.shares{
+			width: 100%;
+			height: 220px;		
+			position: fixed;
+			top: 0;
+            left:0;			
+			z-index: 22;		
+			text-align: center;
+			display: none;
+		}
+		.shares img{
+		    margin-top:10px;
+		    width:100%;
+		}
+		#id{
+			position: fixed;
+			top: 80%;
+			left: 75%;
+			width: 60px;
+			height: 60px;
+			border-radius: 60px;
+			z-index:999;
+		}
+		.logo1{
+			position: absolute;		
+			left: 20px;
+			top: 7px;
+		}
+		.logo2{
+			position: absolute;
+			z-index: 99;
+			left: 40px;
+			top: 80px;
+		}
+	</style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>邀请列表</p>
+		</header>		
+		<div class="invitelist" style="background: #fff;">
+		    <script id="invite" type="text/html">	
+			{{each body.data as tem i}}
+				<ul>
+					{{if tem.userIcon ==''}} 
+					<li style="width: 20%;">
+						<div style="width: 40px;height: 40px; margin-left: 15px;border-radius: 60px;overflow: hidden;">
+							<img src="../../images/def_portrait@2x.png" style="width:40px;"/>
+						</div>
+						
+					</li>
+					{{else}}
+					<li style="width: 20%;">
+						<div style="width: 40px;height: 40px; margin-left: 15px;border-radius: 60px;overflow: hidden;">
+						   <img src="{{tem.userIcon}}" style="width:40px;"/>
+						</div>
+					</li>
+					{{/if}}
+					<li style="width: 30%;">
+						<p>{{tem.phoneNo}}</p>
+						{{if tem.withdrawTime == ''}} 
+						<p class="color1" style="margin-top: 5px;">未成功借款</p>
+						{{else}}
+						<p class="color1" style="margin-top: 5px;color:#4990E2;">已成功借款</p>
+						{{/if}}
+					</li>
+					{{if tem.reloan == '0'}} 
+					<li style="width: 25%;">
+						<p>首次借款</p>
+					</li>
+					{{/if}}
+					{{if tem.reloan == '1'}} 
+					<li style="width: 25%;">
+						<p>非首次借款</p>
+					</li>
+					{{/if}}
+					{{if tem.withdrawTime != ''}} 
+					<li style="width: 25%;" >
+						<p>提现时间</p>
+						<p class="color1" style="margin-top: 5px;">{{tem.withdrawTime}}</p>
+					</li>
+					{{/if}}
+				</ul>
+			{{/each}}
+			</script>
+		</div>
+		<div id="id">
+			<img src="../../images/btn_gift@2x.png" style="width: 100%;"/>		
+		</div>
+		<div class="wx">
+			
+			<p style="margin-top: 90px;color:#333;font-size:12px;margin-left:25px;writing-mode:tb-rl;float: left;">添加小秘书微信获取奖励哦</p>	
+			<img src="../../images/niao_body@2x.png" style="width: 180px;" class="logo1"/>
+			<img src="../../images/niao_hand@2x.png" style="width: 60px;" class="logo2"/>
+			<div id="qrcode" style="width: 150px;position:absolute;left:60px;height: 150px;background: #fff;top:80px;border-radius: 10px;border: 1px solid #D9D9D9;">
+					
+				<img src="../../images/erweima@2x.png" style="width: 140px;margin-top: 5px;" class="logo"/>
+				
+			</div>
+			
+			
+		</div>
+		<div class="shares"><img src="../../images/wxshares.png"/></div>
+		<div id="mode"></div>
+		<div id="mode2"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>	
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/user/invitelist.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script>
+		$("#id").on("click",function(ev){
+			$('#mode2').show()
+	      $('.wx').show()
+	    })
+	  $("#mode2").on("click",function(ev){
+			$('#mode2').hide()
+	      $('.wx').hide()
+	    })
+	 var box = document.getElementById('id');
+        var winWidth = window.innerWidth;
+        var winHeight = window.innerHeight;
+        var endTouchY = 0;
+        var endTouchX = 0;
+//	 $(window).scroll(function ()
+//	 {	
+//		var st = $(this).scrollTop();
+//      box.addEventListener('touchstart',function(ev){
+//      	
+//          this.addEventListener('touchmove', function(ev){
+//              ev.preventDefault();
+//              var ev = ev.touches[0];
+//              box.style.top = (ev.pageY-35-st)+'px';
+//              box.style.left = (ev.pageX-35)+'px';
+//              endTouchX = ev.pageX;
+//              endTouchY = ev.pageY;
+//          },false);
+//          this.addEventListener('touchend', function(ev){
+//              this.ontouchmove = null;
+//              this.ontouchend = null;
+//              var x = (endTouchX-35)>0?(endTouchX-35):0;
+//              var y = (endTouchY-35)>0?(endTouchY-35-st):0;
+//              x = (x>(winWidth-70))?(winWidth-70):x;
+//              y = (y>(winHeight-70))?(winHeight-70):y;
+//              box.style.left = x + 'px';
+//              box.style.top = y + 'px';
+//          },false);
+//      },false);  		
+//		console.log(st);
+//	 });
+//      box.addEventListener('touchstart',function(ev){
+//      	 
+//          this.addEventListener('touchmove', function(ev){
+//              ev.preventDefault();
+//              var ev = ev.touches[0];
+//              box.style.top = (ev.pageY-35)+'px';
+//              box.style.left = (ev.pageX-35)+'px';
+//              endTouchX = ev.pageX;
+//              endTouchY = ev.pageY;
+//          },false);
+//          this.addEventListener('touchend', function(ev){            	
+//              this.ontouchmove = null;
+//              this.ontouchend = null;
+//              var x = (endTouchX-35)>0?(endTouchX-35):0;
+//              var y = (endTouchY-35)>0?(endTouchY-35):0; 
+//              console.log( endTouchX)
+//              x = (x>(winWidth-70))?(winWidth-70):x;
+//              y = (y>(winHeight-70))?(winHeight-70):y;
+//              box.style.left = x + 'px';
+//              box.style.top = y + 'px';
+//             
+//          },false);
+//          
+//      },false);
+
+    var _x_start,_y_start,_x_move,_y_move,_x_end,_y_end,left_start,top_start;
+    $(window).scroll(function ()
+	    {	
+		  var st = $(this).scrollTop();
+		  document.getElementById("id").addEventListener("touchstart",function(e)
+        {
+
+            _x_start=e.touches[0].pageX;
+            _y_start=e.touches[0].pageY;
+            // console.log("start",_x_start)
+            left_start=$("#id").css("left");
+            top_start=$("#id").css("top");
+
+        })
+        document.getElementById("id").addEventListener("touchmove",function(e)
+        {
+            _x_move=e.touches[0].pageX;
+            _y_move=e.touches[0].pageY;
+            // console.log("move",_x_move)
+            $("#id").css("left",parseFloat(_x_move)-parseFloat(_x_start)+parseFloat(left_start)+"px");
+            $("#id").css("top",parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start)+"px");
+        //    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
+         $('body').on('touchmove', function (event) {event.preventDefault();});
+        })
+        document.getElementById("id").addEventListener("touchend",function(e)
+        {
+            var _x_end=e.changedTouches[0].pageX;
+            var _y_end=e.changedTouches[0].pageY;
+            // console.log("end",_x_end)
+              if(_x_end>$(window).width()){
+             	 $("#id").css("left",$(window).width()-90+'px')
+             }
+             if(_x_end<0){
+             	 $("#id").css("left",'10px')
+             }
+//           if(_y_end>$(window).height()){
+//           	 $("#id").css("top",'80%')
+//           }
+//           if(_y_end<0){
+//           	 $("#id").css("top",'10px')
+//           }
+             $("body").unbind("touchmove");
+        })
+	})
+        document.getElementById("id").addEventListener("touchstart",function(e)
+        {
+
+            _x_start=e.touches[0].pageX;
+            _y_start=e.touches[0].pageY;
+            // console.log("start",_x_start)
+            left_start=$("#id").css("left");
+            top_start=$("#id").css("top");
+
+        })
+        document.getElementById("id").addEventListener("touchmove",function(e)
+        {
+            _x_move=e.touches[0].pageX;
+            _y_move=e.touches[0].pageY;
+            // console.log("move",_x_move)
+            $("#id").css("left",parseFloat(_x_move)-parseFloat(_x_start)+parseFloat(left_start)+"px");
+            $("#id").css("top",parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start)+"px");
+        //    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
+            $('body').on('touchmove', function (event) {event.preventDefault();});
+        })
+        document.getElementById("id").addEventListener("touchend",function(e)
+        {
+            var _x_end=e.changedTouches[0].pageX;
+            var _y_end=e.changedTouches[0].pageY;
+            // console.log("end",_x_end)
+             if(_x_end>$(window).width()){
+             	 $("#id").css("left",$(window).width()-90+'px')
+             }
+             if(_x_end<0){
+             	 $("#id").css("left",'10px')
+             }
+//           if(_y_end>$(window).height()){
+//           	 $("#id").css("top",'80%')
+//           }
+//           if(_y_end<0){
+//           	 $("#id").css("top",'10px')
+//           }
+             $("body").unbind("touchmove");
+        })
+	</script>
+</html>

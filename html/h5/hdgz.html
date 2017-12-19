@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动规则</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        html {
+            -ms-touch-action: none;
+        }
+        
+        body,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+        
+        body {
+            font-size: 12px;
+            font-family: ubuntu, helvetica, arial;
+            overflow: hidden;
+        }
+        
+        #wrapper {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #scroller {
+            position: absolute;
+            z-index: 1;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            width: 100%;
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -o-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            -o-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+        
+        #content {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body onload="hdgz.initData()">
+    <div id="wrapper">
+        <div id="scroller">
+            <div id="content"></div>
+        </div>
+    </div>
+    <script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+    <script src="../../js/common/loading.js?${project.javascript.version}"></script>
+    <script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/iscroll-probe.js?${project.javascript.version}"></script>
+    <script src="../../libs/js/layer.js?${project.javascript.version}"></script>
+    <script type="text/javascript">
+        var Hdgz = function() {}
+        Hdgz.prototype.initPage = function() {
+            myScroll = new IScroll('#wrapper', {
+                probeType: 3,
+                mouseWheel: true
+            });
+        }
+        Hdgz.prototype.initData = function() {
+            var _this = this;
+            var params = this.getUrlParams();
+            $.ajax({
+                url: constans.serviceUrl + "/v2/invitations",
+                type: "post",
+                beforeSend: function() {
+                    $("body").Loading("show");
+                },
+                complete: function() {
+                    $("body").Loading("hide");
+                },
+                headers: {    
+                    loginTerm: params.term,
+                    accessToken: params.accessToken,
+                    jhVer: "2.0",
+                    rand: Math.round(Math.random() * 89999) + 10000,
+                },
+                success: function(res) {
+                    $("#content").html(res.body.actRule);
+                    _this.initPage();
+                }
+            })
+        }
+
+        Hdgz.prototype.getUrlParams = function() {
+            var name, value;
+            var str = location.href; //取得整个地址栏
+            var num = str.indexOf("?")
+            str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
+            var result = {};
+            var arr = str.split("&"); //各个参数放到数组里
+            arr.forEach(function(element, index) {
+                var el = element.split('=');
+                result[el[0]] = el[1];
+            });
+            return result;
+        }
+        var hdgz = new Hdgz();
+    </script>
+</body>
+
+</html>

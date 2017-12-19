@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>飞鸟贷</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/swiper.min.css" />
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<style>
+		#swiper-container2 .swiper-slide {
+			width: 18%;
+		}
+		
+		.fail_title {
+			margin: 10px;
+			color: #585657;
+			font-weight: 700;
+		}
+		
+		.tail_dl {
+			width: 100%;
+			background: #eee;
+			border-radius: 5px;
+			text-align: center;
+			height: 100px;
+		}
+		
+		.tail_dt img {
+			width: 60%;
+			margin-top: 10px;
+			height: 40px;
+		}
+		
+		#swiper-container2 .swiper-slide {
+			margin-left: 10px;
+		}
+		
+		.tail_dd {
+			margin-top: 10px;
+			font-size: 12px;
+			overflow: hidden;
+		}
+		
+		.fail_swiper {
+			background: #fff;
+		}
+		
+		#swiper-container2 .swiper-wrapper {
+			margin: 10px;
+		}
+		
+		.fail_top {
+			border-bottom: 1px solid #f1f1f1;
+			padding: 10px;
+			height: 40px;
+		}
+		
+		.fail_top img {
+			height: 20px;
+			width: 20px;
+		}
+		
+		.fail_product {
+			margin-left: 10px;
+			display: block;
+			margin-top: 10px;
+			background: #fff;
+			height: 120px;
+		}
+		
+		.fail_num {
+			float: right;
+			font-size: 12px;
+			color: #a3a3a3;
+			margin-top: 5px;
+			display: flex;
+		}
+		
+		.place {
+			margin: 5px;
+			font-size:14px ;
+		}
+		
+		.fail_mon {
+			font-size: 20px;
+			margin-top: 10px;
+			color: #e04c72;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		
+		.fail_pa {
+			font-size: 14px;
+			color: #585657;
+		}
+		
+		.fail_bottomleft {
+			margin-left: 15px;
+			margin-top: 10px;
+			text-align: center;
+			width: 35%;
+			float: left;
+			border-right: 1px solid #f1f1f1;
+		}
+		
+		.fail_bottomright {
+			width: 50%;
+			float: left;
+			color: #a3a3a3;
+			margin-top: 15px;
+			text-align: center;
+			font-size: 12px;
+		}
+		
+		.fail_qishu {
+			margin-top: 10px;
+		}
+		
+		.fail_jiantou {
+			float: right;
+			margin-top: 25px;
+			margin-right: 10px;
+		}
+		
+		.fail_jiantou img {
+			height: 25px;
+		}
+		
+		#swiper-container1 .swiper-slide img {
+			width: 100%;
+		}
+		
+		.smallHorn {
+			font-size: 12px;
+			color: #585657;
+		}
+		.fail_name{overflow:hidden;width: 50px;line-height:20px;text-align:center;font-size:12px;height: 20px;border-radius:10px;border: 1px solid #e04c72;float: left;color:#e04c72;}
+		.tail_dd2{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+	</style>
+
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>飞鸟贷</p>
+		</header>
+		<div class="fail_tuijian" style="width: 100%;">
+			<div class="swiper-container" id="swiper-container1" style="width: 100%;height: 146px;">
+				<div class="swiper-wrapper banner" style="width: 100%;">
+					<script id="homefail" type="text/html">
+						{{each body.bannerList as lt i}}
+						<div class="swiper-slide">
+							<a href="{{lt.bannerLinkUrl}}">
+								<img src="{{lt.bannerPicUrl}}" style="height: 100%;"/>
+							</a>
+						</div>
+						{{/each}}
+					</script>
+				</div>
+
+			</div>
+			<div style="line-height:30px;background:#fff;width:100%;text-align:left;font-size:14px;">
+				<img src="../../images/homelaba.png" style="height:16px;margin-left:5px;" />
+				<span class="smallHorn">据统计，申请三个以上口子的用户，90%都能成功下款</span>
+			</div>
+			<p class="fail_title">新品上线</p>
+			<div class="fail_swiper">
+				<div class="swiper-container" id="swiper-container2">
+					<div class="swiper-wrapper banner1">
+						<script id="homefail2" type="text/html">
+							{{each body.actityList as lt i}}
+							<div class="swiper-slide hot" name="{{lt.channelId}}">
+								<dl class="tail_dl">
+									<dt class="tail_dt">
+										<a href="{{lt.channelApplyUrl}}">
+											<img src="{{lt.channelPicUrl}}" />
+										</a>
+									</dt>
+									<dd class="tail_dd">
+										<p class="tail_dd1" style="font-size: 12px;">{{lt.channelName.slice(0,4)}}</p>	
+										<p class="tail_dd2" style="font-size: 10px;">{{lt.channelRemark.slice(0,6)}}</p>
+									</dd>
+								</dl>
+							</div>
+							{{/each}}
+						</script>
+					</div>
+
+				</div>
+			</div>
+			<p class="fail_title">热门推荐</p>
+			<div class="access">
+				<script id="homefail1" type="text/html">
+					{{each body.pages.data as lt i}}
+					<a href="{{lt.channelApplyUrl}}" class="fail_product" name="{{lt.channelId}}">
+						<div class="fail_top">
+							<p style="float: left;">
+								<img src="{{lt.channelPicUrl}}" />
+							    <span class="place">{{lt.channelName.slice(0,4)}}</span>
+							</p>
+							{{if lt.channelTarget.indexOf("|") >= 0}}
+							   <p class="fail_name">{{lt.channelTarget.split("|")[0]}}</p>
+							   <p class="fail_name" style="margin-left: 3px;">{{lt.channelTarget.split("|")[1]}}</p>
+							   {{else}}
+							   <p class="fail_name">{{lt.channelTarget}}</p>
+							{{/if}}
+							<span class="fail_num">已有 <span class="pink">{{lt.loanPeople}}</span>人放款</span>
+						</div>
+						<div class="fail_bottomleft">
+							<p class="fail_pa">最高额度（元）</p>
+							<p class="pink fail_mon">{{lt.channelLoan}}</p>
+						</div>
+						<div class="fail_bottomright">
+							<p class="fail_word">{{lt.channelRemark}}</p>
+							<p class="fail_qishu">借款周期：<span>{{lt.channelLoanCycle}}</span></p>
+
+						</div>
+						<div class="fail_jiantou">
+							<img src="../../images/failjiantou.png" />
+						</div>
+					</a>
+					{{/each}}
+				</script>
+			</div>
+		</div>
+		<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/swiper.min.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/home/fail.js?${project.javascript.version}"></script>
+	<script>
+	</script>
+
+</html>

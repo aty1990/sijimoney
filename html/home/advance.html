@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>提前还款</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css"/>
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css"/>
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+	
+		
+		.weui_cell{
+			background: #fff;
+			line-height: 30px;
+		}
+		
+		.select_up{
+			position: fixed;
+			bottom: 0; 
+			width: 100%;
+			display: none;
+			background: #fff;
+			z-index: 99999;
+		}
+		#mode_up{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top:0;
+			background: rgba(0,0,0,0.5);
+			display: none;
+		}
+		.jieqing{
+			display: none;
+		}
+		.zuidi{
+			display: none;
+		}
+		.weui_check1 {
+			position: absolute;
+			left: -9999em;
+		}		
+		.weui_cells_radio .weui_check1:checked+.weui_icon_checked:before {
+			display: block;
+			position: absolute;
+			right: 5px;
+			top: 10px;
+			content: '\EA08';
+			color: rgb(74,144,226);
+			font-size: 20px;
+		}
+		.weui_cells {
+              margin-top:0;
+        }
+        input[disabled]{
+        
+        }
+        .bg .weui_cell_ft:after {
+        	border-color: #fff;
+        }
+         .word{font-size: 10px;margin-left: 10px;}		  
+	</style>
+	<body>
+		<header style="background: #fff;">
+			<div style="float: left;" class="usera">
+				<a href="javascript:history.go(-1)">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>提前还款</p>
+		</header>
+      <div class="weui_cells_access" style="margin-bottom: 50px;overflow: hidden;">	
+      	<div class="foc">
+			<a class="weui_cell bg" style="line-height:20px;padding: 5px 15px;">
+				<div class="weui_cell_hd" style="width: 44px;height: 44px;border-radius: 44px;background: #fff;text-align: center;">
+					<img src=""  class="bank_img bankimg" style="width: 44px;"/>
+				</div>
+				<div class="weui_cell_bd weui_cell_primary" style="color:#fff ;margin-left: 10px;" >
+					<p class="bank bank1" style="font-size: 14px;"></p>
+					<p style="font-size: 12px;margin-top: 5px;">尾号<span class="cardnum num"></span></p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+            <a class="weui_cell yinghuan" style="font-size: 14px;line-height:24px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 16px;color: #999;">应还金额</p>					
+				</div>
+				<div class="yinghuan1" style="font-size: 16px;">0.00</div>
+			</a>			
+			<a class="weui_cell" style="font-size: 14px;line-height:24px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;color: #999;">含本金</p>					
+				</div>
+				<div class="color1 benjin" >0.00</div>
+			</a>
+			<a class="weui_cell" style="font-size: 14px;line-height:24px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;color: #999;">含综合服务费</p>					
+				</div>
+				<div class="color1 fuwu">0.00</div>
+			</a>
+			<a class="weui_cell" style="font-size: 14px;line-height:24px;">				
+				<div class="weui_cell_bd weui_cell_primary">
+					<p style="font-size: 14px;color: #999;">含逾期费用</p>					
+				</div>
+				<div class="color1 yuqi">0.00</div>
+			</a>
+			</div>
+			<div class="blur">
+				<a class="weui_cell" style="margin-top: 10px;border-top:0;">				
+					<div class="weui_cell_bd weui_cell_primary">
+						<p style="font-size: 17px;float: left;width: 30%;">还款金额</p>
+						
+						<input type="number" placeholder="最高还款xxx元" class="money input_p blue"  style="width:45%;float: left;font-size:17px;line-height: 30px;background:#fff;"/>
+						<input type="number"  class="money1 input_p blue"   value="" style="background:#fff;display:block;line-height: 30px;text-align: right;font-size:17px;width:25%;"/>
+					    <input type="number"  class="money2 input_p blue" disabled="disabled"  value="" style="background:#fff;display:none;line-height: 30px;text-align: right;font-size:17px;width:25%;"/>
+					</div>				
+				</a>			
+				<a class="weui_cell jieqing">				
+					<div class="weui_cell_bd weui_cell_primary" style="white-space:nowrap; ">
+						<p class="blue" style="width: 20%;font-size: 13px;float: left;">全部结清</p>
+						<p class="blue" style="margin-left: 10px;line-height: 30px;font-size: 13px;"><span class="jieqing1"></span>元<span class="color1" style="font-size: 13px;">（=所有未还账单金额+逾期金额）</span></p>
+					</div>
+					
+				</a>
+				<a class="weui_cell zuidi" >				
+					<div class="weui_cell_bd weui_cell_primary">
+						<p class="blue" style="width: 20%;font-size: 13px;float: left;">最低还款</p>
+						<p class="blue" style="margin-left: 10px;line-height: 30px;font-size: 13px;"><span class="zuidi1"></span>元<span class="color1" style="font-size: 13px;">（=逾期金额或最低还款额）</span></p>
+					</div>
+					
+				</a>
+			</div>
+			<div style="width: 100%;height: 400px;" class="foc">
+			<div class="sumbit" >
+				<input type="submit" disabled="disabled" class="huankuan" value="确认还款" />
+			</div>
+        </div>
+        </div>
+        <div class="select_up">
+			<div style="border-bottom: 1px solid #D9D9D9;height: 44px;text-align: center;line-height: 44px;">
+				<div class="close_up" style="width: 20%;float: left;">
+					<img src="../../images/ico_close@2x.png" style="width: 15px;"/>
+				</div>
+				<div style="width: 60%;float: left;">
+					<p>选择还款银行卡</p>
+				</div>	
+						
+			</div>
+			<div class="bankup">
+				<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-bottom:60px;">
+				  <script id="homebank" type="text/html">				  
+				  	{{each body as lt i}}
+			            <label class="weui_cell weui_check_label" style="padding: 7px 0px;">
+			                <div class="weui_cell_bd weui_cell_primary">
+			                   <p style="float: left;width: 20%;text-align: center;">
+									<img src="{{lt.bankLogo}}" onerror="this.src='images/icon_jiansheyinhang@2x.png'"  class="bank_img" style="width: 20px;"/>
+							   </p>
+							    <p  style="width:60%;font-size: 14px;float: left;"><span class="bank" >{{lt.bankName}}</span>(*<span class="cardnum">{{lt.accountNo.substr(lt.accountNo.length-4,4)}}</span>)</p>						  
+			                </div>
+			                <div class="weui_cell_ft">
+			                    <input type="radio" class="weui_check1" name="radio1" value="" >
+			                    <span class="weui_icon_checked"></span>
+			                </div>
+			            </label>
+		            {{/each}}
+		            
+		          </script>
+		        </div>
+				
+			</div>
+			</div>
+			<div id="mode_up"></div>
+			<div id="mode"></div>
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/home/advance.js?${project.javascript.version}"></script>
+</html>

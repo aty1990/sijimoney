@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>个人中心</title>
+		<link rel="stylesheet" type="text/css" href="css/common/index.css" />
+		<link rel="stylesheet" href="libs/css/weui.min.css" />
+		<script type="text/javascript">   	
+    	var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+    </script>
+	</head>
+	<style>
+		body {
+			background: #fafafa;
+		}
+		
+		.user_bg {
+			background: url(images/pic_bg@2x.png) no-repeat;
+			background-size: 100% 100%;
+			height: 200px;
+			text-align: center;
+			padding-top: 20px;
+		}
+		
+		.userlogo img {
+			width: 70px;
+			
+		}
+		
+		.user_bg p {
+			margin-top: 10px;
+		}
+		
+		.weui_cell {
+			background: #fff;
+		}
+		
+		.weui_cell_we:before {
+			border: 0;
+		}
+		
+		.weui_cell_bd p {
+			font-size: 15px;
+			margin-left: 10px;
+		}
+		
+		.user_line {
+			width: 100%;
+			margin-top: 13px;
+		}
+		
+		.user_back {
+			float: left;
+			width: 50%;
+		}
+		
+		.user_backa {
+			font-size: 15px;
+			float: left;
+			width: 49.8%;
+			background: #fff;
+		}
+		
+		.user_a {
+			height: 44px;
+			width: 100%;
+			line-height: 44px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		
+		.user_money,
+		.user_a {
+			display: none;
+		}
+		.advance{
+			border-right: 1px solid #F3F3F3;
+		}
+		.pai {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+			z-index: 9999;
+			line-height: 40px;
+			background: #fafafa;
+			display: none;
+		}
+		
+		.pai .div input {
+			height: 40px;
+			background: #fff;
+		}
+		
+		#mode2 {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			display: none;
+		}
+		
+		.file {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			padding: 20px 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			opacity: 0;
+		}
+		
+		#uploadifive-file {
+			width: 100%;
+		}
+		
+		.weui_cell {
+			padding: 12px 15px;
+		}
+		.message{position:absolute;right: 12px;top: 0px;}
+		.newmsg {width: 10px;height: 10px;border-radius: 10px;background: #FF5000;position: absolute;top: -3px;right: 8px;font-size: 12px;color: #fff;text-align: center;line-height: 14px;}
+	</style>
+
+	<body>
+		<form name="form1" id="form1" enctype="multipart/form-data">
+			<div class="user_bg">
+				<p  class="message">
+					<a href="#" style="position:relative;">
+						<img src="images/emails.png" style="height:20px;margin-top:0;" />
+					</a>
+					<p class="newmsg"></p>
+				</p>
+				<div class="user_login">
+					<div class="userlogo">
+						<div id="msg" style="position:relative;width:70px;height:70px;background:#fff;left:0;right:0;margin:auto;border-radius:70px;overflow:hidden;">
+							<img id="obj1" src="images/logo.png" />
+							<input id="file" type="file" accept="image/*" value="" name="files" onchange="imagePreview(this)" style="opacity:0;position:absolute;top:20px;left:0;width:70px;height:70px;" />
+						</div>
+					</div>
+
+					<p class="user_tell white">登录/注册</p>
+				</div>
+		</form>
+		<div class="user_money">
+			<div class="user_line">
+				<div class="user_back">
+					<div class="white">逾期统计(元)</div>
+					<p class="user_backleft pink">0.00</p>
+				</div>
+				<div class="user_back">
+					<div class="white">当期应还(元)</div>
+					<p class="user_backright pink">0.00</p>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="user_a">
+			<div class="user_backa advance">
+				<div>提前还款</div>
+			</div>
+			<div class="user_backa payback" style="margin-left: 0.4%;">
+				<div>立即还款</div>
+			</div>
+		</div>
+		<div class="weui_cells_access" style="margin-bottom: 50px;overflow: hidden;">
+			<a class="weui_cell weui_cell_we" href="dist/index.html#/lqb?v=13232"  disabled='true'>
+				<div class="weui_cell_hd">
+					<img src="images/icon_qianbao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>零钱包</p>
+				</div>
+				<div class="weui_cell_ft"><span style="color: #000;">余额:<span class="balAmount">0.00</span></span></div>
+			</a>
+			<a class="weui_cell " href="dist/index.html#/lqb/friends?v=13224"  disabled='true'>
+				<div class="weui_cell_hd">
+					<img src="images/icon_tuijianyaoqing@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>推荐邀请</p>
+				</div>
+				<div class="weui_cell_ft"><img src="images/icon_奖@2x.png" style="width: 20px;"/></div>
+			</a>
+			
+			<a class="weui_cell" href="html/user/repayuser.html">
+				<div class="weui_cell_hd">
+					<img src="images/icon_jiekuanjilu@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>借款记录</p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+			<a class="weui_cell" href="html/user/bankInfoList.html">
+				<div class="weui_cell_hd">
+					<img src="images/icon_wodeyinhangka@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>我的银行卡</p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+			<a class="weui_cell" href="html/user/transaction.html">
+				<div class="weui_cell_hd">
+					<img src="images/icon_jiaoyijilu@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>交易记录</p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+			<a class="weui_cell user weui_cell_we" href="html/user/userInfoList.html" style="margin-top: 20px;">
+				<div class="weui_cell_hd">
+					<img src="images/icon_wodeziliao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>我的资料</p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+			<a class="weui_cell" href="html/user/report.html">
+				<div class="weui_cell_hd">
+					<img src="images/icon_daoxiaobaogao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>打小报告</p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+			<a class="weui_cell" href="html/user/dropout.html">
+				<div class="weui_cell_hd">
+					<img src="images/icon_gerenshezhi@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+				</div>
+				<div class="weui_cell_bd weui_cell_primary">
+					<p>安全设置</p>
+				</div>
+				<div class="weui_cell_ft"></div>
+			</a>
+		</div>
+		<div class="pai" style="">
+			<div class="div" style="border-bottom:1px solid #d9d9d9;">
+
+				<div style="position: absolute;width: 100%;top: 0;">
+					<input type="file" id="file" class="file" capture="camera" style="width: 100%;height: 40px;" />
+					<input type="hidden" name="frontSide" id="frontSide">
+					<div id="tip-queue1" style="display: none;"></div>
+				</div>
+			</div>
+			<div class="div" style="border-bottom:1px solid #d9d9d9;">
+
+				<div style="position: absolute;width: 100%;top:40px;">
+					<input type="file" id="file1" class="file" style="width: 100%;height: 40px;" />
+					<input type="hidden" name="frontSide" id="frontSide">
+					<div id="tip-queue1" style="display: none;"></div>
+				</div>
+			</div>
+			<div class="div closemode" style="margin-top: 5px;">取消</div>
+		</div>
+		<div id="mode"></div>
+		<div id="mode2"></div>
+		<footer>
+			<a href="index.html" class="index">
+				
+			</a>
+			<a href="user.html" class="user select">
+				
+			</a>
+			<a href="more.html" class="more">				
+			</a>
+		</footer>
+	</body>
+	<script type="text/javascript" src="libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="js/home/user.js?${project.javascript.version}"></script>
+	<script>
+		$("footer").find("a").on("click", function() {
+			$(this).addClass("select");
+			$(this).siblings().removeClass("select");
+		})
+		
+		var userStat = sessionStorage.getItem("userStat");
+		
+		if(userStat == "undefined" || userStat == null) {
+			$("#file").hide();
+			$("#obj1").attr("src", "images/logo.png")
+		} else {
+			function imagePreview(input) {
+				var userId = sessionStorage.getItem("userId");
+				var accessToken = constans.accessToken;
+				var formData;
+				if($('input[type="file"]').val()) {
+					formData = new FormData($('form')[0]);
+				} else {
+					formData = new FormData();
+				}
+
+				formData.append("userId", userId);
+				$.ajax({
+					url: constans.serviceUrl + '/user/icon/upload',
+					type: "post",
+					async: true,
+					data: formData,
+					processData: false,
+					contentType: false,
+					headers: {    
+						loginTerm: "wx" ,
+						accessToken: accessToken,
+						jhVer: "2.0",
+						rand: Math.round(Math.random()*89999) + 10000,
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {
+						
+						if(data.code == 200) {
+							var userIcon = sessionStorage.getItem("img");							
+							$("#mode").show();
+							$("#mode").html(data.msg);
+							setTimeout(function() {
+								$("#obj1").attr("src", userIcon);
+							    window.location.reload();
+								$("#mode").hide();
+							}, 2000);
+						}
+                        if(data.code == 500){
+                        	$("#mode").show();
+							$("#mode").html(data.msg);
+							setTimeout(function() {								
+								$("#mode").hide();
+							}, 2000);
+                        }
+					}
+				})
+			}
+
+		}
+	</script>
+
+</html>
