@@ -42,10 +42,11 @@
 		</script>
 	</head>
 	<style>
-		body {
+		html,body {
 			background: #FAFAFA;
+			height: 100%;
+			overflow: hidden;
 		}
-		
 		.weui_cell_ft {
 			font-size: 12px;
 			color: rgb(74, 144, 226);
@@ -66,10 +67,56 @@
 		.weui_cell {
 			padding: 14.5px 15px;
 		}
+		.header{
+			background: #fff;
+		}
+		.showloan{
+			position: absolute;
+			top:41px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding-bottom: 20px;
+			overflow-y: auto;
+		}
+		.jkyt-pop li{
+			padding: 10px 0;
+			position: relative;
+			font-size: 14px;
+		}
+		.jkyt-pop .item:after{
+			position: absolute;
+			content: "";
+			height: 1px;
+			width: 100%;
+			background: #F2F2F2;
+			left:0;
+			bottom: 0;
+			transform: scaleY(0.7);
+		}
+		.user-info-page .layui-m-layer-footer .layui-m-layercont {
+		   	padding: 0; 
+		}
+		.user-info-page .layui-m-layercont {
+		   	padding: 0;
+		}
+		.gary-font{
+			color:#A6A6A6;
+		}
+		.user-info-page .layui-m-layer .layui-m-layer-footer {
+		    position: fixed;
+		    width: 95%;
+		    max-width: 100%;
+		    margin: 0 auto;
+		    left: 0;
+		    right: 0;
+		    bottom: 0px;
+		    background: 0 0;
+		}
 	</style>
 
-	<body>
-		<header style="background: #fff;">
+	<body class="user-info-page">
+		<header class="header">
 			<div style="float: left;" class="usera">
 				<a class="userinfo_back">
 					<img src="../../images/ico_back@2x.png" />
@@ -88,6 +135,19 @@
 		</div>
 		<div class="showloan">
 			<div style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);">请按顺序完成资料填写，即可获取授信额度</div>
+			<div class="weui_cells_access" style="background: #fff;overflow: hidden;margin-bottom: 10px;">
+				<a class="weui_cell weui_person" href="javascript:;" onclick="jkyt(this)">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_jkyt.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p style="font-size: 14px;">借款用途</p>
+					</div>
+					<div class="weui_cell_ft" id="jkyt">
+						请选择
+					</div>
+				</a>
+			</div>
 			<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
 				<a class="weui_cell weui_person" href="usermessage.html">
 					<div class="weui_cell_hd">
@@ -115,7 +175,7 @@
 				</a>
 				<a class="weui_cell weui_contact" href="contacts.html">
 					<div class="weui_cell_hd">
-						<img src="../../images/icon_lianxirenxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+						<img src="../../images/icon_lianxiren@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
 					</div>
 					<div class="weui_cell_bd weui_cell_primary">
 						<p style="font-size: 14px;">联系人信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
@@ -125,12 +185,28 @@
 						未完善
 					</div>
 				</a>
-
 			</div>
-			<div class="hide1">
+
+			<div style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);">信用认证</div>
+			<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
+				<a class="weui_cell weui_person" href="usermessage.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_gerenxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p style="font-size: 14px;"><span class="pink" style="font-size: 12px;">(必填)</span></p>
+						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善个人信息</p>
+					</div>
+					<div class="weui_cell_ft  person">
+						未完善
+					</div>
+				</a>
+			</div>
+			<!-- <div class="hide1"> -->
+			<div> 
 				<div class="top1" style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);display:none;">认证信息</div>
 				<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
-					<a class="weui_cell userphoto" href="userphoto.html" style="display:none;">
+					<a class="weui_cell userphoto" href="userphoto.html" >
 						<div class="weui_cell_hd">
 							<img src="../../images/icon_renlianshibie@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
 						</div>
@@ -143,7 +219,7 @@
 							未完善
 						</div>
 					</a>
-					<a class="weui_cell weui_mobile" href="usermob.html" style="display:none;">
+					<a class="weui_cell weui_mobile" href="usermob.html" >
 						<div class="weui_cell_hd">
 							<img src="../../images/icon_shoujirenzheng@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
 						</div>
@@ -155,14 +231,38 @@
 							未完善
 						</div>
 					</a>
+					<a class="weui_cell weui_mobile" href="usermob.html" >
+						<div class="weui_cell_hd">
+							<img src="../../images/icon_gzk.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<p style="font-size: 14px;">工资卡认证<span class="pink" style="font-size: 12px;">(必填)</span></p>
+							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">包含近期工资流水</p>
+						</div>
+						<div class="weui_cell_ft mobile">
+							未完善
+						</div>
+					</a>
+					<a class="weui_cell weui_mobile" href="mention.html" >
+						<div class="weui_cell_hd">
+							<img src="../../images/icon_te.png" alt="icon" style="width:20px;margin-right:5px;display:block">
+						</div>
+						<div class="weui_cell_bd weui_cell_primary">
+							<p style="font-size: 14px;">提额认证<span class="pink" style="font-size: 12px;">(必填)</span></p>
+							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">认证后可提高额度</p>
+						</div>
+						<div class="weui_cell_ft mobile">
+							未完善
+						</div>
+					</a>
 				</div>
 			</div>
-		</div>
-		<div class="sumbit userInfo">
-			<input type="button" class="userInfo_sumbit" value="立即提交" />
-		</div>
-		<div class="sumbit userInfo1" style="display: none;">
-			<input type="button" class="userInfo_sumbit1" value="立即提交" />
+			<div class="sumbit userInfo">
+				<input type="button" class="userInfo_sumbit" value="立即提交" />
+			</div>
+			<div class="sumbit userInfo1" style="display: none;">
+				<input type="button" class="userInfo_sumbit1" value="立即提交" />
+			</div>
 		</div>
 		<div class="weui_dialog_confirm dd" style="display: none;">
 			<div class="weui_mask"></div>
@@ -175,28 +275,44 @@
 				</div>
 			</div>
 		</div>
-		<div class="weui_dialog_confirm dd1" style="display: none;">
-			<div class="weui_mask"></div>
-			<div class="weui_dialog" style="width: 65%;">
-				<div class="weui_dialog_hd"><strong class="weui_dialog_title"></strong></div>
-				<div class="weui_dialog_bd" style="text-align: center;color: #000;">通过系统初步审核，请继续完善其它信息</div>
-				<div class="weui_dialog_ft">
-					<a class="weui_btn_dialog default1" style="color: rgb(74, 144, 226);">确定</a>
-				</div>
-			</div>
-		</div>
 		<div id="mode"></div>
 	</body>
 
-	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/user/userInfoList.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script src="../../js/user/userInfoList.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/layer.js?${project.javascript.version}"></script>
     <script>
 		$(".user").on("click", function() {
 			window.location.href = constans.htmlUrl + "/index.html";
 		})
+		var layerIndex = null;
+		function jkyt(){
+			var html = '<ul class="jkyt-pop">\
+					<li class="item gary-font">请选择实际资金用途,禁止用于购<br>房、投资及各种非消费场景</li>\
+					<li class="item" type="1">个人日常消费</li>\
+					<li class="item" type="2">装修</li>\
+					<li class="item" type="3">旅游</li>\
+					<li class="item" type="4">教育</li>\
+					<li>医疗</li>\
+				</ul>'
+		 	layerIndex = layer.open({
+			    content: html
+			    ,btn: ['取消']
+			    ,skin: 'footer'
+			    ,style:'background:#F2F2F2;width:100%;border-radius:0;'
+			    ,yes: function(index){
+			    	layer.close(layerIndex);
+			    }
+			});
+		}
+
+		$("body").on("click",".jkyt-pop li",function(){
+			$("#jkyt").html(this.innerHTML);
+		 	layer.close(layerIndex);
+		});
 	</script>
 
 </html>

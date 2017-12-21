@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<title>职业证明</title>
+	</head>
+	<style>
+		*{
+			padding: 0;
+			padding: 0;
+			-box-sizing: border-box;
+		}
+		html,body {
+			background: #FAFAFA;
+			height: 100%;
+			overflow: hidden;
+			padding: 1%;
+			font-size: 14px;
+		}
+		
+		.font-14{
+			font-size: 14px;
+		}
+		.font-12{
+			font-size: 14px;
+		}
+		.title{
+			font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);
+		}
+		.flex{
+			display: flex;
+			flex-wrap:wrap;
+		}
+		.center{
+			justify-content : center;
+			align-items :center;
+		}
+		.icon-pssm,
+		.flex-item{
+			width: 49.5%;
+			min-height: 140px;
+			margin-bottom: 5px;
+			position: relative;
+		}
+		.bg:after{	
+			position: absolute;
+			content: "点击拍摄上传";
+			width: 100%;
+			height: 40px;
+			bottom: 30px;
+			left: 0;
+			text-align: center;
+			color:#9F9F9F;
+		}
+		.icon-gp{
+			background: url("../../images/icon_gp.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-mp{
+			background: url("../../images/icon_mp.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-zzzm{
+			background: url("../../images/icon_zzzm.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-ht{
+			background: url("../../images/icon_ht.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-htgz{
+			background: url("../../images/icon_htgz.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.innerDiv{
+			width: 90%;
+			height: 160px;
+			box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
+			position: relative;
+			overflow: hidden;
+		}
+		.innerDiv img{
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: 3;
+			display: none;
+			width: 100%;
+		}
+		.desc{
+			padding: 7px 0;
+		}
+		.content{
+			position: absolute;
+			top:50px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding-bottom: 20px;
+			overflow-y: auto;
+		}
+		.icon-pssm{
+			background: #F2F2F2;
+		}
+		.pssm-title{
+			padding: 5px 0;
+			text-align: center;
+			color:#F17281;
+			margin-top: 18px;
+		}
+		.inner-text{
+			padding: 10px;
+			color:#9F9F9F;
+			text-align: justify;
+		}
+		input[type=file]{
+			opacity: 0;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: 4;
+		}
+		.opacity{
+			opacity: 0;
+		}
+		.icon-delete{
+			position: absolute;
+			width: 34px;
+			height: 34px;
+			background: url("../../images/ico_delete@2x.png") center center no-repeat;
+			right: -8px;
+			top:-15px;
+			transform: scale(0);
+			z-index: 9;
+			transition: all 1s ease;
+		}
+		.icon-delete-show{
+			transform: scale(0.7);
+		}
+	</style>
+	<body>
+		<header class="header">
+			<div style="float: left;">
+				<a class="userinfo_back">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>职业证明</p>
+		</header>
+		<div class="content">
+			<div class="title">以下认证二选一</div>
+			<div class="flex">
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-gp flex">
+						<img src="" alt="">
+						<input type="file" accept='image/*'>
+					</div>
+					<div class="desc">工牌</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-mp">
+						<img src="" alt="">
+						<input type="file" accept='image/*'>
+					</div>
+					<div class="desc">名片</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-zzzm">
+						<img src="" alt="">
+						<input type="file" accept='image/*'>
+					</div>
+					<div class="desc">在职证明</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-ht">
+						<img src="" alt="">
+						<input type="file" accept='image/*'>
+					</div>
+					<div class="desc">劳动合同甲乙签字页</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-htgz">
+						<img src="" alt="">
+						<input type="file" accept='image/*'>
+					</div>
+					<div class="desc">劳动合同盖章页</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center ">
+					<div class="innerDiv icon-pssm">
+						<p class="pssm-title">拍摄说明</p>
+						<p class="inner-text">可拍摄:工牌、名片、在职证明、劳动合同(四选一),若劳动合同,请拍甲乙签字、盖章两页</p>
+					</div>
+					<div class="desc"><span class="opacity">拍摄说明</span></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/lrz.all.bundle.js?${project.javascript.version}"></script>
+	
+    <script>
+    	var Zyrz = function(){
+
+    	}
+    	Zyrz.prototype.init = function(){
+    		this.BindEvent();
+    	}
+    	Zyrz.prototype.BindEvent = function(){
+    		$("input[type=file]").change(function(){
+    			var fileDom  = $(this);
+    			lrz(this.files[0],{width:400})
+				.then(function (rst) {
+					// 处理成功会执行
+					fileDom.prev("img").attr("src",rst.base64).fadeIn("slow");
+					fileDom.parents("div.flex-item").children('span.icon-delete').addClass('icon-delete-show');
+
+				})
+				.catch(function (err) {
+					// 处理失败会执行
+				});
+    		})
+
+    		// 删除
+    		$(".icon-delete").click(function(){
+    			$(this).removeClass('icon-delete-show');
+    			$(this).parent().find("img").fadeOut();
+    		});
+    	}
+
+    	new Zyrz().init();
+    </script>
+
+</html>

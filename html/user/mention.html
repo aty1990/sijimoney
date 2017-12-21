@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>提额认证</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
+		
+	</head>
+	<style>
+		html,body {
+			background: #FAFAFA;
+			height: 100%;
+			overflow: hidden;
+		}
+		.weui_cell_ft {
+			font-size: 12px;
+			color: rgb(74, 144, 226);
+		}
+		
+		.weui_cell_bd {
+			margin-left: 10px;
+		}
+		
+		.weui_dialog {
+			border-radius: 5px;
+		}
+		
+		.weui_dialog_bd {
+			text-align: center;
+		}
+		
+		.weui_cell {
+			padding: 14.5px 15px;
+		}
+		.header{
+			background: #fff;
+		}
+		.showloan{
+			position: absolute;
+			top:50px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding-bottom: 20px;
+			overflow-y: auto;
+		}
+		.title{
+			font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);
+		}
+		.weui_cells_access{
+			background: #fff;overflow: hidden;
+		}
+		.img-cls{
+			width:20px;margin-right:5px;display:block;
+		}
+		.desc{
+			font-size: 12px;color: rgb(196,196,196);margin-top: 5px;
+		}
+		.font-14{
+			font-size: 14px;
+		}
+		.font-12{
+			font-size: 14px;
+		}
+	</style>
+	<body>
+		<header class="header">
+			<div style="float: left;" class="usera">
+				<a class="userinfo_back">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>提额认证</p>
+		</header>
+		<div class="showloan">
+			<div class="title">以下认证二选一</div>
+			<div class="weui_cells_access">
+				<a class="weui_cell weui_person" href="usermessage.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_gjj.png" class="img-cls">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p class="font-14">公积金认证<span class="pink font-12">(选填)</span></p>
+						<p class="desc">开户一年以上且近期连续缴纳</p>
+					</div>
+					<div class="weui_cell_ft  person">
+						未完善
+					</div>
+				</a>
+				<a class="weui_cell weui_work" href="workinfomation.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_xyk.png" class="img-cls">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p class="font-14">信用卡认证<span class="pink font-12">(选填)</span></p>
+						<p class="desc">近期连续缴纳社保</p>
+					</div>
+					<div class="weui_cell_ft work">
+						未完善
+					</div>
+				</a>
+			</div>
+			<div class="title">以下认证二选一</div>
+			<div class="weui_cells_access">
+				<a class="weui_cell weui_person" href="usermessage.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_jd.png" class="img-cls">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p class="font-14">京东认证<span class="pink font-12">(选填)</span></p>
+						<p class="desc">京东认证有助于提高额度</p>
+					</div>
+					<div class="weui_cell_ft  person">
+						未完善
+					</div>
+				</a>
+				<a class="weui_cell weui_work" href="workinfomation.html">
+					<div class="weui_cell_hd">
+						<img src="../../images/icon_tb.png" class="img-cls">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p class="font-14">淘宝认证<span class="pink font-12">(必填)</span></p>
+						<p class="desc">淘宝认证有助于提高额度</p>
+					</div>
+					<div class="weui_cell_ft work">
+						未完善
+					</div>
+				</a>
+			</div>
+
+			<div class="sumbit userInfo">
+				<input type="button" class="userInfo_sumbit" value="立即提交" />
+			</div>
+		</div>
+	</body>
+	<script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	
+    <script></script>
+
+</html>

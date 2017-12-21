@@ -19,25 +19,32 @@
 	<style type="text/css">
 		body {
 			background: #fafafa;
+			font-size: 14px;
 		}
 		
 		#picker1 {
 			height: 40px;
 		}
-		
 		.small_header {
 			color: #888;
 			margin-left: 10px;
 			margin: 10px;
 			font-size: 12px;
 		}
-		
 		.mymessage {
 			position: relative;
 			float: left;
 			width: 72%;
 			line-height:50px;
 			margin-left: 10px;
+		}
+		.user_message{
+			position: absolute;
+			top:41px;
+			width: 100%;
+			bottom: 0;
+			overflow-y: auto;
+			padding-bottom: 20px;
 		}
 		
 		.main-content {
@@ -138,6 +145,13 @@
 			</div>
 		</div>
 		<div class="user_input">
+			<p>职业认证</p>
+			<div class="mymessage">				
+				<input type="text" class="work_time input_p" onfocus="this.blur()"  placeholder="请上传职业证明" unselectable="on" id="zyzm"/>
+				<img src="../../images/Disclosure Indicator@2x.png" />				
+			</div>
+		</div>
+		<div class="user_input">
 			<p>公司地址</p>
 			<div class="mymessage address">
 				<input type="text" value="" class="work_address input_p" onfocus="this.blur();" placeholder="请定位您所在的城市" />
@@ -154,8 +168,8 @@
 		<div class="user_input">
 			<p>公司电话</p>
 			<div class="mymessage">
+				<span style="float: left;font-size: 14px;">021-</span>
 				<p class="citycode" style="width: 15%;color: #000;" ></p>
-				<!--<p style="float: left;width: 10px;">-</p>-->
 				<input type="tel" value="" class="work_tel input_p" maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请填写公司电话" style="width: 70%;" />
 			</div>
 		</div>
@@ -170,34 +184,37 @@
 		<div class="user_input userInfomation dd">
 			<p>入职时间</p>
 			<div class="mymessage demos">			   
-				   <!--<input type="sumbit"   unselectable="on" onfocus="this.blur()"  value="" name="appDate" id="appDate" class="work_time input_p" placeholder="请填写入职时间" />	-->
-				   <input type="sumbit"   unselectable="on" onfocus="this.blur()"  value="" name="appDate" id="demo1" class="work_time input_p" placeholder="请填写入职时间" />	
+				   <input type="sumbit" unselectable="on" onfocus="this.blur()"  value="" name="appDate" id="demo1" class="work_time input_p" placeholder="请填写入职时间" />	
 			</div>
-			
+		</div>
+		<div class="user_input userInfomation dd">
+			<p>发薪时间</p>
+			<div class="mymessage demos">			   
+				<input type="text" class="work_time input_p" onfocus="this.blur()"  placeholder="请选择发薪时间" unselectable="on" id="fxsj"/>
+				<img src="../../images/Disclosure Indicator@2x.png" />
+			</div>
+		</div>
+		<div class="sumbit">
+			<input type="button" disabled="disabled"  class="work_keep" id="work_keep1"  value="保存" />
+		</div>
+		<div class="sumbit" style="margin-top: 10px;">
+			<input type="button" disabled="disabled"  class="work_keep" id="work_keep2" value="保存并继续" />
 		</div>
 	</div>
-
-   <div class="content_address">
-			<div id="container" tabindex="0"></div>
-			<div class='panel' style="border:1px solid #d9d9d9;">
-				<table style="width:70%;float:left;">
-					<tr>
-						<td>
-							<input id="tipinput" placeholder="请输入关键字" />
-						</td>
-					</tr>
-				</table>
-				<input type="button" id="sure" value="确定">
-				<div id='message'></div>
-			</div>
-			<div id="myPageTop" style="position:fixed;z-index:99999;"></div>
+    <div class="content_address">
+		<div id="container" tabindex="0"></div>
+		<div class='panel' style="border:1px solid #d9d9d9;">
+			<table style="width:70%;float:left;">
+				<tr>
+					<td>
+						<input id="tipinput" placeholder="请输入关键字" />
+					</td>
+				</tr>
+			</table>
+			<input type="button" id="sure" value="确定">
+			<div id='message'></div>
 		</div>
-	
-	<div class="sumbit">
-		<input type="button" disabled="disabled"  class="work_keep" id="work_keep1"  value="保存" />
-	</div>
-	<div class="sumbit" style="margin-top: 10px;">
-		<input type="button" disabled="disabled"  class="work_keep" id="work_keep2" value="保存并继续" />
+		<div id="myPageTop" style="position:fixed;z-index:99999;"></div>
 	</div>
 	<div class="picker" style="display: none;">
 		<div class="picker-mask mask-hook"></div>
@@ -281,50 +298,47 @@
 				$('#input1').attr("maxlength","8");
 			}
         })
-//	    var currYear = (new Date()).getFullYear();   
-//      var opt={};
-//      opt.date = {preset : 'date'};
-//      opt.datetime = {preset : 'datetime'};
-//      opt.time = {preset : 'time'};
-//      opt.default = {
-//          theme: 'android-ics light', //皮肤样式 
-//          display: 'modal', //显示方式 
-//          mode: 'scroller', //日期选择模式
-//          dateFormat: 'yyyy-mm-dd',
-//          lang: 'zh',
-//          showNow: true,
-//          
-//          startYear: currYear - 100, //开始年份
-//          endYear: currYear,  //结束年份
-//        
-//      };
-//      
-//      $("#appDate").mobiscroll($.extend(opt['date'], opt['default']));				
-//      var optDateTime = $.extend(opt['datetime'], opt['default']);
-//      var optTime = $.extend(opt['time'], opt['default']);
-//      $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
-//      $("#appTime").mobiscroll(optTime).time(optTime);
+
 		
         var lat=localStorage.getItem("latitude");
         var lon=localStorage.getItem("longitude");
 		var calendar = new datePicker();
-	var now = function(){
-		var d = new Date();
-		return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-	};
-calendar.init({
-	'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
-	'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
-	'minDate':'1900-1-1',/*最小日期*/
-	'maxDate':now(),/*最大日期*/
-	'onSubmit':function(){/*确认时触发事件*/
-		var theSelectData=calendar.value;
-	},
-	'onClose':function(){/*取消时触发事件*/
-	}
-});
-		
+		var now = function(){
+			var d = new Date();
+			return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+		};
+		calendar.init({
+			'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
+			'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+			'minDate':'1900-1-1',/*最小日期*/
+			'maxDate':now(),/*最大日期*/
+			'onSubmit':function(){/*确认时触发事件*/
+				var theSelectData=calendar.value;
+			},
+			'onClose':function(){/*取消时触发事件*/
+			}
+		});
+		// 初始化发薪日
+		(function(){
+			var daySet = [],
+			fxsj = $("#fxsj");
+			for(var i = 1;i<=31;i++){
+				daySet.push({ text: i+"日", value: i });
+			}
+			var fxsjPicker = new Picker({
+				data: [daySet]
+			});
+
+			fxsjPicker.on('picker.select', function(selectedVal) {
+				fxsj.val(daySet[selectedVal[0]-1].text);
+			});
+			
+			fxsj.on("click", function() {
+				fxsjPicker.show();
+			})
+		})();
 	});
+
 	</script>
 </body>
 </html>
