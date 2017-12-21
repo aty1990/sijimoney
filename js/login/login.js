@@ -1,4 +1,5 @@
 $(function() {
+	constans.serviceUrl = "http://172.16.16.68/fnd";
 	var accessToken = constans.accessToken;
 	var user = $.cookie('userName');
 	$("#tell").val(user);

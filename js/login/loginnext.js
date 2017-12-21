@@ -1,4 +1,5 @@
 $(function() {
+	constans.serviceUrl = "http://172.16.16.68/fnd";
 	//清空input框
 	$(".close").on("click", function() {
 		$(this).prev("input").val("");

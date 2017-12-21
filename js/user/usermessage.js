@@ -175,7 +175,7 @@ $(function() {
 				if(localStorage.getItem("person") != 2) {
 					var data = { type: "100001" };
 					$.ajax({
-						url: constans.serviceUrl + '/support/selectinfo',
+						url: constans.serviceUrl + '/support/selectinfo', 
 						type: "post",
 						async: true,
 						data: data,
@@ -646,5 +646,7 @@ $(function() {
 			}
 		}
 	})
+	
+
 
 })
