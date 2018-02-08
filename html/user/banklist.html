@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+    <title>信用卡认证</title>
+</head>
+
+<body>
+    <div class="mention-page"></div>
+</body>
+<script src="../../libs/js/jquery-2.1.0.js?v=${project.javascript.version}"></script>
+<script src="../../libs/js/jquery.cookie.js?v=${project.javascript.version}"></script>
+<script src="../../js/common/loading.js?v=${project.javascript.version}"></script>
+<script src="../../js/common/globalConst.js?v=${project.javascript.version}"></script>
+<script src="../../js/common/utils.js?v=${project.javascript.version}"></script>
+<script src="../../libs/js/vue.js?v=${project.javascript.version}"></script>
+<script>
+    new Vue({
+        el: '.mention-page',
+        data: {},
+        mounted() {
+            this.init();
+        },
+        methods: {
+            init() {
+                this.initData();
+
+            },
+            initData() {
+                let _self = this;
+                let params = utils.getUrlParams();
+                _self.mxcode = params.mxcode;
+                if (params.mxcode == "1") {
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/credit/creditCard',
+                        type: "post",
+                        data: {
+                            task_id: params.taskId
+                        },
+                        success: function(result) {
+                            history.back(-2);
+                        }
+                    })
+                } else if (params.mxcode == "-1") {
+                    history.back(-2);
+                }
+            }
+        }
+    });
+</script>
+
+</html>

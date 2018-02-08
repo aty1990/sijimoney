@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<title>职业认证</title>
+	</head>
+	<style>
+		*{
+			padding: 0;
+			padding: 0;
+			-box-sizing: border-box;
+		}
+		html,body {
+			background: #FAFAFA;
+			height: 100%;
+			overflow: hidden;
+			padding: 1%;
+			font-size: 14px;
+		}
+		
+		.font-14{
+			font-size: 14px;
+		}
+		.font-12{
+			font-size: 14px;
+		}
+		.title{
+			font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);
+		}
+		.flex{
+			display: flex;
+			flex-wrap:wrap;
+		}
+		.center{
+			justify-content : center;
+			align-items :center;
+		}
+		.icon-pssm,
+		.flex-item{
+			width: 49.5%;
+			min-height: 140px;
+			margin-bottom: 5px;
+			position: relative;
+		}
+		.bg:after{	
+			position: absolute;
+			content: "点击拍摄上传";
+			width: 100%;
+			height: 40px;
+			bottom: 30px;
+			left: 0;
+			text-align: center;
+			color:#9F9F9F;
+		}
+		.icon-gp{
+			background: url("../../images/icon_gp.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-mp{
+			background: url("../../images/icon_mp.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-zzzm{
+			background: url("../../images/icon_zzzm.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-ht{
+			background: url("../../images/icon_ht.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.icon-htgz{
+			background: url("../../images/icon_htgz.png") center 30px #F2F2F2 no-repeat;
+			background-size:auto 50%;
+		}
+		.innerDiv{
+			width: 90%;
+			height: 160px;
+			box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
+			position: relative;
+			overflow: hidden;
+		}
+		.innerDiv img{
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: 3;
+			display: none;
+			width: 100%;
+		}
+		.desc{
+			padding: 7px 0;
+		}
+		.content{
+			position: absolute;
+			top:50px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding-bottom: 20px;
+			overflow-y: auto;
+		}
+		.icon-pssm{
+			background: #F2F2F2;
+		}
+		.pssm-title{
+			padding: 5px 0;
+			text-align: center;
+			color:#F17281;
+			margin-top: 18px;
+		}
+		.inner-text{
+			padding: 10px;
+			color:#9F9F9F;
+			text-align: justify;
+		}
+		input[type=file]{
+			opacity: 0;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: 4;
+		}
+		.opacity{
+			opacity: 0;
+		}
+		.icon-delete{
+			position: absolute;
+			width: 34px;
+			height: 34px;
+			background: url("../../images/ico_delete@2x.png") center center no-repeat;
+			right: -8px;
+			top:-15px;
+			transform: scale(0);
+			z-index: 9;
+			transition: all 1s ease;
+		}
+		.icon-delete-show{
+			transform: scale(0.7);
+		}
+		.right-btn{
+			float: right;
+		}
+	</style>
+	<body>
+		<header class="header">
+			<div style="float: left;">
+				<a class="userinfo_back">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>职业证明<span class="right-btn">保存</span></p>
+		</header>
+		<div class="content">
+			<div class="title">以下认证二选一</div>
+			<div class="flex">
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-gp flex">
+						<input type="file" accept='image/*' name="workcard" />
+					</div>
+					<div class="desc">工牌</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-mp">
+						<input type="file" accept='image/*' name="businesscard" />
+					</div>
+					<div class="desc">名片</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-zzzm">
+						<input type="file" accept='image/*' name="certificate" />
+					</div>
+					<div class="desc">在职证明</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-ht">
+						<input type="file" accept='image/*' name="laboursign" />
+					</div>
+					<div class="desc">劳动合同甲乙签字页</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center bg">
+					<div class="innerDiv icon-htgz">
+						<input type="file" accept='image/*' name="labourstamp" />
+					</div>
+					<div class="desc">劳动合同盖章页</div>
+					<span class="icon-delete"></span>
+				</div>
+				<div class="flex-item flex center last-div">
+					<div class="innerDiv icon-pssm">
+						<p class="pssm-title">拍摄说明</p>
+						<p class="inner-text">可拍摄:工牌、名片、在职证明、劳动合同(四选一),若劳动合同,请拍甲乙签字、盖章两页</p>
+					</div>
+					<div class="desc"><span class="opacity">拍摄说明</span></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../../libs/js/jquery-2.1.0.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery.cookie.js?v=${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?v=${project.javascript.version}"></script>
+	<script src="../../js/common/getUserId.js?v=${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/lrz.all.bundle.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/layer.js?v=${project.javascript.version}"></script>
+    <script>
+    	var Zyrz = function(){}
+    	Zyrz.prototype.init = function(){
+    		// 如果存在认证图片就只回显图片
+    		var files = sessionStorage.getItem("filesPath");
+    		var fileList = JSON.parse(files);
+    		// 因为如果是空files对象的话结果是["","","","",""]
+    		if(fileList && fileList.length==5){
+    			this.showImg(fileList);
+    			/*$(".right-btn").remove();
+    			$(".last-div").remove();*/
+    		}
+    		this.BindEvent();
+    		$(".userinfo_back").click(function(){
+    			history.back();
+    		});
+
+    		var isVered = sessionStorage.getItem("isVered");
+    		// 已认证
+			if(isVered=="1"){
+				$(".right-btn").remove();
+    			$(".last-div").remove();
+    			$("input[type=file]").remove();
+			}
+    	}
+
+    	Zyrz.prototype.showImg = function(fileList){
+    		var _self = this;
+	    	if(fileList.length>0){
+	    		$.each(fileList,function(index, path) {
+	    			_self.createImg(path,index);
+	    		});
+	    	}
+    	}
+    	Zyrz.prototype.createImg = function(path,i){
+    		var fileDom = $(".innerDiv").eq(i);
+	    	var img = new Image();
+				img.className = "imgData";
+			img.onload = function(){
+				fileDom.prepend($(img)).children('img').fadeIn("slow");
+			};  
+			img.src = path;
+    	}
+
+    	Zyrz.prototype.showMsg = function(msg,callback){
+	    	 layer.open({
+	            content: msg
+	            ,skin: 'msg'
+	            ,time: 2
+	            ,end : function(){
+	            	callback && callback();
+	            }
+	        });
+    	}
+    	Zyrz.prototype.BindEvent = function(){
+    		var _this = this;
+    		$("body").on("change","input[type=file]",function(){
+    			var fileDom  = $(this);
+    			var file = this.files[0];
+    			console.log(file);
+    			var fname = file.name;
+    			// 文件重命名
+    			var objFile = new File([file],this.name+fname.slice(fname.indexOf("."),fname.length));
+    			lrz(objFile,{width:800}).then(function (rst) {
+					// 处理成功会执行
+					var img = new Image();
+						img.className = "imgData";
+					img.onload = function(){
+						img.file = objFile;
+						fileDom.parent().prepend($(img)).children('img').fadeIn("slow");
+						fileDom.parents("div.flex-item").children('span.icon-delete').addClass('icon-delete-show');
+					};  
+					img.src = rst.base64;
+				})
+				.catch(function (err) {
+					// 处理失败会执行
+					console.log(err);
+				});
+    		});
+
+    		// 删除
+    		$(".icon-delete").click(function(){
+    			$(this).removeClass('icon-delete-show');
+    			$(this).parents(".flex-item").find("img").remove();
+    		});
+
+    		$(".right-btn").click(function(){
+    			var formData = new FormData(),
+					imgs = $("img.imgData");
+				if(imgs.length==0){
+					_this.showMsg("请上传职业认证");return;
+				}
+				// 若为劳动合同则必须拍摄甲乙签字页及合同盖章页
+				var qz = $("div.innerDiv:eq(3)").children('img').length;
+				var gz = $("div.innerDiv:eq(4)").children('img').length;
+				if(qz==1 && gz==0){
+					_this.showMsg("请上传职业认证");return;
+				}else if(qz==0 && gz==1){
+					_this.showMsg("请上传职业认证");return;
+				}
+
+				for(var i = 0; i < imgs.length; i++) {
+					var file = imgs[i].file;
+					formData.append('files', imgs[i].file);
+				}
+				formData.append('userId', sessionStorage.getItem("userId"));
+				formData.append('remark', "");
+				$.ajax({
+	                url: constans.serviceUrl + '/upload/careerAttachs',
+	                type: "post",
+	                async: true,
+	                data: formData,
+	                processData: false,
+	                contentType: false,
+	                headers: {    
+	                    loginTerm: "wx" ,
+	                    rand: Math.round(Math.random() * 89999) + 10000,
+	                    accessToken: constans.accessToken,
+	                    jhVer: "2.0"
+	                },
+	                beforeSend: function() {
+	                    $("body").Loading({text:"提交资料中"});
+	                },
+	                complete: function() {
+	                    $("body").Loading("hide");
+	                },
+	                success: function(data) {
+	                    if(data.code=="200"){
+	                    	_this.showMsg(data.msg,function(){
+	                    		history.back();
+	                    	});
+	                    }
+	                }
+	            })
+    		});
+    	}
+    	new Zyrz().init();
+
+    </script>
+
+</html>

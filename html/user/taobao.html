@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+    <title>淘宝认证</title>
+</head>
+<style>
+    html,
+    body {
+        background: #FAFAFA;
+        height: 100%;
+        font-size: 14px;
+    }
+    
+    table {
+        border: none;
+        border-collapse: collapse;
+    }
+</style>
+
+<body>
+    <div class="taobao-page">
+        <header class="header">
+            <div style="float: left;" class="usera">
+                <a href="javascript:history.back()">
+                    <img src="../../images/ico_back@2x.png" />
+                </a>
+            </div>
+            <p>淘宝认证</p>
+        </header>
+        <div class="content">
+            <table>
+                <tr style="height: 40px;background: #fff;">
+                    <td width="40px;" style="text-indent: 10px;"><img src="../../images/icon_tb.png" width="22" /></td>
+                    <td width="68%">淘宝认证</td>
+                    <td><img src="../../images/icon_completed11@2x.png" width="22" /></td>
+
+                    <td style="text-indent: 4px;">已认证</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="../../libs/js/jquery-2.1.0.js?v=${project.javascript.version}"></script>
+    <script src="../../libs/js/jquery.cookie.js?v=${project.javascript.version}"></script>
+    <script src="../../js/common/loading.js?v=${project.javascript.version}"></script>
+    <script src="../../js/common/globalConst.js?v=${project.javascript.version}"></script>
+    <script src="../../js/common/utils.js?v=${project.javascript.version}"></script>
+    <script src="../../libs/js/vue.js?v=${project.javascript.version}"></script>
+    <script>
+        new Vue({
+            el: '.taobao-page',
+            data: {},
+            mounted() {
+                this.init();
+
+            },
+            methods: {
+                init() {
+                    this.initData();
+                },
+                initData() {
+                    let _self = this;
+                    let params = utils.getUrlParams();
+                    _self.mxcode = params.mxcode;
+                    if (params.mxcode == "1") {
+                        utils.fetchData({
+                            url: constans.serviceUrl + '/credit/taobao',
+                            type: "post",
+                            data: {
+                                task_id: params.taskId
+                            },
+                            success: function(result) {
+                                history.back(-2);
+                            }
+                        })
+                    } else if (params.mxcode == "-1") {
+                        history.back(-2);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
