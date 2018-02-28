@@ -7,11 +7,11 @@ $(function() {
 		var card =$("#bank_card").val().replace(/[ ]/g, "");
 		if(name != "" && card != ""&& (/^[0-9]{12,32}$/.test(card))) {
 			$(".bank_money").removeAttr("disabled");
-			$(".bank_money").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".bank_money").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".bank_money").css("background-size", "100% 100%");
 		} else {
 			$(".bank_money").attr("disabled", "disabled");
-			$(".bank_money").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".bank_money").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".bank_money").css("background-size", "100% 100%");
 		}
 	})
@@ -42,13 +42,13 @@ $(function() {
 		if($(this).hasClass('bg')) {
 			$(this).removeClass("bg");
 			if(!$(".weui1 li").hasClass('bg')) {
-				$(".sumbit1").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+				$(".sumbit1").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 				$(".sumbit1").css("background-size", "100% 100%");
 				$(".input_p").attr("disabled", "disabled");
 			}
 		} else {
 			$(this).addClass("bg");
-			$(".sumbit1").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+			$(".sumbit1").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 			$(".sumbit1").css("background-size", "100% 100%");
 			$(".input_p").removeAttr("disabled");
 		}

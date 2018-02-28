@@ -1,318 +1,538 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>我的资料</title>
-		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
-		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
-		<link rel="stylesheet" href="../../css/user/login.css" />
-		<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-		<script type="text/javascript">
-			var _hmt = _hmt || [];
-			(function() {
-				var hm = document.createElement("script");
-				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
-				var s = document.getElementsByTagName("script")[0];
-				s.parentNode.insertBefore(hm, s);
-			})();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>我的资料</title>
+    <link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
+    <link rel="stylesheet" href="../../css/user/login.css" />
+</head>
+<style>
+    html,
+    body {
+        background: #FAFAFA;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .weui_cell_ft {
+        font-size: 12px;
+        color: rgb(74, 144, 226);
+    }
+    
+    .weui_cell_bd {
+        margin-left: 10px;
+    }
+    
+    .weui_dialog {
+        border-radius: 5px;
+    }
+    
+    .weui_dialog_bd {
+        text-align: center;
+    }
+    
+    .weui_cell {
+        padding: 14.5px 15px;
+    }
+    
+    .header {
+        background: #fff;
+    }
+    
+    .showloan {
+        position: absolute;
+        top: 41px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 20px;
+        overflow-y: auto;
+    }
+    
+    .jkyt-pop li {
+        padding: 10px 0;
+        position: relative;
+        font-size: 14px;
+    }
+    
+    .jkyt-pop .item:after {
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: 100%;
+        background: #F2F2F2;
+        left: 0;
+        bottom: 0;
+        transform: scaleY(0.7);
+    }
+    
+    .user-info-page .jkyt-layer .layui-m-layercont {
+        padding: 0;
+    }
+    
+    .user-info-page .jkyt-layer .layui-m-layercont {
+        padding: 0;
+    }
+    
+    .user-info-page .layui-m-layer .layui-m-layer-footer {
+        bottom: 0;
+    }
+    
+    .user-info-page .jkyt-layer .layui-m-layer-footer {
+        position: fixed;
+        width: 95%;
+        max-width: 100%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        bottom: 0px;
+        background: 0 0;
+    }
+    
+    .gary-font {
+        color: #A6A6A6;
+    }
+    
+    .title {
+        font-size: 12px;
+        line-height: 30px;
+        margin-left: 10px;
+        color: rgb(196, 196, 196);
+    }
+    
+    .weui_cells_access {
+        background: #fff;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    
+    .weui_cell_hd img {
+        width: 20px;
+        margin-right: 5px;
+        display: block;
+    }
+    
+    .pink {
+        font-size: 12px;
+    }
+    
+    .ok {
+        color: #333;
+    }
+    
+    .desc {
+        font-size: 12px;
+        color: rgb(196, 196, 196);
+        margin-top: 5px;
+    }
+</style>
 
-			(function() {
-				var tokenId = "feiniaodai" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
-				localStorage.setItem("token", tokenId)
-				_fmOpt = {
-					partner: 'feiniaodai',
-					appName: 'feiniaodai_h5',
-					token: tokenId,
-				};
-				var cimg = new Image(1, 1);
-				cimg.onload = function() {
-					_fmOpt.imgLoaded = true;
-				};
-				cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=feiniaodai&appName=feiniaodai_h5&tokenId=" + _fmOpt.token;
-				var fm = document.createElement('script');
-				fm.type = 'text/javascript';
-				fm.async = true;
-				fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(fm, s);
-			})();
-		</script>
-	</head>
-	<style>
-		html,body {
-			background: #FAFAFA;
-			height: 100%;
-			overflow: hidden;
-		}
-		.weui_cell_ft {
-			font-size: 12px;
-			color: rgb(74, 144, 226);
-		}
-		
-		.weui_cell_bd {
-			margin-left: 10px;
-		}
-		
-		.weui_dialog {
-			border-radius: 5px;
-		}
-		
-		.weui_dialog_bd {
-			text-align: center;
-		}
-		
-		.weui_cell {
-			padding: 14.5px 15px;
-		}
-		.header{
-			background: #fff;
-		}
-		.showloan{
-			position: absolute;
-			top:41px;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			padding-bottom: 20px;
-			overflow-y: auto;
-		}
-		.jkyt-pop li{
-			padding: 10px 0;
-			position: relative;
-			font-size: 14px;
-		}
-		.jkyt-pop .item:after{
-			position: absolute;
-			content: "";
-			height: 1px;
-			width: 100%;
-			background: #F2F2F2;
-			left:0;
-			bottom: 0;
-			transform: scaleY(0.7);
-		}
-		.user-info-page .layui-m-layer-footer .layui-m-layercont {
-		   	padding: 0; 
-		}
-		.user-info-page .layui-m-layercont {
-		   	padding: 0;
-		}
-		.gary-font{
-			color:#A6A6A6;
-		}
-		.user-info-page .layui-m-layer .layui-m-layer-footer {
-		    position: fixed;
-		    width: 95%;
-		    max-width: 100%;
-		    margin: 0 auto;
-		    left: 0;
-		    right: 0;
-		    bottom: 0px;
-		    background: 0 0;
-		}
-	</style>
+<body class="user-info-page">
+    <header class="header">
+        <div style="float: left;" class="usera">
+            <a class="userinfo_back">
+                <img src="../../images/ico_back@2x.png" />
+            </a>
+        </div>
+        <p>我的资料</p>
+    </header>
+    <div class="userInfo-page" style="display: none;">
+        <div class="noloan" style="display: none;">
+            <div style="text-align: center;margin-top: 60px;">
+                <img src="../../images/pic_information@2x.png" style="width: 40%;" />
+                <p style="font-size: 14px;color: #333;margin-top: 40px;">您还没有申请借款哦~</p>
+            </div>
+            <div class="sure_button user">
+                <input type="button" value="马上申请" @click="tohome" />
+            </div>
+        </div>
+        <div class="showloan">
+            <div class="title">请按顺序完成资料填写，即可获取授信额度</div>
+            <div class="weui_cells_access">
+                <a class="weui_cell" href="javascript:;" @click="jkyt()">
+                    <div class="weui_cell_hd">
+                        <img src="../../images/icon_jkyt.png">
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p style="font-size: 14px;">借款用途</p>
+                    </div>
+                    <div class="weui_cell_ft" id="jkyt">
+                        请选择
+                    </div>
+                </a>
+            </div>
+            <div class="weui_cells_access">
+                <a class="weui_cell opt-btn" href="javascript:;" :state="person" desc="个人信息" id="1" data-href="usermessage.html">
+                    <div class="weui_cell_hd">
+                        <img src="../../images/icon_gerenxinxi@2x.png">
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p style="font-size: 14px;">个人信息<span class="pink" v-if="person==0">(必填)</span></p>
+                        <p class="desc">请完善个人信息</p>
+                    </div>
+                    <div class="weui_cell_ft" :class="{'ok':person==1}">
+                        <span v-if="person==1">已填写</span>
+                        <span v-if="person==2">已完善</span>
+                        <span v-if="person==0">未完善</span>
+                    </div>
+                </a>
+                <a class="weui_cell opt-btn" href="javascript:;" :state="work" desc="工作信息" id="2" data-href="workinfomation.html">
+                    <div class="weui_cell_hd">
+                        <img src="../../images/icon_gongzuoxinxi@2x.png">
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p style="font-size: 14px;">工作信息<span class="pink" v-if="work==0">(必填)</span></p>
+                        <p class="desc">请完善个人工作信息</p>
+                    </div>
+                    <div class="weui_cell_ft" :class="{'ok':work==1}">
+                        <span v-if="work==1">已填写</span>
+                        <span v-if="work==2">已完善</span>
+                        <span v-if="work==0">未完善</span>
+                    </div>
+                </a>
+                <a class="weui_cell opt-btn" href="javascript:;" :state="contact" desc="联系人信息" id="3" data-href="contacts.html">
+                    <div class="weui_cell_hd">
+                        <img src="../../images/icon_lianxiren@2x.png">
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p style="font-size: 14px;">联系人信息<span class="pink" v-if="contact==0">(必填)</span></p>
+                        <p class="desc">特殊情况，可以帮助我们联系您</p>
+                    </div>
+                    <div class="weui_cell_ft" :class="{'ok':contact==1}">
+                        <span v-if="contact==1">已填写</span>
+                        <span v-if="contact==2">已完善</span>
+                        <span v-if="contact==0">未完善</span>
+                    </div>
+                </a>
+                <div class="sumbit" v-if="face==4 && source!=2">
+                    <input type="button" class="userInfo_sumbit" value="立即提交" @click="commit(1)" />
+                </div>
+            </div>
+            <div v-if="face!=4">
+                <div class="title" v-if="face!=4">认证信息</div>
+                <div class="weui_cells_access">
+                    <a class="weui_cell opt-btn" href="javascript:;" :state="face" desc="人脸识别" id="4" data-href="userphoto.html">
+                        <div class="weui_cell_hd">
+                            <img src="../../images/icon_renlianshibie@2x.png">
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p style="font-size: 14px;">人脸识别<span class="pink" v-if="face==0">(必填)</span></p>
+                            <p class="desc">请完善人脸信息</p>
+                        </div>
 
-	<body class="user-info-page">
-		<header class="header">
-			<div style="float: left;" class="usera">
-				<a class="userinfo_back">
-					<img src="../../images/ico_back@2x.png" />
-				</a>
-			</div>
-			<p>我的资料</p>
-		</header>
-		<div class="noloan" style="display: none;">
-			<div style="text-align: center;margin-top: 60px;">
-				<img src="../../images/pic_information@2x.png" style="width: 40%;" />
-				<p style="font-size: 14px;color: #333;margin-top: 40px;">您还没有申请借款哦~</p>
-			</div>
-			<div class="sure_button user">
-				<input type="button" value="马上申请" />
-			</div>
-		</div>
-		<div class="showloan">
-			<div style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);">请按顺序完成资料填写，即可获取授信额度</div>
-			<div class="weui_cells_access" style="background: #fff;overflow: hidden;margin-bottom: 10px;">
-				<a class="weui_cell weui_person" href="javascript:;" onclick="jkyt(this)">
-					<div class="weui_cell_hd">
-						<img src="../../images/icon_jkyt.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-					</div>
-					<div class="weui_cell_bd weui_cell_primary">
-						<p style="font-size: 14px;">借款用途</p>
-					</div>
-					<div class="weui_cell_ft" id="jkyt">
-						请选择
-					</div>
-				</a>
-			</div>
-			<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
-				<a class="weui_cell weui_person" href="usermessage.html">
-					<div class="weui_cell_hd">
-						<img src="../../images/icon_gerenxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-					</div>
-					<div class="weui_cell_bd weui_cell_primary">
-						<p style="font-size: 14px;">个人信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
-						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善个人信息</p>
-					</div>
-					<div class="weui_cell_ft  person">
-						未完善
-					</div>
-				</a>
-				<a class="weui_cell weui_work" href="workinfomation.html">
-					<div class="weui_cell_hd">
-						<img src="../../images/icon_gongzuoxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-					</div>
-					<div class="weui_cell_bd weui_cell_primary">
-						<p style="font-size: 14px;">工作信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
-						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善个人工作信息</p>
-					</div>
-					<div class="weui_cell_ft work">
-						未完善
-					</div>
-				</a>
-				<a class="weui_cell weui_contact" href="contacts.html">
-					<div class="weui_cell_hd">
-						<img src="../../images/icon_lianxiren@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-					</div>
-					<div class="weui_cell_bd weui_cell_primary">
-						<p style="font-size: 14px;">联系人信息<span class="pink" style="font-size: 12px;">(必填)</span></p>
-						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">特殊情况，可以帮助我们联系您</p>
-					</div>
-					<div class="weui_cell_ft contact">
-						未完善
-					</div>
-				</a>
-			</div>
+                        <div class="weui_cell_ft">
+                            <span v-if="face==1">已填写</span>
+                            <span v-if="face==2">已完善</span>
+                            <span v-if="face==0">未完善</span>
+                        </div>
+                    </a>
+                    <a class="weui_cell opt-btn" href="javascript:;" :state="mobile" desc="手机认证" id="5" data-href="usermob.html">
+                        <div class="weui_cell_hd">
+                            <img src="../../images/icon_shoujirenzheng@2x.png">
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p style="font-size: 14px;">手机认证<span class="pink" v-if="mobile==0">(必填)</span></p>
+                            <p class="desc">手机认证有助于加快审批</p>
+                        </div>
+                        <div class="weui_cell_ft ">
+                            <span v-if="mobile==1">已填写</span>
+                            <span v-if="mobile==2">已完善</span>
+                            <span v-if="mobile==0">未完善</span>
+                        </div>
+                    </a>
+                    <a class="weui_cell opt-btn" href="javascript:;" :state="wage" desc="工资卡认证" id="6">
+                        <div class="weui_cell_hd">
+                            <img src="../../images/icon_gzk.png">
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p style="font-size: 14px;">工资卡认证<span class="pink" v-if="wage==0">(必填)</span></p>
+                            <p class="desc">包含近期工资流水</p>
+                        </div>
+                        <div class="weui_cell_ft">
+                            <span v-if="wage==0">未完善</span>
+                            <span v-if="wage==1">已填写</span>
+                            <span v-if="wage==2">已完善</span>
+                            <span v-if="wage==5">认证中</span>
+                            <span v-if="wage==6">认证失败</span>
+                        </div>
+                    </a>
+                    <a class="weui_cell opt-btn" href="javascript:;" :state="limit" desc="提额认证" id="7" data-href="mention.html">
+                        <div class="weui_cell_hd">
+                            <img src="../../images/icon_te.png">
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p style="font-size: 14px;">提额认证<span class="pink" v-if="limit==0">(必填)</span></p>
+                            <p class="desc">认证后可提高额度</p>
+                        </div>
+                        <div class="weui_cell_ft">
+                            <span v-if="limit==1">已填写</span>
+                            <span v-if="limit==2">已完善</span>
+                            <span v-if="limit==0">未完善</span>
+                        </div>
+                    </a>
+                    <div class="sumbit" v-if="source!=2">
+                        <input type="button" class="userInfo_sumbit" value="立即提交" @click="commit(2)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../libs/js/jquery-2.1.0.js?v=${project.javascript.version}"></script>
+<script src="../../libs/js/jquery.cookie.js?v=${project.javascript.version}"></script>
+<script src="../../js/common/loading.js?v=${project.javascript.version}"></script>
+<script src="../../js/common/globalConst.js?v=${project.javascript.version}"></script>
+<script src="../../js/common/utils.js?v=444"></script>
+<script src="../../libs/js/vue.js?v=${project.javascript.version}"></script>
+<script src="../../libs/js/layer.js?v=${project.javascript.version}"></script>
+<script>
+    new Vue({
+        el: '.userInfo-page',
+        data: {
+            accessToken: constans.accessToken,
+            userStat: sessionStorage.getItem("userStat"),
+            userId: sessionStorage.getItem("userId"),
+            source: localStorage.getItem("source"),
+            person: 0,
+            work: 0,
+            contact: 0,
+            wage: 0,
+            limit: 0,
+            face: 0,
+            mobile: 0,
+            af2: 0,
+            current: "",
+            layerIndex: ""
+        },
+        created() {
+            utils.getUserId();
+        },
+        mounted() {
+            this.hmJS();
+            let params = utils.getUrlParams();
+            if (params.mxcode && params.mxcode == "1") {
+                utils.fetchData({
+                    url: constans.serviceUrl + '/credit/debitCard',
+                    type: "post",
+                    data: {
+                        task_id: params.taskId
+                    },
+                    success: function() {
+                        location.href = constans.htmlUrl + "/html/user/userInfoList.html";
+                    }
+                })
+            } else {
+                this.initData();
+            }
 
-			<div style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);">信用认证</div>
-			<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
-				<a class="weui_cell weui_person" href="usermessage.html">
-					<div class="weui_cell_hd">
-						<img src="../../images/icon_gerenxinxi@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-					</div>
-					<div class="weui_cell_bd weui_cell_primary">
-						<p style="font-size: 14px;"><span class="pink" style="font-size: 12px;">(必填)</span></p>
-						<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善个人信息</p>
-					</div>
-					<div class="weui_cell_ft  person">
-						未完善
-					</div>
-				</a>
-			</div>
-			<!-- <div class="hide1"> -->
-			<div> 
-				<div class="top1" style="font-size: 12px;line-height: 30px;margin-left: 10px;color:rgb(196,196,196);display:none;">认证信息</div>
-				<div class="weui_cells_access" style="background: #fff;overflow: hidden;">
-					<a class="weui_cell userphoto" href="userphoto.html" >
-						<div class="weui_cell_hd">
-							<img src="../../images/icon_renlianshibie@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-						</div>
-						<div class="weui_cell_bd weui_cell_primary">
-							<p style="font-size: 14px;">人脸识别<span class="pink" style="font-size: 12px;">(必填)</span></p>
-							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">请完善人脸信息</p>
-						</div>
+        },
+        methods: {
+            hmJS() {
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
 
-						<div class="weui_cell_ft face">
-							未完善
-						</div>
-					</a>
-					<a class="weui_cell weui_mobile" href="usermob.html" >
-						<div class="weui_cell_hd">
-							<img src="../../images/icon_shoujirenzheng@2x.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-						</div>
-						<div class="weui_cell_bd weui_cell_primary">
-							<p style="font-size: 14px;">手机认证<span class="pink" style="font-size: 12px;">(必填)</span></p>
-							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">手机认证有助于加快审批</p>
-						</div>
-						<div class="weui_cell_ft mobile">
-							未完善
-						</div>
-					</a>
-					<a class="weui_cell weui_mobile" href="usermob.html" >
-						<div class="weui_cell_hd">
-							<img src="../../images/icon_gzk.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-						</div>
-						<div class="weui_cell_bd weui_cell_primary">
-							<p style="font-size: 14px;">工资卡认证<span class="pink" style="font-size: 12px;">(必填)</span></p>
-							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">包含近期工资流水</p>
-						</div>
-						<div class="weui_cell_ft mobile">
-							未完善
-						</div>
-					</a>
-					<a class="weui_cell weui_mobile" href="mention.html" >
-						<div class="weui_cell_hd">
-							<img src="../../images/icon_te.png" alt="icon" style="width:20px;margin-right:5px;display:block">
-						</div>
-						<div class="weui_cell_bd weui_cell_primary">
-							<p style="font-size: 14px;">提额认证<span class="pink" style="font-size: 12px;">(必填)</span></p>
-							<p style="font-size: 12px;color: rgb(196,196,196);margin-top: 5px;">认证后可提高额度</p>
-						</div>
-						<div class="weui_cell_ft mobile">
-							未完善
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="sumbit userInfo">
-				<input type="button" class="userInfo_sumbit" value="立即提交" />
-			</div>
-			<div class="sumbit userInfo1" style="display: none;">
-				<input type="button" class="userInfo_sumbit1" value="立即提交" />
-			</div>
-		</div>
-		<div class="weui_dialog_confirm dd" style="display: none;">
-			<div class="weui_mask"></div>
-			<div class="weui_dialog" style="width: 65%;">
-				<div class="weui_dialog_hd"><strong class="weui_dialog_title"></strong></div>
-				<div class="weui_dialog_bd" style="text-align: center;color: #000;">离到达人生巅峰仅有一步之遥，确认要放弃完善资料</div>
-				<div class="weui_dialog_ft">
-					<a class="weui_btn_dialog default" style="color: rgb(74, 144, 226);">放弃</a>
-					<a class="weui_btn_dialog primary" style="color: rgb(74, 144, 226);">继续</a>
-				</div>
-			</div>
-		</div>
-		<div id="mode"></div>
-	</body>
+                (function() {
+                    var tokenId = "sijimoney" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
+                    localStorage.setItem("token", tokenId)
+                    _fmOpt = {
+                        partner: 'sijimoney',
+                        appName: 'sijimoney_h5',
+                        token: tokenId,
+                    };
+                    var cimg = new Image(1, 1);
+                    cimg.onload = function() {
+                        _fmOpt.imgLoaded = true;
+                    };
+                    cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=sijimoney&appName=feiniaodai_h5&tokenId=" + _fmOpt.token;
+                    var fm = document.createElement('script');
+                    fm.type = 'text/javascript';
+                    fm.async = true;
+                    fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(fm, s);
+                })();
+            },
+            initData() {
+                var _self = this;
+                var _url = _self.source == "2" ? "/user/persondata" : "/user/userInfoList";
+                utils.fetchData({
+                    url: constans.serviceUrl + _url,
+                    type: "post",
+                    data: {
+                        source: _self.source
+                    },
+                    success: function(result) {
+                        if (result.code == 200) {
+                            console.log(result);
+                            localStorage.setItem("person", result.body.person);
+                            localStorage.setItem("work", result.body.work);
+                            localStorage.setItem("contact", result.body.contact);
+                            localStorage.setItem("face", result.body.face);
+                            localStorage.setItem("mobile", result.body.mobile);
+                            _self.person = result.body.person;
+                            _self.work = result.body.work;
+                            _self.contact = result.body.contact;
+                            _self.face = result.body.face;
+                            _self.mobile = result.body.mobile;
+                            _self.wage = result.body.wage;
+                            _self.limit = result.body.limit;
+                            _self.af2 = result.body.af2;
+                            if (result.body.loanUse) {
+                                $("#jkyt").html(result.body.loanUse);
+                            }
+                            // 判断当前用户资料填写到哪一步了
+                            if (result.body.person > 0) {
+                                ++_self.current;
+                            }
+                            if (result.body.work > 0) {
+                                ++_self.current;
+                            }
+                            if (result.body.contact > 0) {
+                                ++_self.current;
+                            }
+                            if (result.body.face > 0 && result.body.face != 4) {
+                                ++_self.current;
+                            }
+                            if (result.body.mobile > 0 && result.body.face != 4) {
+                                ++_self.current;
+                            }
+                            if (result.body.wage > 0 && result.body.face != 4) {
+                                ++_self.current;
+                            }
+                            if (result.body.limit > 0 && result.body.face != 4) {
+                                ++_self.current;
+                            }
+                        } else {
+                            if (_self.source == "2") {
+                                $(".noloan").show();
+                                $(".showloan").hide();
+                            }
+                        }
 
-	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
-	<script src="../../js/common/getUserId.js?${project.javascript.version}"></script>
-	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
-	<script src="../../js/user/userInfoList.js?${project.javascript.version}"></script>
-	<script src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
-	<script src="../../libs/js/layer.js?${project.javascript.version}"></script>
-    <script>
-		$(".user").on("click", function() {
-			window.location.href = constans.htmlUrl + "/index.html";
-		})
-		var layerIndex = null;
-		function jkyt(){
-			var html = '<ul class="jkyt-pop">\
-					<li class="item gary-font">请选择实际资金用途,禁止用于购<br>房、投资及各种非消费场景</li>\
-					<li class="item" type="1">个人日常消费</li>\
-					<li class="item" type="2">装修</li>\
-					<li class="item" type="3">旅游</li>\
-					<li class="item" type="4">教育</li>\
-					<li>医疗</li>\
-				</ul>'
-		 	layerIndex = layer.open({
-			    content: html
-			    ,btn: ['取消']
-			    ,skin: 'footer'
-			    ,style:'background:#F2F2F2;width:100%;border-radius:0;'
-			    ,yes: function(index){
-			    	layer.close(layerIndex);
-			    }
-			});
-		}
+                        $(".userInfo-page").show();
+                    }
+                })
+                _self.bindEvent();
+            },
+            bindEvent() {
+                var _self = this;
+                $("body").on("click", ".jkyt-pop li", function() {
+                    var val = this.innerHTML;
+                    $("#jkyt").html(val);
+                    layer.close(_self.layerIndex);
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/user/submitloanUse',
+                        type: "post",
+                        data: {
+                            loanUse: val
+                        },
+                        success: function(result) {
 
-		$("body").on("click",".jkyt-pop li",function(){
-			$("#jkyt").html(this.innerHTML);
-		 	layer.close(layerIndex);
-		});
-	</script>
+                        }
+                    })
+
+                });
+
+                // 返回事件
+                $(".userinfo_back").on("click", function() {
+                        // 如果是首页进来的
+                        if (_self.source == 1) {
+                            layer.open({
+                                content: '离到达人生巅峰仅有一步之遥，确认要放弃完善资料?',
+                                btn: ['放弃', '继续'],
+                                yes: function(index) {
+                                    window.location = constans.htmlUrl + "/index.html";
+                                }
+                            });
+                        } else {
+                            window.location = constans.htmlUrl + "/user.html";
+                        }
+                    })
+                    // 选项点击事件
+                $("body").on("click", ".opt-btn", function() {
+                    var id = Math.floor($(this).attr("id"));
+                    // 判断点击的项目是否处于已填写状态
+                    if (id - 1 > _self.current) {
+                        var desc = $(".opt-btn").eq(_self.current).attr("desc");
+                        _self.showMsg("请完善" + desc);
+                    } else {
+                        // 如果未认证则跳转页面
+                        if (id == 6) {
+                            if ($(this).attr("state") != "2") {
+                                location.href = "https://api.51datakey.com/h5/importV3/index.html#/banklist?userId=" + sessionStorage.getItem("taskId") + "&apiKey=" + constans.apiKey + "&themeColor=F38185&backUrl=" + constans.htmlUrl + "/html/user/userInfoList.html";
+                            } else {
+                                location.href = constans.htmlUrl + "/html/user/gzk.html";
+                            }
+                        } else {
+                            location.href = $(this).attr("data-href");
+
+                        }
+                    }
+                });
+            },
+            showMsg(msg) {
+                layer.open({
+                    content: msg,
+                    skin: 'msg',
+                    time: 3
+                });
+            },
+            // type 1为提交反欺诈1   2为提交反欺诈二
+            commit(type) {
+                var _self = this;
+                var _url = (type == 1 ? "/riskManagements/antiFraud1" : "/riskManagements/antiFraud2");
+                utils.fetchData({
+                    url: constans.serviceUrl + _url,
+                    type: "post",
+                    data: {
+                        tongdId: localStorage.getItem("token"),
+                        userId: _self.userId
+                    },
+                    success: function(result) {
+                        if (result.code == 500) {
+                            _self.showMsg(result.msg);
+                        } else {
+                            //window.location = constans.htmlUrl + "/index.html";
+                            location.reload();
+                        }
+                    }
+                })
+            },
+            jkyt() {
+                var _self = this;
+                if (this.source == "2") return;
+                var html = '<ul class="jkyt-pop">\
+							<li class="item gary-font">请选择实际资金用途,禁止用于购<br>房、投资及各种非消费场景</li>\
+							<li class="item" type="1">个人日常消费</li>\
+							<li class="item" type="2">装修</li>\
+							<li class="item" type="3">旅游</li>\
+							<li class="item" type="4">教育</li>\
+							<li>医疗</li>\
+						</ul>'
+                _self.layerIndex = layer.open({
+                    content: html,
+                    className: "jkyt-layer",
+                    btn: ['取消'],
+                    skin: 'footer',
+                    style: 'background:#F2F2F2;width:100%;border-radius:0;',
+                    yes: function(index) {
+                        layer.close(index);
+                    }
+                });
+            },
+            tohome() {
+                location.href = constans.htmlUrl + "/index.html";
+            }
+        }
+    });
+</script>
 
 </html>

@@ -166,23 +166,21 @@
 	<script>
 		
 		var mySwiper2 = new Swiper('#swiper-container2',{
-	watchSlidesProgress : true,
-	watchSlidesVisibility : true,
-	slidesPerView : 3,
-	autoplay:false,
-	onTap: function(){
+			watchSlidesProgress : true,
+			watchSlidesVisibility : true,
+			slidesPerView : 3,
+			autoplay:false,
+			onTap: function(){
 				mySwiper3.slideTo( mySwiper2.clickedIndex)
 			}
-	})
-	var mySwiper3 = new Swiper('#swiper-container3',{
-	
-	onSlideChangeStart: function(){
+		})
+		var mySwiper3 = new Swiper('#swiper-container3',{
+			onSlideChangeStart: function(){
 				updateNavPosition()
 			}
+		})
 	
-	})
-	
-	function updateNavPosition(){
+		function updateNavPosition(){
 			$('#swiper-container2 .active-nav').removeClass('active-nav')
 			var activeNav = $('#swiper-container2 .swiper-slide').eq(mySwiper3.activeIndex).addClass('active-nav');
 	
@@ -199,10 +197,10 @@
 					mySwiper2.slideTo(activeNav.index())
 				}	
 			}
-	}
-	$(".mess2").on("click",function(){
-		window.location.href = constans.htmlUrl + "/html/home/messdetails.html";
-	})
+		}
+		$(".mess2").on("click",function(){
+			window.location.href = constans.htmlUrl + "/html/home/messdetails.html";
+		})
 	</script>
 </html>
 

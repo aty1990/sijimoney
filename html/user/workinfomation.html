@@ -63,7 +63,19 @@
 		   border: 0;
 		}
 		.content_address {
-			display: none;
+			position: fixed;
+			top:0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			overflow: hidden;
+			background: #fff;
+			z-index: 999;
+			transform: translate3D(100%,0,0);
+			-webkit-transition: all 2s ease;
+		}
+		.current{
+			transform: translate3d(0,0,0);
 		}
 		
 		#container {
@@ -98,7 +110,7 @@
 			height: 40px;
 		}
 		
-		#sure {
+		.sure {
 			width:30%;
 			height: 44px;
 			border-radius: 0;
@@ -118,227 +130,499 @@
 		   display: none;
 		   border: 0;
 		}
+		.auth-state{
+			color:#888;padding-left: 10px;
+			background: url("../../images/Disclosure Indicator@2x.png") right center no-repeat;
+			background-size: 9px auto;
+		}
 	</style>
 </head>
 
 <body>
-	<header style="background: #fff;">
-		<div style="float: left;" class="info">
-			<a href="userInfoList.html">
-				<img src="../../images/ico_back@2x.png" />
-			</a>
-		</div>
-		<p>工作信息</p>
-	</header>
-	<div class="user_message">
-		<p class="small_header">为保证借款申请顺利通过，请务必填写真实信息。</p>
-		<div class="user_input">
-			<p>公司全称</p>
-			<div class="mymessage">
-				<input type="text" class="work_name1 input_p" value="" placeholder="请填写公司名称" />
+	<div class="work-page">
+		<header style="background: #fff;">
+			<div style="float: left;" class="info">
+				<a @click="back">
+					<img src="../../images/ico_back@2x.png" />
+				</a>
+			</div>
+			<p>工作信息</p>
+		</header>
+		<div class="user_message">
+			<p class="small_header">为保证借款申请顺利通过，请务必填写真实信息。</p>
+			<div class="user_input">
+				<p>公司全称</p>
+				<div class="mymessage">
+					<input type="text" class="work_name1 input_p cache"  v-model="companyName" :disabled="work=='2'"  name="companyName" placeholder="请填写公司名称" />
+				</div>
+			</div>
+			<div class="user_input" >
+				<p>职位名称</p>
+				<div class="mymessage">				
+					<input type="text" class="work_name2 input_p cache" maxlength="16"  :disabled="work=='2'" name="affiDepart"  v-model="affiDepart" placeholder="请填写职位名称" />					
+				</div>
+			</div>
+			<div class="user_input auth">
+				<p>职业认证</p>
+				<div class="mymessage auth-state" @click="toAuth">
+					<template v-if="isVered==1">已上传</template>
+					<input v-if="isVered==0" type="text" class="input_p" disabled  placeholder="请上传职业证明"  name="job" unselectable="on" />
+				</div>
+			</div>
+			<div class="user_input">
+				<p>公司地址</p>
+				<div class="mymessage" @click="initMap">
+					<input type="text" class="work_address input_p" onfocus="this.blur();" :disabled="work=='2'" placeholder="请定位您所在的城市" v-model="addrUp"/>
+					<img src="../../images/Disclosure Indicator@2x.png" />
+				</div>
+			</div>
+			<div class="user_input">
+				<p style="width: 20%;height: 40px;"></p>
+				<div class="mymessage">
+					<input type="text" v-model="addrDown"  class="work_num input_p cache" :disabled="work=='2'" placeholder="请填写具体街道门牌号" name="addrDown" />
+				</div>
+			</div>
+			<div class="user_input">
+				<p>公司电话</p>
+				<div class="mymessage">
+					<!-- <span style="float: left;font-size: 14px;">021-</span> -->
+					<p class="citycode" style="width: 15%;color: #000;">{{citycode}}</p>
+					<input type="tel" v-model="companyTel"  class="work_tel input_p cache" :disabled="work=='2'" maxlength="8" name="companyTel" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请填写公司电话" style="width: 70%;" />
+				</div>
+			</div>
+			
+			
+			<div class="user_input userInfomation">
+				<p>月收入(元)</p>
+				<div class="mymessage">
+					<input type="text"  @keyup="incomeKeyUp" maxlength="8" name="userIncome" :disabled="work=='2'" class="work_money input_p cache" oninput="this.value=this.value.replace(/[^0-9.]+/,'').slice(0,8);" placeholder="请填写月收入" v-model="userIncome"/>
+				</div>
+			</div>
+			<div class="user_input userInfomation dd">
+				<p>入职时间</p>
+				<div class="mymessage demos">			   
+					   <input type="sumbit" unselectable="on" onfocus="this.blur()" :disabled="work=='2'" id="careerTime" class="work_time input_p" placeholder="请填写入职时间" v-model="careerTime"/>	
+				</div>
+			</div>
+			<div class="user_input userInfomation dd">
+				<p>发薪时间</p>
+				<div class="mymessage demos">			   
+					<input type="text" class="input_p payDay" onfocus="this.blur()"  :disabled="work=='2'" placeholder="请选择发薪时间" unselectable="on" @click="payDate" v-model="payDay"/>
+					<img src="../../images/Disclosure Indicator@2x.png" />
+				</div>
+			</div>
+			<!-- <div class="sumbit">
+				<input type="button" disabled="disabled"  class="work_keep" id="work_keep1"  value="保存" />
+			</div> -->
+			<div class="sumbit" style="margin-top: 10px;">
+				<input type="button"  class="work_keep" @click="commit" :disabled="disabled" v-if="work!='2'" value="保存并继续" />
 			</div>
 		</div>
-		<div class="user_input">
-			<p>职位名称</p>
-			<div class="mymessage">				
-				<input type="text" class="work_name2 input_p" maxlength="16"  value="" placeholder="请选择职位名称" />					
+	    <div class="content_address" v-show="showMap" :class="{'current':showMap}">
+			<div id="container" tabindex="0"></div>
+			<div class='panel' style="border:1px solid #d9d9d9;">
+				<table style="width:70%;float:left;">
+					<tr>
+						<td>
+							<input id="tipinput" placeholder="请输入关键字" />
+						</td>
+					</tr>
+				</table>
+				<input type="button" @click="sure" class="sure" value="确定">
+				<div id='message'></div>
 			</div>
+			<div id="myPageTop" style="position:fixed;z-index:99999;"></div>
 		</div>
-		<div class="user_input">
-			<p>职业认证</p>
-			<div class="mymessage">				
-				<input type="text" class="work_time input_p" onfocus="this.blur()"  placeholder="请上传职业证明" unselectable="on" id="zyzm"/>
-				<img src="../../images/Disclosure Indicator@2x.png" />				
-			</div>
-		</div>
-		<div class="user_input">
-			<p>公司地址</p>
-			<div class="mymessage address">
-				<input type="text" value="" class="work_address input_p" onfocus="this.blur();" placeholder="请定位您所在的城市" />
-				<!--<iframe id="test" src=""></iframe>-->
-				<img src="../../images/Disclosure Indicator@2x.png" />
-			</div>
-		</div>
-		<div class="user_input">
-			<p style="width: 20%;height: 40px;"></p>
-			<div class="mymessage">
-				<input type="text" value="" class="work_num input_p" placeholder="请填写具体街道门牌号" />
-			</div>
-		</div>
-		<div class="user_input">
-			<p>公司电话</p>
-			<div class="mymessage">
-				<span style="float: left;font-size: 14px;">021-</span>
-				<p class="citycode" style="width: 15%;color: #000;" ></p>
-				<input type="tel" value="" class="work_tel input_p" maxlength="8" onkeyup="this.value=this.value.replace(/\D/g,'')" placeholder="请填写公司电话" style="width: 70%;" />
-			</div>
-		</div>
-		
-		
-		<div class="user_input userInfomation">
-			<p>月收入(元)</p>
-			<div class="mymessage">
-				<input type="text"  value="" id="input11" maxlength="8" class="work_money input_p" oninput="this.value=this.value.replace(/[^0-9.]+/,'').slice(0,8);" placeholder="请填写月收入" />
-			</div>
-		</div>
-		<div class="user_input userInfomation dd">
-			<p>入职时间</p>
-			<div class="mymessage demos">			   
-				   <input type="sumbit" unselectable="on" onfocus="this.blur()"  value="" name="appDate" id="demo1" class="work_time input_p" placeholder="请填写入职时间" />	
-			</div>
-		</div>
-		<div class="user_input userInfomation dd">
-			<p>发薪时间</p>
-			<div class="mymessage demos">			   
-				<input type="text" class="work_time input_p" onfocus="this.blur()"  placeholder="请选择发薪时间" unselectable="on" id="fxsj"/>
-				<img src="../../images/Disclosure Indicator@2x.png" />
-			</div>
-		</div>
-		<div class="sumbit">
-			<input type="button" disabled="disabled"  class="work_keep" id="work_keep1"  value="保存" />
-		</div>
-		<div class="sumbit" style="margin-top: 10px;">
-			<input type="button" disabled="disabled"  class="work_keep" id="work_keep2" value="保存并继续" />
-		</div>
-	</div>
-    <div class="content_address">
-		<div id="container" tabindex="0"></div>
-		<div class='panel' style="border:1px solid #d9d9d9;">
-			<table style="width:70%;float:left;">
-				<tr>
-					<td>
-						<input id="tipinput" placeholder="请输入关键字" />
-					</td>
-				</tr>
-			</table>
-			<input type="button" id="sure" value="确定">
-			<div id='message'></div>
-		</div>
-		<div id="myPageTop" style="position:fixed;z-index:99999;"></div>
-	</div>
-	<div class="picker" style="display: none;">
-		<div class="picker-mask mask-hook"></div>
-		<div class="picker-panel panel-hook">
-			<div class="picker-choose choose-hook">
-				<span class="cancel cancel-hook">取消</span>
-				<span class="confirm confirm-hook">确定</span>
-				<h1 class="picker-title"></h1>
-			</div>
-			<div class="picker-content">
-				<div class="mask-top border-1px"></div>
-				<div class="mask-bottom border-1px"></div>
-				<div class="wheel-wrapper wheel-wrapper-hook">
-					<div class="wheel wheel-hook">
-						<ul class="wheel-scroll wheel-scroll-hook" style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, -324px) translateZ(0px);">
-							<li class="wheel-item">剧毒</li>
-						</ul>
+		<div class="picker" style="display: none;">
+			<div class="picker-mask mask-hook"></div>
+			<div class="picker-panel panel-hook">
+				<div class="picker-choose choose-hook">
+					<span class="cancel cancel-hook">取消</span>
+					<span class="confirm confirm-hook">确定</span>
+					<h1 class="picker-title"></h1>
+				</div>
+				<div class="picker-content">
+					<div class="mask-top border-1px"></div>
+					<div class="mask-bottom border-1px"></div>
+					<div class="wheel-wrapper wheel-wrapper-hook">
+						<div class="wheel wheel-hook">
+							<ul class="wheel-scroll wheel-scroll-hook" style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, -324px) translateZ(0px);">
+								<li class="wheel-item">剧毒</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="wx">
-		<p style="color: #fff;margin-top: 34px;">咋了？</p>
-		<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">							  				  			
-			<ul class="weui">
-			   <li ><span style="float:left;margin-left:10px;">我不想借款了</span><p  style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
-			   <li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span><p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
-			</ul>		
-			<div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
-				<textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!"  style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>  	             
+		<div class="wx">
+			<p style="color: #fff;margin-top: 34px;">咋了？</p>
+			<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">							  				  			
+				<ul class="weui">
+				   <li ><span style="float:left;margin-left:10px;">我不想借款了</span><p  style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
+				   <li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span><p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p></li>
+				</ul>		
+				<div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
+					<textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!"  style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>  	             
+				</div>
+				<p class="qi"  style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
+		            <span id="text-count" >128</span>/128
+		        </p>	        
 			</div>
-			<p class="qi"  style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
-	            <span id="text-count" >128</span>/128
-	        </p>	        
-		</div>
-		<div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
-	        <p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
-	        <p style="color: rgb(74,144,226);" class="try">再试试</p>
+			<div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
+		        <p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" @click="exit">确定</p>
+		        <p style="color: rgb(74,144,226);" class="try">再试试</p>
+		    </div>
 	    </div>
-    </div>
-	<div id="mode2"></div>
-	<div id="mode"></div>
+		<div id="mode2"></div>
+		<div id="mode"></div>
+	</div>
 
-	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
-	
-	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/picker.min.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/datePicker.js" ></script>
-<!--	<script type="text/javascript" src="../../libs/js/mobiscroll.js?version=1513c03216b0" ></script>-->
-	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0e76d85c5751c246d2fb105e41d5705c&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
-	<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/user/workinfomation.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery-2.1.0.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/jquery.cookie.js?v=${project.javascript.version}"></script>
+	<script src="../../js/common/globalConst.js?v=${project.javascript.version}"></script>
+	<script src="../../js/common/loading.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/picker.min.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/datePicker.js?v=${project.javascript.version}" ></script>
+	<script src="../../libs/js/mobiscroll.js?v=${project.javascript.version}" ></script>
+	<script src="https://webapi.amap.com/maps?v=1.3&key=0e76d85c5751c246d2fb105e41d5705c&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
+	<script src="https://webapi.amap.com/demos/js/liteToolbar.js?v=${project.javascript.version}"></script>
+	<!-- <script src="../../js/user/workinfomation.js?v=3"></script> -->
+
+
+
+	<script src="../../js/common/utils.js?v=56224"></script>
+	<script src="../../libs/js/vue.js?v=${project.javascript.version}"></script>
+	<script src="../../libs/js/layer.js?v=${project.javascript.version}"></script>
+
+
 	<script>
-	$(".weui li").on("click",function(){
-	   $(this).addClass("bg");
-	   $(this).siblings().removeClass("bg");
-	})
-	$(function () {
-	   $("#packagingDesc").on("propertychange input", function() {  
-            var $this = $(this),  
-                _val = $this.val(),  
-                count = "";  
-            if (_val.length > 128) {  
-                $this.val(_val.substring(0, 128));  
-            }  
-            count = 128 - $this.val().length;  
-            $("#text-count").text(count);  
-        });
-        
-        $('#input11').keyup(function () {
-        	this.value=this.value.replace(/[^\d^\.]+/g,'');  
-        	this.value = this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数 
-			if($('#input1').val()>99999){
-			  var d=$('#input1').val().substr(0,$('#input1').val().length-1);
-			  $('#input1').attr("maxlength","5");
-			  $('#input1').val(d);			  
-			}else{
-				$('#input1').attr("maxlength","8");
-			}
-        })
 
-		
-        var lat=localStorage.getItem("latitude");
-        var lon=localStorage.getItem("longitude");
-		var calendar = new datePicker();
-		var now = function(){
-			var d = new Date();
-			return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-		};
-		calendar.init({
-			'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
-			'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
-			'minDate':'1900-1-1',/*最小日期*/
-			'maxDate':now(),/*最大日期*/
-			'onSubmit':function(){/*确认时触发事件*/
-				var theSelectData=calendar.value;
-			},
-			'onClose':function(){/*取消时触发事件*/
-			}
-		});
-		// 初始化发薪日
-		(function(){
-			var daySet = [],
-			fxsj = $("#fxsj");
-			for(var i = 1;i<=31;i++){
-				daySet.push({ text: i+"日", value: i });
-			}
-			var fxsjPicker = new Picker({
-				data: [daySet]
-			});
+		new Vue({
+		  	el: '.work-page',
+		  	data: {
+		    	userId : sessionStorage.getItem("userId"),
+		    	work : localStorage.getItem("work"),
+		    	companyTel : "",
+		    	companyName : "",
+		    	showMap : false,
+		    	disabled : true,
+		    	affiDepart : "",
+		    	citycode : "",
+		    	addrUp : "",
+		    	addrDown : "",
+		    	userIncome : "",
+		    	isVered : 0,
+		    	companyAddr : "",
+		    	formattedAddress : "",
+		    	showPop : false,
+		    	companyProvince : "",
+		    	companyCity : "",
+		    	companyCountry : "",
+		    	fxsjPicker : "",
+		    	city : "",
+		    	province : "",
+		    	country : "",
+		    	payDay : "",
+		    	careerTime : ""		//入职时间
+		  	},
+		  	created(){
+		  		this.init();
+		  	},
+		  	methods:{
+		  		init(){
+		  			sessionStorage.setItem("filesPath",JSON.stringify(["","","","",""]));
+		  			this.renderData();
+		  			this.bindEvent();
+		  		},
+		  		bindEvent(){
+		  			var _self = this;
+		  			$(".try").on("click", function() {
+						$(".wx").hide();
+						$("#mode2").hide();
+					})
 
-			fxsjPicker.on('picker.select', function(selectedVal) {
-				fxsj.val(daySet[selectedVal[0]-1].text);
-			});
-			
-			fxsj.on("click", function() {
-				fxsjPicker.show();
-			})
-		})();
-	});
+		  			$(".weui li").on("click", function() {
+						$(this).addClass("bg");
+						$(this).siblings().removeClass("bg");
+					});
 
+					$("#packagingDesc").on("propertychange input", function() {
+						var $this = $(this),
+							_val = $this.val(),
+							count = "";
+						if(_val.length > 128) {
+							$this.val(_val.substring(0, 128));
+						}
+						count = 128 - $this.val().length;
+						$("#text-count").text(count);
+					});
+
+					// 监听文本框输入事件
+					$("body").on("input","input",(e)=>{
+						_self.listenField();
+						sessionStorage.setItem($(e.target).attr("name"),e.target.value);
+					});
+		  		},
+		  		renderData(){
+		  			var _self = this;
+		  			utils.fetchData({
+		  				url  : constans.serviceUrl + '/credit/detailCareer',
+						data : { userId : _self.userId },
+						success : function(data){
+							console.log(data);
+							if(data.code == 500){
+								utils.showMsg({msg : data.msg});
+							}else{
+								// 缓存职业认证的图片对象
+								sessionStorage.setItem("filesPath",JSON.stringify(data.body.filesPath));
+								sessionStorage.setItem("isVered",_self.isVered);
+								_self.companyAddr = data.body.addrUp;
+								_self.companyCity = data.body.city;
+								_self.companyCountry = data.body.country;
+								_self.companyProvince = data.body.province;
+								_self.companyName = data.body.companyName?data.body.companyName:sessionStorage.getItem("companyName");
+								_self.affiDepart = data.body.affiDepart?data.body.affiDepart:sessionStorage.getItem("companyName");
+								_self.addrUp = data.body.addrUp?data.body.addrUp:sessionStorage.getItem("detailAddr");
+								_self.addrDown = data.body.addrDown?data.body.addrDown:sessionStorage.getItem("addrDown");
+								_self.userIncome = data.body.userIncome==0?sessionStorage.getItem("userIncome"):data.body.userIncome;
+								_self.isVered = data.body.isVered;
+								_self.careerTime = data.body.careerTime?data.body.careerTime:sessionStorage.getItem("careerTime");
+								_self.payDay = data.body.payDay?data.body.payDay:sessionStorage.getItem("payDay");
+								_self.companyTel = data.body.companyTel?data.body.companyTel.split("-")[1]:sessionStorage.getItem("companyTel");
+								
+								// 截取区号
+								if(data.body.companyTel){
+									_self.citycode = data.body.companyTel.split("-")[0] + '-'
+								}
+								// 如果是未完善则点击返回时根据后台接口获得的状态做提示
+								if(_self.work == "0") {
+									_self.isCommited();
+								}
+								// 如果没有认证
+								if(_self.work!="2"){
+									_self.listenField();
+									// 初始化入职时间控件
+									_self.initCareerTime();
+									var daySet = [];
+									for(var i = 1;i<=31;i++){
+										daySet.push({ text: i, value: i });
+									}
+									_self.fxsjPicker = new Picker({
+										data: [daySet]
+									});
+
+									_self.fxsjPicker.on('picker.select', function(selectedVal) {
+										_self.payDay = daySet[selectedVal[0]-1].text;
+										sessionStorage.setItem("payDay",_self.payDay);
+										_self.listenField();
+									});
+									// 初始化化地图并获取地理位置
+									utils.initMap({
+										input : "tipinput",
+										callback : function(result){
+											_self.companyAddr = result.companyAddr;
+											_self.companyCity = result.companyCity;
+											_self.companyCountry = result.companyCountry;
+											_self.companyProvince = result.companyProvince;
+											_self.formattedAddress = result.formattedAddress;
+											_self.citycode = result.citycode;
+											_self.addrUp = result.addrUp;
+										}
+									});
+								}
+							}
+						}
+		  			})
+		  		},
+		  		initMap(){
+		  			if(this.work=="2")return;
+		  			this.showMap = true;
+		  		},
+		  		sure(){
+		  			if($("#tipinput").val()) {
+		  				this.addrUp = $("#tipinput").val();
+						this.showMap = false;
+					}
+		  		},
+		  		isCommited(){
+		  			_self = this;
+		  			utils.fetchData({
+		  				url  : constans.serviceUrl + '/reputations/isCommited',
+						data : { rePage: '100082' },
+						success : function(data){
+							if(data.code == 500){
+								utils.showMsg({msg : data.msg});
+							}else{
+								if(data.body == true) {
+									_self.showPop = true;
+								}
+							}
+						}
+		  			})
+		  		},
+		  		exit(){
+		  			var reContent = $("#packagingDesc").val();
+					var reTitle = $("header p").html();
+					var reTroubleType = $(".bg span").html();
+					if(reTroubleType == '我不想借款了') {
+						var num = '100077';
+					} else {
+						var num = '100078';
+					}
+					var data = {
+						reContent: reContent,
+						reCreateId: this.userId,
+						rePage: 100082,
+						reTitle: reTitle,
+						reTroubleType: num
+					}
+					utils.fetchData({
+		  				url  : constans.serviceUrl + '/reputations',
+						data : data,
+						success : function(data){
+							if(data.code == 500){
+								utils.showMsg({msg : data.msg});
+							}else{
+								window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+							}
+						}
+		  			})
+		  		},
+		  		back(){
+		  			var _self = this;
+		  			if(_self.showPop){
+		  				$(".wx").show();
+						$("#mode2").show();
+		  			}else{
+		  				window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+		  			}
+		  		},
+		  		incomeKeyUp(e){
+		  			var that = e.target;
+		  			var _self = this;
+		  			_self.userIncome = _self.userIncome.replace(/[^\d^\.]+/g,'');
+		        	_self.userIncome = _self.userIncome.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数 
+					if( _self.userIncome >99999 ){
+					  var d = _self.userIncome.slice(0,$(that).val().length-1);
+					  $(that).attr("maxlength","5");
+					  _self.userIncome = d;		  
+					}else{
+						$(that).attr("maxlength","8");
+					}
+		  		},
+		  		initCareerTime(){
+		  			var lat=localStorage.getItem("latitude");
+			        var lon=localStorage.getItem("longitude");
+					var calendar = new datePicker();
+					var now = function(){
+						var d = new Date();
+						return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+					};
+					calendar.init({
+						'trigger': '#careerTime', //按钮选择器，用于触发弹出插件
+						'type': 'date',//模式：date日期；datetime日期时间；time时间；ym年月；
+						'minDate':'1900-1-1',//最小日期
+						'maxDate':now(),//最大日期
+						'onSubmit':function(){
+							//确认时触发事件
+							sessionStorage.setItem("careerTime",calendar.value);
+						},
+						'onClose':function(){//取消时触发事件
+						}
+					});
+		  		},
+		  		toAuth(){
+		  			location.href="auth.html";
+		  		},
+		  		payDate(){
+		  			if(this.work=="2")return;
+					this.fxsjPicker.show();
+		  		},
+		  		commit(){
+		  			var _self = this;
+		  			var params = {
+						addrDown: this.addrDown,
+						addrUp: this.addrUp,
+						companyName: this.companyName,
+						affiDepart: this.affiDepart,
+						companyAddr: this.companyAddr,
+						companyCity: this.companyCity,
+						companyProvince: this.companyProvince,
+						companyCountry: this.companyCountry,
+						companyTel: this.citycode + this.companyTel,
+						userId: this.userId,
+						careerTime: this.careerTime,
+						userIncome: this.userIncome,
+						payDay : this.payDay
+					}
+					utils.fetchData({
+		  				url: constans.serviceUrl + '/credit/submitcareer',
+						data : params,
+						success : function(data){
+							console.log(data);
+							if(data.code == 500){
+								utils.showMsg({msg : data.msg});
+							}else{
+								//_self.saveUserContinue(data);
+								utils.showMsg({
+									msg : "保存成功",
+									time : 2,
+									end : function(){
+										//window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+									}
+								});
+							}
+						}
+		  			})
+		  		},
+		  		saveUserContinue(params){
+		  			utils.fetchData({
+		  				url: constans.serviceUrl + '/user/saveUserContinue',
+						data : params,
+						success : function(data){
+							utils.showMsg({
+								msg : "保存成功",
+								time : 2,
+								end : function(){
+									/*if(data.body.nextPage == 0){
+										window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+									}
+									if(data.body.nextPage == 1){
+										window.location = constans.htmlUrl + "/html/user/usermessage.html";
+									}
+									if(data.body.nextPage == 2){
+										window.location = constans.htmlUrl + "/html/user/workinfomation.html";
+									}
+									if(data.body.nextPage == 3){
+										window.location = constans.htmlUrl + "/html/user/contacts.html";
+									}
+									if(data.body.nextPage == 6){
+										window.location = constans.htmlUrl + "/index.html";
+										 localStorage.removeItem("homefail");
+									}*/
+									//window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+								}
+							});
+						}
+		  			})
+		  		},
+		  		// 监听字段变化
+		  		listenField(){
+		  			var _self = this;
+					_self.disabled = utils.listenField([
+			  			{value:_self.companyName,type:"text"},
+			  			{value:_self.affiDepart,type:"text"},
+			  			/*{value:_self.isVered,type:"text"},*/
+			  			{value:_self.addrUp,type:"text"},
+			  			{value:_self.addrDown,type:"text"},
+			  			{value:_self.citycode+_self.companyTel,type:"tel"},
+			  			{value:_self.userIncome,type:"text"},
+			  			{value:_self.careerTime,type:"text"},
+			  			{value:_self.payDay,type:"text"}
+		  			]);
+		  		}
+		  	}
+		})
 	</script>
 </body>
 </html>

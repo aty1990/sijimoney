@@ -30,7 +30,7 @@ $(function() {
 	$(".close").on("click", function() {
 		$(this).prev("input").val("");
 		$(this).hide();
-		$(".login_style").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+		$(".login_style").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 		$(".login_style").css("background-size", "100% 100%");
 	})
 
@@ -62,12 +62,12 @@ $(function() {
 		}
 		if(userName != "" && (/^1[34578]\d{9}$/.test(userName)) && pwd != "" && smsNum != "") {
 			$(".register").removeAttr("disabled");
-			$(".register").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".register").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".register").css("background-size", "100% 100%");
 
 		} else {
 			$(".register").attr("disabled", "disabled");
-			$(".register").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".register").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".register").css("background-size", "100% 100%");
 
 		}

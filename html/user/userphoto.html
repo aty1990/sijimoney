@@ -1,333 +1,391 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
-		<title>人脸识别</title>
-		<script type="text/javascript">   	
-    	var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
-		  var s = document.getElementsByTagName("script")[0];
-		  s.parentNode.insertBefore(hm, s);
-		})();
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+    <title>人脸识别</title>
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
-	</head>
-	<style>
-		body {
-			margin: auto;
-			background: #fafafa;
-			overflow-x: hidden;
-		}
-		
-		#file {
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			padding: 25px 0;
-			position: absolute;
-			right: 0;
-			top: 0;
-			opacity: 0;
-			display: none;
-		}
-		
-		#uploadifive-file {
-			width: 100%;
-		}
-		
-		.msghide {
-			background: #fff;
-			text-align: center;
-			font-size: 14px;
-			line-height: 30px;
-		}
-		
-		ul {
-			width: 100%;
-			display: inline-block;
-		}
-		
-		li {
-			float: left;
-			width: 33.33%;
-			font-size: 12px;
-			text-align: center;
-			line-height: 30px;
-			color: #999;
-		}
-	</style>
+</head>
+<style>
+    body {
+        margin: auto;
+        background: #fafafa;
+        overflow-x: hidden;
+    }
+    
+    #file {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        padding: 25px 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    
+    #uploadifive-file {
+        width: 100%;
+    }
+    
+    .msghide {
+        background: #fff;
+        text-align: center;
+        font-size: 14px;
+        line-height: 30px;
+    }
+    
+    ul {
+        width: 100%;
+        display: inline-block;
+    }
+    
+    li {
+        float: left;
+        width: 33.33%;
+        font-size: 12px;
+        text-align: center;
+        line-height: 30px;
+        color: #999;
+    }
+    
+    .user_photo {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    
+    .box {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 150px;
+        display: inline-block;
+        margin-top: 40px;
+        border: 1px solid #000;
+    }
+</style>
 
-	<body>
+<body>
+    <div class="face-page">
+        <header style="background: #fff;">
+            <div style="float: left;" class="info">
+                <a @click="back">
+                    <img src="../../images/ico_back@2x.png" />
+                </a>
+            </div>
+            <p>人脸识别</p>
+        </header>
+        <div class="msghide">
+            <img src="../../images/pic_renlianshibierenzheng@2x.png" style="width:100%;" />
+        </div>
 
-		<header style="background: #fff;">
-			<div style="float: left;" class="info">
-				<a href="userInfoList.html">
-					<img src="../../images/ico_back@2x.png" />
-				</a>
-			</div>
-			<p>人脸识别</p>
-		</header>
-		<div class="msghide">			
-			<img src="../../images/pic_renlianshibierenzheng@2x.png" style="width:100%;" />			
-		</div>
+        <div class="msg" style="text-align: center;display:none;">
+            <div class="box">
+                <img :src="pic_path" id="obj1" class="user_photo" />
+            </div>
+        </div>
+        <div class="sure_button" style="position: relative;">
+            <input type="button" class="photo_up" value="开始识别" @click="toStart" />
+            <input id="file" type="file" accept="image/*" v-show="state" capture="camera" name="files" @change="imagePreview($event)">
+            <input type="hidden" name="frontSide" id="frontSide">
+            <div id="tip-queue1" style="display: none;"></div>
+        </div>
 
-		
-			<div class="msg" style="text-align: center;display:none;">
-				<div style="width: 150px;height: 150px;overflow:hidden;position:relative;border-radius:150px;display: inline-block;margin-top:40px;border: 1px solid #000;">
-					<img src="" onerror="this.src='../../images/pic_card front@2x.png' " id="obj1" class="user_photo" style="width: 100%;position: absolute;left:0;right:0;top: 0;bottom: 0;margin: auto;" />
-				</div>
-			</div>
-			<div class="sure_button" style="position: relative;">
-				<input type="button" class="photo_up" value="开始识别" />
-				<div style="position: absolute;left:0;top:0;width:100%;display: block;">
-					<input id="file" type="file" accept="image/*" capture="camera" name="files" onchange="imagePreview(this)">
-				</div>
-				<input type="hidden" name="frontSide" id="frontSide">
-				<div id="tip-queue1" style="display: none;"></div>
-			</div>
-		
-		<div class="wx">
-			<p style="color: #fff;margin-top: 34px;">咋了？</p>
-			<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">
-				<ul class="weui">
-					<li><span style="float:left;margin-left:10px;">我不想借款了</span>
-						<p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
-					</li>
-					<li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span>
-						<p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
-					</li>
-				</ul>
-				<div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
-					<textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!" style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>
-				</div>
-				<p class="qi" style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
-					<span id="text-count">128</span>/128
-				</p>
-			</div>
-			<div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
-				<p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
-				<p style="color: rgb(74,144,226);" class="try">再试试</p>
-			</div>
-		</div>
-		<div id="mode2"></div>
-		<div id="mode"></div>
-	</body>
-	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/brower.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../js/user/userphoto.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js?${project.javascript.version}"></script>
-	<script>
-		$(".weui li").on("click", function() {
-			$(this).addClass("bg");
-			$(this).siblings().removeClass("bg");
-		})
+        <div class="wx">
+            <p style="color: #fff;margin-top: 34px;">咋了？</p>
+            <div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">
+                <ul class="weui">
+                    <li><span style="float:left;margin-left:10px;">我不想借款了</span>
+                        <p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
+                    </li>
+                    <li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span>
+                        <p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
+                    </li>
+                </ul>
+                <div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
+                    <textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!" style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>
+                </div>
+                <p class="qi" style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
+                    <span id="text-count">128</span>/128
+                </p>
+            </div>
+            <div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
+                <p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
+                <p style="color: rgb(74,144,226);" class="try">再试试</p>
+            </div>
+        </div>
+        <div id="mode2"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+<script type="text/javascript" src="../../libs/js/brower.js?${project.javascript.version}"></script>
+<!-- 	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script> -->
+<!-- <script type="text/javascript" src="../../js/user/userphoto.js?${project.javascript.version}"></script> -->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js?${project.javascript.version}"></script>
 
-		function weixin() {
-			var thisUrl = location.href.split('#')[0];
-			var data = { url: thisUrl };
+<script src="../../js/common/utils.js?v=${project.javascript.version}"></script>
+<script src="../../libs/js/vue.js?v=${project.javascript.version}"></script>
+<script src="../../libs/js/layer.js?v=${project.javascript.version}"></script>
+<script>
+    new Vue({
+        el: '.face-page',
+        data: {
+            userId: sessionStorage.getItem("userId"),
+            userStat: sessionStorage.getItem("userStat"),
+            pic_path: "../../images/pic_card front@2x.png",
+            state: false,
+            showPop: false
+        },
+        mounted() {
+            this.init();
+        },
+        methods: {
+            init() {
+                this.renderData();
+                this.bindEvent();
+                if (browser.versions.weixin) {
+                    utils.getWxSign({
+                        success: (data) => {
+                            wx.config({
+                                debug: false,
+                                appId: data.body.appid,
+                                timestamp: data.body.timestamp,
+                                nonceStr: data.body.noncestr,
+                                signature: data.body.signature,
+                                jsApiList: ['chooseImage', "uploadImage"]
+                            });
+                        }
+                    });
+                } else {
 
-			$.ajax({
-				url: constans.serviceUrl + '/wx/getWxSign',
-				type: 'post',
-				data: data,
-				headers: { 
-					loginTerm: 'wx'		            
-				},
-				success: function(data) {
-					var appId = data.body.appid
-					var nonceStr = data.body.noncestr
-					var signature = data.body.signature
-					var timestamp = data.body.timestamp
-					wx.config({
-						debug: false,
-						appId: appId,
-						timestamp: timestamp,
-						nonceStr: nonceStr,
-						signature: signature,
-						jsApiList: ['chooseImage', "uploadImage"]
-					});
-				}
-			})
-		}
+                }
+            },
+            bindEvent() {
+                var _self = this;
+                $(".try").on("click", function() {
+                    $(".wx").hide();
+                    $("#mode2").hide();
+                })
+                $(".sure").on("click", function() {
+                    var reContent = $("#packagingDesc").val();
+                    var reTitle = $("header p").html();
+                    var reTroubleType = $(".bg span").html();
+                    if (reTroubleType == '我不想借款了') {
+                        var num = '100077';
+                    } else {
+                        var num = '100078';
+                    }
+                    var data = {
+                        reContent: reContent,
+                        reCreateId: _self.userId,
+                        rePage: 100093,
+                        reTitle: reTitle,
+                        reTroubleType: num
+                    }
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/reputations',
+                        data: data,
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                            }
+                        }
+                    })
+                });
 
-		function dd(a, b) {
-			$.ajax({
-				url: constans.serviceUrl + '/credit/submitlivingwxsdk',
-				type: "post",
-				async: true,
-				data: { userId: a, living:b},
-				headers: {    
-					loginTerm: "wx" ,
-					rand: Math.round(Math.random() * 89999) + 10000,
-					accessToken: accessToken,
-					jhVer: "2.0"
-				},
-				beforeSend: function() {
-					$("body").Loading("show");
-				},
-				complete: function() {
-					$("body").Loading("hide");
-				},
-				success: function(data) {
-					if(!$.trim(data)) {
-						setTimeout(function() {
-							$("body").Loading("hide");
-							alert(999)
-						}, 8000);
-						return true;
-					}
+                $(".weui li").on("click", function() {
+                    $(this).addClass("bg");
+                    $(this).siblings().removeClass("bg");
+                });
 
-					if(data.code == 111) {
-						$("#mode").show();
-						$("#mode").html('会话失效，请重新登录');
-						setTimeout(function() {
-							window.location.href = constans.htmlUrl + "/html/login/loginnext.html";
-							$("#mode").hide();
-						}, 2000);
-					}
-					if(data.code == "500") {
-						$("#mode").show();
-						$("#mode").html(data.msg);
-						setTimeout(function() {
-							$("#mode").hide();
-						}, 3000);
-					}
-					if(data.code == 200) {
-						$("#mode").show();
-						$("#mode").html(data.msg);
-						setTimeout(function() {
-							window.location = constans.htmlUrl + "/html/user/userInfoList.html";
-							$("#mode").hide();
-						}, 1000);
+                $("#packagingDesc").on("propertychange input", function() {
+                    var $this = $(this),
+                        _val = $this.val(),
+                        count = "";
+                    if (_val.length > 128) {
+                        $this.val(_val.substring(0, 128));
+                    }
+                    count = 128 - $this.val().length;
+                    $("#text-count").text(count);
+                });
 
-					}
-				}
-			})
-		}
-		$("#packagingDesc").on("propertychange input", function() {
-			var $this = $(this),
-				_val = $this.val(),
-				count = "";
-			if(_val.length > 128) {
-				$this.val(_val.substring(0, 128));
-			}
-			count = 128 - $this.val().length;
-			$("#text-count").text(count);
-		});
-		var userStat = sessionStorage.getItem("userStat");
-		var userId = sessionStorage.getItem("userId");
-		var accessToken = constans.accessToken;
+                $("#sure").on('click', function(e) {
+                    if ($("#tipinput").val() != "") {
+                        _self.liveAddrUp = $("#tipinput").val();
+                        $(".content_address").hide();
+                    }
+                })
+            },
+            renderData() {
+                var _self = this;
+                //活体状态判断
+                utils.fetchData({
+                    url: constans.serviceUrl + '/credit/submitlivingstat',
+                    data: {
+                        userId: _self.userId
+                    },
+                    success: function(data) {
+                        if (data.code == 500) {
+                            utils.showMsg({
+                                msg: data.msg
+                            });
+                        } else {
+                            if (data.body.pic_path) {
+                                _self.pic_path = data.body.pic_path;
+                            }
+                            var face = localStorage.getItem("face");
 
-		if(userStat == "undefined" || userStat == null) {
-			$("#file").hide();
-			$(".user_photo").attr("src", "../../images/pic_card front@2x.png")
-		} else {
-			if(browser.versions.weixin) {				
-				$(".photo_up").on("click", function() {					
-					weixin();					
-					wx.ready(function() {						
-						wx.chooseImage({
-							count: 1, // 默认9
-							sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-							sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
-							success: function(res) {								
-								var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片										
-								sessionStorage.setItem("localIds", localIds);								
-								if(localIds != "") {									
-									wx.uploadImage({
-										localId: sessionStorage.getItem("localIds"), // 需要上传的图片的本地ID，由chooseImage接口获得
-										isShowProgressTips: 1, // 默认为1，显示进度提示
-										success: function(res) {
-											sessionStorage.removeItem("localIds")
-											var serverId = res.serverId; // 返回图片的服务器端ID													
-											dd(userId, serverId);
-										}
-									});
-								}
-							}
-						});
-						
-					})
-
-				})
-
-			} else {
-				$("#file").css("display", "block");
-
-				function imagePreview(input) {
-
-					var formData = new FormData();
-					if(!$.trim($('input[type="file"]').val())) {
-						return true;
-					}
-					formData.append("files", $('input[type="file"]')[0].files[0]);
-					formData.append("userId", userId);
-					$.ajax({
-						url: constans.serviceUrl + '/credit/submitlivingwx',
-						type: "post",
-						async: true,
-						data: formData,
-						processData: false,
-						contentType: false,
-						headers: {    
-							loginTerm: "wx" ,
-							rand: Math.round(Math.random() * 89999) + 10000,
-							accessToken: accessToken,
-							jhVer: "2.0"
-						},
-						beforeSend: function() {
-							$("body").Loading("show");
-						},
-						complete: function() {
-							$("body").Loading("hide");
-						},
-						success: function(data) {
-
-							if(data.code == 111) {
-								$("#mode").show();
-								$("#mode").html('会话失效，请重新登录');
-								setTimeout(function() {
-									window.location.href = constans.htmlUrl + "/html/login/loginnext.html";
-									$("#mode").hide();
-								}, 2000);
-							}
-							if(data.code == "500") {
-								$("#mode").show();
-								$("#mode").html(data.msg);
-								setTimeout(function() {
-									//													window.location.reload();
-									$("#mode").hide();
-								}, 3000);
-							} else {
-								$("#mode").show();
-								$("#mode").html("图片上传成功");
-								$(".msghide").hide();
-								$(".msg").show();
-								$(".photo_up").val("人脸识别已完成");
-								$(".photo_up").css("background", "#fafafa");
-								setTimeout(function() {
-									window.location = constans.htmlUrl + "/html/user/userInfoList.html";
-									$("#mode").hide();
-								}, 3000);
-
-							}
-						}
-					})
-
-				}
-			}
-
-		}
-		var userIcon = localStorage.getItem("img1");
-		$('.user_photo').attr('src', userIcon);
-	</script>
+                            if (face == "2" || face == "1") {
+                                $(".msghide").hide();
+                                $(".msg").show();
+                                $(".photo_up").val("人脸识别已完成").css({
+                                    "background": "#fafafa",
+                                    "color": "#000",
+                                });
+                                $("#file").remove();
+                            } else if (face == "0") {
+                                $(".msghide").show();
+                                $(".msg").hide();
+                                _self.isCommited();
+                            }
+                        }
+                    }
+                })
+            },
+            isCommited() {
+                _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/reputations/isCommited',
+                    data: {
+                        rePage: '100093'
+                    },
+                    success: function(data) {
+                        if (data.code == 500) {
+                            utils.showMsg({
+                                msg: data.msg
+                            });
+                        } else {
+                            if (data.body == false) {
+                                _self.showPop = true;
+                            }
+                        }
+                    }
+                })
+            },
+            back() {
+                var _self = this;
+                if (_self.showPop) {
+                    $(".wx").show();
+                    $("#mode2").show();
+                } else {
+                    window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                }
+            },
+            toStart() {
+                var _self = this;
+                if (browser.versions.weixin) {
+                    wx.ready(function() {
+                        wx.chooseImage({
+                            count: 1, // 默认9
+                            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                            sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
+                            success: function(res) {
+                                var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片		
+                                if (localIds != "") {
+                                    wx.uploadImage({
+                                        localId: localIds, // 需要上传的图片的本地ID，由chooseImage接口获得
+                                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                                        success: function(res) {
+                                            _self.commit(res.serverId);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    })
+                } else {
+                    _self.state = true;
+                }
+            },
+            commit(serverId) {
+                var _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/credit/submitlivingwxsdk',
+                    data: {
+                        userId: _self.userId,
+                        living: serverId
+                    },
+                    success: function(data) {
+                        if (data.code == 500) {
+                            utils.showMsg({
+                                msg: data.msg
+                            });
+                        } else {
+                            utils.showMsg({
+                                msg: data.msg,
+                                time: 2,
+                                end: function() {
+                                    window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                                }
+                            });
+                        }
+                    }
+                })
+            },
+            imagePreview(e) {
+                var _self = this;
+                var formData = new FormData();
+                if (e.target.files.length == 0) return;
+                formData.append("files", e.target.files[0]);
+                formData.append("userId", _self.userId);
+                utils.postFormData({
+                    url: constans.serviceUrl + '/credit/submitlivingwx',
+                    data: formData,
+                    success: function(data) {
+                        if (data.code == 500) {
+                            utils.showMsg({
+                                msg: data.msg
+                            });
+                        } else {
+                            $(".msghide").hide();
+                            $(".msg").show();
+                            $(".photo_up").val("人脸识别已完成").css("background", "#fafafa");
+                            utils.showMsg({
+                                msg: "图片上传成功",
+                                time: 2,
+                                end: function() {
+                                    window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                                }
+                            });
+                        }
+                    }
+                })
+            }
+        }
+    })
+</script>
 
 </html>

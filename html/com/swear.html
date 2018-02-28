@@ -51,7 +51,7 @@
 			margin-left: 15%;
 			height: 40px;
 			line-height: 40px;
-			background: url(../../images/btn_disabled@2x.png);
+			background: url(../../images/nd-disabled-btn.png);
 			background-size: 100% 100%;
 			text-align: center;
 			position: absolute;
@@ -224,13 +224,13 @@
 			if($(this).hasClass('bg')) {
 				$(this).removeClass("bg");
 				if(!$(".weui li").hasClass('bg')) {
-					$(".sumbit").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+					$(".sumbit").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 					$(".sumbit").css("background-size", "100% 100%");
 					$(".input_p").attr("disabled", "disabled");
 				}
 			} else {
 				$(this).addClass("bg");
-				$(".sumbit").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".sumbit").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".sumbit").css("background-size", "100% 100%");
 				$(".input_p").removeAttr("disabled");
 			}

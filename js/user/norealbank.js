@@ -14,22 +14,22 @@ $(function() {
 		}
 		if(name != "" && num != "" && (/^[0-9A-Za-z]{15,}$/.test(num))) {
 			$(".bank_money").removeAttr("disabled");
-			$(".bank_money").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".bank_money").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".bank_money").css("background-size", "100% 100%");
 
 		} else {
 			$(".bank_money").attr("disabled", "disabled");
-			$(".bank_money").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".bank_money").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".bank_money").css("background-size", "100% 100%");
 
 		}
 		if(card != "" && (/^[0-9]{12,32}$/.test(card))) {
 			$(".bank_money1").removeAttr("disabled");
-			$(".bank_money1").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".bank_money1").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".bank_money1").css("background-size", "100% 100%");
 		} else {
 			$(".bank_money1").attr("disabled", "disabled");
-			$(".bank_money1").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".bank_money1").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".bank_money1").css("background-size", "100% 100%");
 		}
 
@@ -48,7 +48,7 @@ $(function() {
 	$(".close").on("click", function() {
 		$(this).prev("input").val("");
 		$(this).hide();
-		$(".bank_money").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+		$(".bank_money").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 		$(".bank_money").css("background-size", "100% 100%");
 		$(".bank_money").css("color", "#888")
 	})

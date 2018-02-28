@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>还款承诺</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+		<script type="text/javascript">
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?3a7d976eea1bf7fd8e6107f482809419";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<style>
+		body {
+			background: #fff;
+		}
+		
+		.jiekuan {
+			width: 60%;
+			margin-left: 20%;
+			margin-top: 40px;
+		}
+		
+		.jiekuan img {
+			width: 100%;
+		}
+		
+		.apply {
+			height: 40px;
+			min-height: 1.9em;
+			/*background: url(../../images/btn_baocunjixun@2x.png) no-repeat;
+			background-size: 100% 100%;*/
+			text-align: center;
+			width: 50%;
+			margin-left: 25%;
+			position: absolute;
+			margin-bottom: 20px;
+			margin-top: 20px;
+			border-radius: 20px;
+		}
+		
+		.apply1 {
+			height: 40px;
+			min-height: 1.9em;
+			/*background: url(../../images/blue_button@2x.png) no-repeat;*/
+			background-size: 100% 100%;
+			text-align: center;
+			width: 40%;
+			margin-left: 10%;
+			position: absolute;
+			margin-bottom: 20px;
+			margin-top: 20px;
+			border-radius: 20px;
+		}
+		
+		.apply2 {
+			height: 40px;
+			min-height: 1.9em;
+			/*background: url(../../images/btn_baocunjixun@2x.png) no-repeat;*/
+			background-size: 100% 100%;
+			text-align: center;
+			border-radius: 20px;
+			width: 40%;
+			margin-left: 50%;
+			position: absolute;
+			margin-bottom: 20px;
+			margin-top: 20px;
+		}
+		
+		.apply3 {
+			height: 40px;
+			min-height: 1.9em;
+			background: #D9D9D9;
+			background-size: 100% 100%;
+			text-align: center;
+			width: 50%;
+			margin-left: 20%;
+			position: absolute;
+			margin-bottom: 20px;
+			margin-top: 50px;
+			border-radius: 20px;
+		}
+		
+		input {
+			outline: none;
+			line-height: 40px;
+			border: 0;
+			font-size: 1em;
+			background: rgba(0, 0, 0, 0);
+			color: #fff;
+		}
+		.blue {
+			color: #000;
+		}
+		
+		.apply1,
+		.apply2 {
+			display: none;
+		}
+		
+		.isvideo {
+			width: 90%;
+			margin-left: 5%;
+		}
+		
+		.content {
+			color: #999;
+			width: 100%;
+			display: inline-block;
+		}
+		
+		textarea {
+			position: absolute;
+			top: 0;
+			
+			width: 100%;
+			
+			height: 200px;
+			resize: none;
+			color: rgba(0, 0, 0, 0);
+			caret-color: red;
+			caret-color: #5729e9;
+			caret-color: rgb(0, 200, 0);
+			caret-color: hsla(228, 4%, 24%, 0.8);
+			border: 0;
+			z-index: 999;
+			background:rgba(0, 0, 0, 0);
+		}
+		
+		.text {
+			position: absolute;
+			top: 1px;
+			width: 100%;
+			
+		}
+		.text span{
+			
+			text-align: center;
+			display: block;
+			float: left;
+		}
+		.body{
+			width: 100%;
+			display: inline-block;
+		}
+	</style>
+
+	<body>
+		<div id="app">
+			<header style="background: #fff;">
+				<div style="float: left;" class="info">
+					<a href="#">
+						<img src="../../images/ico_back@2x.png" />
+					</a>
+				</div>
+				<p>还款承诺</p>
+			</header>
+			<div id="isvideo2">
+				<div class="isvideo">
+					<p style="line-height: 40px;">请对照以下实例文字依次输入</p>
+					<div class="content">
+						<p>示例：</p>
+						<p class="body"></p>
+					</div>
+					<div style="position: relative;background: #fff;height: 200px;top: 20px;border: 1px solid #d9d9d9;">
+						<textarea id="input_test1" value=""></textarea>
+						<div class="text"></div>
+					</div>
+					<div class="apply3">
+						<input v-show="submit" disabled="disabled" type="button" class="commit" value="确认提交" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/brower.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="../../libs/js/layer/layer.js?${project.javascript.version}"></script>
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js?${project.javascript.version}"></script>
+	<script>
+		$(function() {
+			$("body").css("background", "#f1f1f1")
+			var data1;
+			$.ajax({
+				url: constans.serviceUrl + '/audio/play',
+				type: "post",
+				async: true,
+				headers: {    
+					loginTerm: "wx" ,
+					rand: Math.round(Math.random() * 89999) + 10000,
+					accessToken: constans.accessToken,
+					jhVer: "2.0"
+				},
+				beforeSend: function() {
+					$("body").Loading("show");
+				},
+				complete: function() {
+					$("body").Loading("hide");
+				},
+				success: function(data) {
+					data1 = data.body;
+					for(var i = 0; i < data.body.length; i++) {
+						var $li_1 = $("<span>" + data.body[i] + "</span>");
+						$(".body").append($li_1);
+					}
+				}
+			});
+			$("#input_test1").bind("input propertychange change", function() {
+				var _this = $(this);
+				$(".text").find("span").remove();
+				for(var i = 0; i < _this.val().length; i++) {
+					if($(".body span").length > i) {
+						if(_this.val().substr(i, 1) == $(".body span").eq(i).html().substr(0, 1)) {
+							var $li_1 = $("<span style='color: #000;'>" + _this.val().substr(i, 1) + "</span>");
+							$(".text").append($li_1);
+						} else {
+							var $li_1 = $("<span style='color: red;'>" + _this.val().substr(i, 1) + "</span>");
+							$(".text").append($li_1);
+						}
+					} else {
+						var $li_1 = $("<span style='color: red;'>" + _this.val().substr(i, 1) + "</span>");
+						$(".text").append($li_1);
+					}
+				}
+				if(data1 == $(this).val()) {
+					$(".apply3").css("background", "url(../../images/btn_baocunjixun@2x.png)  no-repeat");
+					$(".apply3").css("background-size", "100% 100%");
+					$(".apply3 input").removeAttr("disabled");
+					$(".apply3").css("color", "#fff");
+				}else{
+					$(".apply3").css("background", "url(../../images/btn1_baocunjixun@2x.png)  no-repeat");
+					$(".apply3").css("background-size", "100% 100%");
+					$(".apply3 input").attr("disabled","disabled");
+					$(".apply3").css("color", "#fff");
+				}
+
+			});
+			$(".apply3 input").on("click", function() {
+				var inputWord = $("#input_test1").val();
+				$.ajax({
+					url: constans.serviceUrl + '/upload/word',
+					type: "post",
+					data: {
+						inputWord: inputWord
+					},
+					async: true,
+					headers: {    
+						loginTerm: "wx" ,
+						rand: Math.round(Math.random() * 89999) + 10000,
+						accessToken: constans.accessToken,
+						jhVer: "2.0"
+					},
+					beforeSend: function() {
+						$("body").Loading("show");
+					},
+					complete: function() {
+						$("body").Loading("hide");
+					},
+					success: function(data) {
+						if(data.code == "500") {
+							layer.msg(data.msg);
+						}
+						if(data.code == 200) {
+							window.location.href = constans.htmlUrl + "/schedule.html";
+						}
+					}
+				});
+			});
+			$(".info").on("click", function() {
+				window.location.href = constans.htmlUrl + "/schedule.html?m=" + Math.random();
+			});
+		});
+	</script>
+
+</html>

@@ -21,18 +21,12 @@
 		body {
 			background: #fafafa;
 		}
-		
 		.user_bg {
 			background: url(images/pic_bg@2x.png) no-repeat;
 			background-size: 100% 100%;
 			height: 200px;
 			text-align: center;
 			padding-top: 20px;
-		}
-		
-		.userlogo img {
-			width: 70px;
-			
 		}
 		
 		.user_bg p {
@@ -130,227 +124,330 @@
 		}
 		.message{position:absolute;right: 12px;top: 0px;}
 		.newmsg {width: 10px;height: 10px;border-radius: 10px;background: #FF5000;position: absolute;top: -3px;right: 8px;font-size: 12px;color: #fff;text-align: center;line-height: 14px;}
+
+		.msg{
+			position:relative;width:70px;height:70px;background:#fff;left:0;right:0;margin:auto;border-radius:70px;overflow:hidden;
+		}
 	</style>
 
 	<body>
-		<form name="form1" id="form1" enctype="multipart/form-data">
-			<div class="user_bg">
-				<p  class="message">
-					<a href="#" style="position:relative;">
-						<img src="images/emails.png" style="height:20px;margin-top:0;" />
-					</a>
-					<p class="newmsg"></p>
-				</p>
-				<div class="user_login">
-					<div class="userlogo">
-						<div id="msg" style="position:relative;width:70px;height:70px;background:#fff;left:0;right:0;margin:auto;border-radius:70px;overflow:hidden;">
-							<img id="obj1" src="images/logo.png" />
-							<input id="file" type="file" accept="image/*" value="" name="files" onchange="imagePreview(this)" style="opacity:0;position:absolute;top:20px;left:0;width:70px;height:70px;" />
+		<div class="user-page">
+			<form name="form1" id="form1" enctype="multipart/form-data">
+				<div class="user_bg">
+					<p  class="message">
+						<a href="#" style="position:relative;">
+							<img src="images/emails.png" style="height:20px;margin-top:0;" />
+						</a>
+						<p class="newmsg"></p>
+					</p>
+					<div class="user_login">
+						<div class="userlogo">
+							<div id="msg" class="msg">
+								<img id="obj1" src="images/logo.png" width="100%" />
+								<input id="file" type="file" accept="image/*" value="" name="files" onchange="imagePreview(this)" style="opacity:0;position:absolute;top:20px;left:0;width:70px;height:70px;" />
+							</div>
 						</div>
+
+						<p class="user_tell white">登录/注册</p>
 					</div>
+			</form>
+			<div class="user_money">
+				<div class="user_line">
+					<div class="user_back">
+						<div class="white">逾期统计(元)</div>
+						<p class="user_backleft pink">0.00</p>
+					</div>
+					<div class="user_back">
+						<div class="white">当期应还(元)</div>
+						<p class="user_backright pink">0.00</p>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="user_a">
+				<div class="user_backa advance">
+					<div>提前还款</div>
+				</div>
+				<div class="user_backa payback" style="margin-left: 0.4%;">
+					<div>立即还款</div>
+				</div>
+			</div>
+			<div class="weui_cells_access" style="margin-bottom: 50px;overflow: hidden;">
+				<!-- <a class="weui_cell weui_cell_we" href="dist/index.html#/lqb?v=13232"  disabled='true'>
+					<div class="weui_cell_hd">
+						<img src="images/icon_qianbao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>零钱包</p>
+					</div>
+					<div class="weui_cell_ft"><span style="color: #000;">余额:<span class="balAmount">0.00</span></span></div>
+				</a> -->
+				<!-- <a class="weui_cell " href="dist/index.html#/lqb/friends?v=13224"  disabled='true'>
+					<div class="weui_cell_hd">
+						<img src="images/icon_tuijianyaoqing@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>推荐邀请</p>
+					</div>
+					<div class="weui_cell_ft"><img src="images/icon_奖@2x.png" style="width: 20px;"/></div>
+				</a>
+				 -->
+				<a class="weui_cell" href="html/user/repayuser.html">
+					<div class="weui_cell_hd">
+						<img src="images/icon_jiekuanjilu@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>借款记录</p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				</a>
+				<a class="weui_cell" href="html/user/bankInfoList.html">
+					<div class="weui_cell_hd">
+						<img src="images/icon_wodeyinhangka@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>我的银行卡</p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				</a>
+				<a class="weui_cell" href="html/user/transaction.html">
+					<div class="weui_cell_hd">
+						<img src="images/icon_jiaoyijilu@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>交易记录</p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				</a>
+				<a class="weui_cell user weui_cell_we" href="html/user/userInfoList.html" style="margin-top: 20px;">
+					<div class="weui_cell_hd">
+						<img src="images/icon_wodeziliao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>我的资料</p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				</a>
+				<a class="weui_cell" href="html/user/report.html">
+					<div class="weui_cell_hd">
+						<img src="images/icon_daoxiaobaogao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>打小报告</p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				</a>
+				<a class="weui_cell" href="html/user/dropout.html">
+					<div class="weui_cell_hd">
+						<img src="images/icon_gerenshezhi@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
+					</div>
+					<div class="weui_cell_bd weui_cell_primary">
+						<p>安全设置</p>
+					</div>
+					<div class="weui_cell_ft"></div>
+				</a>
+			</div>
+			<div class="pai" style="">
+				<div class="div" style="border-bottom:1px solid #d9d9d9;">
 
-					<p class="user_tell white">登录/注册</p>
+					<div style="position: absolute;width: 100%;top: 0;">
+						<input type="file" id="file" class="file" capture="camera" style="width: 100%;height: 40px;" />
+						<input type="hidden" name="frontSide" id="frontSide">
+						<div id="tip-queue1" style="display: none;"></div>
+					</div>
 				</div>
-		</form>
-		<div class="user_money">
-			<div class="user_line">
-				<div class="user_back">
-					<div class="white">逾期统计(元)</div>
-					<p class="user_backleft pink">0.00</p>
-				</div>
-				<div class="user_back">
-					<div class="white">当期应还(元)</div>
-					<p class="user_backright pink">0.00</p>
-				</div>
-			</div>
-		</div>
-		</div>
-		<div class="user_a">
-			<div class="user_backa advance">
-				<div>提前还款</div>
-			</div>
-			<div class="user_backa payback" style="margin-left: 0.4%;">
-				<div>立即还款</div>
-			</div>
-		</div>
-		<div class="weui_cells_access" style="margin-bottom: 50px;overflow: hidden;">
-			<a class="weui_cell weui_cell_we" href="dist/index.html#/lqb?v=13232"  disabled='true'>
-				<div class="weui_cell_hd">
-					<img src="images/icon_qianbao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>零钱包</p>
-				</div>
-				<div class="weui_cell_ft"><span style="color: #000;">余额:<span class="balAmount">0.00</span></span></div>
-			</a>
-			<a class="weui_cell " href="dist/index.html#/lqb/friends?v=13224"  disabled='true'>
-				<div class="weui_cell_hd">
-					<img src="images/icon_tuijianyaoqing@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>推荐邀请</p>
-				</div>
-				<div class="weui_cell_ft"><img src="images/icon_奖@2x.png" style="width: 20px;"/></div>
-			</a>
-			
-			<a class="weui_cell" href="html/user/repayuser.html">
-				<div class="weui_cell_hd">
-					<img src="images/icon_jiekuanjilu@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>借款记录</p>
-				</div>
-				<div class="weui_cell_ft"></div>
-			</a>
-			<a class="weui_cell" href="html/user/bankInfoList.html">
-				<div class="weui_cell_hd">
-					<img src="images/icon_wodeyinhangka@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>我的银行卡</p>
-				</div>
-				<div class="weui_cell_ft"></div>
-			</a>
-			<a class="weui_cell" href="html/user/transaction.html">
-				<div class="weui_cell_hd">
-					<img src="images/icon_jiaoyijilu@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>交易记录</p>
-				</div>
-				<div class="weui_cell_ft"></div>
-			</a>
-			<a class="weui_cell user weui_cell_we" href="html/user/userInfoList.html" style="margin-top: 20px;">
-				<div class="weui_cell_hd">
-					<img src="images/icon_wodeziliao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>我的资料</p>
-				</div>
-				<div class="weui_cell_ft"></div>
-			</a>
-			<a class="weui_cell" href="html/user/report.html">
-				<div class="weui_cell_hd">
-					<img src="images/icon_daoxiaobaogao@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>打小报告</p>
-				</div>
-				<div class="weui_cell_ft"></div>
-			</a>
-			<a class="weui_cell" href="html/user/dropout.html">
-				<div class="weui_cell_hd">
-					<img src="images/icon_gerenshezhi@2x.png" alt="icon" style="width:20px;height:20px;margin-right:5px;display:block">
-				</div>
-				<div class="weui_cell_bd weui_cell_primary">
-					<p>安全设置</p>
-				</div>
-				<div class="weui_cell_ft"></div>
-			</a>
-		</div>
-		<div class="pai" style="">
-			<div class="div" style="border-bottom:1px solid #d9d9d9;">
+				<div class="div" style="border-bottom:1px solid #d9d9d9;">
 
-				<div style="position: absolute;width: 100%;top: 0;">
-					<input type="file" id="file" class="file" capture="camera" style="width: 100%;height: 40px;" />
-					<input type="hidden" name="frontSide" id="frontSide">
-					<div id="tip-queue1" style="display: none;"></div>
+					<div style="position: absolute;width: 100%;top:40px;">
+						<input type="file" id="file1" class="file" style="width: 100%;height: 40px;" />
+						<input type="hidden" name="frontSide" id="frontSide">
+						<div id="tip-queue1" style="display: none;"></div>
+					</div>
 				</div>
+				<div class="div closemode" style="margin-top: 5px;">取消</div>
 			</div>
-			<div class="div" style="border-bottom:1px solid #d9d9d9;">
-
-				<div style="position: absolute;width: 100%;top:40px;">
-					<input type="file" id="file1" class="file" style="width: 100%;height: 40px;" />
-					<input type="hidden" name="frontSide" id="frontSide">
-					<div id="tip-queue1" style="display: none;"></div>
-				</div>
-			</div>
-			<div class="div closemode" style="margin-top: 5px;">取消</div>
+			<div id="mode"></div>
+			<div id="mode2"></div>
+			<footer>
+				<a href="index.html" class="index">
+					
+				</a>
+				<a href="user.html" class="user select">
+					
+				</a>
+				<a href="more.html" class="more">				
+				</a>
+			</footer>
 		</div>
-		<div id="mode"></div>
-		<div id="mode2"></div>
-		<footer>
-			<a href="index.html" class="index">
-				
-			</a>
-			<a href="user.html" class="user select">
-				
-			</a>
-			<a href="more.html" class="more">				
-			</a>
-		</footer>
 	</body>
 	<script type="text/javascript" src="libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
 	<script type="text/javascript" src="libs/js/jquery.cookie.js?${project.javascript.version}"></script>
 	<script type="text/javascript" src="js/common/loading.js?${project.javascript.version}"></script>
 	<script type="text/javascript" src="js/common/globalConst.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="js/home/user.js?${project.javascript.version}"></script>
+	<!-- <script type="text/javascript" src="js/home/user.js?${project.javascript.version}"></script> -->
+
+	<script src="js/common/utils.js?v=445533"></script>
+	<script src="libs/js/vue.js?v=${project.javascript.version}"></script>
+	<script src="libs/js/layer.js?v=${project.javascript.version}"></script>
+
 	<script>
-		$("footer").find("a").on("click", function() {
-			$(this).addClass("select");
-			$(this).siblings().removeClass("select");
-		})
-		
-		var userStat = sessionStorage.getItem("userStat");
-		
-		if(userStat == "undefined" || userStat == null) {
-			$("#file").hide();
-			$("#obj1").attr("src", "images/logo.png")
-		} else {
-			function imagePreview(input) {
-				var userId = sessionStorage.getItem("userId");
-				var accessToken = constans.accessToken;
-				var formData;
-				if($('input[type="file"]').val()) {
-					formData = new FormData($('form')[0]);
-				} else {
-					formData = new FormData();
-				}
+		new Vue({
+		  	el: '.user-page',
+		  	data: {
+		    	userId : sessionStorage.getItem("userId")
+		  	},
+		  	mounted(){
+		  		this.init();
+		  	},
+		  	methods:{
+		  		init(){
+		  			this.renderData();
+		  			this.bindEvent();
+		  		},
+		  		renderData(){
+		  			if(constans.accessToken){
+		  				$(".user_money").show();
+						$(".user_a").show();
+						$(".closemode").on("click", function() {
+							$(".pai").hide();
+							$("#mode2").hide();
+						})
+						utils.getUserId();
 
-				formData.append("userId", userId);
-				$.ajax({
-					url: constans.serviceUrl + '/user/icon/upload',
-					type: "post",
-					async: true,
-					data: formData,
-					processData: false,
-					contentType: false,
-					headers: {    
-						loginTerm: "wx" ,
-						accessToken: accessToken,
-						jhVer: "2.0",
-						rand: Math.round(Math.random()*89999) + 10000,
-					},
-					beforeSend: function() {
-						$("body").Loading("show");
-					},
-					complete: function() {
-						$("body").Loading("hide");
-					},
-					success: function(data) {
-						
-						if(data.code == 200) {
-							var userIcon = sessionStorage.getItem("img");							
-							$("#mode").show();
-							$("#mode").html(data.msg);
-							setTimeout(function() {
-								$("#obj1").attr("src", userIcon);
-							    window.location.reload();
-								$("#mode").hide();
-							}, 2000);
+						if (sessionStorage.getItem("userStat")=="4") {
+							$(".advance").on("click", function() {
+								localStorage.removeItem("periodNum");
+								localStorage.removeItem("taskId");
+								window.location = constans.htmlUrl + "/html/home/advance.html";
+							})
+							$(".payback").on("click", function() {
+								localStorage.removeItem("periodNum");
+								localStorage.removeItem("taskId");
+								window.location = constans.htmlUrl + "/html/home/payback.html";
+							})
+						}else{
+							$(".payback").on("click", function() {
+								window.location = constans.htmlUrl + "/index.html";
+							})
+							$(".advance").on("click", function() {
+								window.location = constans.htmlUrl + "/index.html";
+							})
 						}
-                        if(data.code == 500){
-                        	$("#mode").show();
-							$("#mode").html(data.msg);
-							setTimeout(function() {								
-								$("#mode").hide();
-							}, 2000);
-                        }
-					}
-				})
-			}
 
-		}
+
+						utils.fetchData({
+			  				url: constans.serviceUrl + '/user/getmyinfo',
+							data : { userId : sessionStorage.getItem("userId") },
+							success : function(data){
+								if(data.code == 500){
+									utils.showMsg({msg : data.msg});
+								}else{
+									$(".balAmount").html(data.body.balAmount);
+									$(".user_backleft").html(data.body.overdueSum);
+									$(".user_backright").html(data.body.currentRepay);
+									localStorage.setItem("periodNum", data.body.periodNum)
+									var user = data.body.mobile;
+									var muser = user.substr(0, 3) + '****' + user.substr(7);
+									$(".user_tell").html(muser);
+									sessionStorage.setItem("img", data.body.userIcon);
+									if(data.body.userIcon == "") {
+										$("#obj1").attr("src", "images/logo.png");
+									} else {
+										$("#obj1").attr("src", data.body.userIcon);
+									}
+								}
+							}
+			  			});
+
+			  			$(".user").on("click", function() {
+							localStorage.setItem("source", 2)
+							window.location.href = constans.htmlUrl + "/html/user/userInfoList.html";
+						})	
+
+						utils.fetchData({
+			  				url: constans.serviceUrl + '/countMsgNew',
+							success : function(data){
+								$(".message").on("click", function() {
+									localStorage.setItem("backmess",1);
+									window.location = constans.htmlUrl + "/html/home/nomessage.html";
+								});
+								if(data.body.act == 0 && data.body.notice == 0 && data.body.normal == 0) {
+									$(".newmsg").hide();
+								} else {
+									$(".newmsg").show();
+								}
+							}
+			  			});
+
+		  			}else{
+						$("#file").on("click", function() {
+							$("#file").attr("disabled", "disabled");
+							window.location = constans.htmlUrl + "/html/login/loginnext.html";
+						})
+						$(".user_login").on("click", function() {
+							window.location = constans.htmlUrl + "/html/login/loginnext.html";
+						})
+
+						$(".user_bg").on("click", function() {
+							window.location = constans.htmlUrl + "/html/login/loginnext.html";
+						})
+
+						$(".weui_cells_access").find("a").on("click", function() {
+							$(this).attr("href", "#");
+							window.location = constans.htmlUrl + "/html/login/loginnext.html";
+						})
+						$(".newmsg").hide();
+						$(".message").on("click", function() {
+							window.location = constans.htmlUrl + "/html/login/loginnext.html";
+						});
+
+		  			}
+		  		},
+		  		bindEvent(){
+		  			$("footer").find("a").on("click", function() {
+						$(this).addClass("select");
+						$(this).siblings().removeClass("select");
+					});
+					var userStat = sessionStorage.getItem("userStat");
+					if(userStat){
+						function imagePreview(input) {
+							var userId = sessionStorage.getItem("userId");
+							var accessToken = constans.accessToken;
+							var formData;
+							if($('input[type="file"]').val()) {
+								formData = new FormData($('form')[0]);
+							} else {
+								formData = new FormData();
+							}
+							formData.append("userId", userId);
+							utils.postFormData({
+								url: constans.serviceUrl + '/user/icon/upload',
+								data : formData,
+								success : function(data){
+									if(data.code == 200) {
+										var userIcon = sessionStorage.getItem("img");							
+										utils.showMsg({
+											msg : data.msg,
+											time : 2,
+											end : function(){
+												$("#obj1").attr("src", userIcon);
+										    	window.location.reload();
+											}
+										});
+									}
+			                        if(data.code == 500){
+										utils.showMsg({msg : data.msg});
+			                        }
+								}
+							})
+						}
+					}else{
+						$("#file").hide();
+						$("#obj1").attr("src", "images/logo.png");
+					}
+		  		}
+		  	}
+		});
 	</script>
 
 </html>

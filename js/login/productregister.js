@@ -21,7 +21,7 @@ $(function() {
 	$(".close").on("click", function() {
 		$(this).prev("input").val("");
 		$(this).hide();
-		$(".login_style").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+		$(".login_style").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 		$(".login_style").css("background-size", "100% 100%");
 	})
 

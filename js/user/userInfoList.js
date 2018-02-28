@@ -1,6 +1,5 @@
 $(function() {
-	
-	//登录后权限验证
+	//登录后权限验 证
 	var accessToken = constans.accessToken;		
 	var userStat = sessionStorage.getItem("userStat");
 	if(userStat == "undefined") {
@@ -31,10 +30,10 @@ $(function() {
 				$("body").Loading("hide");
 			},
 			success: function(data) {
-				
+				console.log(data);
 				if(data.code == 111) {						
-										window.location.href = constans.htmlUrl + "/index";							
-									}
+					window.location.href = constans.htmlUrl + "/index";							
+				}
 				if(data.code == 500) {
 					console.log(data.msg);
 				} else {
@@ -43,7 +42,6 @@ $(function() {
 					localStorage.setItem("contact", data.body.contact);
 					localStorage.setItem("face", data.body.face);
 					localStorage.setItem("mobile", data.body.mobile);
-					
 					
 					if(data.body.person == 0) {
 						$(".weui_contact").attr("href", "#");
@@ -71,7 +69,7 @@ $(function() {
 							$(".contact").html("已填写");
 						}
 						if(data.body.work == 1 && data.body.person == 1 && data.body.contact == 1) {
-							$(".userInfo_sumbit").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+							$(".userInfo_sumbit").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 							$(".userInfo_sumbit").css("background-size", "100% 100%");							
 
 							//									反欺诈1
@@ -166,12 +164,10 @@ $(function() {
 																	})
 																}
 															}
-															$(".userInfo_sumbit1").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+															$(".userInfo_sumbit1").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 															$(".userInfo_sumbit1").css("background-size", "100% 100%");		
 															$(".default1").on("click", function() {
 															    $(".dd1").hide();	
-			//												    $(".hide").load(location.href+".hide");
-//																window.location.reload();
 															})
 														}
 													}
@@ -237,12 +233,12 @@ $(function() {
 									})
 								})
 							if(data.body.af2 == 1) {
-								$(".userInfo_sumbit1").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+								$(".userInfo_sumbit1").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 								$(".userInfo_sumbit1").css("background-size", "100% 100%");
 								
 							}
 							if(data.body.af2 == 2) {
-								$(".userInfo_sumbit1").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+								$(".userInfo_sumbit1").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 								$(".userInfo_sumbit1").css("background-size", "100% 100%");								
 								$(".userInfo_sumbit1").attr("disabled", "disabled")
 							}
@@ -307,12 +303,12 @@ $(function() {
 								})
 							}
 							if(data.body.af2 == 1) {
-								$(".userInfo_sumbit1").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+								$(".userInfo_sumbit1").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 								$(".userInfo_sumbit1").css("background-size", "100% 100%");
 								
 							}
 							if(data.body.af2 == 2) {
-								$(".userInfo_sumbit1").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+								$(".userInfo_sumbit1").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 								$(".userInfo_sumbit1").css("background-size", "100% 100%");								
 								$(".userInfo_sumbit1").attr("disabled", "disabled")
 							}
@@ -452,3 +448,32 @@ $(function() {
 	}
 
 })
+
+$(".user").on("click", function() {
+	window.location.href = constans.htmlUrl + "/index.html";
+})
+var layerIndex = null;
+function jkyt(){
+	var html = '<ul class="jkyt-pop">\
+			<li class="item gary-font">请选择实际资金用途,禁止用于购<br>房、投资及各种非消费场景</li>\
+			<li class="item" type="1">个人日常消费</li>\
+			<li class="item" type="2">装修</li>\
+			<li class="item" type="3">旅游</li>\
+			<li class="item" type="4">教育</li>\
+			<li>医疗</li>\
+		</ul>'
+ 	layerIndex = layer.open({
+	    content: html
+	    ,btn: ['取消']
+	    ,skin: 'footer'
+	    ,style:'background:#F2F2F2;width:100%;border-radius:0;'
+	    ,yes: function(index){
+	    	layer.close(layerIndex);
+	    }
+	});
+}
+
+$("body").on("click",".jkyt-pop li",function(){
+	$("#jkyt").html(this.innerHTML);
+ 	layer.close(layerIndex);
+});

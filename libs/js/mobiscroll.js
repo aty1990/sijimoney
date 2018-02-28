@@ -576,7 +576,7 @@
 
                 that.tap($('.dwb-c span', dw), function () {
                     that.cancel();
-                     $(".work_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+                     $(".work_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 					$(".work_keep").css("background-size", "100% 100%");
 					$(".work_keep").attr("disabled", "disabled");
 					

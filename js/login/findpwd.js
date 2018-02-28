@@ -1,5 +1,4 @@
 $(function() {
-	constans.serviceUrl = "http://172.16.16.68/fnd";
 	$("#getcode").click(function() {
 		getNote();
 	})
@@ -89,34 +88,34 @@ $(function() {
 
 		if(userName != "" && (/^1[34578]\d{9}$/.test(userName))) {
 			$(".getnode").removeAttr("disabled");
-			$(".getnode").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".getnode").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".getnode").css("background-size", "100% 100%");
 
 		} else {
 			$(".getnode").attr("disabled", "disabled");
-			$(".getnode").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".getnode").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".getnode").css("background-size", "100% 100%");
 
 		}
 		if(smsNum != "" && (/^\d{6}$/.test(smsNum))) {
 			$(".makepwd").removeAttr("disabled");
-			$(".makepwd").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".makepwd").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".makepwd").css("background-size", "100% 100%");
 
 		} else {
 			$(".makepwd").attr("disabled", "disabled");
-			$(".makepwd").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".makepwd").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".makepwd").css("background-size", "100% 100%");
 
 		}
 		if(newpwd != "" && sure_newpwd != "" && newpwd == sure_newpwd && (/(?!^[0-9]+$)(?!^[A-z]+$)(?!^[^A-z0-9]+$)^.{6,20}$/.test(newpwd))) {
 			$(".sure_pwd").removeAttr("disabled");
-			$(".sure_pwd").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".sure_pwd").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".sure_pwd").css("background-size", "100% 100%");
 
 		} else {
 			$(".sure_pwd").attr("disabled", "disabled");
-			$(".sure_pwd").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".sure_pwd").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".sure_pwd").css("background-size", "100% 100%");
 
 		}
@@ -187,7 +186,7 @@ $(function() {
 	$(".close").on("click", function() {
 		$(this).prev("input").val("");
 		$(this).hide();
-		$(".login_style").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+		$(".login_style").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 		$(".login_style").css("background-size", "100% 100%");
 
 	})

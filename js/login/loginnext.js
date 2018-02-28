@@ -1,10 +1,9 @@
 $(function() {
-	constans.serviceUrl = "http://172.16.16.68/fnd";
 	//清空input框
 	$(".close").on("click", function() {
 		$(this).prev("input").val("");
 		$(this).hide();
-		$(".login_style").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+		$(".login_style").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 		$(".login_style").css("background-size", "100% 100%");	
 		
 	})
@@ -12,14 +11,14 @@ $(function() {
 	if($.cookie('userName')){
 		var userName = $("#tell").val($.cookie('userName'));
 		$(".register_next").removeAttr("disabled");
-		$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+		$(".register_next").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 		$(".register_next").css("background-size", "100% 100%");
 		
 	}
 	if(localStorage.getItem("register") == 1){
 		var userName = $("#tell").val($.cookie('userName'));
 		$(".register_next").removeAttr("disabled");
-		$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+		$(".register_next").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 		$(".register_next").css("background-size", "100% 100%");
 			
 	}
@@ -30,7 +29,7 @@ $(function() {
 		}		
 		if(userName != "" && (/^1[34578]\d{9}$/.test(userName))) {
 			$(".register_next").removeAttr("disabled");
-			$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".register_next").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".register_next").css("background-size", "100% 100%");
 			
 		} 
@@ -42,12 +41,12 @@ $(function() {
 		}		
 		if(userName != "" && (/^1[34578]\d{9}$/.test(userName))) {
 			$(".register_next").removeAttr("disabled");
-			$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".register_next").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".register_next").css("background-size", "100% 100%");
 			
 		} else {
 			$(".register_next").attr("disabled", "disabled");
-			$(".register_next").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".register_next").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".register_next").css("background-size", "100% 100%");
 			
 		}		
@@ -61,7 +60,7 @@ $(function() {
 			return false;
 		} else {
 			$(".register_next").removeAttr("disabled");
-			$(".register_next").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".register_next").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".register_next").css("background-size", "100% 100%");
 			
 			return true;
@@ -90,7 +89,7 @@ $(function() {
 				complete: function() {
 					$("body").Loading("hide");
 				},
-				success: function(data) {						
+				success: function(data) {		
 					if(data.code == '500') {                        						
 						window.location=constans.htmlUrl+"/html/login/login.html";						
 					}else{

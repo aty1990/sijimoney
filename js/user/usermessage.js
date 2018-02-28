@@ -19,12 +19,12 @@ $(function() {
 			$(".new_address").bind("click", function() {
 
 				if($(".user_selectinfo1").length <= 0 && $(".user_selectinfo2").length <= 0) {
-					$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+					$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 					$(".user_keep").css("background-size", "100% 100%");
 					$(".user_keep").removeAttr("disabled");
 
 				} else {
-					$(".user_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+					$(".user_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 					$(".user_keep").css("background-size", "100% 100%");
 					$(".user_keep").attr("disabled", "disabled");
 
@@ -33,13 +33,13 @@ $(function() {
 			$(".picker").bind("click", function() {
 				if($(".user_selectinfo1").length <= 0 && $(".user_selectinfo2").length <= 0) {
 					if($(".new_place").val() != "") {
-						$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+						$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 						$(".user_keep").css("background-size", "100% 100%");
 						$(".user_keep").removeAttr("disabled");
 
 					}
 				} else {
-					$(".user_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+					$(".user_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 					$(".user_keep").css("background-size", "100% 100%");
 					$(".user_keep").attr("disabled", "disabled");
 
@@ -48,24 +48,24 @@ $(function() {
 			});
 
 			if($(".user_selectinfo1").length <= 0 && $(".user_selectinfo2").length <= 0 && new_place != "") {
-				$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".user_keep").css("background-size", "100% 100%");
 				$(".user_keep").removeAttr("disabled");
 
 			} else {
-				$(".work_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+				$(".work_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 				$(".work_keep").css("background-size", "100% 100%");
 				$(".work_keep").attr("disabled", "disabled");
 
 			}
 			if($(".user_selectinfo1").val() != "" && $(".user_selectinfo2").val() != "" && new_place != "") {
-				$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".user_keep").css("background-size", "100% 100%");
 				$(".user_keep").removeAttr("disabled");
 
 			}
 		} else {
-			$(".user_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+			$(".user_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 			$(".user_keep").css("background-size", "100% 100%");
 			$(".user_keep").attr("disabled", "disabled");
 
@@ -83,7 +83,7 @@ $(function() {
 				var new_place = $(".new_place").val();
 				if(id_name != "" && user_num != "") {
 					$(".new_address").bind("click", function () {								
-				          $(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				          $(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 							$(".user_keep").css("background-size", "100% 100%");	
 							$(".user_keep").removeAttr("disabled");
 												
@@ -91,7 +91,7 @@ $(function() {
 				}								
 			})
 			if(user_num != "" && new_place != ""){
-				$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".user_keep").css("background-size", "100% 100%");	
 				$(".user_keep").removeAttr("disabled");
 				
@@ -155,7 +155,7 @@ $(function() {
 				var addr = data.body.liveAddr;
 				if(localStorage.getItem("person") == 0) {
 					if(eduLv.length != 0 && isMarry.length != 0 && addrDown.length != 0 && addrUp.length != 0) {
-						$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+						$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 						$(".user_keep").css("background-size", "100% 100%");
 
 						$(".user_keep").removeAttr("disabled");
@@ -163,7 +163,7 @@ $(function() {
 							var id_name = $(".user_name").val();
 							var user_num = $(".user_num").val();
 							if(id_name != "" && user_num != "") {
-								$(".user_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+								$(".user_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 								$(".user_keep").css("background-size", "100% 100%");
 								$(".user_keep").removeAttr("disabled");
 

@@ -18,6 +18,7 @@
 			right: 0;
 			overflow-y: auto;
 			background: #F2F2F2;
+			display: none;
 		}
 		.container{
 			width: 70%;
@@ -29,10 +30,15 @@
 			position: absolute;
 			width: 90%;
 			height: auto;
-			bottom:57px;
+			bottom:50px;
 			left: 5%;
 			line-height: 30px;
 			text-align: justify;
+			background-color: red;
+			background: url("../../images/promise-title.png") no-repeat;
+			background-position: 0 5px;
+			background-size:16px;
+			text-indent: 20px;
 		}
 		.promise-text i{
 			font-style: normal;
@@ -47,9 +53,73 @@
 			/* transition: all 1s linear;  */
 			color:#88B3FF;
 		}
-		
 		.disabled{
 			opacity: 0.6;
+		}
+		.popuo-top{
+			position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;
+		}
+		.full-page{
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			overflow: hidden;
+			background-color: #fff;
+			transform: translate3d(100%,0,0);
+			-webkit-transition: all .3s ease;
+		}
+		.active{
+			transform: translate3d(0,0,0);
+		}
+		.isvideo{
+			width: 90%;
+			margin-left: 5%;
+			position: relative;
+			height: 240px;
+		}
+		.body-text{
+			color: #AAAAAA;
+		}
+		textarea{
+			position: absolute;
+			width: 98%;
+			height: 100%;
+			resize: none;
+			color: rgba(0, 0, 0, 0);
+			caret-color: red;
+			caret-color: #5729e9;
+			caret-color: rgb(0, 200, 0);
+			caret-color: hsla(228, 4%, 24%, 0.8);
+		}
+		.layui-m-layercont .sumbit{
+			margin-left: 5%;
+		}
+		.pos-rel{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 140px;
+		}
+		.textarea-wrap{
+			position: relative;
+			height: 100%;
+			width: 100%;
+		}
+		.text-pop{
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			padding: 2px;
+			width: 100%;
+		}
+		.red{
+			color:red;
+		}
+		i{
+			font-style: normal;
 		}
 	</style>
 	<body>
@@ -62,15 +132,13 @@
 				</div>
 				<p>借款承诺</p>
 			</header>
-
 			<div class="content">
 				<div class="container">
 					<img src="../../images/promise.png" width="100%">
 					<div class="promise-text">
-						<i v-for="word in textList">{{word}}</i>
+						<i v-for="word in textList" class="text">{{word}}</i>
 					</div>
 				</div>
-
 				<div class="sumbit" v-show="status==1"  style="clear: both;">
 					<input  type="button" @click="start" v-model="text" :class="{'disabled':disabled}" :disabled="disabled"/>
 				</div>
@@ -85,15 +153,38 @@
 				</div>
 				<div id="jpId"></div> 
 			</div>
+			<div class="full-page">
+				<header style="background: #fff;">
+					<div style="float: left;" class="info">
+						<a href="#" class="closeWordWin">
+							<img src="../../images/ico_back@2x.png" />
+						</a>
+					</div>
+					<p>借款承诺</p>
+				</header>
+				<div class="isvideo">
+					<p style="padding: 10px 0;font-weight: bold;font-size: 16px;">请对照以下实例文字依次输入</p>
+					<p class="body-text" >示例：<i v-for="word in textList">{{word}}</i></p>
+					<div class="pos-rel">
+						<div class="textarea-wrap">
+							<textarea class="textarea" :maxlength="textList.length"></textarea>
+							<div class="text-pop"></div> 
+						</div>
+					</div>
+				</div>
+				<div class="sumbit">
+					<input  type="button" value="确认提交" id="commitWord" disabled="false" />
+				</div>
+			</div>
 		</div>
 	</body>
 	<script src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
 	<script src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-	<script src="../../libs/js/vue.js?${project.javascript.version}"></script>
 	<script src="../../js/common/globalConst.js?${project.javascript.version}"></script>
 	<script src="../../js/common/loading.js?${project.javascript.version}"></script>
 	<script src="../../js/common/utils.js?${project.javascript.version}"></script>
-	<script src="../../libs/js/jquery.jplayer.min.js"></script>
+	<script src="../../libs/js/vue.js?${project.javascript.version}"></script>
+	<script src="../../libs/js/layer.js?v=${project.javascript.version}"></script>
 	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
 	    new Vue({
@@ -105,25 +196,16 @@
 		    	disabled : false,
 		    	submit : false,
 		    	text : "开始朗读",
+		    	textObj : "",
 		    	textList : [],
 		    	localId : "",					// 音频id
 		    	timer : "",						// 定时器
 		    	status : 1                      //1开始朗读  2正在朗读  3朗读结束
 		  	},
 		  	mounted(){
-		  		/*$("#jpId").jPlayer( { //先要引用存放播放器的层
-				    ready: function () {//ready属性的设置
-				       	$(this).jPlayer("setMedia", {
-					        mp3: "http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
-							m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
-							oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
-					    });
-				    },
-				    swfPath: "../../libs/js",
-					supplied: "m4a, oga, ogg, mp3"
-			   	});*/
-			   this.initWxConfig();
-			   this.getVoice();
+			   	this.initWxConfig();
+			  	this.getVoice();
+			  	this.bindEvent();
 		  	},
 		  	methods:{
 		  		start(){
@@ -131,7 +213,6 @@
 		  			if(this.status==3){
 		  				this.submit = true;
 		  			}else if(this.status==1){
-		  				//$("#jpId").jPlayer("play");
 			  			this.text = "正在朗读...";
 			  			this.disabled = true;
 			  			// 开始录音
@@ -142,15 +223,65 @@
 			  			},6000)
 		  			}
 		  		},
+		  		bindEvent(){
+		  			let _self = this;
+		  			$("body").on("input",".textarea",function(){
+		  				var _this = $(this);
+						$(".text-pop").find("span").remove();
+						for(var i = 0; i < _this.val().length; i++) {
+							if(_self.textList.length > i) {
+								if(_this.val().substr(i, 1) == _self.textList[i].substr(0, 1)) {
+									var $li_1 = $("<span style='color: #000;'>" + _this.val().substr(i, 1) + "</span>");
+									$(".text-pop").append($li_1);
+								} else {
+									var $li_1 = $("<span style='color: red;'>" + _this.val().substr(i, 1) + "</span>");
+									$(".text-pop").append($li_1);
+								}
+							} else {
+								var $li_1 = $("<span style='color: red;'>" + _this.val().substr(i, 1) + "</span>");
+								$(".text-pop").append($li_1);
+							}
+						}
+						$("#commitWord").attr("disabled",_self.textObj!=_this.val());
+		  			});
+
+
+		  			$("body").on("click","#commitWord",function(){
+		  				utils.fetchData({
+		  					url: constans.serviceUrl + '/upload/word',
+		  					data: {
+								inputWord : _self.textObj
+							},
+							type : "post",
+							success :function(result){
+								if(result.code == "500") {
+									utils.showMsg({
+										msg : result.msg
+									});
+								}else{
+									utils.showMsg({
+										msg : "提交成功",
+										time : 2,
+										end:function(){
+											window.location.href = constans.htmlUrl + "/index.html";
+										}
+									});
+								} 
+							}
+		  				})
+		  			});
+
+		  			$("body").on("click",".closeWordWin",function(){
+		  				$(".full-page").removeClass('active');
+		  			})
+		  		},
 		  		stopRead(){
-		  			var _this = this;
-			  		_this.i = 0;
+			  		this.i = 0;
 					window.clearInterval(this.timer);
 					this.text = "朗读结束";
 					this.disabled = false;
 					this.submit = true;
 					this.status = 3;
-					$(".promise-text i").removeClass('blue');
 					this.stopRecord();
 					
 			  	},
@@ -182,9 +313,9 @@
 		  		readText(){
 		  			var _self = this;
 		  			var div = document.querySelector(".promise-text");
-					var iList = div.querySelectorAll("i");
+					var iList = div.querySelectorAll("i.text");
 					_self.timer = setInterval(function(){
-						iList[_self.i].className = _self.className;
+						iList[_self.i].className = _self.className+" text";
 						_self.i ++ ;
 						if( _self.i >= iList.length ){
 							_self.stopRead()
@@ -194,6 +325,7 @@
 		  		reStart(){
 		  			var _self = this;
 		  			_self.submit = false;
+		  			$(".promise-text i.text").removeClass(this.className);
 		  			_self.text = "开始朗读";
 		  			_self.disabled = false;
 		  			_self.status = 1;
@@ -206,29 +338,50 @@
 		  		},
 		  		commit(){
 		  			var _self = this;
-		  			if(_self.localId){
-		  				// 停止播放接口
-		  				wx.stopVoice({
-							localId: _self.localId 
-						});
-		  				utils.fetchData({
-		  					url  : constans.serviceUrl + '/upload/audio',
-							type : "post",
-							data : {
-								remark : "",
-								result : _self.translateResult,
-								files  : _self.localId
-							},
-							success:function(result){
-								if(result.code == 500) {
-									_self.showMsg(result.msg);
-								} else {
-									console.log(result);
-									//window.location = constans.htmlUrl + "/index.html";
+		  			if(!_self.localId)return;
+		  			wx.stopVoice({
+						localId: _self.localId 
+					});
+		  			wx.uploadVoice({
+						localId: _self.localId, // 需要上传的音频的本地ID，由stopRecord接口获得
+						isShowProgressTips: 1, // 默认为1，显示进度提示
+						success: function (res) {
+							var serverId = res.serverId; // 返回音频的服务器端ID
+							// 提交
+			  				utils.fetchData({
+			  					url  : constans.serviceUrl + '/upload/audio',
+								type : "post",
+								data : {
+									remark : _self.translateResult,
+									result : res.serverId,
+									files  : []
+								},
+								success:function(result){
+									if(result.code == 500) {
+										layer.open({
+										  	title: ['提示','background-color:#F16E7D; color:#fff;']
+										  	,anim: 'up'
+										  	,style:'width:75%'
+										  	,content: result.msg
+										  	,btn: ['确认', '取消'],
+										  	yes:function(i){
+										  		layer.close(i);
+										  		$(".full-page").addClass('active');
+										  	}
+										});
+									} else {
+										utils.showMsg({
+											msg : "保存成功",
+											time : 2,
+											end : function(){
+												window.location = constans.htmlUrl + "/index.html";
+											}
+										})
+									}
 								}
-							}
-		  				})
-		  			}
+			  				})
+						}
+					});
 		  		},
 		  		initWxConfig(){
 		  			utils.getWxSign({
@@ -239,12 +392,8 @@
 								timestamp: data.body.timestamp,
 								nonceStr: data.body.noncestr,
 								signature: data.body.signature,
-								jsApiList: ['startRecord', 'stopRecord','playVoice','onVoicePlayEnd','uploadVoice','downloadVoice','translateVoice','stopVoice']
+								jsApiList: ['startRecord', 'stopRecord','playVoice','onVoicePlayEnd','uploadVoice','translateVoice','stopVoice']
 							});
-						
-		  				},
-		  				error : function(xml,status,errorMsg){
-
 		  				}
 		  			})
 		  		},
@@ -261,13 +410,17 @@
 	  					url  : constans.serviceUrl + '/audio/play',
 						type : "post",
 						success:function(result){
-							if(result.code == 500) {
-								_self.showMsg(result.msg);
+							if(result.code == "500") {
+								utils.showMsg({
+									msg : result.msg
+								});
 							} else {
+								_self.textObj = result.body;
 								for(var i = 0;i<result.body.length;i++){
 									_self.textList.push(result.body[i]);
 								}
 							}
+							$(".content").show();
 						}
 	  				})
 		  		}

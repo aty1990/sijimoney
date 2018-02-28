@@ -27,10 +27,8 @@ $(function() {
 			},
 			complete: function() {
 				$("body").Loading("hide");
-
 			},
 			success: function(data) {
-				//				$(".modeshow").show();
 				if(data.code == 111) {
 					window.location.href = constans.htmlUrl + "/index";
 					return;
@@ -54,10 +52,8 @@ $(function() {
 					$(".message").on("click", function() {
 						window.location = constans.htmlUrl + "/html/home/nomessage.html";
 					});
-
-					//              已注册
+					// 已注册
 					if(userStat == 0) {
-
 						$("#mode").show();
 						$("#page1").show();
 						$("#page2").hide();
@@ -76,7 +72,6 @@ $(function() {
 							},
 							complete: function() {
 								$("body").Loading("hide");
-
 							},
 							success: function(data, status, resObj) {
 								if(data.code == 200) {
@@ -91,8 +86,6 @@ $(function() {
 									}
 									$('.money_fnd').html(money.split(".")[0]);
 									$('.line').html(data.body.homepageRollList.content);
-									var html = template('home_swiper11', data);
-									$('.line').html(html);
 									$(".page1_word").html(data.body.homePageLinkTitle);
 									$(".page1_word").attr("href", data.body.homePageLinkUrl);
 								}
@@ -512,6 +505,7 @@ $(function() {
 										$("body").css("background", "#fff");
 										$("#page4").hide();
 										$(".apply").on("click", function() {
+											alert(333)
 											localStorage.removeItem("homefail");
 											var data = { userId: userId };
 											$.ajax({
@@ -533,9 +527,7 @@ $(function() {
 
 												},
 												success: function(data) {
-
 													if(data.code == 200) {
-
 														$(".modes").show();
 														fail();
 													} else {
@@ -701,13 +693,13 @@ $(function() {
 												if($(this).hasClass('bg')) {
 													$(this).removeClass("bg");
 													if(!$(".weui1 li").hasClass('bg')) {
-														$(".sumbit1").css("background", "url(images/btn_disabled@2x.png)  no-repeat");
+														$(".sumbit1").css("background", "url(images/nd-disabled-btn.png)  no-repeat");
 														$(".sumbit1").css("background-size", "100% 100%");
 														$(".input_p").attr("disabled", "disabled");
 													}
 												} else {
 													$(this).addClass("bg");
-													$(".sumbit1").css("background", "url(images/btn_normal@2x.png)  no-repeat");
+													$(".sumbit1").css("background", "url(images/nd-normal-btn.png)  no-repeat");
 													$(".sumbit1").css("background-size", "100% 100%");
 													$(".input_p").removeAttr("disabled");
 												}
@@ -984,7 +976,7 @@ $(function() {
 						})
 						$(".top").hide();
 						$(".withdraw").attr("disabled", "disabled");
-						$(".withdraw").css("background", "url(images/btn_disabled@2x.png) no-repeat");
+						$(".withdraw").css("background", "url(images/nd-disabled-btn.png) no-repeat");
 						$(".withdraw").css("background-size", "100% 100%");
 
 						$(".withdraw").val("提现中,请耐心等待");
@@ -1172,8 +1164,6 @@ $(function() {
 				money = fmoney(mon, 2);
 				$('.money_fnd').html(money.split(".")[0]);
 				$('.line').html(data.body.homepageRollList.content);
-				var html = template('home_swiper11', data);
-				$('.line').html(html);
 				$(".page1_word").html(data.body.homePageLinkTitle);
 				$(".page1_word").attr("href", data.body.homePageLinkUrl);
 
@@ -1303,3 +1293,8 @@ $(function() {
 		});
 	}
 })
+
+
+
+
+

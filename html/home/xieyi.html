@@ -23,9 +23,18 @@
 		letter-spacing: 1px;
 		font-family: "微软雅黑";
 	}
+	html,body{
+		height: 100%;
+		overflow: hidden;
+	}
 	#content{
-		width: 94%;
-		margin-left: 3%;
+		width: 100%;
+		padding: 10px;
+		position: absolute;
+		top:41px;
+		bottom: 0;
+		width: 100%;
+		overflow-y: auto;
 	}
 </style>
 <body>
@@ -327,7 +336,6 @@
 </body>
 <script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
 	<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-	<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
 	<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
 	<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
 	

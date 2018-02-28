@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/common/index.css" />
     <link rel="stylesheet" type="text/css" href="libs/css/weui.min.css" />
     <link rel="stylesheet" type="text/css" href="libs/css/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/user/index.css?v=3534" />
     <script type="text/javascript">
         var _hmt = _hmt || [];
         (function() {
@@ -18,1365 +19,1416 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-    <style>
-        body {
-            background: #f3f3f3;
-            overflow-x: hidden;
-        }
-        
-        header {
-            background: #fff;
-            background-size: 100% 100%;
-        }
-        
-        .apply,
-        .apply1 {
-            line-height: 44px;
-            min-height: 1.9em;
-            background: url(images/homebottom1@2x.png) no-repeat;
-            background-size: 100% 100%;
-            text-align: center;
-            width: 80%;
-            margin-left: 10%;
-        }
-        
-        .apply a {
-            outline: none;
-            line-height: 40px;
-            border: 0;
-            font-size: 1em;
-            color: #000000;
-            height: 100%;
-        }
-        
-        .apply2 {
-            line-height: 44px;
-            min-height: 1.9em;
-            background: url(images/btn_normal@2x.png) no-repeat;
-            background-size: 100% 100%;
-            text-align: center;
-            width: 80%;
-            margin-left: 10%;
-        }
-        
-        .apply2 a {
-            outline: none;
-            line-height: 40px;
-            border: 0;
-            font-size: 1em;
-            height: 100%;
-        }
-        
-        #page1 {
-            display: none;
-            background: #fff;
-        }
-        
-        #page2 {
-            display: none;
-            overflow-x: hidden;
-        }
-        
-        #page3 {
-            display: none;
-            margin-bottom: 50px;
-        }
-        
-        #page4 {
-            display: none;
-            margin-bottom: 50px;
-        }
-        
-        #page5 {
-            display: none;
-            margin-bottom: 100px;
-            overflow-y: scroll;
-        }
-        
-        .home_bg {
-            width: 100%;
-            height: 220px;
-            background: url(images/tixianhomebg1.png) no-repeat;
-            background-size: 100% 100%;
-            text-align: center;
-            position: relative;
-        }
-        
-        .homelogo {
-            width: 150px;
-            position: absolute;
-            display: inline-block;
-            bottom: 60px;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-        
-        .homelogo img {
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .home_backa {
-            float: left;
-            width: 50%;
-            height: 80px;
-            text-align: center;
-        }
-        
-        .home_back p {
-            color: rgb(241, 168, 28);
-        }
-        
-        .home_a {
-            width: 100%;
-            display: inline-block;
-        }
-        
-        .amount {
-            font-size: 36px;
-        }
-        
-        .border {
-            display: inline-block;
-            text-align: center;
-            width: 80%;
-            height: 80px;
-        }
-        
-        #mode_up {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-        }
-        
-        .select_up {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            display: none;
-            background: #fff;
-            z-index: 99999;
-        }
-        
-        .bankup li {
-            width: 100%;
-            height: 44px;
-            border-bottom: 1px solid #D9D9D9;
-            line-height: 44px;
-        }
-        
-        .weui_cells:before {
-            border-top: 0;
-        }
-        
-        .weui_cells {
-            margin-top: 0;
-        }
-        
-        .repay_ul {
-            width: 96%;
-            margin-left: 2%;
-        }
-        
-        #modehome {
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-            position: fixed;
-            top: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-        }
-        
-        #id {
-            position: fixed;
-            bottom: 44px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50px;
-            z-index: 9919;
-        }
-        
-        #id1 {
-            position: fixed;
-            bottom: 41px;
-            left: 63px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50px;
-            z-index: 9919;
-            display: none;
-        }
-        
-        .weui_check1 {
-            position: absolute;
-            left: -9999em;
-        }
-        
-        .weui_cells_radio .weui_check1:checked+.weui_icon_checked:before {
-            display: block;
-            position: absolute;
-            right: 5px;
-            top: 10px;
-            content: '\EA08';
-            color: rgb(74, 144, 226);
-            font-size: 20px;
-        }
-        
-        .newmsg {
-            width: 10px;
-            height: 10px;
-            border-radius: 10px;
-            background: #FF5000;
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 12px;
-            color: #fff;
-            text-align: center;
-            line-height: 14px;
-        }
-        
-        .weui_cell:before {
-            border: 0;
-        }
-        
-        .swiper-slide {
-            width: 100%;
-        }
-        
-        .access1 {
-            width: 100%;
-            position: absolute;
-            bottom: 45px;
-            height: 18%;
-        }
-        
-        .modes {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.5);
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            z-index: 2222;
-            text-align: center;
-            overflow: hidden;
-            display: none;
-        }
-        
-        .fas {
-            width: 280px;
-            height: 400px;
-            background: url(images/bg_all.png) no-repeat;
-            background-size: 100% 100%;
-        }
-        
-        textarea {
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            bottom: 60px;
-            width: 220px;
-            height: 40px;
-            resize: none;
-            font-size: 10px;
-            background: #f1f1f1;
-            border: 1px solid #d9d9d9;
-        }
-        
-        .sumbit11 {
-            width: 100%;
-            height: 40px;
-            text-align: center;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        
-        .sumbit11 input {
-            width: 100%;
-            line-height: 40px;
-            font-size: 24px;
-            background: rgba(0, 0, 0, 0);
-            border: 0;
-            color: #fff;
-            background: url(images/btn_normal@2x.png);
-            background-size: 100% 100%;
-        }
-        
-        .close {
-            position: absolute;
-            top: 0px;
-            right: 0px;
-            margin: auto;
-            z-index: 99999;
-        }
-        
-        .center {
-            width: 280px;
-            height: 450px;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            z-index: 99999;
-        }
-        
-        .modes1 {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.5);
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            text-align: center;
-            overflow: hidden;
-            z-index: 999999;
-            display: none;
-        }
-        
-        .fas1 {
-            width: 280px;
-            height: 400px;
-            background: url(images/fas_bg.png) no-repeat;
-            background-size: 100% 100%;
-            position: absolute;
-            top: 80px;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-        
-        .sumbit1 {
-            width: 70%;
-            margin-left: 15%;
-            height: 40px;
-            background: url(images/btn_disabled@2x.png);
-            background-size: 100% 100%;
-            text-align: center;
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            top: 330px;
-        }
-        
-        .sumbit1 input {
-            width: 100%;
-            line-height: 40px;
-            font-size: 20px;
-            background: rgba(0, 0, 0, 0);
-            border: 0;
-            color: #fff;
-        }
-        
-        .weui1 li {
-            font-size: 14px;
-            margin-top: 15px;
-            height: 25px;
-            width: 100%;
-            margin-left: 10px;
-            color: rgb(175, 175, 175);
-        }
-        
-        .weui1 li p {
-            margin-right: 10px;
-            display: block;
-            width: 20px;
-            float: left;
-            height: 20px;
-            background: #fff;
-            border: 1px solid #d9d9d9;
-        }
-        
-        .weui1 li.bg p {
-            border: 1px solid #d9d9d9;
-            background: url(images/duigou.png) no-repeat;
-            background-size: 100% 100%;
-        }
-        
-        .modes1 .weui_cells:after {
-            border-bottom: 0;
-        }
-        
-        .modeshow {
-            display: none;
-        }
-        
-        #mode11 {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 999111;
-        }
-        
-        .modes11 {
-            width: 266px;
-            height: 426px;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            z-index: 2222111;
-        }
-        
-        .fas11 {
-            width: 266px;
-            height: 356px;
-            background: url(images/modebg.png) no-repeat;
-            background-size: 100% 100%;
-            color: #5e5e5e;
-            text-align: center;
-            overflow: hidden;
-        }
-        
-        .bottom11 {
-            width: 30px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-        
-        .content11 {
-            margin-top: 160px;
-        }
-        
-        .content11 p {
-            line-height: 30px;
-        }
-        
-        .swiper-container {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .circleblue {
-            width: 180px;
-            background: rgba(255, 255, 255, 0.5);
-            text-align: center;
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            height: 180px;
-            border-radius: 180px;
-            border: 2px solid #3c9bf3;
-        }
-        
-        .swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-        }
-        
-        .sure_button input {
-            background: url(images/homebottom1@2x.png) no-repeat;
-            background-size: 100% 100%;
-        }
-        
-        .statuser {
-            float: left;
-            width: 25%;
-            height: 60px;
-            padding-top: 5px;
-        }
-        
-        .xieyi {
-            color: rgb(74, 144, 226);
-            width: 40%;
-            line-height: 40px;
-            font-size: 12px;
-            margin-left: 30%;
-            text-align: center;
-        }
-        
-        .xieyi_bg {
-            width: 100%;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.7);
-            position: fixed;
-            bottom: 45px;
-        }
-        
-        .message {
-            position: absolute;
-            right: 12px;
-        }
-        
-        .money_fnd {
-            color: #fff;
-            font-size: 40px;
-        }
-        
-        .line {
-            height: 30px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-        
-        .home_shenhe {
-            margin-top: 20px;
-            width: 100%;
-            height: 210px;
-            position: relative;
-            background: url(images/linebghome.png) no-repeat 0px 50px;
-            background-size: 100% 100px;
-        }
-        
-        .shenhe_time {
-            color: #999;
-            margin-top: 50px;
-            font-size: 12px;
-        }
-        
-        .top {
-            line-height: 30px;
-            width: 100%;
-            text-align: left;
-            font-size: 14px;
-        }
-        
-        .home_page1bg {
-            width: 160px;
-            height: 160px;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 30%;
-            margin: auto;
-            background: url(images/homebg.png);
-            background-size: 100% 100%;
-        }
-        
-        .home_page1 {
-            text-align: center;
-            position: absolute;
-            background: #f3f3f3;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .home_laba {
-            overflow-x: hidden;
-            width: 80%;
-            left: 10%;
-            position: absolute;
-            top: 60%;
-            text-align: center;
-            display: inline-block;
-        }
-        
-        .page1_word {
-            position: absolute;
-            top: 80%;
-            left: 0;
-            right: 0;
-            margin: auto;
-            color: #999;
-        }
-        
-        .page2_qita {
-            background: #fff;
-            width: 90%;
-            height: 30%;
-            margin-left: 5%;
-            position: absolute;
-            bottom: 50px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        .border_left {
-            background: url(images/bgleft.png) no-repeat;
-            background-size: 100% 100%;
-        }
-        
-        .border_right {
-            background: url(images/bgright.png) no-repeat;
-            background-size: 100% 100%;
-        }
-        
-        .repaymo {
-            padding-top: 25px;
-            height: 150px;
-            width: 150px;
-            border-radius: 150px;
-            border: 2px solid #fff;
-            margin: auto;
-        }
-        
-        #swiper-container2 .swiper-slide {
-            width: 18%;
-        }
-        
-        .fail_title {
-            margin: 10px;
-            color: #585657;
-            font-weight: 700;
-        }
-        
-        .tail_dl {
-            width: 100%;
-            background: #eee;
-            border-radius: 5px;
-            text-align: center;
-            height: 100px;
-        }
-        
-        .tail_dt img {
-            width: 60%;
-            margin-top: 10px;
-            height: 40px;
-        }
-        
-        #swiper-container2 .swiper-slide {
-            margin-left: 10px;
-        }
-        
-        .tail_dd {
-            margin-top: 10px;
-            font-size: 12px;
-            overflow: hidden;
-        }
-        
-        .fail_swiper {
-            background: #fff;
-        }
-        
-        #swiper-container2 .swiper-wrapper {
-            margin: 10px;
-        }
-        
-        .fail_top {
-            border-bottom: 1px solid #f1f1f1;
-            padding: 10px;
-            height: 40px;
-            white-space: nowrap;
-        }
-        
-        .fail_top img {
-            height: 20px;
-            width: 20px;
-        }
-        
-        .fail_product {
-            margin-left: 10px;
-            display: block;
-            margin-top: 10px;
-            background: #fff;
-            height: 120px;
-        }
-        
-        .fail_num {
-            float: right;
-            font-size: 12px;
-            color: #a3a3a3;
-            margin-top: 5px;
-            display: flex;
-        }
-        
-        .place {
-            margin: 5px;
-            font-size: 14px;
-        }
-        
-        .fail_mon {
-            font-size: 20px;
-            margin-top: 10px;
-            color: #e04c72;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        
-        .fail_pa {
-            font-size: 14px;
-            color: #585657;
-        }
-        
-        .fail_bottomleft {
-            margin-left: 15px;
-            margin-top: 10px;
-            text-align: center;
-            width: 35%;
-            float: left;
-            border-right: 1px solid #f1f1f1;
-        }
-        
-        .fail_bottomright {
-            width: 50%;
-            float: left;
-            color: #a3a3a3;
-            margin-top: 15px;
-            text-align: center;
-            font-size: 12px;
-        }
-        
-        .fail_qishu {
-            margin-top: 10px;
-        }
-        
-        .fail_jiantou {
-            float: right;
-            margin-top: 25px;
-            margin-right: 10px;
-        }
-        
-        .fail_jiantou img {
-            height: 25px;
-        }
-        
-        #swiper-container1 .swiper-slide img {
-            width: 100%;
-        }
-        
-        .smallHorn {
-            font-size: 12px;
-            color: #585657;
-        }
-        
-        .fail_name {
-            overflow: hidden;
-            width: 50px;
-            line-height: 20px;
-            text-align: center;
-            font-size: 12px;
-            height: 20px;
-            border-radius: 10px;
-            border: 1px solid #e04c72;
-            float: left;
-            color: #e04c72;
-        }
-        
-        .tail_dd2 {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
 </head>
 
 <body>
-
-    <div id="page1">
-        <header style="background: #fff;border: 0;top:0;height: 40px;">
-            <p class="message">
-                <a href="#" style="position:relative;">
-                    <img src="images/email@2x.png" style="height:18px;margin-top:0;" />
-                </a>
-                <p class="newmsg"></p>
-            </p>
-            <p style="color: #000;">四季贷</p>
-        </header>
-        <div class="home_page1">
-            <img src="images/hometop.png" style="width: 100%;padding-top:15% ;" />
-            <div class="home_page1bg">
-                <p style="font-size:14px;color: #fff;padding-top: 40px;">最高可借金额</p>
-                <p class="money_fnd"></p>
-                <p style="font-size: 28px;color: #fff;">
-                    <元>
-                    </元>
+    <div class="index-page" v-cloak>
+        <div id="page1" v-if="page1" class="page">
+            <header style="background: #fff;border: 0;top:0;height: 40px;">
+                <p class="message">
+                    <a href="#" class="relative">
+                        <img src="images/email@2x.png" style="height:18px;margin-top:0;" />
+                    </a>
+                    <p class="newmsg"></p>
                 </p>
-            </div>
-
-            <div class="home_laba">
-                <div style="float: left;line-height: 40px;">
-                    <img src="images/laba@2x.png" style="width: 20px;" />
+                <p style="color: #000;">四季贷</p>
+            </header>
+            <div class="home_page1">
+                <div class="swiper-container" id="page_1" style="height: 120px;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="banner in bannerList"><img :src="banner.bannerPicUrl" width="100%"></div>
+                    </div>
                 </div>
-                <div style="float: left;width: 90%;height:40px;line-height:40px;">
-                    <ul class="line">
-                        <script id="home_swiper11" type="text/html">
-                            {{each body.homepageRollList as lt i}}
-                            <li style="line-height: 30px;">{{lt.content}}</li>
-                            {{/each}}
-                        </script>
-                    </ul>
+
+                <!--计算器开始-->
+                <p class="text-center line-37 mgt-10">借款金额(元)</p>
+                <p class="text-center line-37 relative mgb-10"><span class="monery" id="jkje_sum">3500</span></p>
+                <div class="rule-box">
+                    <div id="scroll-box">
+                    </div>
+                    <span id="pointer"></span>
                 </div>
-            </div>
-            <div class="apply" style="position: absolute;top:70%">
-                <a href="#" style="color: #fff;">立即申请</a>
-            </div>
-            <a href="#" class="page1_word">动动手指5000元瞬间到账</a>
-        </div>
-        <div class="modes">
-            <div class="center">
-                <div class="close" id="close">
-                    <img src="images/fas_close.png" style="width: 25px;height: 25px;" />
-                </div>
-                <div class="fas">
-                    <textarea class="text input_p" id="text1" placeholder="您可以这样发誓：我发誓，借款成功后一定按时还款，否则我会越来越丑！"></textarea>
-                </div>
-                <div class="sumbit11" id="swear">
-                    <input type="submit" class="input_p" value="确定" />
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div id="page2">
-        <header>
-            <p class="message">
-                <a href="html/home/nomessage.html" style="position:relative;">
-                    <img src="images/email@2x.png" style="height:20px;margin-top:0;" />
-                </a>
-                <p class="newmsg"></p>
-            </p>
-            <p>飞鸟贷</p>
-
-        </header>
-
-        <div class="home_shenhe">
-
-            <div class="swiper-container" style="width: 100%;" id="swiper-container11">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div style="width: 100%;text-align: center;">
-                            <div class="circleblue">
-                                <p class="orgTime shenhe_time">321321</p>
-                                <p style="font-size: 34px;color:#999;">已完成</p>
-                                <p style="font-size:14px;color:#999;margin-top: 10px;">资料信息采集</p>
+                <p class="text-center line-37 mgt-10">借款期限(周)</p>
+                <div data-page='profile1' class="zq-part">
+                    <input type="hidden" name="first_screen" value="1">
+                    <div class="row">
+                        <p class="text-center line-37 relative"><span class="number age-num" initial-value="0" value="0">4</span><span class="letter"></span></p>
+                        <div class="ruler ruler-age">
+                            <div class="main" value="0">
+                                <ul data-initial='true'>
+                                    <li v-for="p in period"><span class="num">{{p.value}}</span></li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div style="width: 100%;">
-                            <div class="circleblue">
-                                <p class="regTime shenhe_time"></p>
-                                <p class="now1" style="font-size: 34px;">进行中</p>
-                                <p class="block1" style="font-size:14px;color:#F38185;margin-top: 10px;">资料审核</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div style="width: 100%;">
-                            <div class="circleblue">
-                                <p class="loanTime shenhe_time"></p>
-                                <p class="now2" style="font-size: 34px;color:#999;">等待中</p>
-                                <p class="fang" style="font-size:14px;margin-top: 10px;color:#999;">放款审核</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </div>
-        <div style="text-align: center;margin-top: 5px;">
-            <img src="images/icon_notice.png" style="width:15px;" />
-            <span style="color: #888;font-size: 12px;">放款结果我们会用短信第一时间通知您！</span>
-        </div>
-        <div class="page2_qita">
-            <img src="images/homeclock.png" style="width: 80px;margin-top: 10px;" />
-            <p style="color: #999;font-size: 14px;margin-top: 5px;">等不及了？看看其他平台去...</p>
-            <div class="apply1" style="margin-top: 5px;">
-                <a href="#" style="color: #fff;">去看看</a>
-            </div>
-        </div>
-    </div>
-    <div id="page3">
-        <header>
-            <p class="message">
-                <a href="html/home/nomessage.html" style="position:relative;">
-                    <img src="images/email@2x.png" style="height:20px;margin-top:0;" />
-                </a>
-                <p class="newmsg"></p>
-            </p>
-            <p>飞鸟贷</p>
-
-        </header>
-        <div class="home_bg">
-            <div class='top' style="">
-                <span style="font-size: 13px;color: #999;">亲，恭喜您获得了飞鸟贷授信额度，赶快提现吧</span>
-            </div>
-            <div class="homelogo">
-                <p class="white" style="font-size: 14px;">借款金额</p>
-                <p class=" white"><span class="amount"></span>元</p>
-                <p class="white" style="font-size: 14px;">借款期限<span class="currentWeeks"></span>周</p>
-            </div>
-
-        </div>
-        <div class="home_a">
-            <div style="width:100%;display: flex;height:80px;">
-                <div class="home_backa">
-                    <div class="border border_left">
-                        <div style="padding-top: 20px;">
-                            <p>到账金额(元)</p>
-                            <p class="transAmount" style="color:#888;margin-top: 5px;"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="home_backa">
-                    <div class="border border_right">
-                        <div style="padding-top: 20px;">
-                            <p>周还金额(元)</p>
-                            <p class="repayEachWeek" style="color:#888;margin-top: 5px;"></p>
+                            <div class="arrow"></div>
                         </div>
                     </div>
                 </div>
 
-            </div>
+                <p class="text-center line-37 mgt-10">每周还款(元)</p>
+                <p class="text-center line-37 relative"><span class="week-num">0</span></p>
 
-        </div>
-        <div style="text-align: center;color: #858585;margin-top: 40px;">
-            <p style="font-size: 20px;margin-top: 10px;">重要提示</p>
-            <p style="font-size: 26px;margin-top: 10px;">您须每期自主登录还款</p>
-            <p style="font-size: 14px;margin-top: 5px;">违约会影响信用，且飞鸟贷将大力催收</p>
-        </div>
-        <div class="sure_button" style="padding: 3px 35px;">
-            <input type="submit" class="withdraw" value="闪电提现" style="border-radius: 20px;" />
-        </div>
-        <div style="text-align: center;font-size: 14px;margin-top:5px;">
-            <span>提现即代表同意<span class="fuwuxieyi" style="color:rgb(130,195,130);">《借款咨询服务协议》</span></span>
-        </div>
-        <div class="select_up">
-            <div style="border-bottom: 1px solid #D9D9D9;height: 44px;text-align: center;line-height: 44px;">
-                <div class="close_up" style="width: 20%;float: left;">
-                    <img src="images/ico_close@2x.png" style="width: 15px;" />
-                </div>
-                <div style="width: 60%;float: left;">
-                    <p>我的银行卡</p>
-                </div>
-                <div class="addbank" style="width: 20%;float: left;">
-                    <img src="images/icon_add@2x.png" style="width: 15px;" />
+                <div class="apply" style="margin-top: 30px;margin-bottom: 30px;">
+                    <a href="#" style="color: #fff;">马上借钱</a>
                 </div>
             </div>
-            <div class="bankup">
-                <div class="weui_cells weui_cells_radio radio" style="overflow: hidden;">
-                    <script id="homebank" type="text/html">
-                        {{each body as lt i}}
-                        <label class="weui_cell weui_check_label" style="padding: 10px 0px;border-bottom: 1px solid #d9d9d9;">
-			                <div class="weui_cell_bd weui_cell_primary">
-			                   <p style="float: left;width: 20%;text-align: center;">
-									<img src="{{lt.bankLogo}}" onerror="this.src='images/icon_jiansheyinhang@2x.png'"  class="bank_img" style="width: 20px;"/>
-							   </p>
-							    <p  style="width:60%;font-size: 14px;float: left;">
-							    	<span class="bank" >{{lt.bankName}}</span>(*<span class="cardnum">{{lt.accountNo.substr(lt.accountNo.length-4,4)}}</span>)</p>						  
-			                </div>
-			                <div class="weui_cell_ft">
-			                    <input type="radio" class="weui_check1" name="radio1" value="" >
-			                    <span class="weui_icon_checked"></span>
-			                </div>
-			            </label> {{/each}}
-                    </script>
-                </div>
-            </div>
+        </div>
+        <div id="page2" v-if="page2" class="page" style="background:#F3F3F3;">
+            <header>
+                <p class="message">
+                    <a href="html/home/nomessage.html" style="position:relative;">
+                        <img src="images/email@2x.png" style="height:20px;margin-top:0;" />
+                    </a>
+                    <p class="newmsg"></p>
+                </p>
+                <p>四季贷</p>
 
-            <div class="sure_button" style="margin: 20px;border-radius: 20px;">
-                <input type="submit" class="withdraw2" value="确认提现" />
-            </div>
-        </div>
-        <div id="mode_up"></div>
-        <div id="mode11" style="position: fixed;top: 0;background: rgba(0,0,0,0);width: 100%;height: 100%;z-index: 9999;display: none;">
-            <div id="mode1" style="display:block;">
-                <img src="images/loading circle@2x.png" id="change" style="width: 30px;margin-top: 20px;" />
-                <p style="color: #fff;font-size: 12px;">提现中，请耐心等候...</p>
-            </div>
-        </div>
-        <div class="modes1">
-            <div class="fas1">
-                <div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:160px;">
-                    <ul class="weui1">
-                        <li>
-                            <p></p><span style="float:left;">A.我发誓，不还钱我胖30斤</span></li>
-                        <li>
-                            <p></p><span style="float:left;">B.我发誓，不还钱我永远是单身狗</span></li>
-                        <li>
-                            <p></p><span style="float:left;">C.我发誓，不还钱我永远发不了财</span></li>
-                        <li>
-                            <p></p><span style="float:left;">D.我发誓，我知道按时还款就能提额</span></li>
-                    </ul>
-                </div>
-                <div class="sumbit1" id="swear1">
-                    <input type="submit" class="input_p" disabled="disabled" value="我已发誓，去提现" />
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div id="page4">
-        <div class="pround">
-
-            <div class="fail">
-                <header style="background: #5da8ef;border: 0;">
-                    <p class="message">
-                        <a href="#" style="position:relative;">
-                            <img src="images/icon_zhanneixin@2x.png" style="height:20px;margin-top:0;" />
-                        </a>
-                        <p class="newmsg"></p>
-                    </p>
-                    <p style="color: #fff;">飞鸟贷</p>
-                </header>
-                <div style="text-align: center;padding:20px 0  ;font-size:14px;background:#fff;">
-                    <img src="images/pic_yun@2x.png" style="width: 40%;" />
-                    <p style="margin-top:30px ;color:#888;">抱歉，您的借款未通过审核</p>
-                    <p style="margin-top:10px ;color:#888;">您已完成资料认证</p>
-                    <p style="margin-top:30px ;color:#888;">预计可借款（元）</p>
-                    <p class="pink" style="margin-top: 10px;font-size: 30px;">1000~18000</p>
-                    <p style="margin-top:60px ;color:#888;">为您推荐几个好口子</p>
-                    <div class="apply2" style="margin-top: 10px;">
-                        <a href="#" style="color: #fff;">去申请</a>
-                    </div>
-                </div>
-
-            </div>
-            <div class="fail_tuijian" style="width: 100%;">
-                <header style="background: #5da8ef;border: 0;">
-                    <p class="message">
-                        <a href="#" style="position:relative;">
-                            <img src="images/icon_zhanneixin@2x.png" style="height:20px;margin-top:0;" />
-                        </a>
-                        <p class="newmsg"></p>
-                    </p>
-                    <p style="color: #fff;">飞鸟贷</p>
-                </header>
-                <div class="swiper-container" id="swiper-container1" style="width: 100%;height: 146px;">
-                    <div class="swiper-wrapper banner" style="width: 100%;">
-                        <script id="homefail" type="text/html">
-                            {{each body.bannerList as lt i}}
-                            <div class="swiper-slide">
-                                <a href="{{lt.bannerLinkUrl}}">
-                                    <img src="{{lt.bannerPicUrl}}" style="height: 100%;" />
-                                </a>
-                            </div>
-                            {{/each}}
-                        </script>
-                    </div>
-
-                </div>
-                <div style="line-height:30px;background:#fff;width:100%;text-align:left;font-size:14px;">
-                    <img src="images/homelaba.png" style="height:16px;margin-left:5px;" />
-                    <span class="smallHorn">据统计，申请三个以上口子的用户，90%都能成功下款</span>
-                </div>
-                <p class="fail_title">新品上线</p>
-                <div class="fail_swiper">
-                    <div class="swiper-container" id="swiper-container2">
-                        <div class="swiper-wrapper banner1">
-                            <script id="homefail2" type="text/html">
-                                {{each body.actityList as lt i}}
-                                <div class="swiper-slide hot" name="{{lt.channelId}}">
-                                    <dl class="tail_dl">
-                                        <dt class="tail_dt">
-										<a href="{{lt.channelApplyUrl}}">
-											<img src="{{lt.channelPicUrl}}" />
-										</a>
-									</dt>
-                                        <dd class="tail_dd">
-                                            <p class="tail_dd1" style="font-size: 12px;">{{lt.channelName.slice(0,4)}}</p>
-                                            <p class="tail_dd2" style="font-size: 10px;">{{lt.channelRemark.slice(0,6)}}</p>
-                                        </dd>
-                                    </dl>
+            </header>
+            <div class="home_shenhe">
+                <div class="swiper-container" style="width: 100%;" id="swiper-container11">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div style="width: 100%;text-align: center;">
+                                <div class="circleblue">
+                                    <p class="orgTime shenhe_time">321321</p>
+                                    <p style="font-size: 34px;color:#999;">已完成</p>
+                                    <p style="font-size:14px;color:#999;padding:6px 0;">资料信息采集</p>
                                 </div>
-                                {{/each}}
-                            </script>
+                            </div>
                         </div>
+                        <div class="swiper-slide">
+                            <div style="width: 100%;">
+                                <div class="circleblue">
+                                    <p class="regTime shenhe_time"></p>
+                                    <p class="now1" style="font-size: 34px;">进行中</p>
+                                    <p class="block1" style="font-size:14px;color:#F38185;padding:6px 0;">资料审核</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div style="width: 100%;">
+                                <div class="circleblue">
+                                    <p class="loanTime shenhe_time"></p>
+                                    <p class="now2" style="font-size: 34px;color:#999;">等待中</p>
+                                    <p class="fang" style="font-size:14px;color:#999;padding:6px 0;">放款审核</p>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <p class="fail_title">热门推荐</p>
-                <div class="access">
-                    <script id="homefail1" type="text/html">
-                        {{each body.pages.data as lt i}}
-                        <a href="{{lt.channelApplyUrl}}" class="fail_product" name="{{lt.channelId}}">
-                            <div class="fail_top">
-                                <p style="float: left;">
-                                    <img src="{{lt.channelPicUrl}}" />
-                                    <span class="place">{{lt.channelName.slice(0,4)}}</span>
-                                </p>
-                                {{if lt.channelTarget.indexOf("|") >= 0}}
-                                <p class="fail_name">{{lt.channelTarget.split("|")[0]}}</p>
-                                <p class="fail_name" style="margin-left: 3px;">{{lt.channelTarget.split("|")[1]}}</p>
-                                {{else}}
-                                <p class="fail_name">{{lt.channelTarget}}</p>
-                                {{/if}}
-                                <span class="fail_num">已有 <span class="pink">{{lt.loanPeople}}</span>人放款</span>
-                            </div>
-                            <div class="fail_bottomleft">
-                                <p class="fail_pa">最高额度（元）</p>
-                                <p class="pink fail_mon">{{lt.channelLoan}}</p>
-                            </div>
-                            <div class="fail_bottomright">
-                                <p class="fail_word">{{lt.channelRemark}}</p>
-                                <p class="fail_qishu">借款周期：<span>{{lt.channelLoanCycle}}</span></p>
 
-                            </div>
-                            <div class="fail_jiantou">
-                                <img src="images/failjiantou.png" />
-                            </div>
-                        </a>
-                        {{/each}}
-                    </script>
+            </div>
+            <div style="text-align: center;margin-top: 5px;">
+                <img src="images/icon_notice.png" style="width:15px;" />
+                <span style="color: #888;font-size: 12px;">放款结果我们会用短信第一时间通知您！</span>
+            </div>
+            <div class="page2_qita">
+                <img src="images/homeclock.png" style="width: 80px;margin-top: 10px;" />
+                <p style="color: #999;font-size: 14px;margin-top: 5px;padding:8px 0;">等不及了？看看其他平台去...</p>
+                <div class="apply1" style="margin-top: 5px;">
+                    <a href="#" style="color: #fff;">去看看</a>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="page5">
-        <header>
-            <p class="message">
-                <a href="html/home/nomessage.html" style="position:relative;">
-                    <img src="images/email@2x.png" style="height:20px;margin-top:0;" />
-                </a>
-                <p class="newmsg"></p>
-            </p>
-            <p>飞鸟贷</p>
+        <div id="page3" v-if="page3" class="page">
+            <header style="background: #F16E7D;border-bottom: none;color:#fff;">
+                <p class="message">
+                    <a href="html/home/nomessage.html" style="position:relative;">
+                        <img src="images/email@2x.png" style="height:20px;margin-top:0;" />
+                    </a>
+                    <p class="newmsg"></p>
+                </p>
+                <p>四季贷</p>
+            </header>
+            <div class="fixed-pos">
+                <div class="home_bg">
+                    <div class='top'>亲，恭喜您获得了四季贷授信额度，赶快提现吧</div>
+                    <div class="homelogo">
+                        <p class="white" style="line-height: 36px;margin-top: 20px;"><span class="amount">{{page3Data.amount}}</span>元</p>
+                        <p class="white" style="font-size: 14px;line-height: 36px;">借款金额</p>
+                    </div>
+                    <div class="home_a">
+                        <div>
+                            <p class="font-12">到账金额</p>
+                            <p class="transAmount">{{page3Data.transAmount}}</p>
+                        </div>
+                        <div class="left-border">
+                            <p class="font-12">借款期限</p>
+                            <p><span class="currentWeeks">{{page3Data.currentWeeks}}</span>周</p>
+                        </div>
+                        <div class="left-border">
+                            <p class="font-12">周还金额</p>
+                            <p class="repayEachWeek">{{page3Data.repayEachWeek}}</p>
+                        </div>
+                    </div>
+                    <div class="default-bank">
+                        <span class="pos-l">到账银行卡</span>
+                        <span class="pos-r">{{page3Data.cardBankName}}(尾号{{page3Data.wageCard}})</span>
+                    </div>
+                </div>
+                <div class="card-wrap">
+                    <div class="midden-box">
+                        <h2>重<i>/</i>要<i>/</i>提<i>/</i>示</h2>
+                        <table class="card-table">
+                            <tr>
+                                <td><i>01</i></td>
+                                <td>您须每期自主登录还款,违约会影响信用,且四季贷款将大力催收</td>
+                            </tr>
+                            <tr>
+                                <td><i>02</i></td>
+                                <td>我司与第三方数据中介合作，在授信过程中所产生的征信费用({{page3Data.bhAmount}}元)将在到账后由第三方扣除，具体参见《借款咨询服务协议》</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="sure_button" style="padding: 3px 35px;background: #F2F2F2;margin-top: 0;">
+                    <input type="button" class="withdraw" value="闪电提现" style="border-radius: 20px;" @click="toPage3Commit" />
+                </div>
+                <div style="text-align: center;font-size: 14px;color:#BFBCBC;background-color: #F2F2F2;padding: 10px 0 20px 0">
+                    <span>提现即代表同意<span class="fuwuxieyi" style="color:rgb(130,195,130);">《借款咨询服务协议》</span></span>
+                </div>
+            </div>
+            <div class="select_up">
+                <div style="border-bottom: 1px solid #D9D9D9;height: 44px;text-align: center;line-height: 44px;">
+                    <div class="close_up" style="width: 20%;float: left;">
+                        <img src="images/ico_close@2x.png" style="width: 15px;" />
+                    </div>
+                    <div style="width: 60%;float: left;">
+                        <p>我的银行卡</p>
+                    </div>
+                    <div class="addbank" style="width: 20%;float: left;">
+                        <img src="images/icon_add@2x.png" style="width: 15px;" />
+                    </div>
+                </div>
+                <div class="bankup">
+                    <div class="weui_cells weui_cells_radio radio" style="overflow: hidden;">
+                        <label class="weui_cell weui_check_label" style="padding: 10px 0px;border-bottom: 1px solid #d9d9d9;" v-for="lt in homebank">
+                           <div class="weui_cell_bd weui_cell_primary">
+                              <p style="float: left;width: 20%;text-align: center;">
+                                   <img :src="lt.bankLogo?lt.bankLogo:'images/icon_jiansheyinhang@2x.png'" class="bank_img" style="width: 20px;"/>
+                              </p>
+                               <p  style="width:60%;font-size: 14px;float: left;">
+                                   <span class="bank">{{lt.bankName}}</span>(*<span class="cardnum">{{lt.accountNo.substr(lt.accountNo.length-4,4)}}</span>)</p>
+                           </div>
+                           <div class="weui_cell_ft">
+                               <input type="radio" class="weui_check1" name="radio1" value="" >
+                               <span class="weui_icon_checked"></span>
+                           </div>
+                       </label>
+                    </div>
+                </div>
 
-        </header>
-        <div style="background: #fff;">
-            <div style="position:relative;width:100%;height:220px;background:url(images/huankuanbg1.png)no-repeat ;background-size: 100% 100%;">
-                <div style="color: #fff;padding: 10px;font-size: 12px">信用贷</div>
+                <div class="sure_button" style="margin: 20px;border-radius: 20px;">
+                    <input type="submit" class="withdraw2" value="确认提现" />
+                </div>
+            </div>
+            <div id="mode_up"></div>
+            <div id="mode11" style="position: fixed;top: 0;background: rgba(0,0,0,0);width: 100%;height: 100%;z-index: 9999;display: none;">
+                <div id="mode1" style="display:block;">
+                    <img src="images/loading circle@2x.png" id="change" style="width: 30px;margin-top: 20px;" />
+                    <p style="color: #fff;font-size: 12px;">提现中，请耐心等候...</p>
+                </div>
+            </div>
+            <div class="modes1">
+                <div class="fas1">
+                    <div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:160px;">
+                        <ul class="weui1">
+                            <li>
+                                <p></p><span style="float:left;">A.我发誓，不还钱我胖30斤</span></li>
+                            <li>
+                                <p></p><span style="float:left;">B.我发誓，不还钱我永远是单身狗</span></li>
+                            <li>
+                                <p></p><span style="float:left;">C.我发誓，不还钱我永远发不了财</span></li>
+                            <li>
+                                <p></p><span style="float:left;">D.我发誓，我知道按时还款就能提额</span></li>
+                        </ul>
+                    </div>
+                    <div class="sumbit1" id="swear1">
+                        <input type="submit" class="input_p" disabled="disabled" value="我已发誓，去提现" />
+                    </div>
+                </div>
 
-                <div class="repay">
+            </div>
+        </div>
+        <div id="page4" v-if="page4" class="page">
+            <div class="pround">
+                <div class="fail ">
+                    <header style="background: #5da8ef;border: 0;">
+                        <p class="message">
+                            <a href="#" style="position:relative;">
+                                <img src="images/icon_zhanneixin@2x.png" style="height:20px;margin-top:0;" />
+                            </a>
+                            <p class="newmsg"></p>
+                        </p>
+                        <p style="color: #fff;">四季贷</p>
+                    </header>
+                    <div class="fixed-pos" style="text-align: center;padding:20px 0  ;font-size:14px;background:#fff;">
+                        <img src="images/pic_yun@2x.png" style="width: 40%;" />
+                        <p style="margin-top:30px ;color:#888;">抱歉，您的借款未通过审核</p>
+                        <p style="margin-top:10px ;color:#888;">您已完成资料认证</p>
+                        <p style="margin-top:30px ;color:#888;">预计可借款（元）</p>
+                        <p class="pink" style="margin-top: 10px;font-size: 30px;">1000~18000</p>
+                        <p style="margin-top:60px ;color:#888;">为您推荐几个好口子</p>
+                        <div class="apply2" style="margin-top: 10px;">
+                            <a href="#" style="color: #fff;">去申请</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="fail_tuijian" style="width: 100%;">
+                    <header style="background: #5da8ef;border: 0;">
+                        <p class="message">
+                            <a href="#" style="position:relative;">
+                                <img src="images/icon_zhanneixin@2x.png" style="height:20px;margin-top:0;" />
+                            </a>
+                            <p class="newmsg"></p>
+                        </p>
+                        <p style="color: #fff;">四季贷</p>
+                    </header>
+                    <div class="fixed-pos">
+                        <div class="swiper-container" id="swiper-container1" style="width: 100%;height: 146px;">
+                            <div class="swiper-wrapper banner" style="width: 100%;">
+                                <div class="swiper-slide" v-for="b in bannerList">
+                                    <a :href="b.bannerLinkUrl">
+                                        <img :src="b.bannerPicUrl" style="height: 100%;" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="line-height:30px;background:#fff;width:100%;text-align:left;font-size:14px;">
+                            <img src="images/homelaba.png" style="height:16px;margin-left:5px;" />
+                            <span class="smallHorn">据统计，申请三个以上口子的用户，90%都能成功下款</span>
+                        </div>
+                        <p class="fail_title">新品上线</p>
+                        <div class="fail_swiper">
+                            <div class="swiper-container" id="swiper-container2">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide hot" v-for="lt in actityList" :name="lt.channelId">
+                                        <dl class="tail_dl">
+                                            <dt class="tail_dt">
+                                                <a :href="lt.channelApplyUrl">
+                                                    <img :src="lt.channelPicUrl" />
+                                                </a>
+                                            </dt>
+                                            <dd class="tail_dd">
+                                                <p class="tail_dd1" style="font-size: 12px;">{{lt.channelName?lt.channelName.slice(0,4):""}}</p>
+                                                <p class="tail_dd2" style="font-size: 10px;">{{lt.channelRemark?lt.channelRemark.slice(0,6):""}}</p>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fail_title">热门推荐</p>
+                        <div class="access">
+                            <a v-for="page in pageData" :href="page.channelApplyUrl" class="fail_product" :name="page.channelId">
+                                <div class="fail_top">
+                                    <p style="float: left;">
+                                        <img :src="page.channelPicUrl" />
+                                        <span class="place">{{page.channelName?page.channelName.slice(0,4):""}}</span>
+                                    </p>
+                                    <div v-if="page.channelTarget.indexOf('|') >= 0">
+                                        <p class="fail_name">{{page.channelTarget.split("|")[0]}}</p>
+                                        <p class="fail_name" style="margin-left: 3px;">{{page.channelTarget.split("|")[1]}}</p>
+                                    </div>
+                                    <p class="fail_name" v-else>{{page.channelTarget}}</p>
+                                    <span class="fail_num">已有 <span class="pink">{{page.loanPeople}}</span>人放款</span>
+                                </div>
+                                <div class="fail_bottomleft">
+                                    <p class="fail_pa">最高额度（元）</p>
+                                    <p class="pink fail_mon">{{page.channelLoan}}</p>
+                                </div>
+                                <div class="fail_bottomright">
+                                    <p class="fail_word">{{page.channelRemark}}</p>
+                                    <p class="fail_qishu">借款周期：<span>{{page.channelLoanCycle}}</span></p>
 
-                    <script id="homebank1" type="text/html">
-                        {{each body as tem i}}
-                        <div class="repaymo">
+                                </div>
+                                <div class="fail_jiantou">
+                                    <img src="images/failjiantou.png" />
+                                </div>
+                            </a>
+                            <p v-if="pageData.length==0" class="noData">暂无内容</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page5" v-if="page5" class="page">
+            <header>
+                <p class="message">
+                    <a href="html/home/nomessage.html" style="position:relative;">
+                        <img src="images/email@2x.png" style="height:20px;margin-top:0;" />
+                    </a>
+                    <p class="newmsg"></p>
+                </p>
+                <p>四季贷</p>
+            </header>
+            <div class="fix-pos" style="bottom: 70px;">
+                <div class="top-box">
+                    <div style="color: #fff;padding: 10px;font-size: 12px">信用贷</div>
+                    <div class="repay">
+                        <div class="repaymo" v-for="tem in homebank1">
                             <ul class="ulin" style="text-align: center;color: #fff;">
                                 <li><span class="cashTime">{{tem.cashTime}}</span></li>
                                 <li style="padding-top: 5px;"><span style="font-size: 32px;">{{tem.sumAmount}}</span>元</li>
-                                {{if tem.taskStat=='5'}}
-                                <li class="taskStat" style="color: #f94b6c;margin-top: 10px;">还款中</li>
-                                {{/if}} {{if tem.taskStat=='6'}}
-                                <li class="color taskStat" style="color: #f94b6c;margin-top: 10px;">已逾期</li>
-                                {{/if}} {{if tem.taskStat=='7A'}}
-                                <li class="color taskStat" style="color: #f94b6c;margin-top: 10px;">已结清</li>
-                                {{/if}} {{if tem.taskStat=='8'}}
-                                <li class="color taskStat" style="color: #f94b6c;margin-top: 10px;">已违约</li>
-                                {{/if}}
+                                <li class="taskStat" v-if="tem.taskStat=='5'" style="color: #fff;margin-top: 10px;">还款中</li>
+                                <li class="color taskStat" v-if="tem.taskStat=='6'" style="color: #f94b6c;margin-top: 10px;">已逾期</li>
+                                <li class="color taskStat" v-if="tem.taskStat=='7A'" style="color: #f94b6c;margin-top: 10px;">已结清</li>
+                                <li class="color taskStat" v-if="tem.taskStat=='8'" style="color: #f94b6c;margin-top: 10px;">已违约</li>
                             </ul>
                             <div style="position: absolute;top: 10px;right: 10px;color: #fff;font-size: 12px">期限:<span>{{tem.periodNum}}</span>期</div>
                         </div>
+                    </div>
+                </div>
+                <div style="background:#fff;width:100%;text-align:left;font-size:14px;padding: 8px 10px">
+                    <!-- <img src="images/homelaba.png" style="height:14px;margin-left:5px;" /> -->
+                    <span style="font-size: 14px;color:#999;margin-left:5px;padding-left: 18px;background:url('images/homelaba.png') scroll 0 10% no-repeat;background-size:14px ">按时还款或提前结清可以提额500-2000元哦</span>
+                </div>
 
-                        {{/each}}
-                    </script>
+                <div style="margin-top: 10px;">
+                    <div class="list">
+                        <div style="height: 100px;margin-top: 10px;background: #fff;padding: 10px;" v-for="tem in items">
+                            <ul class="repay_ul">
+                                <li style="width：100%;height: 40px;line-height: 40px;border-bottom: 1px solid #dcdcdc;">
+                                    <p style="float: left;color: #00a8ff;">第{{tem.periodNum}}期</p>
+                                    <p style="float: right;color: #b3b3b3;">{{tem.accountEnd}}</p>
+                                </li>
+                                <li style="width: 25%;float: left;height: 60px;padding-top: 5px;">
+                                    <p style="color: #949494;font-size: 12px;">期供金额</p>
+                                    <p style="padding-top: 5px;">{{tem.periodAmount}}</p>
+                                </li>
+                                <li style="float: left;width: 25%;height: 60px;padding-top: 5px;">
+                                    <p style="color:#949494;font-size: 12px;">剩余金额</p>
+                                    <p style="padding-top: 5px;">{{tem.remainAmount}}</p>
+                                </li>
+
+                                <template v-if="tem.status=='2A'">
+                                    <li class="statuser">
+                                       <p style="color:#949494;font-size: 12px;">状态</p>
+                                       <p style="padding-top: 5px;font-size: 12px;">已还款</p>
+                                   </li>
+                                   <li class="statuser1 white finish" onclick="return false;" :name="tem.periodNum"><i></i><i></i></li>
+                                </template>
+                                <template v-else-if="tem.operate=='2A'">
+                                    <template  v-if="tem.status=='2C'">
+                                        <li class="statuser">
+                                            <p style="color:#949494;">状态</p>
+                                            <p style="padding-top: 5px;color: red;font-size: 12px;">已逾期</p>
+                                        </li>
+                                        <li class="statuser1 white home11 item" :name="tem.periodNum">还款</li>
+                                    </template>
+                                <template v-else>
+                                        <li class="statuser">
+                                          <p style="color:#949494;font-size: 12px;">状态</p>
+                                          <p style="padding-top: 5px;color: #000;font-size: 12px;">待还款</p>
+                                      </li>
+                                      <li class="statuser1 white home11 item" :name="tem.periodNum">还款</li>
+                                    </template>
+                                </template>
+                                <template v-else>
+                                    <template  v-if="tem.status=='2C'">
+                                        <li class="statuser">
+                                            <p style="color:#949494;">状态</p>
+                                            <p style="padding-top: 5px;color: red;font-size: 12px;">已逾期</p>
+                                        </li>
+                                         <li class="statuser1 white home11 item" :name="tem.periodNum">还款</li>
+                                    </template>
+                                <template v-else>
+                                        <li class="statuser">
+                                          <p style="color:#949494;font-size: 12px;">状态</p>
+                                          <p style="padding-top: 5px;color: #000;font-size: 12px;">待还款</p>
+                                      </li>
+                                      <li class="statuser1 white home11 item" :name="tem.periodNum">还款</li>
+                                    </template>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xieyi_bg">
+                    <p class="xieyi">-借款咨询服务协议-</p>
+                </div>
+                <div class="poper-tool">
+                    <span class="icon-open"></span>
+                    <span class="icon-advance"></span>
+                    <span class="icon-remind"></span>
                 </div>
             </div>
-            <div style="background:#fff;width:100%;text-align:left;font-size:14px;padding: 8px 10px">
-                <!-- <img src="images/homelaba.png" style="height:14px;margin-left:5px;" /> -->
-                <span style="font-size: 14px;color:#999;margin-left:5px;padding-left: 18px;background:url('images/homelaba.png') scroll 0 10% no-repeat;background-size:14px ">按时还款或提前结清可以提额500-2000元哦</span>
-            </div>
+            <div id="modehome" style="position: fixed;top:0;bottom: 0;left: 0;right: 0;background: #000;opacity: 0.7;"></div>
         </div>
-
-
-        <div style="margin-top: 10px;">
-            <div class="list">
-                <script id="home" type="text/html">
-                    {{each body.list as tem i}}
-                    <div style="height: 100px;margin-top: 10px;background: #fff;padding: 10px;">
-                        <ul class="repay_ul">
-                            <li style="width：100%;height: 40px;line-height: 40px;border-bottom: 1px solid #dcdcdc;">
-                                <p style="float: left;color: #00a8ff;">第{{tem.periodNum}}期</p>
-                                <p style="float: right;color: #b3b3b3;">{{tem.accountEnd}}</p>
-                            </li>
-                            <li style="width: 25%;float: left;height: 60px;padding-top: 5px;">
-                                <p style="color: #949494;font-size: 12px;">期供金额</p>
-                                <p style="padding-top: 5px;">{{tem.periodAmount}}</p>
-                            </li>
-                            <li style="float: left;width: 25%;height: 60px;padding-top: 5px;">
-                                <p style="color:#949494;font-size: 12px;">剩余金额</p>
-                                <p style="padding-top: 5px;">{{tem.remainAmount}}</p>
-                            </li>
-
-                            {{if tem.status=='2A'}}
-                            <li class="statuser">
-                                <p style="color:#949494;font-size: 12px;">状态</p>
-                                <p style="padding-top: 5px;font-size: 12px;">已还款</p>
-                            </li>
-                            <li class="statuser1 white " style="width: 25%;height: 60px;text-align:center;line-height:60px;float: right;;background: url(images/huanwanbottom1.png) no-repeat center center;background-size: 18px ;" onclick="return false;" name="{{tem.periodNum}}"></li>
-
-                            {{else if tem.operate==1}} {{if tem.status=='2C'}}
-                            <li class="statuser">
-                                <p style="color:#949494;">状态</p>
-                                <p style="padding-top: 5px;color: #000;font-size: 12px;">已逾期</p>
-                            </li>
-                            <li class="statuser1 white home11" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(images/btn_normal1@2x.png) no-repeat center center;background-size: 40px;font-size: 12px;" name="{{tem.periodNum}}">还款</li>
-                            {{else}}
-                            <li class="statuser">
-                                <p style="color:#949494;font-size: 12px;">状态</p>
-                                <p style="padding-top: 5px;color: #000;font-size: 12px;">待还款</p>
-                            </li>
-                            <li class="statuser1 white home11" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(images/btn_normal1@2x.png) no-repeat center center;background-size: 40px;font-size: 12px;" name="{{tem.periodNum}}">还款</li>
-                            {{/if}} {{else}} {{if tem.status=='2C'}}
-                            <li class="statuser">
-                                <p style="color:#949494;font-size: 12px;">状态</p>
-                                <p style="padding-top: 5px;font-size: 12px;">已逾期</p>
-                            </li>
-                            <li class="statuser1 white" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(images/btn_disabled1@2x.png) no-repeat center center;background-size: 40px;font-size: 12px;" onclick="return false;" name="{{tem.periodNum}}">还款</li>
-                            {{else}}
-                            <li class="statuser">
-                                <p style="color:#949494;font-size: 12px;">状态</p>
-                                <p style="padding-top: 5px;font-size: 12px;">待还款</p>
-                            </li>
-                            <li class="statuser1 white" style="width: 25%;float: right;height: 60px;text-align:center;line-height:60px;background: url(images/btn_disabled1@2x.png) no-repeat center center;background-size: 40px;font-size: 12px;" onclick="return false;" name="{{tem.periodNum}}">还款</li>
-                            {{/if}} {{/if}}
-                        </ul>
-                    </div>
-
-                    {{/each}}
-                </script>
-            </div>
-
-        </div>
-        <div class="xieyi_bg" style="">
-            <p class="xieyi">-借款咨询服务协议-</p>
-
-        </div>
-        <div id="id">
-            <img src="images/nextbottom2.png" width="36" />
-        </div>
-
+        <footer>
+            <a href="index.html" class="index select"></a>
+            <a href="user.html" class="user"></a>
+            <a href="more.html" class="more"></a>
+        </footer>
     </div>
-    <div id="modehome">
-    </div>
-    <div id="id1">
-        <img src="images/tiqianhuankuan.png" width="30" style="margin-left: 6px;" />
-        <p style="color: #fff;font-size: 10px;line-height: 22px;">提前还款</p>
-    </div>
-    <div id="mode"></div>
-    <div class="home_mode" style="width: 100%;height: 100%;position: absolute;top: 0;z-index: 999;display: none;"></div>
-    <footer>
-        <a href="index.html" class="index select"></a>
-        <a href="user.html" class="user"></a>
-        <a href="more.html" class="more"></a>
-    </footer>
 </body>
-<script type="text/javascript" src="libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="libs/js/myslideup.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="libs/js/brower.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="js/common/loading.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="js/common/globalConst.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="libs/js/template.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="libs/js/md5.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="js/home/index.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="js/home/entrance.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?${project.javascript.version}"></script>
-<script type="text/javascript" src="libs/js/swiper.min.js?${project.javascript.version}"></script>
-
+<script src="libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+<script src="libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+<script src="libs/js/brower.js?${project.javascript.version}"></script>
+<script src="js/common/loading.js?${project.javascript.version}"></script>
+<script src="js/common/globalConst.js?${project.javascript.version}"></script>
+<script src="js/common/utils.js?${project.javascript.version}"></script>
+<script src="libs/js/md5.js?${project.javascript.version}"></script>
+<script src="libs/js/vue.js?${project.javascript.version}"></script>
+<script src="libs/js/layer.js?${project.javascript.version}"></script>
+<script src="js/home/entrance.js?${project.javascript.version}"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?${project.javascript.version}"></script>
+<script src="libs/js/swiper.min.js?${project.javascript.version}"></script>
+<script src="libs/js/finger-mover.js?${project.javascript.version}"></script>
+<script src="libs/js/simulation-scroll-x.js?${project.javascript.version}"></script>
 <script>
-    new Swiper('#swiper-container11', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        spaceBetween: 0,
-        centeredSlides: true,
-        autoplay: 2500,
-        autoplayDisableOnInteraction: false,
-        observer: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true //修改swiper的父元素时，自动初始化swiper
-    })
-    $(".line").slideUp();
-    $("#id").click(function() {
-        if ($("#modehome").css("display") == "none") {
-            $("#modehome").show();
-            $("#id1").show();
-        } else {
-            $("#id1").hide();
-            $("#modehome").hide();
-        }
-    });
-
-    $("#id1").on("click", function(ev) {
-        window.location = constans.htmlUrl + "/html/home/advance.html";
-    })
-    $(".sumbit11").on("click", function() {
-        localStorage.setItem("click", 1)
-        window.location.href = constans.htmlUrl + "/html/user/recommend.html";
-    })
-    $(".bottom11").on("click", function() {
-        localStorage.setItem("click", 2)
-        $(".modeshow").hide();
-    })
-    var box = document.getElementById('id');
-    var winWidth = window.innerWidth;
-    var winHeight = window.innerHeight;
-    var endTouchY = 0;
-    var endTouchX = 0;
-
-    var _x_start, _y_start, _x_move, _y_move, _x_end, _y_end, left_start, top_start;
-    $(window).scroll(function() {
-        var st = $(this).scrollTop();
-        document.getElementById("id").addEventListener("touchstart", function(e) {
-            _x_start = e.touches[0].pageX;
-            _y_start = e.touches[0].pageY;
-            left_start = $("#id").css("left");
-            top_start = $("#id").css("top");
-
-        })
-        document.getElementById("id").addEventListener("touchmove", function(e) {
-            _x_move = e.touches[0].pageX;
-            _y_move = e.touches[0].pageY;
-            $("#id").css("left", parseFloat(_x_move) - parseFloat(_x_start) + parseFloat(left_start) + "px");
-            $("#id").css("top", parseFloat(_y_move) - parseFloat(_y_start) + parseFloat(top_start) + "px");
-            $('body').on('touchmove', function(event) {
-                event.preventDefault();
-            });
-        })
-        document.getElementById("id").addEventListener("touchend", function(e) {
-            var _x_end = e.changedTouches[0].pageX;
-            var _y_end = e.changedTouches[0].pageY;
-            if (_x_end > $(window).width()) {
-                $("#id").css("left", $(window).width() - 90 + 'px')
+    new Vue({
+        el: '.index-page',
+        data: {
+            accessToken: constans.accessToken,
+            userId: sessionStorage.getItem("userId"),
+            page1: false,
+            page2: false,
+            page3: false,
+            page4: false,
+            page5: false,
+            baseNum: 0,
+            interest: "0.001", // 利息
+            period: [], // 借款周期
+            bannerList: [],
+            actityList: [],
+            homebank: [],
+            homebank1: [],
+            pageData: [],
+            items: [],
+            userData: "",
+            userStat: "",
+            page3Data : {
+                amount : "0",
+                transAmount : "0",
+                repayEachWeek : "--",
+                manageFeeEachWeek : "--",
+                feeEachWeek : "--",
+                interestRate : "--",
+                currentWeeks : "--",
+                isVoice : "0",
+                wageCard : "",
+                cardBankName : ""
             }
-            if (_x_end < 0) {
-                $("#id").css("left", '10px')
+        },
+        mounted() {
+            this.init();
+            this.bindEvent();
+        },
+        methods: {
+            init() {
+                var _self = this;
+                if (_self.accessToken) {
+                    utils.fetchData({
+                            url: constans.serviceUrl + '/support/verUser',
+                            type: "post",
+                            data: {
+                                accessToken: _self.accessToken
+                            },
+                            success: function(data) {
+                                _self.userId = data.body.userId;
+                                _self.userData = data;
+                                _self.dealData(data);
+                            }
+                        })
+                        // 获取消息数量
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/countMsgNew',
+                        type: "post",
+                        loginTerm: "wx",
+                        accessToken: constans.accessToken,
+                        success: function(data) {
+                            if (data.body.act == 0 && data.body.notice == 0 && data.body.normal == 0) {
+                                $(".newmsg").hide();
+                            } else {
+                                $(".newmsg").show();
+                            }
+                        }
+                    })
+                } else {
+                    $(".newmsg").hide();
+                    _self.page1 = true;
+                    _self.renderPage();
+                }
+            },
+            bindEvent() {
+                var _self = this;
+                // 消息
+                $("body").on("click", ".message", function() {
+                    if (_self.userStat) {
+                        window.location = constans.htmlUrl + "/html/home/nomessage.html";
+                    } else {
+                        window.location = constans.htmlUrl + "/index";
+                    }
+                });
+
+                // 马上申请
+                $("body").on("click", ".apply", function() {
+                    if (!_self.accessToken) {
+                        window.location = constans.htmlUrl + "/html/login/loginnext.html";
+                    } else {
+                        _self.toApply();
+                    }
+                });
+
+                $("body").on("click", ".apply1", function() {
+                    // 审核失败
+                    if (_self.userStat == "2") {
+                        _self.dealFail();
+
+                    } else if (_self.userStat == "1" || _self.userStat == "3" || _self.userStat == "5") {
+                        window.location.href = constans.htmlUrl + "/html/home/fail.html";
+                    }
+                })
+
+                $("body").on("click", ".apply2", function() {
+                    // 审核失败
+                    if (_self.userStat == "2") {
+                        _self.dealFail();
+                    }
+                })
+
+
+                $(".close_up").on("click", function() {
+                    $("#mode_up").hide();
+                    $(".select_up").hide();
+                })
+
+                $("body").on("click", ".icon-open", function() {
+                    $(".icon-advance").fadeToggle();
+                    $(".icon-remind").fadeToggle();
+                    $("#modehome").fadeToggle();
+                })
+
+                $("body").on("click", ".icon-advance", function() {
+                    window.location = constans.htmlUrl + "/html/home/advance.html";
+                })
+
+                $("body").on("click", "#modehome", function() {
+                    $(".icon-advance").fadeToggle();
+                    $(".icon-remind").fadeToggle();
+                    $("#modehome").fadeToggle();
+                })
+
+                $("body").on("click", ".list .home11", function() {
+                    var periodNum = $(this).attr("name")
+                    localStorage.setItem("periodNum", periodNum);
+                    window.location = constans.htmlUrl + "/html/home/payback.html";
+                })
+
+
+                $("body").on("click", ".xieyi", function() {
+                    localStorage.setItem("downloadUrl", _self.downloadUrl);
+                    window.location = constans.htmlUrl + "/html/home/xieyi.html" + "?taskId=" + _self.taskId + "&accessToken=" + _self.accessToken;
+                })
+            },
+            dealData(data) {
+                var _self = this;
+                // 用户id
+                sessionStorage.setItem("userId", data.body.userId);
+                // 用户审核状态
+                _self.userStat = data.body.userStat;
+                sessionStorage.setItem("userStat", _self.userStat);
+
+                if (!_self.userStat) {
+                    _self.page1 = true;
+                } else {
+                    // 判断状态
+                    _self.judgeStatus();
+                }
+            },
+            // 处理审核失败逻辑
+            dealFail() {
+                var _self = this;
+                localStorage.setItem("homefail", "1");
+                $(".fail").hide();
+                $(".fail_tuijian").show();
+                $("body").css("background", "#f1f1f1");
+                $(".fail_laba").show();
+                _self.getRefused();
+            },
+            // 判断用户状态
+            judgeStatus() {
+                var _self = this;
+                switch (Math.floor(_self.userStat)) {
+                    // 已注册
+                    case 0:
+                        _self.alreadyRegster();
+                        break;
+                        // 系统审核中
+                    case 1:
+                        _self.audit();
+                        break;
+                        // 审核失败
+                    case 2:
+                        _self.failure();
+                        break;
+                        // 待放款 或 人工审核
+                    case 3:
+                    case 5:
+                        _self.pendingMoney();
+                        break;
+                        // 还款中
+                    case 4:
+                        _self.repayments();
+                        break;
+                        // 待提现
+                    case 6:
+                        _self.raised();
+                        break;
+                        // 提现中
+                    case 7:
+                        _self.present();
+                        break;
+                    default:
+                        break;
+                }
+            },
+            // 已注册
+            alreadyRegster() {
+                var _self = this;
+                $("#mode").show();
+                _self.page1 = true;
+                this.renderPage();
+            },
+            renderPage() {
+                var _self = this;
+                console.log(_self.accessToken);
+                utils.fetchData({
+                    url: constans.serviceUrl + '/page/homePage',
+                    type: "post",
+                    data: {
+                        accessToken: _self.accessToken
+                    },
+                    success: function(result) {
+                        _self.period = result.body.period;
+                        if (result.body.interest) {
+                            _self.interest = result.body.interest;
+                        }
+                        _self.bannerList = result.body.bannerList;
+                        _self.baseNum = result.body.lowestAmount;
+                        $("#jkje_sum").html(parseInt(result.body.lowestAmount ? result.body.lowestAmount : 3500));
+                        new Swiper('#page_1', {
+                            autoplay: false
+                        });
+                        setTimeout(() => {
+                            _self.initRule(result.body.lowestAmount, result.body.highestAmount);
+                            _self.initZQ();
+                            _self.caleResult();
+                        }, 300)
+                    }
+                })
+            },
+            // 系统审核中
+            audit() {
+                var _self = this;
+                _self.page2 = true;
+                _self.getAuditstat(function(data, status, resObj) {
+                    if (data.code == 500) {
+                        _self.showMsg(data.msg);
+                    } else {
+                        var en = resObj.getResponseHeader('Activity-Url');
+                        if (en) {
+                            $(".home_mode").show();
+                            $(".home_mode").append('<iframe src="' + en + '" style="width:100%;height:100%;border:none;"></iframe>');
+                        }
+                        $(".loanTime").html(data.body.loanTime);
+                        $(".regTime").html(data.body.regTime);
+                        $(".orgTime").html(data.body.orgTime);
+
+                        new Swiper('#swiper-container11', {
+                            pagination: '.swiper-pagination',
+                            paginationClickable: true,
+                            spaceBetween: 0,
+                            centeredSlides: true,
+                            autoplay: 2500,
+                            autoplayDisableOnInteraction: false,
+                            observer: true, //修改swiper自己或子元素时，自动初始化swiper
+                            observeParents: true //修改swiper的父元素时，自动初始化swiper
+                        })
+
+                    }
+                })
+            },
+            // 审核失败
+            failure() {
+                var _self = this;
+                if (localStorage.getItem("homefail") == 1) {
+                    $(".fail").hide();
+                    $("body").css("background", "#f1f1f1");
+                    _self.getRefused();
+                } else {
+                    $(".fail").show();
+                    $(".fail_tuijian").hide();
+                    $(".fail_laba").hide();
+                    $("body").css("background", "#fff");
+                }
+                _self.page4 = true;
+                $(".time").html(_self.userData.body.rejectTime);
+                var startTime = _self.userData.body.currentTime;
+                var start = new Date(startTime.replace("-", "/").replace("-", "/"));
+                var endTime = _self.userData.body.rejectTime;
+                var end = new Date(endTime.replace("-", "/").replace("-", "/"));
+                if (end <= start) {
+                    $("#page1").show();
+                    _self.page1 = true;
+                    _self.page2 = false;
+                    $("body").css("background", "#fff");
+                    _self.page4 = false;
+                    $(".apply").on("click", function() {
+                        localStorage.removeItem("homefail");
+                        _self.toApply();
+
+                    })
+                }
+            },
+            getRefused() {
+                var _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/reCommand/refused',
+                    type: "post",
+                    data: {
+                        page: 1,
+                        size: 100,
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data, status, resObj) {
+                        if (data.code == 500) {
+                            _self.showMsg(data.msg);
+                        } else {
+                            var en = resObj.getResponseHeader('Activity-Url');
+                            if (en) {
+                                $(".home_mode").show();
+                                $(".home_mode").append('<iframe src="' + en + '" style="width:100%;height:100%;border:none;"></iframe>');
+                            }
+                            $(".loanTime").html(data.body.loanTime);
+                            $(".regTime").html(data.body.regTime);
+                            $(".orgTime").html(data.body.orgTime);
+                            var dd = data.body.data;
+                            $(".smallHorn").html(data.body.smallHorn)
+                            _self.bannerList = data.body.bannerList;
+                            _self.pageData = data.body.pages.data;
+                            _self.actityList = data.body.actityList;
+
+                            new Swiper('#swiper-container1', {
+                                loop: true,
+                                pagination: '.swiper-pagination',
+                                paginationClickable: true,
+                                spaceBetween: 0,
+                                centeredSlides: true,
+                                autoplayDisableOnInteraction: false
+                            })
+                            new Swiper('#swiper-container2', {
+                                slidesPerView: 'auto',
+                                loopedSlides: 6,
+                            })
+                            _self.failclick();
+                        }
+                    }
+                })
+            },
+            showMsg(msg) {
+                layer.open({
+                    content: msg,
+                    skin: 'msg',
+                    time: 2 //4秒后自动关闭
+                });
+            },
+            // 待放款 或 人工审核
+            pendingMoney() {
+                var _self = this;
+                _self.page2 = true;
+                $(".color2").addClass("color");
+                $(".block1").css("color", "#000");
+                var data = {
+                    userId: _self.userId
+                };
+                _self.getAuditstat(function(data, status, resObj) {
+                    if (data.code == 500) {
+                        _self.showMsg(data.msg);
+                    } else {
+                        var en = resObj.getResponseHeader('Activity-Url');
+                        if (en) {
+                            $(".home_mode").show().append('<iframe src="' + en + '" style="width:100%;height:100%;border:none;"></iframe>');
+                        }
+                        $(".loanTime").html(data.body.loanTime);
+                        $(".regTime").html(data.body.regTime);
+                        $(".orgTime").html(data.body.orgTime);
+                        if (data.body.regStat == 1) {
+                            $(".now1").html("已完成").css("color", "#999");
+                            $(".block1").css("color", "#999");
+                            $(".now2").html("进行中").css("color", "#000");
+                            $('.fang').css("color", "#F38185");
+                        }
+                    }
+                })
+            },
+            // 还款中
+            repayments() {
+                var _self = this;
+                _self.page5 = true;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/trans/loanrecord',
+                    type: "post",
+                    data: {
+                        userId: _self.userId
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data) {
+                        if (data.code == 500) {
+                            _self.showMsg(data.msg);
+                        } else {
+                            _self.homebank1.push(data.body[0]);
+                            var dd = data.body;
+                            for (var i = 0; i < dd.length; i++) {
+                                var taskStat = dd[i].taskStat;
+                                if (taskStat == "7A") {
+                                    $('.repaymo').eq(i).hide();
+                                } else {
+                                    _self.taskId = dd[i].taskId;
+                                    localStorage.setItem("taskId", _self.taskId);
+                                    utils.fetchData({
+                                        url: constans.serviceUrl + '/trans/loandetail',
+                                        type: "post",
+                                        data: {
+                                            taskId: _self.taskId,
+                                            userId: _self.userId
+                                        },
+                                        loginTerm: "wx",
+                                        accessToken: constans.accessToken,
+                                        success: function(result, status, resObj) {
+                                            console.log(result);
+                                            if (result.code == 500) {
+                                                _self.showMsg(result.msg)
+                                            } else {
+                                                var en = resObj.getResponseHeader('Activity-Url');
+                                                if (en) {
+                                                    $(".home_mode").show().append('<iframe src="' + en + '" style="width:100%;height:100%;border:none;"></iframe>');
+                                                }
+                                                _self.items = result.body.list;
+                                                _self.downloadUrl = result.body.downloadUrl;
+
+                                            }
+                                            if (result.code == 111) {
+                                                window.location.href = constans.htmlUrl + "/index";
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        }
+                    }
+                })
+            },
+            // 待提现
+            raised() {
+                var _self = this;
+                _self.page3 = true;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/loans/withdraws',
+                    type: "post",
+                    data: {
+                        userId: _self.userId
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data, status, resObj) {
+                        console.log(data);
+                        if (data.code == 500) {
+                            $("#mode").show().html(data.msg);
+                            setTimeout(function() {
+                                $("#mode").hide();
+                            }, 2000);
+                        } else {
+                            var en = resObj.getResponseHeader('Activity-Url');
+                            if (en) {
+                                $(".home_mode").show();
+                                $(".home_mode").append('<iframe src="' + en + '" style="width:100%;height:100%;border:none;"></iframe>');
+                            }
+                            _self.page3Data.amount = data.body.amount;
+                            _self.page3Data.transAmount = data.body.transAmount;
+                            _self.page3Data.repayEachWeek = data.body.repayEachWeek;
+                            _self.page3Data.manageFeeEachWeek = data.body.manageFeeEachWeek;
+                            _self.page3Data.feeEachWeek = data.body.feeEachWeek;
+                            _self.page3Data.interestRate = data.body.interestRate;
+                            _self.page3Data.currentWeeks = data.body.currentWeeks;
+                            _self.page3Data.wageCard = data.body.wageCard;  // 默认银行卡
+                            _self.page3Data.isVoice = data.body.isVoice;    // 是否录音 0没有1录过
+                            _self.page3Data.cardBankName = data.body.cardBankName;
+                            $(".fuwuxieyi").on("click", function() {
+                                window.location = constans.htmlUrl + "/html/home/hetong.html";
+                            })
+                            // 没有绑定银行卡
+                            if(!data.body.wageCard){
+                                $(".default-bank").hide();
+                            }
+                           // _self.getBankInfoList();
+                        }
+                    }
+                })
+            },
+            // 提现中
+            present() {
+                var _self = this;
+                _self.page3 = true;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/loans/withdraws',
+                    type: "post",
+                    data: {
+                        userId: _self.userId
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data, status, resObj) {
+                        $(".fuwuxieyi").on("click", function() {
+                            window.location = constans.htmlUrl + "/html/home/hetong.html";
+                        })
+                        if (data.code == 500) {
+                            $("#mode").show();
+                            $("#mode").html(data.msg);
+                            setTimeout(function() {
+                                $("#mode").hide();
+                            }, 2000);
+                        } else {
+                            var en = resObj.getResponseHeader('Activity-Url');
+                            if (en) {
+                                $(".home_mode").show().append('<iframe src="' + en + '" style="width:100%;height:100%;border:none;"></iframe>');
+                            }
+                            $(".amount").html(data.body.amount);
+                            $(".transAmount").html(data.body.transAmount);
+                            $(".repayEachWeek").html(data.body.repayEachWeek);
+                            $(".manageFeeEachWeek").html(data.body.manageFeeEachWeek);
+                            $(".feeEachWeek").html(data.body.feeEachWeek);
+                            $(".interestRate").html(data.body.interestRate);
+                            $(".currentWeeks").html(data.body.currentWeeks);
+                        }
+                        if (data.code == 111) {
+                            window.location.href = constans.htmlUrl + "/index";
+                        }
+                    }
+                })
+                $(".top").hide();
+                var withdraw = $(".withdraw");
+                withdraw.attr("disabled", "disabled");
+                withdraw.css({
+                    "background": "url(images/nd-disabled-btn.png) no-repeat",
+                    "background-size": "100% 100%"
+                });
+                withdraw.val("提现中,请耐心等待");
+            },
+            toApply() {
+                var _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/user/submitapp',
+                    type: "post",
+                    data: {
+                        periodNum: $(".age-num").html(),
+                        amount: $("#jkje_sum").html()
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data) {
+                        localStorage.setItem("source", 1);
+                        if (data.code == "200") {
+                            window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                        } else {
+                            window.location = constans.htmlUrl + "/html/login/loginnext.html";
+                        }
+                    }
+                })
+            },
+            fmoney(s, n) {
+                n = n > 0 && n <= 20 ? n : 2;
+                s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+                var l = s.split(".")[0].split("").reverse(),
+                    r = s.split(".")[1];
+                t = "";
+                for (i = 0; i < l.length; i++) {
+                    t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "" : "");
+                }
+                return t.split("").reverse().join("") + "." + r;
+            },
+            failclick() {
+                $(".access").find(".fail_product").on("click", function() {
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/channels/records',
+                        type: "post",
+                        data: {
+                            channelId: channelId
+                        },
+                        loginTerm: "wx",
+                        accessToken: constans.accessToken,
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    })
+                });
+                $(".banner1").find(".hot").on("click", function() {
+                    var channelId = $(this).attr("name");
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/channels/records',
+                        type: "post",
+                        data: {
+                            channelId: channelId
+                        },
+                        loginTerm: "wx",
+                        accessToken: constans.accessToken,
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    })
+                });
+            },
+            getAuditstat(callback) {
+                var _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/user/auditstat',
+                    type: "post",
+                    data: {
+                        userId: _self.userId
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data, status, resObj) {
+                        callback && callback(data, status, resObj);
+                    }
+                })
+            },
+            toPage3Commit(){
+                // 如果没有录音
+                if(this.page3Data.isVoice=="0"){
+                    location.href = constans.htmlUrl + "/html/user/promise.html";
+                // 如果没有绑定银行卡
+                }else if(!this.page3Data.wageCard){
+                    location.href  = constans.htmlUrl + "/html/user/bank.html";
+                }
+            },
+            getBankInfoList() {
+                var _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/user/bankInfoList',
+                    type: "post",
+                    data: {
+                        userId: _self.userId,
+                        jhVer: 2.0
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data) {
+                        console.log(data);
+                        $(".weui1 li").on("click", function() {
+                            if ($(this).hasClass('bg')) {
+                                $(this).removeClass("bg");
+                                if (!$(".weui1 li").hasClass('bg')) {
+                                    $(".sumbit1").css("background", "url(images/nd-disabled-btn.png)  no-repeat");
+                                    $(".sumbit1").css("background-size", "100% 100%");
+                                    $(".input_p").attr("disabled", "disabled");
+                                }
+                            } else {
+                                $(this).addClass("bg");
+                                $(".sumbit1").css("background", "url(images/nd-normal-btn.png)  no-repeat");
+                                $(".sumbit1").css("background-size", "100% 100%");
+                                $(".input_p").removeAttr("disabled");
+                            }
+                        });
+
+                        // $(".withdraw").on("click", function() {
+                        //     if (data.code == 803) {
+                        //         window.location = constans.htmlUrl + "/html/user/userbank.html";
+                        //     } else {
+                        //         $("#mode_up").show();
+                        //         $(".select_up").show();
+                        //         $(".xieyi").on("click", function() {
+                        //             window.location = constans.htmlUrl + "/html/home/hetong.html";
+                        //         })
+                        //         _self.homebank = data.body;
+                        //         var isClick = false;
+                        //         if (isClick == false) {
+                        //             var bankCardId = data.body[0].bankcardId;
+                        //             $(".withdraw2").unbind('click');
+                        //             $(".withdraw2").one("click", function() {
+                        //                 $("#mode_up").hide();
+                        //                 $(".select_up").hide();
+                        //                 $(".withdraw").attr("disabled", "disabled");
+                        //                 _self.askwithdraw(bankCardId);
+                        //             })
+                        //         }
+
+                        //         $(".weui_cell_ft input:first").attr("checked", "checked");
+                        //         $(".weui_cells label").on("click", function() {
+                        //             localStorage.setItem('i', $(this).index())
+                        //             var bankCardId = data.body[$(this).index()].bankcardId;
+                        //             isClick = true;
+                        //             $(".withdraw2").unbind('click');
+                        //             $(".withdraw2").one("click", function() {
+                        //                 $("#mode_up").hide();
+                        //                 $(".select_up").hide();
+                        //                 _self.askwithdraw(bankCardId);
+                        //             })
+                        //         });
+                        //     }
+                        // });
+                    }
+                })
+            },
+            askwithdraw(bankCardId) {
+                var _self = this;
+                utils.fetchData({
+                    url: constans.serviceUrl + '/trans/askwithdraw',
+                    type: "post",
+                    data: {
+                        bankCardId: bankCardId,
+                        userId: _self.userId
+                    },
+                    loginTerm: "wx",
+                    accessToken: constans.accessToken,
+                    success: function(data) {
+                        if (!$.trim(data)) {
+                            setTimeout(function() {
+                                $("#mode11").hide();
+                                window.location.href = constans.htmlUrl + "/index.html" + "?home=" + (new Date().getTime());
+                            }, 5000);
+                            return true;
+                        }
+                        $("#mode11").hide();
+                        if (data.code == 500) {
+                            $("#mode").show();
+                            $("#mode").html(data.msg);
+                            setTimeout(function() {
+                                $("#mode").hide();
+                                $(".withdraw").removeAttr("disabled");
+                            }, 3000);
+                        }
+                        if (data.code == 200) {
+                            $(".modes1").show();
+                            $("#swear1").unbind('click');
+                            $("#swear1").on("click", function() {
+                                var text1 = "";
+                                for (var i = 0; i < $(".bg").length; i++) {
+                                    text1 += $($(".bg")[i]).find("span").html() + ' && ';
+                                }
+                                utils.fetchData({
+                                    url: constans.serviceUrl + '/withdraw/oaths',
+                                    type: "post",
+                                    data: {
+                                        activityId: "2",
+                                        oathWords: text1
+                                    },
+                                    loginTerm: "wx",
+                                    accessToken: constans.accessToken,
+                                    success: function(result) {
+                                        if (result.code == 200) {
+                                            $(".modes1").hide();
+                                            window.location.href = constans.htmlUrl + "/index.html" + "?home=" + (new Date().getTime());
+                                        } else {
+                                            $("#mode").show().html(result.msg);
+                                            setTimeout(function() {
+                                                $("#mode").hide();
+                                            }, 2000);
+                                        }
+                                    }
+                                })
+
+                            })
+
+                        }
+                    }
+                })
+            },
+            // 初始化借款金额刻度尺
+            initRule(lowestAmount, highestAmount) {
+                var that = this;
+                var Rule = function() {
+                    this.liW = 70;
+                    this.flag = false;
+                    this.money = $("#jkje_sum");
+                    this.lowestAmount = lowestAmount;
+                    this.highestAmount = highestAmount;
+                    this.minNum = Math.floor(lowestAmount / 1000) || 0;
+                    this.maxNum = Math.floor(highestAmount / 1000) || 25;
+                    this.el = "#scroll-box";
+                }
+                Rule.prototype.init = function() {
+                    this.initRule().initFm();
+                }
+                Rule.prototype.initRule = function() {
+                    var _self = this;
+                    var scroll = $("#scroll-box");
+                    var ul = $("<ul></ul>");
+                    for (var k = _self.minNum; k < _self.maxNum; k++) {
+                        var li = $("<li></li>");
+                        var iDom = $("<i class='num'>" + k * 1000 + "</i>");
+                        if (k > 0) {
+                            iDom.css("margin-left", "-16px");
+                        }
+                        li.width(_self.liW);
+                        li.append(iDom);
+                        for (var j = 0; j < 10; j++) {
+                            var span = $("<span></span>");
+                            span.css("margin-left", _self.liW / 10 - 1);
+                            li.append(span);
+                            if (k == _self.maxNum - 1 && j == 9) {
+                                li.append($("<i class='last-num'>" + (k + 1) * 1000 + "</i>"));
+                            }
+                        }
+                        ul.append(li);
+                    }
+                    scroll.append(ul);
+                    scroll.width(_self.liW * (_self.maxNum + 3));
+
+                    return _self;
+                }
+                Rule.prototype.initFm = function() {
+                    var _self = this;
+                    var fm = new Fmover({
+                            el: _self.el,
+                            plugins: [
+                                simulationScrollX({
+                                    scrollBar: false,
+                                    onTransMoveEnd: function(currentX) {
+                                        if (_self.flag) {
+                                            _self.flag = false;
+                                            var baseNum = Math.floor(_self.lowestAmount);
+                                            var v = Math.floor(currentX / (_self.liW / 10));
+                                            if (Math.abs(currentX) > _self.liW * (_self.maxNum - _self.minNum)) {
+                                                // 超过最大刻度
+                                                fm[0].scrollTo(-(_self.liW * (_self.maxNum - _self.minNum) - 1), 1000);
+                                                _self.money.html(Math.abs(_self.maxNum * 1000));
+                                            } else {
+                                                // 没超过最大刻度
+                                                fm[0].scrollTo(-((_self.liW / 10) * Math.abs(v) - 1), 1000);
+                                                _self.money.html(Math.abs(v * 100) + baseNum);
+                                            }
+                                            that.caleResult();
+                                        }
+                                    },
+                                    onTouchMove: function(currentX) {
+                                        _self.flag = true;
+                                        var x = currentX.options.element.transform.translateX;
+                                        var v = Math.abs(Math.floor(x / (_self.liW / 10)));
+                                        if (v > (_self.maxNum - _self.minNum) * 10) {
+                                            fm[0].scrollTo(-(_self.maxNum * _self.liW - 1), 1000);
+                                        } else {
+                                            var baseNum = Math.floor(_self.lowestAmount);
+                                            _self.money.html(v * 100 + baseNum);
+                                            that.caleResult();
+                                        }
+
+                                    }
+                                })
+                            ]
+                        })
+                        // 初始化滚动到3500
+                        //fm[0].scrollTo(-210, 1000);
+                }
+
+                new Rule().init();
+            },
+            caleResult() {
+                var total = Math.floor($("#jkje_sum").html());
+                var zq = Math.floor($(".age-num").html());
+                // 每期本金
+                var bj = total / zq;
+                // 总利息
+                var totleLx = total * this.interest * 7 * zq;
+                var week = totleLx / zq;
+                $(".week-num").html((bj + week).toFixed(2));
+            },
+            // 初始化周期刻度尺
+            initZQ() {
+                var _self = this;
+                var end, start, g;
+                var w0 = 14;
+                var zq = $('.age-num');
+                var main = $(".ruler .main");
+                var ageVal = zq.attr("initial-value");
+                main.css({
+                    '-webkit-transform': 'translateX(-' + Math.ceil(parseInt(ageVal * w0)) + 'px)'
+                }).attr('value', Math.ceil(ageVal * w0));
+
+                for (var i = 0; i < $('.ruler').length; i++) {
+                    var liW = $('.ruler').eq(i).find("li").width();
+                    var size = $('.ruler').eq(i).find('li').length;
+                }
+                $('body').on('touchcancel,touchend,touchmove,touchstart', function(e) {
+                    e.preventDefault();
+                })
+
+                $('.ruler ul').on("touchstart", function(e) {
+                    var initial = $(this).attr('data-initial');
+                    e.stopPropagation();
+                    v = parseInt(main.attr('value'));
+                    if ($(this).closest('.ruler').hasClass("ruler-age")) {
+                        start = 0;
+                        end = '-800';
+                        g = 50;
+                    }
+                    if (initial == 'true') {
+                        startX = e.originalEvent.changedTouches[0].pageX + v;
+                        $(this).attr('data-initial', 'false');
+                    } else {
+                        startX = e.originalEvent.changedTouches[0].pageX - v;
+                    }
+                });
+
+                $('.ruler ul').on("touchmove", function(e) {
+                    var number = parseInt(zq.attr('value'));
+                    moveX = e.originalEvent.changedTouches[0].pageX;
+                    X = moveX - startX;
+                    console.log(X);
+                    if (X > 0) {
+                        var vv = main.attr('value');
+                        if (vv >= start) {
+                            start = X > start ? start : X;
+                            main.css({
+                                '-webkit-transform': 'translateX(' + start + 'px)'
+                            }).attr('value', start);
+                        } else {
+                            main.css({
+                                '-webkit-transform': 'translateX(' + X + 'px)'
+                            }).attr('value', X);
+                        }
+                        zq.text(Math.ceil(number - (vv / g)) + 4);
+                    } else {
+                        var vv = main.attr('value');
+                        if (main.attr('value') <= end) {
+                            end = X < end ? end : X;
+                            main.css({
+                                '-webkit-transform': 'translateX(' + end + 'px)'
+                            }).attr('value', end);
+                        } else {
+                            main.css({
+                                '-webkit-transform': 'translateX(' + X + 'px)'
+                            }).attr('value', X);
+                        }
+                        zq.text(Math.ceil(number + Math.abs(vv / g)) + 4);
+                    }
+                    e.preventDefault();
+                });
+
+                $('.ruler ul').on("touchend", function(e) {
+                    e.stopPropagation();
+                    moveEndX = e.originalEvent.changedTouches[0].screenX;
+                    X = moveEndX - startX;
+                    var value = Math.abs(main.attr("value"));
+                    var value2 = Math.round(Math.abs(value) / 100) * 100;
+                    if (value > value2) {
+                        value2 += 50;
+                    }
+                    main.css({
+                        '-webkit-transform': 'translateX(-' + value2 + 'px)'
+                    }).attr('value', '-' + value2);
+                    zq.text(Math.ceil(value2 / g) + 4);
+                    // 计算结果
+                    _self.caleResult();
+                });
             }
-            $("body").unbind("touchmove");
-        })
-    })
-    document.getElementById("id").addEventListener("touchstart", function(e) {
-        _x_start = e.touches[0].pageX;
-        _y_start = e.touches[0].pageY;
-        left_start = $("#id").css("left");
-        top_start = $("#id").css("top");
-
-    })
-    document.getElementById("id").addEventListener("touchmove", function(e) {
-        _x_move = e.touches[0].pageX;
-        _y_move = e.touches[0].pageY;
-        $("#id").css("left", parseFloat(_x_move) - parseFloat(_x_start) + parseFloat(left_start) + "px");
-        $("#id").css("top", parseFloat(_y_move) - parseFloat(_y_start) + parseFloat(top_start) + "px");
-        $('body').on('touchmove', function(event) {
-            event.preventDefault();
-        });
-    })
-    document.getElementById("id").addEventListener("touchend", function(e) {
-        var _x_end = e.changedTouches[0].pageX;
-        var _y_end = e.changedTouches[0].pageY;
-        if (_x_end > $(window).width()) {
-            $("#id").css("left", $(window).width() - 90 + 'px')
         }
-        if (_x_end < 0) {
-            $("#id").css("left", '10px')
-        }
-        $("body").unbind("touchmove");
     })
-
-    $("footer").find("a").on("click", function() {
-        $(this).addClass("select");
-        $(this).siblings().removeClass("select");
-    })
-
-   
 </script>
 
 </html>

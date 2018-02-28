@@ -178,17 +178,16 @@
 			$('#mode2').show()
 	      $('.wx').show()
 	    })
-	  $("#mode2").on("click",function(ev){
+	  	$("#mode2").on("click",function(ev){
 			$('#mode2').hide()
-	      $('.wx').hide()
+	      	$('.wx').hide()
 	    })
-	 var box = document.getElementById('id');
+	 	var box = document.getElementById('id');
         var winWidth = window.innerWidth;
         var winHeight = window.innerHeight;
         var endTouchY = 0;
         var endTouchX = 0;
-//	 $(window).scroll(function ()
-//	 {	
+//	 $(window).scroll(function (){	
 //		var st = $(this).scrollTop();
 //      box.addEventListener('touchstart',function(ev){
 //      	
@@ -223,6 +222,7 @@
 //              endTouchX = ev.pageX;
 //              endTouchY = ev.pageY;
 //          },false);
+//          
 //          this.addEventListener('touchend', function(ev){            	
 //              this.ontouchmove = null;
 //              this.ontouchend = null;
@@ -239,40 +239,34 @@
 //      },false);
 
     var _x_start,_y_start,_x_move,_y_move,_x_end,_y_end,left_start,top_start;
-    $(window).scroll(function ()
-	    {	
-		  var st = $(this).scrollTop();
-		  document.getElementById("id").addEventListener("touchstart",function(e)
-        {
-
+    $(window).scroll(function (){	
+		var st = $(this).scrollTop();
+		document.getElementById("id").addEventListener("touchstart",function(e){
             _x_start=e.touches[0].pageX;
             _y_start=e.touches[0].pageY;
             // console.log("start",_x_start)
             left_start=$("#id").css("left");
             top_start=$("#id").css("top");
-
         })
-        document.getElementById("id").addEventListener("touchmove",function(e)
-        {
+        document.getElementById("id").addEventListener("touchmove",function(e){
             _x_move=e.touches[0].pageX;
             _y_move=e.touches[0].pageY;
             // console.log("move",_x_move)
             $("#id").css("left",parseFloat(_x_move)-parseFloat(_x_start)+parseFloat(left_start)+"px");
             $("#id").css("top",parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start)+"px");
-        //    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
-         $('body').on('touchmove', function (event) {event.preventDefault();});
+        	//    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
+         	$('body').on('touchmove', function (event) {event.preventDefault();});
         })
-        document.getElementById("id").addEventListener("touchend",function(e)
-        {
-            var _x_end=e.changedTouches[0].pageX;
+        document.getElementById("id").addEventListener("touchend",function(e){
+        	var _x_end=e.changedTouches[0].pageX;
             var _y_end=e.changedTouches[0].pageY;
             // console.log("end",_x_end)
-              if(_x_end>$(window).width()){
-             	 $("#id").css("left",$(window).width()-90+'px')
-             }
-             if(_x_end<0){
-             	 $("#id").css("left",'10px')
-             }
+            if(_x_end>$(window).width()){
+            	$("#id").css("left",$(window).width()-90+'px')
+            }
+            if(_x_end<0){
+            	$("#id").css("left",'10px')
+            }
 //           if(_y_end>$(window).height()){
 //           	 $("#id").css("top",'80%')
 //           }
@@ -299,11 +293,10 @@
             // console.log("move",_x_move)
             $("#id").css("left",parseFloat(_x_move)-parseFloat(_x_start)+parseFloat(left_start)+"px");
             $("#id").css("top",parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start)+"px");
-        //    console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
+        	// console.log(parseFloat(_y_move)-parseFloat(_y_start)+parseFloat(top_start));
             $('body').on('touchmove', function (event) {event.preventDefault();});
         })
-        document.getElementById("id").addEventListener("touchend",function(e)
-        {
+        document.getElementById("id").addEventListener("touchend",function(e){
             var _x_end=e.changedTouches[0].pageX;
             var _y_end=e.changedTouches[0].pageY;
             // console.log("end",_x_end)

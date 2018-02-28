@@ -21,7 +21,7 @@ $(function() {
 		}
 		if(work_name1 != "" && work_name2 != "" && work_num != "" && work_tel != "" && (/^\d{7,8}$/.test(work_tel)) && work_money != "") {
 			$(".address").bind("click", function() {
-				$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".work_keep").css("background-size", "100% 100%");
 				$(".work_keep").removeAttr("disabled");
 
@@ -29,32 +29,32 @@ $(function() {
 			$(".work_time").blur(function() {
 				if(work_address != "") {
 					$(".work_keep").removeAttr("disabled");
-					$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+					$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 					$(".work_keep").css("background-size", "100% 100%");
 
 				}
 			})
 			$(".work_time").focus(function() {
 
-				$(".work_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+				$(".work_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 				$(".work_keep").css("background-size", "100% 100%");
 				$(".work_keep").attr("disabled", "disabled");
 
 			});
 			if(work_time != "" && work_address != "") {
 				$(".work_keep").removeAttr("disabled");
-				$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".work_keep").css("background-size", "100% 100%");
 
 			} else {
-				$(".work_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+				$(".work_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 				$(".work_keep").css("background-size", "100% 100%");
 				$(".work_keep").attr("disabled", "disabled");
 
 			}
 
 		} else {
-			$(".work_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+			$(".work_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 			$(".work_keep").css("background-size", "100% 100%");
 			$(".work_keep").attr("disabled", "disabled");
 
@@ -81,20 +81,24 @@ $(function() {
 				if(work_name1 != "" && work_num != "" && work_tel != "" && (/^\d{7,8}$/.test(work_tel)) && work_money != "") {
 					$(".address").bind("click", function() {
 						$(".work_keep").removeAttr("disabled");
-						$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+						$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 						$(".work_keep").css("background-size", "100% 100%");
 
 					})
 				}
 			})
 			if(work_num != "" && work_address != "") {
-				$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".work_keep").css("background-size", "100% 100%");
 				$(".work_keep").removeAttr("disabled");
 
 			}
 		}
 	})
+
+	$("body").on("blur","input.cache",function(){
+		sessionStorage.setItem($(this).attr("name"),this.value);
+	});
 
 	function CompareDate(d1, d2) {
 		return((new Date(d1.replace(/-/g, "\/"))) < (new Date(d2.replace(/-/g, "\/"))));
@@ -112,7 +116,7 @@ $(function() {
 			self.location.replace(url); //刷新页面	
 		}
 	}
-
+	sessionStorage.setItem("filesPath",JSON.stringify(["","","","",""]));
 	//  渲染工作信息详情
 	var data = {
 		userId: userId
@@ -137,29 +141,37 @@ $(function() {
 
 		},
 		success: function(data) {
+			console.log(data);
 			if(data.code == 111) {						
-										window.location.href = constans.htmlUrl + "/index";							
-									}
+				window.location.href = constans.htmlUrl + "/index";							
+			}
 			if(data.code == 500) {
 				console.log(data.msg)
 			} else {
-
-				$(".work_name1").val(data.body.companyName)
-				$(".work_name2").val(data.body.affiDepart);
-				$(".work_address").val(data.body.addrUp);
-				$(".work_num").val(data.body.addrDown);
-				$(".work_tel").val(data.body.companyTel.split("-")[1]);
-				$(".work_money").val(data.body.userIncome);
+				var tel = data.body.companyTel.split("-")[1];
+				$(".work_name1").val(data.body.companyName?data.body.companyName:sessionStorage.getItem("company"));
+				$(".work_name2").val(data.body.affiDepart?data.body.affiDepart:sessionStorage.getItem("position"));
+				$(".work_address").val(data.body.addrUp?data.body.addrUp:sessionStorage.getItem("address"));
+				$(".work_num").val(data.body.addrDown?data.body.addrDown:sessionStorage.getItem("addressDetail"));
+				$(".work_tel").val(tel?tel:sessionStorage.getItem("tel"));
+				$(".work_money").val(data.body.userIncome?data.body.userIncome:sessionStorage.getItem("income"));
+				if(data.body.isVered=="1"){
+					$(".auth-state").html("已上传");
+				}
+				// 缓存职业认证的图片对象
+				sessionStorage.setItem("filesPath",JSON.stringify(data.body.filesPath));
+				// 是否完成了职业认证 0 没有，1认证了
+				sessionStorage.setItem("isVered",data.body.isVered);
 				$(".work_time").val(data.body.careerTime);
 				if(localStorage.getItem("work") == 1 && $(".work_time").val() != "" && $(".work_address").val() != "") {
 					$(".work_time").blur(function() {
 						$(".work_keep").removeAttr("disabled");
-						$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+						$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 						$(".work_keep").css("background-size", "100% 100%");
 
 					})
 					$(".work_time").focus(function() {
-						$(".work_keep").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+						$(".work_keep").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 						$(".work_keep").css("background-size", "100% 100%");
 
 						$(".work_keep").attr("disabled", "disabled");
@@ -173,19 +185,20 @@ $(function() {
 				var addrUp = data.body.addrUp;
 				var companyName = data.body.companyName;
 				var addrDown = data.body.addrDown;
-				var companyAddr = data.body.companyAddr;
+				var companyAddr = data.body.companyAddr?data.body.companyAddr:sessionStorage.getItem("companyAddr");
 				var companyTel = data.body.companyTel;
 				var userIncome = data.body.userIncome;
-				var companyCity = data.body.city;
-				var companyProvince = data.body.province;
-				var companyCountry = data.body.country;
+				var companyCity = data.body.city?data.body.city:sessionStorage.getItem("companyCity");
+				var companyProvince = data.body.province?data.body.province:sessionStorage.getItem("companyProvince");
+				var companyCountry = data.body.country?data.body.country:sessionStorage.getItem("companyCountry");
 				var careerTime = data.body.careerTime;
 				var citycode = data.body.companyTel.split("-")[0];
-				var affiDepart = data.body.affiDepart
+				var affiDepart = data.body.affiDepart;
+
 				if(localStorage.getItem("work") == 0) {
 					if(addrUp.length != 0 && addrDown.length != 0 && companyTel.length != 0 && companyName.length != 0 && userIncome.length != 0 && affiDepart.length != 0 && careerTime.length != 0) {
 						$(".work_keep").removeAttr("disabled");
-						$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+						$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 						$(".work_keep").css("background-size", "100% 100%");
 						$('.input_p').bind('input propertychange', function() {
 							var work_name1 = $(".work_name1").val();
@@ -194,7 +207,7 @@ $(function() {
 							var work_money = $(".work_money").val();
 							if(work_name1 != "" && work_num != "" && work_tel != "" && (/^\d{7,8}$/.test(work_tel)) && work_money != "") {
 								$(".work_keep").removeAttr("disabled");
-								$(".work_keep").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+								$(".work_keep").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 								$(".work_keep").css("background-size", "100% 100%");
 
 							}
@@ -269,7 +282,6 @@ $(function() {
 									geocoder.getAddress(aaa, function(status, result) {
 
 										if(status === 'complete' && result.info === 'OK') {
-											console.log(result)
 											companyProvince = result.regeocode.addressComponent.province
 											if(result.regeocode.addressComponent.city == '') {
 												companyCity = result.regeocode.addressComponent.province
@@ -288,6 +300,9 @@ $(function() {
 
 											$(".citycode").html(citycode + '-');
 											$(".work_address").val(e.poi.name);
+											sessionStorage.setItem("address",e.poi.name);
+											sessionStorage.setItem("companyCity",companyCity);
+											sessionStorage.setItem("companyCountry",companyCountry);
 											$(".content_address").hide();
 											$("#tipinput").val("");
 										}
@@ -299,9 +314,7 @@ $(function() {
 								var aaa = [e.poi.location.lng, e.poi.location.lat];
 							}
 							geocoder.getAddress(aaa, function(status, result) {
-
 								if(status === 'complete' && result.info === 'OK') {
-									console.log(result)
 									companyProvince = result.regeocode.addressComponent.province
 									if(result.regeocode.addressComponent.city == '') {
 										companyCity = result.regeocode.addressComponent.province
@@ -319,11 +332,13 @@ $(function() {
 									}
 
 									$(".citycode").html(citycode + '-');
-									//									$("#sure").on('click', function(e) {
 									$(".work_address").val(e.poi.name);
+									sessionStorage.setItem("address",e.poi.name);
+									sessionStorage.setItem("companyProvince",companyProvince);
+									sessionStorage.setItem("companyCity",companyCity);
+									sessionStorage.setItem("companyCountry",companyCountry);
 									$(".content_address").hide();
 									$("#tipinput").val("");
-									//									})
 								}
 							})
 
@@ -359,12 +374,17 @@ $(function() {
 									}
 
 									$(".citycode").html(citycode + '-');
+									sessionStorage.setItem("companyProvince",companyProvince);
+									sessionStorage.setItem("companyCity",companyCity);
+									sessionStorage.setItem("companyCountry",companyCountry);
+									sessionStorage.setItem("companyAddr",companyAddr);
 									$("#tipinput").val(addrUp);
 								}
 							})
 							$("#sure").on('click', function(e) {
 								if($("#tipinput").val() != "") {
 									$(".work_address").val($("#tipinput").val());
+									sessionStorage.setItem("address",$("#tipinput").val());
 									$(".content_address").hide();
 								}
 							})
@@ -373,10 +393,9 @@ $(function() {
 					});
 				}
 				$(".work_tel").val(companyTel.split("-")[1]);
-				//				alert("工作电话处理时候:"+companyTel.split("-")[1]);
 
 				$(".work_time").val(careerTime);
-				$("#work_keep1").on("click", function() {
+			/*	$("#work_keep1").on("click", function() {
 					addrUp = $(".work_address").val();
 					companyAddr = companyAddr;
 					var careerTime = $(".work_time").val();
@@ -385,6 +404,7 @@ $(function() {
 					var affiDepartId = $(".work_name2").val();
 					var addrDown = $(".work_num").val();
 					var userIncome = $(".work_money").val();
+					var payDay = $(".payDay").val();
 					data = {
 						addrDown: addrDown,
 						addrUp: addrUp,
@@ -397,7 +417,8 @@ $(function() {
 						companyTel: companyTel,
 						userId: userId,
 						careerTime: careerTime,
-						userIncome: userIncome
+						userIncome: userIncome,
+						payDay : payDay
 					}
 					if(careerTime == "") {
 						$("#mode").show();
@@ -446,7 +467,7 @@ $(function() {
 							}
 						})
 					}
-				})
+				})*/
                 $("#work_keep2").on("click", function() {
 					addrUp = $(".work_address").val();
 					companyAddr = companyAddr;
@@ -456,6 +477,7 @@ $(function() {
 					var affiDepartId = $(".work_name2").val();
 					var addrDown = $(".work_num").val();
 					var userIncome = $(".work_money").val();
+					var payDay = $(".payDay").val();
 					data = {
 						addrDown: addrDown,
 						addrUp: addrUp,
@@ -468,7 +490,8 @@ $(function() {
 						companyTel: companyTel,
 						userId: userId,
 						careerTime: careerTime,
-						userIncome: userIncome
+						userIncome: userIncome,
+						payDay : payDay
 					}
 					if(careerTime == "") {
 						$("#mode").show();
@@ -490,6 +513,9 @@ $(function() {
 							},
 							beforeSend: function() {
 								$("body").Loading("show");
+							},
+							complete: function() {
+								$("body").Loading("hide");
 							},							
 							success: function(data) {
 
@@ -521,7 +547,6 @@ $(function() {
 											$("body").Loading("hide");
 										},
 										success: function(data) {
-											console.log(data.body.nextPage);
 											if(data.body.nextPage == 0){
 												window.location = constans.htmlUrl + "/html/user/userInfoList.html";
 											}
@@ -546,7 +571,6 @@ $(function() {
 					}
 				})
 				if(localStorage.getItem("work") == 0) {
-
 					var data = { rePage: '100082' }
 					$.ajax({
 						url: constans.serviceUrl + '/reputations/isCommited',
@@ -634,6 +658,11 @@ $(function() {
 			}
 		}
 	})
+
+
+	$(".auth").click(function(){
+		location.href = constans.htmlUrl + "/html/user/auth.html?v="+Date.now();
+	});
 })
 
 

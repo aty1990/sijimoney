@@ -202,17 +202,17 @@ footer a.select {
 }
 
 footer a:nth-child(1).select {
-	background: url(../../images/House_selected@2x.png) no-repeat center 10px;
+	background: url(../../images/home_selected.png) no-repeat center 10px;
 	background-size: 25px 25px;
 }
 
 footer a:nth-child(2).select {
-	background: url(../../images/Individu_selected@2x.png) no-repeat center 10px;
+	background: url(../../images/me_selected.png) no-repeat center 10px;
 	background-size: 25px 25px;
 }
 
 footer a:nth-child(3).select {
-	background: url(../../images/Align-Big-Group_selected@2x.png) no-repeat center 10px;
+	background: url(../../images/more_selected.png) no-repeat center 10px;
 	background-size: 25px 25px;
 }
 
@@ -264,10 +264,11 @@ footer a:nth-child(3).select {
 }
 
 .loading-bar {
-	width: 240px;
+	width: 200px;
 	min-height: 22px;
 	text-align: center;
-	background: #fff;
+	background: #000;
+	opacity: 0.7;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.27);
 	border-radius: 7px;
 	padding: 20px 15px;
@@ -276,7 +277,7 @@ footer a:nth-child(3).select {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-left: -140px;
+	margin-left: -100px;
 	margin-top: -30px;
 	word-break: break-all;
 }
@@ -312,6 +313,7 @@ footer a:nth-child(3).select {
 	width: 46px;
 	height: 46px;
 	vertical-align: middle;
+	margin-bottom: 12px;
 }
 
 .loading-text {
@@ -329,7 +331,7 @@ footer a:nth-child(3).select {
 
 .sure_button input {
 	width: 100%;
-	background: url(../../images/btn_normal@2x.png) no-repeat;
+	background: url(../../images/nd-normal-btn.png) center center no-repeat;
 	background-size: 100% 100%;
 	color: #fff;
 }
@@ -345,7 +347,7 @@ footer a:nth-child(3).select {
 
 .sumbit input {
 	width: 100%;
-	background: url(../../images/btn_disabled@2x.png) no-repeat;
+	background: url(../../images/nd-normal-btn.png) center center  no-repeat;
 	background-size: 100% 100%;
 	text-align: center;
 	color: #fff;
@@ -449,10 +451,6 @@ footer a:nth-child(3).select {
 	height:50px;
 }
 
-input[disabled] {
-	/*color: #000;*/
-	opacity: 1
-}
 .picker .picker-panel .picker-choose {
     background: #f3f3f3;
    
@@ -496,4 +494,10 @@ input[disabled] {
 	background:url(../../images/icon_completed11@2x.png) no-repeat;
 	background-size:100% 100%;
 	
+}
+input[disabled]{
+	opacity: 0.7;
+}
+[v-cloak]{
+	display: none;
 }

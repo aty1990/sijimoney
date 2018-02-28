@@ -157,14 +157,14 @@ $(function(){
 		
 		if(serve_pwd && (/^[\w\W]{6,}$/.test(serve_pwd))) {
 			$confirm1.css({
-				background : 'url(../../images/btn_normal@2x.png) no-repeat',
+				background : 'url(../../images/nd-normal-btn.png) no-repeat',
 				'background-size' : '100% 100%'
 				
 			});
 			$confirm1.removeAttr('disabled');
 		} else {
 			$confirm1.css({
-				background : 'url(../../images/btn_disabled@2x.png) no-repeat',
+				background : 'url(../../images/nd-disabled-btn.png) no-repeat',
 				'background-size' : '100% 100%'
 				
 			});
@@ -177,7 +177,7 @@ $(function(){
 		$this.prev('input').val('');
 		$this.hide();
 		$confirm1.css({
-			background : 'url(../../images/btn_disabled@2x.png) no-repeat',
+			background : 'url(../../images/nd-disabled-btn.png) no-repeat',
 			'background-size' : '100% 100%'
 		});
 	});
@@ -288,8 +288,8 @@ $(function(){
 									},
 									success: function(data) {
 										if(data.code == 111) {						
-										window.location.href = constans.htmlUrl + "/index";							
-									}
+											window.location.href = constans.htmlUrl + "/index";							
+										}
 										if(data.code == 200){
 											window.location = constans.htmlUrl + "/html/user/userInfoList.html";
 										}

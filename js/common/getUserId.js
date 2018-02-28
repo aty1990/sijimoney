@@ -21,10 +21,9 @@ getUserId = function() {
 				$("body").Loading("hide");
 			},
 			success: function(data) {				
-				var userId=data.body.userId;
-				var userStat=data.body.userStat;
-		  		sessionStorage.setItem("userId",userId);
-		  		sessionStorage.setItem("userStat",userStat);
+		  		sessionStorage.setItem("userId",data.body.userId);
+		  		sessionStorage.setItem("userStat",data.body.userStat);
+		  		sessionStorage.setItem("taskId",taskId);
 		  		if(data.code == 111){
 			  		window.location = constans.htmlUrl + "/html/login/loginnext.html";
 			  	}

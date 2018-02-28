@@ -9,22 +9,22 @@ $(function() {
 			$("#serve_pwd").next(".close").show();
 		}
 		if(serve_pwd != "" && (/^[0-9]{4,12}$/.test(serve_pwd))) {
-			$(".getnode").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".getnode").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".getnode").css("background-size", "100% 100%");
 			$(".getnode").removeAttr("disabled");
 
 		} else {
-			$(".getnode").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".getnode").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".getnode").css("background-size", "100% 100%");
 			$(".getnode").attr("disabled", "disabled");
 		}
 		if(readcode != "" && (/^[0-9A-Za-z]{4,}$/.test(readcode))) {
-			$(".makepwd").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".makepwd").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".makepwd").css("background-size", "100% 100%");
 			$(".makepwd").removeAttr("disabled");
 
 		} else {
-			$(".makepwd").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".makepwd").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".makepwd").css("background-size", "100% 100%");
 			$(".makepwd").attr("disabled", "disabled");
 		}
@@ -34,7 +34,7 @@ $(function() {
 		var $this = $(this);
 		$this.prev('input').val('');
 		$this.hide();
-		$(".getnode").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+		$(".getnode").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 		$(".getnode").css("background-size", "100% 100%");
 
 	});

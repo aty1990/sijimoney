@@ -15,12 +15,12 @@ $(function() {
 
 			$(".picker").bind("click", function() {
 				if($(".direct").length <= 0 && $(".other").length <= 0) {
-					$(".contacts").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+					$(".contacts").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 					$(".contacts").css("background-size", "100% 100%");
 					$(".contacts").removeAttr("disabled");
 
 				} else {
-					$(".contacts").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+					$(".contacts").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 					$(".contacts").css("background-size", "100% 100%");
 					$(".contacts").attr("disabled", "disabled");
 
@@ -28,25 +28,25 @@ $(function() {
 
 			});
 			if($(".direct").length <= 0 && $(".other").length <= 0) {
-				$(".contacts").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".contacts").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".contacts").css("background-size", "100% 100%");
 				$(".contacts").removeAttr("disabled");
 
 			} else {
-				$(".contacts").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+				$(".contacts").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 				$(".contacts").css("background-size", "100% 100%");
 				$(".contacts").attr("disabled", "disabled");
 
 			}
 			if($(".direct").val() != "" && $(".other").val() != "") {
-				$(".contacts").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+				$(".contacts").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 				$(".contacts").css("background-size", "100% 100%");
 				$(".contacts").removeAttr("disabled");
 
 			} 
 		} else {
 			$(".contacts").attr("disabled", "disabled");
-			$(".contacts").css("background", "url(../../images/btn_disabled@2x.png) no-repeat");
+			$(".contacts").css("background", "url(../../images/nd-disabled-btn.png) no-repeat");
 			$(".contacts").css("background-size", "100% 100%");
 
 		}
@@ -62,7 +62,7 @@ $(function() {
 	$('.user_message').bind("click", function() {
 		if(localStorage.getItem("contact") == 1) {
 			$(".contacts").removeAttr("disabled");
-			$(".contacts").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+			$(".contacts").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 			$(".contacts").css("background-size", "100% 100%");
 			$('.input_p').bind('input propertychange', function() {
 				var direct_name = $(".direct_name").val();
@@ -71,7 +71,7 @@ $(function() {
 				var other_tell = $(".other_tell").val();
 				if(direct_name != "" && direct_tell != "" && other_name != "" && other_tell != "" && (/^1[34578]\d{9}$/.test(other_tell)) && (/^1[34578]\d{9}$/.test(direct_tell))) {
 					$(".contacts").removeAttr("disabled");
-					$(".contacts").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+					$(".contacts").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 					$(".contacts").css("background-size", "100% 100%");
 
 				}
@@ -124,7 +124,7 @@ $(function() {
 				if(localStorage.getItem("contact") == 0) {
 					if(relationMob1.length != 0 && relationName1.length != 0 && relationMob2.length != 0 && relationName2.length != 0 && relationShip1Id.length != 0 && relationShip2Id.length != 0) {
 						$(".contacts").removeAttr("disabled");
-						$(".contacts").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+						$(".contacts").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 						$(".contacts").css("background-size", "100% 100%");
 						$('.input_p').bind('input propertychange', function() {
 							var direct_name = $(".direct_name").val();
@@ -133,7 +133,7 @@ $(function() {
 							var other_tell = $(".other_tell").val();
 							if(direct_name != "" && direct_tell != "" && other_name != "" && other_tell != "" && (/^1[34578]\d{9}$/.test(other_tell)) && (/^1[34578]\d{9}$/.test(direct_tell))) {
 								$(".contacts").removeAttr("disabled");
-								$(".contacts").css("background", "url(../../images/btn_normal@2x.png) no-repeat");
+								$(".contacts").css("background", "url(../../images/nd-normal-btn.png) no-repeat");
 								$(".contacts").css("background-size", "100% 100%");
 							}
 						})

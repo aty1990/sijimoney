@@ -10,11 +10,11 @@ $(function() {
 		var repayMoney = $(".yinhuan1").val();
 		if(repayMoney != "") {
 			$(".huankuan").removeAttr("disabled");
-			$(".huankuan").css("background", "url(../../images/btn_normal@2x.png)  no-repeat");
+			$(".huankuan").css("background", "url(../../images/nd-normal-btn.png)  no-repeat");
 			$(".huankuan").css("background-size", "100% 100%");
 
 		} else {
-			$(".huankuan").css("background", "url(../../images/btn_disabled@2x.png)  no-repeat");
+			$(".huankuan").css("background", "url(../../images/nd-disabled-btn.png)  no-repeat");
 			$(".huankuan").css("background-size", "100% 100%");
 
 			$(".huankuan").attr("disabled", "disabled");
@@ -87,7 +87,6 @@ $(function() {
 							}
                             $(".weui_cells label").unbind("click");
 							$(".weui_cells label").one("click", function() {
-								
 								$(".bg").css("background", data.body[$(this).index()].backgroundColour.substr(0, 7));
 								$(".bank1").html(data.body[$(this).index()].bankName);
 								$(".num").html("尾号"+data.body[$(this).index()].accountNo.substr(data.body[$(this).index()].accountNo.length - 4, 4));
@@ -159,7 +158,7 @@ $(function() {
 						console.log(data.msg);
 					} else {
         
-						$(".bg").css("background", data.body.backgroundColor.substr(0, 7));
+						//$(".bg").css("background", data.body.backgroundColor.substr(0, 7));
 						$(".bank").html(data.body.bankName);
 						var len = data.body.accountNo.length;
 						$(".cardnum").html("尾号"+data.body.accountNo.substr(len - 4, 4));
@@ -197,7 +196,7 @@ $(function() {
 
 							$(".huankuan").on("click", function() {
 								
-								if(localStorage.getItem('bank') != null) {
+								if(localStorage.getItem('bank')) {
 									var bankCardId = localStorage.getItem('bank');
 								} else {
 									var bankCardId = bankCardId1;
@@ -269,7 +268,7 @@ $(function() {
 							var lowestRepayment = data.body.lowestRepayment
 							$(".huankuan").on("click", function() {
 								
-								if(localStorage.getItem('bank') != null) {
+								if(localStorage.getItem('bank')) {
 									var bankCardId = localStorage.getItem('bank');
 								} else {
 									var bankCardId = bankCardId1;

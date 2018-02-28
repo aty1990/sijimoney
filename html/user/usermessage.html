@@ -1,323 +1,675 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>个人信息</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
-		<link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
-		<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-		<script type="text/javascript">
-			var _hmt = _hmt || [];
-			(function() {
-				var hm = document.createElement("script");
-				hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
-				var s = document.getElementsByTagName("script")[0];
-				s.parentNode.insertBefore(hm, s);
-			})();
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../css/common/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../libs/css/weui.min.css" />
+    <script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b56bb9d27b23625b9d64618d4be95a98";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
 
-			(function() {
-				var tokenId = "feiniaodai" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
-				localStorage.setItem("token", tokenId)
-				_fmOpt = {
-					partner: 'feiniaodai',
-					appName: 'feiniaodai_h5',
-					token: tokenId,
-				};
-				var cimg = new Image(1, 1);
-				cimg.onload = function() {
-					_fmOpt.imgLoaded = true;
-				};
-				cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=feiniaodai&appName=feiniaodai_h5&tokenId=" + _fmOpt.token;
-				var fm = document.createElement('script');
-				fm.type = 'text/javascript';
-				fm.async = true;
-				fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(fm, s);
-			})();
-		</script>
-		<style type="text/css">
-			body {
-				background: #fafafa;
-				height: 100%;
-			}
-			
-			#picker1 {
-				height: 40px;
-			}
-			
-			.small_header {
-				color: #888;
-				margin-left: 10px;
-				margin: 10px;
-				font-size: 12px;
-			}
-			
-			.mymessage {
-				position: relative;
-				float: left;
-				width: 72%;
-				line-height: 50px;
-				margin-left: 10px;
-				font-size: 14px;
-			}
-			
-			.mymessage input {
-				width: 90%;
-				color: #000;
-			}
-			
-			.main-content {
-				position: absolute;
-				left: 0;
-				width: 100%;
-			}
-			
-			.sumbit {
-				margin-top: 30px;
-			}
-			
-			.content_address {
-				display: none;
-			}
-			
-			#container {
-				width: 100%;
-				height: 100%;
-				margin: 0px;
-				position: fixed;
-				top: 0;
-				left: 0;
-			}
-			
-			.panel {
-				width: 100%;
-				color: #333;
-				background: #fff;
-				position: absolute;
-				top: 0;
-				overflow: hidden;
-				line-height: 20px;
-			}
-			
-			#tipinput {
-				width: 100%;
-				height: 40px;
-			}
-			
-			#sure {
-				width: 30%;
-				height: 44px;
-				border-radius: 0;
-				float: right;
-				background: #2EABE3;
-				color: #fff;
-				float: left;
-			}
-			
-			.weui_check1 {
-				position: absolute;
-				left: -9999em;
-			}
-			
-			.weui_cells_radio .weui_check1:checked+.weui_icon_checked:before {
-				display: block;
-				position: absolute;
-				right: 5px;
-				top: 10px;
-				content: '\EA08';
-				color: rgb(74, 144, 226);
-				font-size: 20px;
-			}
-			
-			.weui_cells:before {
-				border: 0;
-			}
-			
-			.weui_cells:after {
-				border: 0;
-			}
-			
-			.weui_cell:before {
-				border: 0;
-			}
-			
-			#test {
-				width: 100%;
-				height: 100%;
-				position: fixed;
-				top: 0;
-				left: 0;
-				z-index: 999;
-				background: #fff;
-				display: none;
-				border: 0;
-			}
-			
-			.picker .picker-panel .picker-choose .confirm {
-				right: 0;
-				color: #000;
-			}
-		</style>
-	</head>
+        (function() {
+            var tokenId = "feiniaodai" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2);
+            localStorage.setItem("token", tokenId)
+            _fmOpt = {
+                partner: 'feiniaodai',
+                appName: 'feiniaodai_h5',
+                token: tokenId,
+            };
+            var cimg = new Image(1, 1);
+            cimg.onload = function() {
+                _fmOpt.imgLoaded = true;
+            };
+            cimg.src = "https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=feiniaodai&appName=feiniaodai_h5&tokenId=" + _fmOpt.token;
+            var fm = document.createElement('script');
+            fm.type = 'text/javascript';
+            fm.async = true;
+            fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime() / 3600000).toFixed(0);
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(fm, s);
+        })();
+    </script>
+    <style type="text/css">
+        body {
+            background: #fafafa;
+            height: 100%;
+        }
+        
+        #picker1 {
+            height: 40px;
+        }
+        
+        .small_header {
+            color: #888;
+            margin-left: 10px;
+            margin: 10px;
+            font-size: 12px;
+        }
+        
+        .mymessage {
+            position: relative;
+            float: left;
+            width: 72%;
+            line-height: 50px;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        
+        .mymessage input {
+            width: 90%;
+            color: #000;
+        }
+        
+        .main-content {
+            position: absolute;
+            left: 0;
+            width: 100%;
+        }
+        
+        .sumbit {
+            margin-top: 30px;
+        }
+        
+        .content_address {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            background: #fff;
+            z-index: 999;
+        }
+        
+        #container {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+        
+        .panel {
+            width: 100%;
+            color: #333;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+            line-height: 20px;
+            z-index: 1000;
+        }
+        
+        #tipinput {
+            width: 100%;
+            height: 40px;
+        }
+        
+        #sure {
+            width: 30%;
+            height: 44px;
+            border-radius: 0;
+            float: right;
+            background: #2EABE3;
+            color: #fff;
+            float: left;
+        }
+        
+        .weui_check1 {
+            position: absolute;
+            left: -9999em;
+        }
+        
+        .weui_cells_radio .weui_check1:checked+.weui_icon_checked:before {
+            display: block;
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            content: '\EA08';
+            color: rgb(74, 144, 226);
+            font-size: 20px;
+        }
+        
+        .weui_cells:before {
+            border: 0;
+        }
+        
+        .weui_cells:after {
+            border: 0;
+        }
+        
+        .weui_cell:before {
+            border: 0;
+        }
+        
+        #test {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: #fff;
+            display: none;
+            border: 0;
+        }
+        
+        .picker .picker-panel .picker-choose .confirm {
+            right: 0;
+            color: #000;
+        }
+    </style>
+</head>
 
-	<body>
-		<header style="background: #fff;">
-			<div style="float: left;" class="info">
-				<a href="userInfoList.html">
-					<img src="../../images/ico_back@2x.png" />
-				</a>
-			</div>
-			<p>个人信息</p>
-		</header>
-		<div class="user_message">
-			<p class="small_header">个人信息保存后无法修改，请务必正确。</p>
-			<div class="user_input userInfomation">
-				<p>身份信息</p>
-				<div class="mymessage">
-					<input type="text" class="user_name input_p" id="user_name" value="" onfocus="this.blur();" placeholder="请完善身份信息" />
-					<img src="../../images/Disclosure Indicator@2x.png" />
-				</div>
-			</div>
-			<div class="user_input " style="margin-top: 20px;">
-				<p>教育程度</p>
-				<div class="mymessage blin">
-					<section class="main-content">
-						<div id="picker1">
-							<input type="text" class="user_selectinfo1 input_p" onfocus="this.blur();" placeholder="请选择学历" />
-						</div>
-					</section>
-					<img src="../../images/Disclosure Indicator@2x.png" />
-				</div>
-			</div>
-			<div class="user_input">
-				<p>婚姻状况</p>
-				<div class="mymessage user2">
-					<section class="main-content ">
-						<div id="picker2">
-							<input type="text" class="user_selectinfo2 input_p" onfocus="this.blur();" placeholder="请选择婚姻状况" />
-						</div>
-					</section>
-					<img src="../../images/Disclosure Indicator@2x.png" />
-				</div>
-			</div>
-			<div class="user_input" style="margin-top: 20px;">
-				<p>现居住地址</p>
-				<div class="mymessage new_address">
-					<input type="text" class="new_place input_p" value="" onfocus="this.blur();" placeholder="请定位居住地址" />
-					<!--<iframe id="test" src=""></iframe>-->
-					<img src="../../images/Disclosure Indicator@2x.png" />
-				</div>
-			</div>
-			<div class="user_input">
-				<p style="width: 20%;height: 40px;"></p>
-				<div class="mymessage">
-					<input type="text" class="user_num input_p" value="" placeholder="请填写具体的街道门牌号" />
-				</div>
-			</div>
-		</div>
+<body>
+    <div class="message-page">
+        <header style="background: #fff;">
+            <div style="float: left;" class="info">
+                <a @click="back">
+                    <img src="../../images/ico_back@2x.png" />
+                </a>
+            </div>
+            <p>个人信息</p>
+        </header>
+        <div class="user_message">
+            <p class="small_header">个人信息保存后无法修改，请务必正确。</p>
+            <div class="user_input userInfomation">
+                <p>身份信息</p>
+                <div class="mymessage" @click="toUserInfo">
+                    <input type="text" class="user_name input_p" id="user_name" v-model="userName" onfocus="this.blur();" placeholder="请完善身份信息" />
+                    <img src="../../images/Disclosure Indicator@2x.png" />
+                </div>
+            </div>
+            <div class="user_input " style="margin-top: 20px;">
+                <p>教育程度</p>
+                <div class="mymessage blin">
+                    <section class="main-content">
+                        <div id="picker1">
+                            <input type="text" class="user_selectinfo1 input_p" onfocus="this.blur();" v-model="eduLv" placeholder="请选择学历" />
+                        </div>
+                    </section>
+                    <img src="../../images/Disclosure Indicator@2x.png" />
+                </div>
+            </div>
+            <div class="user_input">
+                <p>婚姻状况</p>
+                <div class="mymessage user2">
+                    <section class="main-content ">
+                        <div id="picker2">
+                            <input type="text" class="user_selectinfo2 input_p" onfocus="this.blur();" placeholder="请选择婚姻状况" v-model="isMarry" />
+                        </div>
+                    </section>
+                    <img src="../../images/Disclosure Indicator@2x.png" />
+                </div>
+            </div>
+            <div class="user_input" style="margin-top: 20px;">
+                <p>现居住地址</p>
+                <div class="mymessage new_address" @click="selectMap">
+                    <input type="text" class="input_p" v-model="liveAddrUp" onfocus="this.blur();" placeholder="请定位居住地址" />
+                    <!--<iframe id="test" src=""></iframe>-->
+                    <img src="../../images/Disclosure Indicator@2x.png" />
+                </div>
+            </div>
+            <div class="user_input">
+                <p style="width: 20%;height: 40px;"></p>
+                <div class="mymessage">
+                    <input type="text" class="user_num input_p" v-model="addrDown" placeholder="请填写具体的街道门牌号" />
+                </div>
+            </div>
+        </div>
+        <div class="content_address">
+            <div id="container" tabindex="0"></div>
+            <div class='panel' style="border:1px solid #d9d9d9;">
+                <table style="width:70%;float:left;">
+                    <tr>
+                        <td>
+                            <input id="tipinput" placeholder="请输入关键字" />
+                        </td>
+                    </tr>
+                </table>
+                <input type="button" id="sure" value="确定">
+                <div id='message'></div>
+            </div>
+            <div id="myPageTop" style="position:fixed;z-index:99999;"></div>
+        </div>
 
-		<div class="content_address">
-			<div id="container" tabindex="0"></div>
-			<div class='panel' style="border:1px solid #d9d9d9;">
-				<table style="width:70%;float:left;">
-					<tr>
-						<td>
-							<input id="tipinput" placeholder="请输入关键字" />
-						</td>
-					</tr>
-				</table>
-				<input type="button" id="sure" value="确定">
-				<div id='message'></div>
-			</div>
-			<div id="myPageTop" style="position:fixed;z-index:99999;"></div>
-		</div>
+        <div class="sumbit" v-show="disBtn">
+            <input type="button" :disabled="disabled" value="保存" @click="save('save')" />
+        </div>
+        <div class="sumbit" style="margin-top: 10px;" v-show="disBtn">
+            <input type="button" :disabled="disabled" value="保存并继续" @click="save('commit')" />
+        </div>
+        <div class="picker" style="display: none;">
+            <div class="picker-mask mask-hook"></div>
+            <div class="picker-panel panel-hook">
+                <div class="picker-choose choose-hook">
+                    <span class="cancel cancel-hook" style="color: #000;">取消</span>
+                    <span class="confirm confirm-hook" style="color: #000;">确定</span>
+                    <h1 class="picker-title"></h1>
+                </div>
+                <div class="picker-content">
+                    <div class="mask-top border-1px"></div>
+                    <div class="mask-bottom border-1px"></div>
+                    <div class="wheel-wrapper wheel-wrapper-hook">
+                        <div class="wheel wheel-hook">
+                            <script type="text/html" id="test">
+                                <ul class="wheel-scroll wheel-scroll-hook" style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, -324px) translateZ(0px);">
+                                    <li class="wheel-item"></li>
+                                </ul>
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wx">
+            <p style="color: #fff;margin-top: 34px;">咋了？</p>
+            <div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">
+                <ul class="weui">
+                    <li><span style="float:left;margin-left:10px;">我不想借款了</span>
+                        <p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
+                    </li>
+                    <li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span>
+                        <p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
+                    </li>
+                </ul>
+                <div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
+                    <textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!" style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>
+                </div>
+                <p class="qi" style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
+                    <span id="text-count">128</span>/128
+                </p>
+            </div>
+            <div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
+                <p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
+                <p style="color: rgb(74,144,226);" class="try">再试试</p>
+            </div>
+        </div>
+        <div id="mode2"></div>
+    </div>
+    <script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../libs/js/picker.min.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0e76d85c5751c246d2fb105e41d5705c&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js?${project.javascript.version}"></script>
+    <script src="../../js/common/utils.js?v=44422"></script>
+    <script src="../../libs/js/vue.js?v=${project.javascript.version}"></script>
+    <script src="../../libs/js/layer.js?v=${project.javascript.version}"></script>
 
-		<div class="sumbit">
-			<input type="button" disabled="disabled" class="user_keep" id="user_keep1" value="保存" />
-		</div>
-		<div class="sumbit" style="margin-top: 10px;">
-			<input type="button" disabled="disabled" class="user_keep" id="user_keep2" value="保存并继续" />
-		</div>
-		<div class="picker" style="display: none;">
-			<div class="picker-mask mask-hook"></div>
-			<div class="picker-panel panel-hook">
-				<div class="picker-choose choose-hook">
-					<span class="cancel cancel-hook" style="color: #000;">取消</span>
-					<span class="confirm confirm-hook" style="color: #000;">确定</span>
-					<h1 class="picker-title"></h1>
-				</div>
-				<div class="picker-content">
-					<div class="mask-top border-1px"></div>
-					<div class="mask-bottom border-1px"></div>
-					<div class="wheel-wrapper wheel-wrapper-hook">
-						<div class="wheel wheel-hook">
-							<script type="text/html" id="test">
-								<ul class="wheel-scroll wheel-scroll-hook" style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, -324px) translateZ(0px);">
-									<li class="wheel-item"></li>
-								</ul>
-							</script>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="wx">
-			<p style="color: #fff;margin-top: 34px;">咋了？</p>
-			<div class="weui_cells weui_cells_radio" style="overflow: hidden;margin-top:60px;">
-				<ul class="weui">
-					<li><span style="float:left;margin-left:10px;">我不想借款了</span>
-						<p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
-					</li>
-					<li class="bg"><span style="float:left;margin-left:10px;">我不能正常提交资料</span>
-						<p style="margin-right:10px;display:block;width:20px;float:right;height:20px;border-radius:20px;"></p>
-					</li>
-				</ul>
-				<div style="margin-top: 20px;height:80px;border-top: 1px solid #d9d9d9;width:100%;">
-					<textarea name="packagingDesc" id="packagingDesc" placeholder="请大胆吐槽,我们会在最快的时间解决您的问题!" style=" width:94%;font-size:12px;margin-left: 3%;resize:none;height:70px;vertical-align: text-top;border: 0;"></textarea>
-				</div>
-				<p class="qi" style=" color:#888;text-align: right;margin-right:20px;font-size:12px;">
-					<span id="text-count">128</span>/128
-				</p>
-			</div>
-			<div style="text-align: center;width: 100%;line-height: 40px;position:absolute;bottom:0;border-top: 1px solid #d9d9d9;">
-				<p style="color: rgb(74,144,226);float: left;width:49%;height:40px;border-right: 1px solid #D9D9D9;" class="sure">确定</p>
-				<p style="color: rgb(74,144,226);" class="try">再试试</p>
-			</div>
-		</div>
-		<div id="mode2"></div>
-		<div id="mode"></div>
-		<script type="text/javascript" src="../../libs/js/jquery-2.1.0.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../libs/js/jquery.cookie.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../js/common/loading.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../libs/js/picker.min.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../js/common/globalConst.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../js/common/getUserId.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../libs/js/template.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="../../libs/js/fastclick.js?${project.javascript.version}"></script>
-		<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=0e76d85c5751c246d2fb105e41d5705c&plugin=AMap.Autocomplete,AMap.PlaceSearch,AMap.Geocoder"></script>
-		<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js?${project.javascript.version}"></script>
 
-		<script type="text/javascript" src="../../js/user/usermessage.js?${project.javascript.version}"></script>
-		<script>
-			$(".weui li").on("click", function() {
-				$(this).addClass("bg");
-				$(this).siblings().removeClass("bg");
-			})
-			$("#packagingDesc").on("propertychange input", function() {
-				var $this = $(this),
-					_val = $this.val(),
-					count = "";
-				if(_val.length > 128) {
-					$this.val(_val.substring(0, 128));
-				}
-				count = 128 - $this.val().length;
-				$("#text-count").text(count);
-			});
-		</script>
-	</body>
+    <script>
+        new Vue({
+            el: '.message-page',
+            data: {
+                userId: "",
+                tokenId: localStorage.getItem("token"),
+                disabled: true,
+                userName: "",
+                eduLv: "",
+                isMarry: "",
+                isMarryId: "",
+                liveAddrUp: "",
+                liveAddrDown: "",
+                country: "",
+                province: "",
+                city: "",
+                showPop: false,
+                disBtn: false,
+                addrDown: "",
+                flag: 0,
+                addr: ""
+            },
+            mounted() {
+                this.init();
+            },
+            methods: {
+                init() {
+                    utils.getUserId();
+                    this.userId = sessionStorage.getItem("userId");
+                    this.renderData();
+                    this.bindEvent();
+                },
+                bindEvent() {
+                    var _self = this;
+                    $(".try").on("click", function() {
+                        $(".wx").hide();
+                        $("#mode2").hide();
+                    })
+                    $(".sure").on("click", function() {
+                        var reContent = $("#packagingDesc").val();
+                        var reTitle = $("header p").html();
+                        var reTroubleType = $(".bg span").html();
+                        if (reTroubleType == '我不想借款了') {
+                            var num = '100077';
+                        } else {
+                            var num = '100078';
+                        }
+                        var data = {
+                            reContent: reContent,
+                            reCreateId: _self.userId,
+                            rePage: 100081,
+                            reTitle: reTitle,
+                            reTroubleType: num
+                        }
+                        utils.fetchData({
+                            url: constans.serviceUrl + '/reputations',
+                            data: data,
+                            success: function(data) {
+                                if (data.code == 500) {
+                                    utils.showMsg({
+                                        msg: data.msg
+                                    });
+                                } else {
+                                    window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                                }
+                            }
+                        })
+                    });
+
+                    $(".weui li").on("click", function() {
+                        $(this).addClass("bg");
+                        $(this).siblings().removeClass("bg");
+                    });
+
+                    $("#packagingDesc").on("propertychange input", function() {
+                        var $this = $(this),
+                            _val = $this.val(),
+                            count = "";
+                        if (_val.length > 128) {
+                            $this.val(_val.substring(0, 128));
+                        }
+                        count = 128 - $this.val().length;
+                        $("#text-count").text(count);
+                    });
+
+                    $("#sure").on('click', function(e) {
+                        if ($("#tipinput").val()) {
+                            _self.liveAddrUp = $("#tipinput").val();
+                            $(".content_address").hide();
+                        }
+                    });
+
+                    // 监听文本框输入事件
+                    $("body").on("input", "input", (e) => {
+                        _self.listenField();
+                    });
+
+                },
+                renderData() {
+                    var _self = this;
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/credit/detailUserInfo',
+                        data: {
+                            userId: _self.userId
+                        },
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                _self.userName = data.body.userName;
+                                _self.eduLv = data.body.eduLv;
+                                _self.eduLvId = data.body.eduLvId;
+                                _self.isMarry = data.body.isMarry;
+                                _self.isMarryId = data.body.isMarryId;
+                                _self.liveAddrUp = data.body.liveAddrUp;
+                                _self.liveAddrDown = data.body.liveAddrDown;
+                                _self.country = data.body.country;
+                                _self.city = data.body.city;
+                                _self.province = data.body.province;
+                                _self.addrDown = data.body.liveAddrDown;
+                                _self.addr = data.body.liveAddr;
+                                // 如果资料为未完善
+                                if (localStorage.getItem("person") == 0) {
+                                    if (!_self.eduLv && !_self.isMarry && !_self.addrDown && !_self.liveAddrUp) {
+                                        _self.disabled = false;
+                                    }
+                                    _self.isCommited();
+                                }
+                                if (localStorage.getItem("person") != "2") {
+                                    // 获取学历信息
+                                    _self.getEducation();
+                                    // 获取教育程度信息
+                                    _self.getEducationLevel();
+
+                                    // 监听文本框输入事件
+                                    _self.listenField();
+
+                                    // 初始化化地图并获取地理位置
+                                    utils.initMap({
+                                        input: "tipinput",
+                                        callback: function(result) {
+                                            _self.companyAddr = result.companyAddr;
+                                            _self.companyCity = result.companyCity;
+                                            _self.companyCountry = result.companyCountry;
+                                            _self.companyProvince = result.companyProvince;
+                                            _self.formattedAddress = result.formattedAddress;
+                                            _self.citycode = result.citycode;
+                                            _self.addrUp = result.addrUp;
+                                        }
+                                    });
+                                    _self.disBtn = true;
+                                }
+                            }
+                        }
+                    })
+                },
+                // 获取教育程度信息
+                getEducationLevel() {
+                    var _self = this;
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/support/selectinfo',
+                        data: {
+                            type: "100001"
+                        },
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                console.log(data);
+                                var data2 = [];
+                                for (i in data.body) {
+                                    data2.push({
+                                        text: data.body[i].value,
+                                        value: data.body[i].key
+                                    });
+                                    var picker2 = new Picker({
+                                        data: [data2]
+                                    });
+                                }
+                                var picker2El = document.getElementById('picker2');
+                                picker2.on('picker.select', function(selectedVal, selectedIndex) {
+                                    picker2El.innerText = data2[selectedIndex[0]].text;
+                                    $("#picker2").css("margin-left", "10px");
+                                    _self.isMarryId = data2[selectedIndex[0]].value;
+                                    _self.listenField();
+                                });
+                                $(".user2").on("click", function() {
+                                    picker2.show();
+                                })
+
+                            }
+                        }
+                    })
+                },
+                // 获取学历信息
+                getEducation() {
+                    var _self = this;
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/support/selectinfo',
+                        data: {
+                            type: "100000"
+                        },
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                var data1 = [];
+                                for (i in data.body) {
+                                    data1.push({
+                                        text: data.body[i].value,
+                                        value: data.body[i].key
+                                    })
+                                }
+                                var picker1 = new Picker({
+                                    data: [data1]
+                                });
+                                var picker1El = document.getElementById('picker1');
+                                picker1.on('picker.select', function(selectedVal, selectedIndex) {
+                                    $("#picker1").css("margin-left", "10px");
+                                    _self.eduLvId = data1[selectedIndex[0]].value;
+                                    _self.eduLv = data1[selectedIndex[0]].text;
+                                    _self.listenField();
+                                });
+                                picker1El.addEventListener('click', function() {
+                                    picker1.show();
+                                });
+                            }
+                        }
+                    })
+                },
+                // 居住地址
+                selectMap() {
+                    if (localStorage.getItem("person") == "2") return;
+                    $(".content_address").show();
+                },
+                isCommited() {
+                    _self = this;
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/reputations/isCommited',
+                        data: {
+                            rePage: '100081'
+                        },
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                if (data.body == false) {
+                                    _self.showPop = true;
+                                }
+                            }
+                        }
+                    })
+                },
+                back() {
+                    var _self = this;
+                    if (_self.showPop) {
+                        $(".wx").show();
+                        $("#mode2").show();
+                    } else {
+                        window.location = constans.htmlUrl + "/html/user/userInfoList.html";
+                    }
+                },
+                save(type) {
+                    var _self = this;
+                    var params = {
+                        addr: this.addr,
+                        eduLv: this.eduLvId,
+                        city: this.city,
+                        addrUp: this.liveAddrUp,
+                        province: this.province,
+                        isMarry: this.isMarryId,
+                        addrDown: this.addrDown,
+                        country: this.country,
+                        userId: this.userId,
+                        tdId: this.tokenId
+                    };
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/credit/submitperson',
+                        data: params,
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                _self.disabled = true;
+                                if (type == "save") {
+                                    utils.showMsg({
+                                        msg: data.msg,
+                                        time: 1,
+                                        end: function() {
+                                            _self.disabled = false;
+                                        }
+                                    });
+                                } else {
+                                    _self.commit(data);
+                                }
+                            }
+                        }
+                    })
+                },
+                commit(params) {
+                    utils.fetchData({
+                        url: constans.serviceUrl + '/user/saveUserContinue',
+                        data: params,
+                        success: function(data) {
+                            if (data.code == 500) {
+                                utils.showMsg({
+                                    msg: data.msg
+                                });
+                            } else {
+                                var _url = constans.htmlUrl;
+                                utils.showMsg({
+                                    msg: "提交成功",
+                                    time: 2,
+                                    end: function() {
+                                        window.location = _url + "/html/user/userInfoList.html";
+                                    }
+                                });
+                            }
+                        }
+                    })
+                },
+                // 监听字段变化
+                listenField() {
+                    var _self = this;
+                    // 调用utils工具类传入必填字段数组
+                    _self.disabled = utils.listenField([{
+                        value: _self.userName,
+                        type: "text"
+                    }, {
+                        value: _self.eduLvId,
+                        type: "text"
+                    }, {
+                        value: _self.isMarryId,
+                        type: "text"
+                    }, {
+                        value: _self.liveAddrUp,
+                        type: "text"
+                    }, {
+                        value: _self.addrDown,
+                        type: "text"
+                    }]);
+                },
+                toUserInfo() {
+                    location.href = "userinformation.html";
+                }
+            }
+        })
+    </script>
+</body>
 
 </html>
